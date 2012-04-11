@@ -1,0 +1,33 @@
+﻿빌드 시작: 2012-04-10 오후 5:16:16
+     1>2 노드의 "C:\설계\소스\ChatClient\ChatClient\ChatClient\ChatClient.vcxproj" 프로젝트(build 대상)입니다.
+     1>InitializeBuildStatus:
+         "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\ChatClient.unsuccessfulbuild"을(를) 만들고 있습니다.
+       ClCompile:
+         모든 출력이 최신 상태입니다.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ChatClient.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ChatClientDlg.cpp
+         ChatClientDlg.cpp
+       ResourceCompile:
+         모든 출력이 최신 상태입니다.
+       ManifestResourceCompile:
+         모든 출력이 최신 상태입니다.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\설계\소스\ChatClient\ChatClient\Debug\ChatClient.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\ChatClient.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\설계\소스\ChatClient\ChatClient\Debug\ChatClient.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\설계\소스\ChatClient\ChatClient\Debug\ChatClient.lib" /MACHINE:X86 Debug\ChatClient.res
+         Debug\ChatClient.exe.embed.manifest.res
+         Debug\ChatClient.obj
+         Debug\ChatClientDlg.obj
+         Debug\ConnectSocket.obj
+         Debug\stdafx.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\ChatClient.exe.embed.manifest" /manifest Debug\ChatClient.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         모든 출력이 최신 상태입니다.
+       LinkEmbedManifest:
+         모든 출력이 최신 상태입니다.
+         ChatClient.vcxproj -> C:\설계\소스\ChatClient\ChatClient\Debug\ChatClient.exe
+       FinalizeBuildStatus:
+         "Debug\ChatClient.unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "Debug\ChatClient.lastbuildstate"에 연결(touching)하고 있습니다.
+     1>"C:\설계\소스\ChatClient\ChatClient\ChatClient\ChatClient.vcxproj" 프로젝트를 빌드했습니다(build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.51

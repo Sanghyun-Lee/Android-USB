@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ChatClient">
+</Property><Property Name="솔루션 파일" Value="C:\설계\소스\ChatClient\ChatClient\ChatClient.sln">
+</Property><Property Name="Date" Value="2012년 4월 6일 금요일">
+</Property><Property Name="Time" Value="오후 15:23">
+</Property></Properties><Event ErrorLevel="0" Project="ChatClient" Source="ChatClient\ChatClient.vcproj" Description="Converting project file 'C:\설계\소스\ChatClient\ChatClient\ChatClient\ChatClient.vcproj'.">
+</Event><Event ErrorLevel="1" Project="ChatClient" Source="ChatClient\ChatClient.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="ChatClient" Source="ChatClient\ChatClient.vcproj" Description="Done converting to new project file 'C:\설계\소스\ChatClient\ChatClient\ChatClient\ChatClient.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="ChatClient" Source="ChatClient\ChatClient.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="ChatClient.sln" Description="솔루션을 변환했습니다.">
+</Event><Event ErrorLevel="3" Project="" Source="ChatClient.sln" Description="Converted">
+</Event></UpgradeLog>
