@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import app.android.server.R;
+import app.android.R;
 import app.android.IME.*;
 
 import android.view.inputmethod.InputConnection;
