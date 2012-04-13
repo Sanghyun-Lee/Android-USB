@@ -1,13 +1,13 @@
-﻿빌드 시작: 2012-04-10 오후 10:57:20
-     1>2 노드의 "C:\설계\소스\ChatServer\ChatServer\ChatServer\ChatServer.vcxproj" 프로젝트(build 대상)입니다.
+﻿빌드 시작: 2012-04-13 오후 6:50:27
+     1>2 노드의 "C:\Users\windows7\Android-USB\source code\ChatServer\ChatServer\ChatServer.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
-         "Debug\ChatServer.unsuccessfulbuild"에 연결(touching)하고 있습니다.
+         "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\ChatServer.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
          모든 출력이 최신 상태입니다.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ChatServer.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ChatServer.cpp ChatServerDlg.cpp ClientSocket.cpp ListenSocket.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\ChatServer.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ChatServer.cpp ClientSocket.cpp ListenSocket.cpp
          ListenSocket.cpp
-         ChatServerDlg.cpp
-     1>c:\설계\소스\chatserver\chatserver\chatserver\chatserverdlg.cpp(203): warning C4101: 'msg' :참조되지 않은 지역 변수입니다.
+     1>c:\users\windows7\android-usb\source code\chatserver\chatserver\listensocket.cpp(113): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(105) : 'strcpy' 선언을 참조하십시오.
          코드를 생성하고 있습니다...
          건너뛰고 있습니다... (관련된 변경 내용 없음)
          ClientSocket.cpp
@@ -17,7 +17,7 @@
        ManifestResourceCompile:
          모든 출력이 최신 상태입니다.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\설계\소스\ChatServer\ChatServer\Debug\ChatServer.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\ChatServer.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\설계\소스\ChatServer\ChatServer\Debug\ChatServer.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\설계\소스\ChatServer\ChatServer\Debug\ChatServer.lib" /MACHINE:X86 Debug\ChatServer.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\windows7\Android-USB\source code\ChatServer\Debug\ChatServer.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\ChatServer.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\windows7\Android-USB\source code\ChatServer\Debug\ChatServer.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\windows7\Android-USB\source code\ChatServer\Debug\ChatServer.lib" /MACHINE:X86 Debug\ChatServer.res
          Debug\ChatServer.exe.embed.manifest.res
          Debug\ChatServer.obj
          Debug\ChatServerDlg.obj
@@ -29,12 +29,12 @@
          모든 출력이 최신 상태입니다.
        LinkEmbedManifest:
          모든 출력이 최신 상태입니다.
-         ChatServer.vcxproj -> C:\설계\소스\ChatServer\ChatServer\Debug\ChatServer.exe
+         ChatServer.vcxproj -> C:\Users\windows7\Android-USB\source code\ChatServer\Debug\ChatServer.exe
        FinalizeBuildStatus:
          "Debug\ChatServer.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\ChatServer.lastbuildstate"에 연결(touching)하고 있습니다.
-     1>"C:\설계\소스\ChatServer\ChatServer\ChatServer\ChatServer.vcxproj" 프로젝트를 빌드했습니다(build 대상).
+     1>"C:\Users\windows7\Android-USB\source code\ChatServer\ChatServer\ChatServer.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:00.78
+경과 시간: 00:00:01.47

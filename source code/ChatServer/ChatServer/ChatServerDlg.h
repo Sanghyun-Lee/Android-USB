@@ -37,7 +37,6 @@ protected:
 public:
 	CListBox m_List;
 	CString m_strMsg;
-	TCHAR* StringToTChar(CString string);
 	afx_msg void OnDestroy();
 	afx_msg void OnBnClickedSend();
 	CEdit etext;

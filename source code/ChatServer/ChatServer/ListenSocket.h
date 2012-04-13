@@ -11,9 +11,9 @@ public:
 	CPtrList		m_ptrClientSocketList;
 	virtual void OnAccept(int nErrorCode);
 	void CloseClientSocket(CSocket* pClient);
-	void SendChatDataAll(TCHAR* pszMessage);
-	void SendMsg(CString pszMessage, int len);
-//	void SendMsg(TCHAR *pszMessage, int len);
+	void SendChatDataAll(CString pszMessage);
+	void SendMsg(CString pszMessage);
+	int StringToTChar(CString string, TCHAR* ch);
 
 };
 

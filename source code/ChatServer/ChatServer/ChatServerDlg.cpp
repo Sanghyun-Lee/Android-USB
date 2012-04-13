@@ -200,32 +200,14 @@ void CChatServerDlg::OnBnClickedSend()
 
 	UpdateData(TRUE);
 	etext.GetWindowText(m_strMsg);
-	TCHAR *msg; 
-//	msg = StringToTChar(m_strMsg);
-//	msg = (TCHAR*)(LPCTSTR)m_strMsg;
-
+	
 	m_List.AddString(m_strMsg);
 	m_List.SetCurSel(m_List.GetCount() -1);
 
-	m_ListenSocket.SendMsg(m_strMsg, m_strMsg.GetLength());
+	m_ListenSocket.SendMsg(m_strMsg);
 	//	.Send((LPVOID)(LPCTSTR)m_strMsg,
 	//				m_strMsg.GetLength() * 2);
 
 	m_strMsg = _T("");
 	UpdateData(FALSE);
-}
-
-TCHAR* CChatServerDlg::StringToTChar(CString string)
-{
-	int STR_LENGTH = string.GetLength();
-	int i;
-	TCHAR *a = new TCHAR[STR_LENGTH+3];
-
-	for(i = 0; i < STR_LENGTH ; i++){
-		a[i] = (TCHAR)string.GetAt(i);
-	}
-
-	a[i] = NULL;
-
-	return a;
 }
