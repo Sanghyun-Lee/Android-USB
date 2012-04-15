@@ -1,0 +1,19 @@
+8
+
+dir
+3
+https://hangulkeyboard.googlecode.com/svn/trunk/HangulKeyboard/src/org/kandroid/app
+https://hangulkeyboard.googlecode.com/svn
+
+
+
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+
+svn:special svn:externals svn:needs-lock
+
+hangulkeyboard
+dir
+

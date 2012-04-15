@@ -1,0 +1,52 @@
+8
+
+dir
+3
+https://hangulkeyboard.googlecode.com/svn/trunk/HangulKeyboard/res/values
+https://hangulkeyboard.googlecode.com/svn
+
+
+
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+
+svn:special svn:externals svn:needs-lock
+
+colors.xml
+file
+
+
+
+
+2009-04-21T12:15:02.000000Z
+fb90806954d1777204ae23c8052b6583
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+strings.xml
+file
+
+
+
+
+2009-05-07T20:09:49.573750Z
+92a4f26af079cc4689f687b8b0468de6
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+dimens.xml
+file
+
+
+
+
+2009-04-21T12:15:02.000000Z
+c074d0de5439800f36fc37b9b2e3580f
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
