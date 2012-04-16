@@ -1,9 +1,5 @@
 package app.android.server;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-
 import android.os.Handler;
 import android.os.Message;
 import android.app.Activity;
@@ -24,64 +20,72 @@ import org.kandroid.app.hangulkeyboard.*;
 import android.view.inputmethod.InputConnection;
 import android.inputmethodservice.InputMethodService;
 
-public class MessagePCViewerActivity extends Activity implements OnClickListener {
-	private static String keymsg;
+public class MessagePCViewerActivity extends Activity {
 	
+	/*
 	Button sendBtn;
 	Button connectBtn;
 	Button closeBtn;
+	static LinearLayout view1;
 	static TextView tv;
 	static EditText et;
-	static LinearLayout view1;
+	*/
 	
 	static MessageManager message;
-	static RecvThread recvth;
+	
 	static SendThread sendth;
 	static TCPconnect connect;
 	static Handler handler;
+	
+	static Intent intent_kakao;
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.loadLibrary("ndk-chat");
+        
         setContentView(R.layout.main);
         
+        /*
         view1 = (LinearLayout) findViewById(R.id.linearLayout1);
         sendBtn = (Button) findViewById(R.id.button1);
         connectBtn = (Button) findViewById(R.id.connect_btn);
         closeBtn = (Button) findViewById(R.id.close_btn);
-        tv = (TextView) findViewById(R.id.textView1);
         et = (EditText) findViewById(R.id.editText1);
+        tv = (TextView) findViewById(R.id.textView1);
+        
         sendBtn.setOnClickListener(this);
         connectBtn.setOnClickListener(this);
         closeBtn.setOnClickListener(this);
+        */
         
         // imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
         // imm.showSoftInput(et, 0);
         // imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
         // this.onKeyDown(KeyEvent.KEYCODE_BUTTON_B, new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_B));
         
+        /*
         handler = new Handler() {
 			public void handleMessage(Message msg) {
 				insertEditText((String)msg.obj);
 			}
 		};
+		*/
 		
-		connect = new TCPconnect();
-        message = new MessageManager(handler, connect);
+        // message = new MessageManager(handler, connect);
         
         // mIME = new SoftKeyboard();
-
-        /*
+        
+        
+        // sendth = new SendThread(message, view1.getRootView());
+        
+        startService(new Intent(this, MessageManager.class));
         intent_kakao = this.getPackageManager().getLaunchIntentForPackage("com.kakao.talk");
         MessagePCViewerActivity.this.startActivity(intent_kakao);
-        */
-        
-        recvth = new RecvThread(message);
-        sendth = new SendThread(message, view1.getRootView());
     }
 
+    /*
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		// 추후 recv 한 후에 recv에서 sendPC함
@@ -98,7 +102,7 @@ public class MessagePCViewerActivity extends Activity implements OnClickListener
 		        if(connect.isconnect()) {
 		        	Toast.makeText(this, "연결에 성공했습니다.", Toast.LENGTH_LONG).show();
 		        	recvth.start();
-		        	sendth.start();
+		        	// sendth.start();
 		        }
 		        else {
 		        	Toast.makeText(this, "연결에 실패했습니다.", Toast.LENGTH_LONG).show();
@@ -125,34 +129,16 @@ public class MessagePCViewerActivity extends Activity implements OnClickListener
 				break;
 		}
 	}
+	*/
 	
 	public static int addMessage(String msg) {
     	if(msg!=null) {
-	    	tv.setText(tv.getText() + "\n" + msg);
+	    	//tv.setText(tv.getText() + "\n" + msg);
 		}
     	return 0;
     }
 	
-	public static int insertEditText(String msg) {
-		new Thread(new Runnable() {
-			 public void run() {
-				//test
-					// mIME.set_text("test");
-					// mIME.commit_text();
-				 keymsg = "테스트메세지";
-				 new Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_0);
-				 //KeyEvent ke = new KeyEvent(0, "dd", 0, 0);
-				 //new Instrumentation().sendKeyDownUpSync(ke.getKeyCode());
-			 }
-		 }).start();
-		return 0;
-	}	
 	
-	public static String pullMessage() {
-		String msg = keymsg;
-		keymsg = "";
-		return msg;
-	}
 	
 //	public void IMEconnect() {
 //		try {

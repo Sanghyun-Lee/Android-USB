@@ -34,7 +34,7 @@ import android.view.inputmethod.CompletionInfo;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
-import app.android.server.MessagePCViewerActivity;
+import app.android.server.MessageManager;
 import app.android.server.R;
 
 import java.net.URI;
@@ -2188,7 +2188,7 @@ public class SoftKeyboard extends InputMethodService
 	public boolean commit_text() {
 		// test!
         StringBuilder mComposing = new StringBuilder();
-        mComposing.append(MessagePCViewerActivity.pullMessage());
+        mComposing.append(MessageManager.pullMessage());
         getCurrentInputConnection().commitText(mComposing, mComposing.length());
         return true;
 	}

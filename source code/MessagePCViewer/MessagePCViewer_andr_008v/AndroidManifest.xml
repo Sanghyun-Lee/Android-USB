@@ -29,6 +29,10 @@
             	</intent-filter>
             <meta-data android:name="android.view.im"
                  android:resource="@xml/method" />
+        </service>
+        
+        <service android:name=".MessageManager">
+            
         </service> 
         
     </application>
