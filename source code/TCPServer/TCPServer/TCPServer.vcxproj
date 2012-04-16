@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataSocket.h" />
+    <ClInclude Include="imagestatic.h" />
     <ClInclude Include="ListenSocket.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
