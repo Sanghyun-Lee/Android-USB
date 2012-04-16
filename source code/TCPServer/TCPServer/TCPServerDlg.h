@@ -6,6 +6,8 @@
 #include "afxwin.h"
 #include "ListenSocket.h"
 #include "DataSocket.h"
+#include "atlimage.h"
+
 
 
 // CTCPServerDlg 대화 상자
@@ -48,4 +50,8 @@ public:
 	afx_msg void OnBnClickedButtonSend();
 	afx_msg void OnBnClickedButtonStop();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	CStatic imgViewer;
+	int nHeight;
+	int nWidth;
+	CRect imgViewerRect;
 };

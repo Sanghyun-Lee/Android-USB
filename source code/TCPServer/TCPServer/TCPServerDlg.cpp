@@ -64,6 +64,7 @@ void CTCPServerDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_SEND_DATA, m_strSendData);
 	DDX_Text(pDX, IDC_EDIT_PORT, m_strPort);
 	DDX_Control(pDX, IDC_EDIT_LIST, m_edListData);
+	DDX_Control(pDX, IDC_PICVIEW, imgViewer);
 }
 
 BEGIN_MESSAGE_MAP(CTCPServerDlg, CDialogEx)
@@ -111,7 +112,15 @@ BOOL CTCPServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 300);
+	GetDlgItem(IDC_PICVIEW)->GetClientRect(imgViewerRect);
+	nWidth = imgViewerRect.right - imgViewerRect.left;
+	nHeight = imgViewerRect.bottom - imgViewerRect.top;
 
+	CImage img;
+	HBITMAP m_bitmap = NULL;
+	img.Load("katalk.jpg");
+	img.Draw(nWidth, nHeight, 0);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -261,7 +270,7 @@ void CTCPServerDlg::OnBnClickedButtonSend()
 	UpdateData();
 
 	CString strSend;
-	strSend.Format("[서버] %s", m_strSendData);
+	strSend.Format("Server : %s", m_strSendData);
 
 	dataSocket.Send(strSend, strSend.GetLength()+1);
 
