@@ -94,6 +94,9 @@ public class SoftKeyboard extends InputMethodService
     @Override public void onCreate() {
         super.onCreate();
         mWordSeparators = getResources().getString(R.string.word_separators);
+        
+        startService(new Intent(this, MessageManager.class));
+        MessageManager.SetKeyboard(this);
     }
     
     /**
@@ -419,9 +422,11 @@ public class SoftKeyboard extends InputMethodService
                 // Let the underlying text editor always handle these.
                 return false;
                 
+                /*
             case KeyEvent.KEYCODE_0 :
             	commit_text();
             	return true;
+            	*/
                 
             default:
                 // For all other keys, if we want to do transformations on
@@ -713,8 +718,6 @@ public class SoftKeyboard extends InputMethodService
         if (length > 1) {
             mComposing.delete(length - 1, length);
             getCurrentInputConnection().setComposingText(mComposing, 1);
-            
-            commit_text();
             
             updateCandidates();
         } else if (length > 0) {
@@ -2185,11 +2188,19 @@ public class SoftKeyboard extends InputMethodService
     public void onRelease(int primaryCode) {
     }
     
-	public boolean commit_text() {
+	public boolean commit_text(String str) {
 		// test!
         StringBuilder mComposing = new StringBuilder();
-        mComposing.append(MessageManager.pullMessage());
+        mComposing.append(str);
         getCurrentInputConnection().commitText(mComposing, mComposing.length());
+        keyDownUp(KeyEvent.KEYCODE_ENTER);
         return true;
 	}
+	
+	@Override
+    public void onDestroy() { 
+		Log.i("Hangul","in onDestroy");
+		stopService(new Intent(this, MessageManager.class));
+        super.onDestroy();
+    }
 }

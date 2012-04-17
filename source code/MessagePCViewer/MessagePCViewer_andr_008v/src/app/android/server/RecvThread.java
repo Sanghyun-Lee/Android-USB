@@ -3,7 +3,7 @@ package app.android.server;
 public class RecvThread extends Thread {
 	MessageManager message;
 	String str;
-	static String NotConnectedStr = "\\연결 상태가 아닙니다.";
+	static String NotConnectedStr = "\\\\연결 상태가 아닙니다.";
 	
 	public RecvThread(MessageManager message) {
 		super();

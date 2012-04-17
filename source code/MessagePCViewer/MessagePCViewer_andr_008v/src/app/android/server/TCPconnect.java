@@ -1,5 +1,7 @@
 package app.android.server;
 
+import android.util.Log;
+
 public class TCPconnect {
 	private static String IP = "192.168.0.15";
 	private static int port = 3600;
@@ -10,7 +12,10 @@ public class TCPconnect {
 	}
 
 	public int connect() {
+		Log.i("TCPconnect","in connect() start");
 		connect_check = set_ip_port(IP, port);
+		if(isconnect()) Log.i("TCPconnect","connect success");
+		else Log.i("TCPconnect","connect fail");
 		return connect_check;
 	}
 	
