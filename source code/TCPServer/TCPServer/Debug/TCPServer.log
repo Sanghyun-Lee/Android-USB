@@ -1,15 +1,24 @@
-﻿빌드 시작: 2012-04-16 오후 11:06:57
+﻿빌드 시작: 2012-04-17 오후 10:29:03
      1>2 노드의 "C:\Users\windows7\Android-USB\source code\TCPServer\TCPServer\TCPServer.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
-         "Debug\TCPServer.unsuccessfulbuild"에 연결(touching)하고 있습니다.
+         "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\TCPServer.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
          모든 출력이 최신 상태입니다.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\TCPServer.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt TCPServerDlg.cpp
-         TCPServerDlg.cpp
-     1>c:\users\windows7\android-usb\source code\tcpserver\tcpserver\tcpserverdlg.cpp(123): error C2664: 'BOOL ATL::CImage::Draw(HDC,const RECT &,const RECT &) throw() const' : 매개 변수 1을(를) 'int'에서 'HDC'(으)로 변환할 수 없습니다.
-                 정수 계열 형식에서 포인터 형식으로 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
-     1>"C:\Users\windows7\Android-USB\source code\TCPServer\TCPServer\TCPServer.vcxproj" 프로젝트를 빌드했습니다(build 대상). - 실패
+         모든 출력이 최신 상태입니다.
+       ResourceCompile:
+         모든 출력이 최신 상태입니다.
+       ManifestResourceCompile:
+         모든 출력이 최신 상태입니다.
+       Link:
+         모든 출력이 최신 상태입니다.
+       Manifest:
+         모든 출력이 최신 상태입니다.
+         모든 출력이 최신 상태입니다.
+       FinalizeBuildStatus:
+         "Debug\TCPServer.unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "Debug\TCPServer.lastbuildstate"에 연결(touching)하고 있습니다.
+     1>"C:\Users\windows7\Android-USB\source code\TCPServer\TCPServer\TCPServer.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
-빌드하지 못했습니다.
+빌드했습니다.
 
-경과 시간: 00:00:00.21
+경과 시간: 00:00:00.08

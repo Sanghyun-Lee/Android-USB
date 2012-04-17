@@ -77,6 +77,7 @@ BEGIN_MESSAGE_MAP(CTCPServerDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_START, &CTCPServerDlg::OnBnClickedButtonStart)
 	ON_BN_CLICKED(IDC_BUTTON_SEND, &CTCPServerDlg::OnBnClickedButtonSend)
 	ON_BN_CLICKED(IDC_BUTTON_STOP, &CTCPServerDlg::OnBnClickedButtonStop)
+	ON_BN_CLICKED(IDC_BUTTON_KATALK_START, &CTCPServerDlg::OnBnClickedButtonKatalkStart)
 END_MESSAGE_MAP()
 
 
@@ -112,15 +113,15 @@ BOOL CTCPServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 300);
+	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 340, 250);
 	GetDlgItem(IDC_PICVIEW)->GetClientRect(imgViewerRect);
 	nWidth = imgViewerRect.right - imgViewerRect.left;
 	nHeight = imgViewerRect.bottom - imgViewerRect.top;
 
-	CImage img;
-	HBITMAP m_bitmap = NULL;
-	img.Load("katalk.jpg");
-	img.Draw(nWidth, nHeight, 0);
+	img.Load(CString("C:\Users\windows7\Android-USB\source code\TCPServer\Debug\katalk.jpg"));
+	Invalidate();
+	
+//	img.Draw(nWidth, nHeight, 0);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -162,8 +163,11 @@ void CTCPServerDlg::OnPaint()
 	}
 	else
 	{
+		CPaintDC dc(this); 
+		img.Draw(dc.m_hDC, 50, 50);
 		CDialogEx::OnPaint();
 	}
+	
 }
 
 // 사용자가 최소화된 창을 끄는 동안에 커서가 표시되도록 시스템에서
@@ -270,15 +274,17 @@ void CTCPServerDlg::OnBnClickedButtonSend()
 	UpdateData();
 
 	CString strSend;
-	strSend.Format("Server : %s", m_strSendData);
+	strSend.Format("%s", m_strSendData);
 
-	dataSocket.Send(strSend, strSend.GetLength()+1);
+	
+	dataSocket.Send(AnsiToUTF8RetCString(strSend), 
+		AnsiToUTF8RetCString(strSend).GetLength()+1);
 
 	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
 	m_strSendData = "";
 	UpdateData(FALSE);
 
-	AddMessage(strSend);
+	AddMessage("To other : " + strSend);
 }
 
 
@@ -317,4 +323,47 @@ BOOL CTCPServerDlg::PreTranslateMessage(MSG* pMsg)
 	}
 
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+void CTCPServerDlg::OnBnClickedButtonKatalkStart()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	UpdateData();
+
+	CString strKatalkStart;
+	strKatalkStart.Format("%s", "\\\\kakao_on");
+
+	dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
+
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+	strKatalkStart = "";
+	UpdateData(FALSE);
+
+	AddMessage("카카오톡 실행");
+}
+
+CString CTCPServerDlg::AnsiToUTF8RetCString(CString inputStr)
+{
+	WCHAR szUnicode[1024];
+	char szUTF8char[1024];
+
+	CString strConvert;
+	char* szSrc = (LPSTR)(LPCTSTR)inputStr;
+
+	char szRetValue[1024] = "";
+
+	int unicodeSize = MultiByteToWideChar(CP_ACP, 0,
+		szSrc, (int)strlen(szSrc), 
+		szUnicode, sizeof(szUnicode));
+
+	int UTF8CodeSize = WideCharToMultiByte(CP_UTF8, 0, 
+		szUnicode, unicodeSize, szUTF8char,
+		sizeof(szUTF8char), NULL, NULL);
+
+	memcpy(szRetValue, szUTF8char, UTF8CodeSize);
+	strConvert = szRetValue;
+
+	return strConvert;
+
 }
