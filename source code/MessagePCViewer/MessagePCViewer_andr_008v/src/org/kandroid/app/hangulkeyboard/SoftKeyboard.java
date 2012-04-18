@@ -94,9 +94,7 @@ public class SoftKeyboard extends InputMethodService
     @Override public void onCreate() {
         super.onCreate();
         mWordSeparators = getResources().getString(R.string.word_separators);
-        
-        startService(new Intent(this, MessageManager.class));
-        MessageManager.SetKeyboard(this);
+        MessageManager.setKeyboard(this);
     }
     
     /**

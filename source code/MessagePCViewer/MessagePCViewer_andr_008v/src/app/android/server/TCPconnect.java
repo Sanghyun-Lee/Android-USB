@@ -3,12 +3,13 @@ package app.android.server;
 import android.util.Log;
 
 public class TCPconnect {
-	private static String IP = "192.168.0.15";
 	private static int port = 3600;
+	private String IP;
 	private int connect_check;
 	
-	public TCPconnect() {
+	public TCPconnect(String IP) {
 		this.connect_check = -1;
+		this.IP = IP;
 	}
 
 	public int connect() {

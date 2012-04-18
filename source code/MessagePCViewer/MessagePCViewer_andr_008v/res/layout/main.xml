@@ -8,34 +8,36 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
+
         <Button
             android:id="@+id/connect_btn"
             android:layout_width="100dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.12"
+            android:onClick="mBtnClick"
             android:text="연결" />
 
         <Button
-            android:id="@+id/close_btn"
+            android:id="@+id/test_btn"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="0.16"
-            android:text="종료" />
+            android:onClick="mBtnClick"
+            android:text="테스트" />
 
     </LinearLayout>
-
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.55"
         android:orientation="vertical" >
-
+
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.47" >
+            android:layout_height="wrap_content" >
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -43,42 +45,51 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/textView1"
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="TextView" />
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="연결 IP : "
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/ip_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-.-.-"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <TableLayout
-            android:id="@+id/tableLayout1"
+        <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <TableRow
-                android:id="@+id/tableRow1"
+            <EditText
+                android:id="@+id/ip_edit"
+                android:layout_width="248dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="적용할 IP" />
+
+            <Button
+                android:id="@+id/ipset_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="mBtnClick"
+                android:text="적용" />
 
-                <EditText
-                    android:id="@+id/editText1"
-                    android:layout_width="232dp"
-                    android:layout_height="wrap_content" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
-            </TableRow>
-        </TableLayout>
     </LinearLayout>
 </LinearLayout>
