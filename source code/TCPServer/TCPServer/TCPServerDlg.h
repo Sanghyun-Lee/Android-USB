@@ -55,5 +55,6 @@ public:
 	afx_msg void OnBnClickedButtonKatalkStart();
 	CString AnsiToUTF8RetCString(CString inputStr);
 	CImage img;
+	CString strKatalkStart;
 
 };

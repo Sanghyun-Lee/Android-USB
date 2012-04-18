@@ -113,15 +113,17 @@ BOOL CTCPServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 340, 250);
-	GetDlgItem(IDC_PICVIEW)->GetClientRect(imgViewerRect);
+	strKatalkStart = "";
+	CRect tmpRect;
+	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 330);
+	GetDlgItem(IDC_PICVIEW)->GetClientRect(tmpRect);
+	imgViewerRect.SetRect(tmpRect.left+10, tmpRect.top+10, tmpRect.right+10, tmpRect.bottom+10);
 	nWidth = imgViewerRect.right - imgViewerRect.left;
 	nHeight = imgViewerRect.bottom - imgViewerRect.top;
 
-	img.Load(CString("C:\Users\windows7\Android-USB\source code\TCPServer\Debug\katalk.jpg"));
+	img.Load(CString("katalk.jpg"));
 	Invalidate();
-	
-//	img.Draw(nWidth, nHeight, 0);
+	AddMessage("기본 포트 3600");
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -164,7 +166,8 @@ void CTCPServerDlg::OnPaint()
 	else
 	{
 		CPaintDC dc(this); 
-		img.Draw(dc.m_hDC, 50, 50);
+	
+		img.Draw(dc.m_hDC, imgViewerRect);
 		CDialogEx::OnPaint();
 	}
 	
@@ -186,41 +189,53 @@ void CTCPServerDlg::OnBnClickedButtonStart()
 
 	UpdateData();
 
+	int port;
+
 	if(m_strPort != "")
 	{
-		int port = atoi((LPCSTR)m_strPort);
-
-		if(listenSocket.m_hSocket != INVALID_SOCKET)
-		{
-			AddMessage("이미 대기 상태입니다.");
-		}
-
-		if(!listenSocket.Create(port))
-		{
-			AddMessage("소켓 생성 실패");
-		}
-
-		if(!listenSocket.Listen())
-		{
-			AddMessage("대기 실패");
-
-			listenSocket.Close();
-		}
-		else
-		{
-			AddMessage("서버가 실행 되었습니다.");
-
-			GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-			GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_START)->EnableWindow(FALSE);
-		}
+		port = atoi((LPCSTR)m_strPort);
 	}
+	else
+	{
+		port = 3600;
+	}
+
+	if(listenSocket.m_hSocket != INVALID_SOCKET)
+	{
+		AddMessage("이미 대기 상태입니다.");
+	}
+
+	if(!listenSocket.Create(port))
+	{
+		AddMessage("소켓 생성 실패");
+	}
+
+	if(!listenSocket.Listen())
+	{
+		AddMessage("대기 실패");
+
+		listenSocket.Close();
+	}
+	else
+	{
+		CString str;
+		str.Format("포트번호 %d", port);
+		
+		AddMessage(str);
+		AddMessage("서버가 실행 되었습니다.");
+
+		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
+		GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(TRUE);
+		GetDlgItem(IDC_BUTTON_START)->EnableWindow(FALSE);
+	}
+
+	/*
 	else
 	{
 		AddMessage("양의 정수로 포트번호를 입력하세요.");
 	}
-
+	*/
 }
 
 LRESULT CTCPServerDlg::OnAcceptClient(WPARAM wParam, LPARAM lParam)
@@ -297,7 +312,7 @@ void CTCPServerDlg::OnBnClickedButtonStop()
 		dataSocket.Close();
 
 		AddMessage("서버를 종료합니다.");
-		
+		strKatalkStart = "";
 		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_START)->EnableWindow(TRUE);
 		GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(FALSE);
@@ -331,16 +346,20 @@ void CTCPServerDlg::OnBnClickedButtonKatalkStart()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateData();
 
-	CString strKatalkStart;
-	strKatalkStart.Format("%s", "\\\\kakao_on");
+	if(strKatalkStart == "")
+	{
+		strKatalkStart.Format("%s", "\\\\kakao_on");
+		dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
 
-	dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
+		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+		UpdateData(FALSE);
 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	strKatalkStart = "";
-	UpdateData(FALSE);
-
-	AddMessage("카카오톡 실행");
+		AddMessage("카카오톡 실행");
+	}
+	else
+	{
+		AddMessage("카카오톡이 이미 실행되었습니다.");
+	}
 }
 
 CString CTCPServerDlg::AnsiToUTF8RetCString(CString inputStr)
