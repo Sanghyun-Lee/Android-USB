@@ -77,6 +77,7 @@ BEGIN_MESSAGE_MAP(CTCPServerDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_START, &CTCPServerDlg::OnBnClickedButtonStart)
 	ON_BN_CLICKED(IDC_BUTTON_SEND, &CTCPServerDlg::OnBnClickedButtonSend)
 	ON_BN_CLICKED(IDC_BUTTON_STOP, &CTCPServerDlg::OnBnClickedButtonStop)
+	ON_BN_CLICKED(IDC_BUTTON_KATALK_START, &CTCPServerDlg::OnBnClickedButtonKatalkStart)
 END_MESSAGE_MAP()
 
 
@@ -112,15 +113,17 @@ BOOL CTCPServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 300);
-	GetDlgItem(IDC_PICVIEW)->GetClientRect(imgViewerRect);
+	strKatalkStart = "";
+	CRect tmpRect;
+	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 330);
+	GetDlgItem(IDC_PICVIEW)->GetClientRect(tmpRect);
+	imgViewerRect.SetRect(tmpRect.left+10, tmpRect.top+10, tmpRect.right+10, tmpRect.bottom+10);
 	nWidth = imgViewerRect.right - imgViewerRect.left;
 	nHeight = imgViewerRect.bottom - imgViewerRect.top;
 
-	CImage img;
-	HBITMAP m_bitmap = NULL;
-	img.Load("katalk.jpg");
-	img.Draw(nWidth, nHeight, 0);
+	img.Load(CString("katalk.jpg"));
+	Invalidate();
+	AddMessage("기본 포트 3600");
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -162,8 +165,12 @@ void CTCPServerDlg::OnPaint()
 	}
 	else
 	{
+		CPaintDC dc(this); 
+	
+		img.Draw(dc.m_hDC, imgViewerRect);
 		CDialogEx::OnPaint();
 	}
+	
 }
 
 // 사용자가 최소화된 창을 끄는 동안에 커서가 표시되도록 시스템에서
@@ -182,41 +189,53 @@ void CTCPServerDlg::OnBnClickedButtonStart()
 
 	UpdateData();
 
+	int port;
+
 	if(m_strPort != "")
 	{
-		int port = atoi((LPCSTR)m_strPort);
-
-		if(listenSocket.m_hSocket != INVALID_SOCKET)
-		{
-			AddMessage("이미 대기 상태입니다.");
-		}
-
-		if(!listenSocket.Create(port))
-		{
-			AddMessage("소켓 생성 실패");
-		}
-
-		if(!listenSocket.Listen())
-		{
-			AddMessage("대기 실패");
-
-			listenSocket.Close();
-		}
-		else
-		{
-			AddMessage("서버가 실행 되었습니다.");
-
-			GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-			GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(TRUE);
-			GetDlgItem(IDC_BUTTON_START)->EnableWindow(FALSE);
-		}
+		port = atoi((LPCSTR)m_strPort);
 	}
+	else
+	{
+		port = 3600;
+	}
+
+	if(listenSocket.m_hSocket != INVALID_SOCKET)
+	{
+		AddMessage("이미 대기 상태입니다.");
+	}
+
+	if(!listenSocket.Create(port))
+	{
+		AddMessage("소켓 생성 실패");
+	}
+
+	if(!listenSocket.Listen())
+	{
+		AddMessage("대기 실패");
+
+		listenSocket.Close();
+	}
+	else
+	{
+		CString str;
+		str.Format("포트번호 %d", port);
+		
+		AddMessage(str);
+		AddMessage("서버가 실행 되었습니다.");
+
+		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(TRUE);
+		GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(TRUE);
+		GetDlgItem(IDC_BUTTON_START)->EnableWindow(FALSE);
+	}
+
+	/*
 	else
 	{
 		AddMessage("양의 정수로 포트번호를 입력하세요.");
 	}
-
+	*/
 }
 
 LRESULT CTCPServerDlg::OnAcceptClient(WPARAM wParam, LPARAM lParam)
@@ -270,15 +289,17 @@ void CTCPServerDlg::OnBnClickedButtonSend()
 	UpdateData();
 
 	CString strSend;
-	strSend.Format("Server : %s", m_strSendData);
+	strSend.Format("%s", m_strSendData);
 
-	dataSocket.Send(strSend, strSend.GetLength()+1);
+	
+	dataSocket.Send(AnsiToUTF8RetCString(strSend), 
+		AnsiToUTF8RetCString(strSend).GetLength()+1);
 
 	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
 	m_strSendData = "";
 	UpdateData(FALSE);
 
-	AddMessage(strSend);
+	AddMessage("To other : " + strSend);
 }
 
 
@@ -291,7 +312,7 @@ void CTCPServerDlg::OnBnClickedButtonStop()
 		dataSocket.Close();
 
 		AddMessage("서버를 종료합니다.");
-		
+		strKatalkStart = "";
 		GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(FALSE);
 		GetDlgItem(IDC_BUTTON_START)->EnableWindow(TRUE);
 		GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(FALSE);
@@ -317,4 +338,51 @@ BOOL CTCPServerDlg::PreTranslateMessage(MSG* pMsg)
 	}
 
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+void CTCPServerDlg::OnBnClickedButtonKatalkStart()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	UpdateData();
+
+	if(strKatalkStart == "")
+	{
+		strKatalkStart.Format("%s", "\\\\kakao_on");
+		dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
+
+		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+		UpdateData(FALSE);
+
+		AddMessage("카카오톡 실행");
+	}
+	else
+	{
+		AddMessage("카카오톡이 이미 실행되었습니다.");
+	}
+}
+
+CString CTCPServerDlg::AnsiToUTF8RetCString(CString inputStr)
+{
+	WCHAR szUnicode[1024];
+	char szUTF8char[1024];
+
+	CString strConvert;
+	char* szSrc = (LPSTR)(LPCTSTR)inputStr;
+
+	char szRetValue[1024] = "";
+
+	int unicodeSize = MultiByteToWideChar(CP_ACP, 0,
+		szSrc, (int)strlen(szSrc), 
+		szUnicode, sizeof(szUnicode));
+
+	int UTF8CodeSize = WideCharToMultiByte(CP_UTF8, 0, 
+		szUnicode, unicodeSize, szUTF8char,
+		sizeof(szUTF8char), NULL, NULL);
+
+	memcpy(szRetValue, szUTF8char, UTF8CodeSize);
+	strConvert = szRetValue;
+
+	return strConvert;
+
 }

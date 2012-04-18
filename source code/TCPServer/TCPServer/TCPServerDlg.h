@@ -8,8 +8,6 @@
 #include "DataSocket.h"
 #include "atlimage.h"
 
-
-
 // CTCPServerDlg 대화 상자
 class CTCPServerDlg : public CDialogEx
 {
@@ -54,4 +52,9 @@ public:
 	int nHeight;
 	int nWidth;
 	CRect imgViewerRect;
+	afx_msg void OnBnClickedButtonKatalkStart();
+	CString AnsiToUTF8RetCString(CString inputStr);
+	CImage img;
+	CString strKatalkStart;
+
 };

@@ -211,7 +211,7 @@ void CTCPClientDlg::OnBnClickedButtonSend()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateData();
 	CString strSend;
-	strSend.Format("[클라이언트] %s", m_strSendData);
+	strSend.Format("%s", m_strSendData);
 
 	dataSocket.Send(strSend, strSend.GetLength()+1);
 
