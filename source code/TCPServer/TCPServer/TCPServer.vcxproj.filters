@@ -22,6 +22,15 @@
     <None Include="res\TCPServer.ico">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="res\icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\제목 없음.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\..\..\..\Desktop\kakao_talk.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TCPServer.h">

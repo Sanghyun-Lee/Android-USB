@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>KeyboardForAndroidMsg</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -96,7 +97,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\Desktop\kakao_talk.ico" />
+    <None Include="..\..\..\..\Desktop\제목 없음.bmp" />
     <None Include="ReadMe.txt" />
+    <None Include="res\icon1.ico" />
     <None Include="res\TCPServer.ico" />
     <None Include="res\TCPServer.rc2" />
   </ItemGroup>
