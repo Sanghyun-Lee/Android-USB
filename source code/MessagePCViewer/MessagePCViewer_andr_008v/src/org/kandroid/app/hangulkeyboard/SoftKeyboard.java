@@ -15,6 +15,7 @@
  * 
  * Some Hangul InputMethod Code added by www.kandroid.org
  * 
+ * Some MessageManager Method Code added.
  */
 
 package org.kandroid.app.hangulkeyboard;
@@ -2187,7 +2188,6 @@ public class SoftKeyboard extends InputMethodService
     }
     
 	public boolean commit_text(String str) {
-		// test!
         StringBuilder mComposing = new StringBuilder();
         mComposing.append(str);
         getCurrentInputConnection().commitText(mComposing, mComposing.length());
