@@ -65,6 +65,7 @@ void CKeyboardForAndroidMsgDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_PORT, m_strPort);
 	DDX_Control(pDX, IDC_EDIT_LIST, m_edListData);
 	DDX_Control(pDX, IDC_IPADDRESS, m_ipServerAddress);
+	DDX_Control(pDX, IDC_PICVIEW, imgViewer);
 }
 
 BEGIN_MESSAGE_MAP(CKeyboardForAndroidMsgDlg, CDialogEx)
@@ -110,6 +111,15 @@ BOOL CKeyboardForAndroidMsgDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	strKatalkStart = "";
+	CRect tmpRect;
+	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 370);
+	GetDlgItem(IDC_PICVIEW)->GetClientRect(tmpRect);
+	imgViewerRect.SetRect(tmpRect.left+10, tmpRect.top+10, tmpRect.right+10, tmpRect.bottom+10);
+
+	img.Load(CString("katalk.jpg"));
+	Invalidate();
+
 	AddMessage("기본 ip : 192.168.0.11");
 	AddMessage("기본 포트 3600");
 
@@ -154,6 +164,10 @@ void CKeyboardForAndroidMsgDlg::OnPaint()
 	}
 	else
 	{
+		CPaintDC dc(this); 
+	
+		img.Draw(dc.m_hDC, imgViewerRect);
+
 		CDialogEx::OnPaint();
 	}
 }
@@ -247,7 +261,8 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonSend()
 	CString strSend;
 	strSend.Format("%s", m_strSendData);
 
-	dataSocket.Send(strSend, strSend.GetLength()+1);
+	dataSocket.Send(AnsiToUTF8RetCString(strSend), 
+		AnsiToUTF8RetCString(strSend).GetLength()+1);
 
 	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
 	m_strSendData = "";

@@ -1,4 +1,4 @@
-﻿빌드 시작: 2012-04-20 오후 11:04:30
+﻿빌드 시작: 2012-04-21 오전 11:49:07
      1>2 노드의 "C:\Users\windows7\Android-USB\source code\KeyboardForAndroidMsg\KeyboardForAndroidMsg\KeyboardForAndroidMsg.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\KeyboardForAndroidMsg.unsuccessfulbuild"을(를) 만들고 있습니다.
@@ -21,4 +21,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:00.07
+경과 시간: 00:00:00.09

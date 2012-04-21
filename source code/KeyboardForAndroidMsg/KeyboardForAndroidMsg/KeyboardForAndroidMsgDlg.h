@@ -51,4 +51,6 @@ public:
 	CImage img;
 	CString strKatalkStart;
 	CString AnsiToUTF8RetCString(CString inputStr);
+	CRect imgViewerRect;
+	CStatic imgViewer;
 };
