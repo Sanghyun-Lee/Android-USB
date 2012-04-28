@@ -29,6 +29,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class MessageManager extends Service {
+	private static int port = 3600;
 	
 	private static SoftKeyboard IME;
 	private static SendThread sendth;
@@ -38,12 +39,25 @@ public class MessageManager extends Service {
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
 		recvth = new RecvThread(this);
+		connect = new TCPconnect();
+		connect.bindServer(port);
+		setConnect();
+		recvth.start();
 	}
 	
-	// recv Message from Application
-	public static void setConnect(TCPconnect connect) {
-		MessageManager.connect = connect;
-		recvth.start();
+	public static String setConnect() {
+		if(connect.isconnect())
+			return null;
+		connect.listenClient();
+		if(connect.isconnect())
+			return connect.getClientIP();
+		else
+			return null;
+	}
+	
+	public static boolean closeConnect() {
+		connect.closeClient();
+		return !connect.isconnect();
 	}
 	
 	public static void setKeyboard(SoftKeyboard IME) {
@@ -74,18 +88,19 @@ public class MessageManager extends Service {
 	
 	// send Message to Application
 	public int sendMsg(String str) {
-		Log.i("MessageManager","in sendMsg()");
+		Log.i("MessagePCViewer","in sendMsg()");
 		
 		if(str.equals("\\\\kakao_on")) {
-			Log.i("MessageManager","call openKakao");
+			Log.i("MessagePCViewer","call openKakao");
 			openKakao();
 		}
 		else if(str.equals("\\\\연결 상태가 아닙니다.")) {
-			Log.i("MessageManager", "not connected");
-			recvth.stop();
+			Log.i("MessagePCViewer", "not connected");
+			connect.closeClient();
+			setConnect();
 		}
 		else if(IME!=null) { // IME commit
-			Log.i("MessageManager","call commit_text");
+			Log.i("MessagePCViewer","call commit_text");
 			IME.commit_text(str);
 		}
 		else { // IME 연결안됨
@@ -108,10 +123,9 @@ public class MessageManager extends Service {
 	
 	@Override
     public void onDestroy() { 
-		Log.i("MessageManager","in onDestroy");
+		Log.i("MessagePCViewer","in onDestroy");
 		recvth.stop();
-		if(connect!=null)
-			connect.close();
+		connect.closeListen();
         super.onDestroy();
     }
 }

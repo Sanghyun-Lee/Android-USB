@@ -23,18 +23,13 @@ int port_num;
 
 char errmsg[MAXLINE];
 
-
-JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_listen_1server
+JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_listen_1server
 (JNIEnv *env, jobject obj, jint port) {
-	char clientIP[MAXLINE];
-	int addrlen = sizeof(cl_addr);
-	jstring clientIP_jstr;
-
 	port_num = port;
 	if((sockfd_listen = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 	{
 		// listen socket make error
-		return NULL;
+		return -1;
 	}
     
 	sv_addr.sin_family = AF_INET;
@@ -44,15 +39,24 @@ JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_listen_1server
 	if(bind(sockfd_listen, (struct sockaddr *)&sv_addr, SIZE) == -1)
 	{
 		// bind failed
-		return NULL;
+		return -2;
 	}
 
-	// :::::::::::::: ´Ù¸¥ ÇÔ¼ö·Î »©¾ßµÊ
 	if(listen(sockfd_listen, 1) == -1)
 	{
 		// listen error
-		return NULL;
+		return -3;
 	}
+
+	return 0;
+}
+
+JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_accept_1client
+(JNIEnv *env, jobject obj) {
+	char clientIP[MAXLINE];
+	jstring clientIP_jstr;
+	int addrlen = sizeof(cl_addr);
+
 	if((sockfd_connect = accept(sockfd_listen, (struct sockaddr *)&cl_addr, &addrlen)) ==-1)
     {
 		// accept error
@@ -60,6 +64,7 @@ JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_listen_1server
 	}
 
 	memset(clientIP, 0x00, MAXLINE);
+	strcpy(clientIP, inet_ntoa(cl_addr.sin_addr));
 	clientIP_jstr = (*env)->NewStringUTF(env, clientIP);
 	return clientIP_jstr;
 }
@@ -138,10 +143,15 @@ JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_recv_1msg
 	return str;
 }
 
-JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_close_1socket
+JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_close_1listenSocket
+(JNIEnv *env, jobject obj) {
+	close(sockfd_listen);
+	return 0;
+}
+
+JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_close_1connectSocket
 (JNIEnv *env, jobject obj) {
 	close(sockfd_connect);
-	close(sockfd_listen);
 	return 0;
 }
 

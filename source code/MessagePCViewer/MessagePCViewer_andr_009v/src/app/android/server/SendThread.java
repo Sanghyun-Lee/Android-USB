@@ -5,22 +5,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.WallpaperManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 public class SendThread extends Thread {
 	private MessageManager message;
-	private View view;
 	private ByteArrayOutputStream stream;
+	private MessagePCViewer mpv;
 	
-	public SendThread(MessageManager message, View view) {
+	public SendThread(MessageManager message, MessagePCViewer mpv) {
 		super();
 		this.message = message;
-		this.view = view;
 		this.stream = new ByteArrayOutputStream();
+		this.mpv = mpv;
 	}
 	
 	public void run() {
@@ -37,12 +38,18 @@ public class SendThread extends Thread {
 	
 	protected int send() {
 		Bitmap bm;
+		
+		/*
+		Ima
         view.setDrawingCacheEnabled(true);
         bm = screenshot(view);
         test_save(bm);
         byte[] test_byte = getByteArray(bm);
-        int test_ret = message.sendPC(test_byte);
-        return test_ret;
+        */
+		
+        // int test_ret = message.sendPC(test_byte);
+        // return test_ret;
+        return 0;
         
         /*
 		str = message.recvPC();

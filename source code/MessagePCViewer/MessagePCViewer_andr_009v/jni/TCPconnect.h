@@ -10,10 +10,18 @@ extern "C" {
 /*
  * Class:     app_android_server_TCPconnect
  * Method:    listen_server
- * Signature: (I)Ljava/lang/String;
+ * Signature: (I)I
  */
-JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_listen_1server
+JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_listen_1server
   (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     app_android_server_TCPconnect
+ * Method:    accept_client
+ * Signature: ()Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_accept_1client
+  (JNIEnv *, jobject);
 
 /*
  * Class:     app_android_server_TCPconnect
@@ -33,10 +41,18 @@ JNIEXPORT jstring JNICALL Java_app_android_server_TCPconnect_recv_1msg
 
 /*
  * Class:     app_android_server_TCPconnect
- * Method:    close_socket
+ * Method:    close_listenSocket
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_close_1socket
+JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_close_1listenSocket
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     app_android_server_TCPconnect
+ * Method:    close_connectSocket
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_app_android_server_TCPconnect_close_1connectSocket
   (JNIEnv *, jobject);
 
 char *jbyteArray2cstr(JNIEnv *env, jbyteArray javaBytes, int* length);
