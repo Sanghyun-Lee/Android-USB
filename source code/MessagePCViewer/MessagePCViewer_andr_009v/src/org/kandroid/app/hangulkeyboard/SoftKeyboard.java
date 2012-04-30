@@ -2190,15 +2190,36 @@ public class SoftKeyboard extends InputMethodService
 	public boolean commit_text(String str) {
         StringBuilder mComposing = new StringBuilder();
         mComposing.append(str);
-        getCurrentInputConnection().commitText(mComposing, mComposing.length());
-        keyDownUp(KeyEvent.KEYCODE_ENTER);
-        return true;
+        InputConnection ic = getCurrentInputConnection();
+        if(ic!=null) {
+        	ic.commitText(mComposing, mComposing.length());
+        	keyDownUp(KeyEvent.KEYCODE_ENTER);
+        	return true;
+        }
+        else
+        	return false;
 	}
 	
+	public boolean key_control(int keyCode) {
+		switch(keyCode) {
+		case KeyEvent.KEYCODE_DPAD_DOWN :
+		case KeyEvent.KEYCODE_DPAD_UP :
+		case KeyEvent.KEYCODE_DPAD_RIGHT :
+		case KeyEvent.KEYCODE_DPAD_LEFT :
+		case KeyEvent.KEYCODE_ENTER :
+			keyDownUp(keyCode);
+			return true;
+		default :
+			return false;
+		}
+	}
+	
+	/*
 	@Override
     public void onDestroy() { 
 		Log.i("Hangul","in onDestroy");
 		stopService(new Intent(this, MessageManager.class));
         super.onDestroy();
     }
+    */
 }

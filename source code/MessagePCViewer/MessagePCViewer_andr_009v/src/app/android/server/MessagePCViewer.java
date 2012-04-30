@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -28,13 +29,24 @@ public class MessagePCViewer extends Activity {
 	private static ArrayList<String> mArrayList;
 	private static ArrayAdapter<String> mConnectAdapter;
 	
-	public static Handler handler;
+	public static final int HandlerWhat_SETMYIP = 1;
+	public static final int HandlerWhat_ADDCLIP = 2;
+	
+	public static Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch(msg.what) {
+			case HandlerWhat_SETMYIP :
+				setMyIP((String)msg.obj); break;
+			case HandlerWhat_ADDCLIP :
+				addClientIP((String)msg.obj); break;
+			}
+		}
+	};
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
         setContentView(R.layout.main);
         
         // ipEdit = (EditText) findViewById(R.id.ip_edit);
@@ -46,23 +58,21 @@ public class MessagePCViewer extends Activity {
         mConnectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArrayList);
         connectList.setAdapter(mConnectAdapter);
         connectList.setOnItemClickListener(mOnItemClick);
-        
-        handler = new Handler() {
-			public void handleMessage(Message msg) {
-				setMyIP((String)msg.obj);
-			}
-		};
 		
-		// startService(new Intent(this, MessageManager.class));
-        
-        new Thread(new Runnable() {
+		new Thread(new Runnable() {
 			 public void run() {
 				 String IPaddr = getMyIP();
 				 Message msg = new Message();
+				 msg.what = MessagePCViewer.HandlerWhat_SETMYIP;
 				 msg.obj = IPaddr;
 				 MessagePCViewer.handler.sendMessage(msg);
 			 }
 		 }).start();
+		
+		startService(new Intent(this, MessageManager.class));
+		//String clIP = MessageManager.getConnectClIP();
+		//Log.d("MessagePCViewer", "connectClIP:"+clIP);
+		//if(clIP!=null) addClientIP(clIP);
         
         /*// 현재 Activity 가져오기
         ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
@@ -81,14 +91,8 @@ public class MessagePCViewer extends Activity {
     public void mBtnClick(View v) {
     	switch(v.getId()) {
     	case R.id.connect_btn :
-    		String data = MessageManager.setConnect();
-    		if(data!=null) {
-    			mArrayList.add(data);
-    			mConnectAdapter.notifyDataSetChanged();
-    			// BtnConnect.setEnabled(false);
-    		}
-    		else {
-    			Toast.makeText(this, "이미 연결중이거나 연결오류입니다.", Toast.LENGTH_LONG).show();
+    		if(!MessageManager.setConnect()) {
+    			Toast.makeText(this, "이미 서버가 열려 있습니다.", Toast.LENGTH_LONG).show();
     		}
     		break;
     	case R.id.close_btn :
@@ -101,7 +105,9 @@ public class MessagePCViewer extends Activity {
     
     private static String getMyIP() {
     	try {
+    		Log.d("MessagePCViewer", "in getMyIP()");
 			Socket socket = new Socket("www.google.com", 80);
+			Log.d("MessagePCViewer", "myIP : " + socket.getLocalAddress());
 			return socket.getLocalAddress().toString();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,6 +117,19 @@ public class MessagePCViewer extends Activity {
     
     private static void setMyIP(String IP) {
     	MessagePCViewer.myIP = IP;
+    	if(ipText==null) {
+    		Log.w("MessagePCViewer", "setMyIP : ipText is null");
+    		return;
+    	}
     	ipText.setText(myIP);
+    }
+    
+    private static void addClientIP(String IP) {
+    	if(mArrayList==null) {
+    		Log.w("MessagePCViewer", "addClientIP : mArrayList is null");
+    		return;
+    	}
+    	mArrayList.add(IP);
+		mConnectAdapter.notifyDataSetChanged();
     }
 }

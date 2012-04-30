@@ -41,7 +41,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.12"
                 android:onClick="mBtnClick"
-                android:text="연결" />
+                android:text="서버On" />
 
             <Button
                 android:id="@+id/close_btn"

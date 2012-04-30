@@ -4,33 +4,53 @@ import android.util.Log;
 
 public class TCPconnect {
 	private String client_IP;
+	private boolean accepting;
 	
-	TCPconnect() {
+	public TCPconnect() {
 		System.loadLibrary("ndk-chat");
 	}
 	
-	public int bindServer(int port) {
-		return listen_server(port);
+	public int listenServer(int port) {
+		Log.d("MessagePCViewer","in listenServer()");
+		// closeListen();
+		int ret = listen_server(port);
+		Log.d("MessagePCViewer", "listen ret : " + ret);
+		return ret;
 	}
 
-	public String listenClient() {
-		Log.i("MessagePCViewer","in connect() start");
+	public String acceptClient() {
+		if(accepting || isconnect())
+			return null;
+		
+		accepting = true;
+		Log.d("MessagePCViewer","in acceptClient() start");
 		client_IP = accept_client();
-		if(isconnect()) Log.i("MessagePCViewer","connect success (IP): " + client_IP);
-		else Log.i("MessagePCViewer","connect fail");
-		return client_IP;
+		accepting = false;
+		if(isconnect()) {
+			Log.d("MessagePCViewer","acceptClient success (IP): " + client_IP);
+			return client_IP;
+		}
+		else {
+			Log.d("MessagePCViewer","acceptClient fail");
+			return null;
+		}
 	}
 	
 	public int closeListen() {
+		Log.d("MessagePCViewer","in closeListen");
 		closeClient();
 		close_listenSocket();
 		return 0;
 	}
 	
-	public int closeClient() {
-		close_connectSocket();
+	public boolean closeClient() {
+		if(accepting || !isconnect()) 
+			return false;
+		Log.d("MessagePCViewer","in closeClient");
+		int ret = close_connectSocket();
+		Log.d("MessagePCViewer", "close ret : " + ret);
 		client_IP = null;
-		return 0;
+		return true;
 	}
 	
 	public int send(byte[] img) {
@@ -59,6 +79,10 @@ public class TCPconnect {
 	
 	public String getClientIP() {
 		return client_IP;
+	}
+	
+	public boolean isaccepting() {
+		return accepting;
 	}
 	
 	private native int listen_server(int port);

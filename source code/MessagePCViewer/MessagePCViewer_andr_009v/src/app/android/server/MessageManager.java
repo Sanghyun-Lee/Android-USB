@@ -22,14 +22,23 @@
 package app.android.server;
 
 import org.kandroid.app.hangulkeyboard.SoftKeyboard;
+
+import android.app.Instrumentation;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.SystemClock;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 public class MessageManager extends Service {
 	private static int port = 3600;
+	public static final String MSG_NOTCONNECTED = "\\\\Not Connected";
+	public static final String MSG_KAKAOON = "\\\\kakao_on";
+	public static final String MSG_CONTROL = "\\\\CONTROL_";
 	
 	private static SoftKeyboard IME;
 	private static SendThread sendth;
@@ -38,26 +47,57 @@ public class MessageManager extends Service {
 	
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
-		recvth = new RecvThread(this);
-		connect = new TCPconnect();
-		connect.bindServer(port);
+		Log.d("MessagePCViewer", "MessageManager:onStart");
+		if(recvth==null) {
+			recvth = new RecvThread(this);
+			recvth.start();
+		}
 		setConnect();
-		recvth.start();
 	}
 	
-	public static String setConnect() {
-		if(connect.isconnect())
-			return null;
-		connect.listenClient();
-		if(connect.isconnect())
-			return connect.getClientIP();
-		else
-			return null;
+	public static boolean setConnect() {
+		// Log.d("MessagePCViewer", "MessageManager:setConnect");
+		if(connect==null) {
+			Log.d("MessagePCViewer", "MessageManager:setConnect:no TCPconnect");
+			connect = new TCPconnect();
+			connect.listenServer(port);
+		}
+		// Log.d("MessagePCViewer", "connect:"+connect.isconnect()+" / isaccepting:"+connect.isaccepting());
+		if(connect.isconnect() || connect.isaccepting())
+			return false;
+		new Thread(new Runnable() {
+			 public void run() {
+				 /*
+				 if( recvth.getState() != Thread.State.NEW )
+					 recvth.stop();
+				 */
+				 Log.d("MessagePCViewer", "MessageManager:setConnect:notConnected");
+				 String clientIP = connect.acceptClient();
+				 if(clientIP!=null) {
+					 Message msg = new Message();
+					 msg.what = MessagePCViewer.HandlerWhat_ADDCLIP;
+					 msg.obj = clientIP;
+					 MessagePCViewer.handler.sendMessage(msg);
+				 }
+				 else {
+					 connect.closeListen();
+					 connect.listenServer(port);
+				 }
+				 // recvth.start();
+			 }
+		 }).start();
+		return true;
 	}
 	
 	public static boolean closeConnect() {
+		if(connect==null || !connect.isconnect())
+			return false;
 		connect.closeClient();
 		return !connect.isconnect();
+	}
+	
+	public static String getConnectClIP() {
+		return connect.getClientIP();
 	}
 	
 	public static void setKeyboard(SoftKeyboard IME) {
@@ -88,20 +128,60 @@ public class MessageManager extends Service {
 	
 	// send Message to Application
 	public int sendMsg(String str) {
-		Log.i("MessagePCViewer","in sendMsg()");
+		Log.i("MessagePCViewer","in sendMsg() : " + str);
 		
-		if(str.equals("\\\\kakao_on")) {
-			Log.i("MessagePCViewer","call openKakao");
+		if(str.equals(MessageManager.MSG_KAKAOON)) {
+			//Log.i("MessagePCViewer","call openKakao");
 			openKakao();
 		}
-		else if(str.equals("\\\\연결 상태가 아닙니다.")) {
-			Log.i("MessagePCViewer", "not connected");
-			connect.closeClient();
+		else if(str.equals(MessageManager.MSG_NOTCONNECTED)) {
+			// Log.i("MessagePCViewer", "not connected");
+			if(connect!=null)
+				connect.closeClient();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			setConnect();
 		}
-		else if(IME!=null) { // IME commit
-			Log.i("MessagePCViewer","call commit_text");
-			IME.commit_text(str);
+		else if(IME!=null) { // IME 사용
+			//Log.i("MessagePCViewer", "sendMsg(): IME use");
+			if(str.startsWith(MessageManager.MSG_CONTROL)){
+				char c = str.charAt(str.length()-1);
+				Log.i("MessagePCViewer", "send CONTROL Message : " + c);
+				switch(c) {
+				case 'L' :
+					IME.key_control(KeyEvent.KEYCODE_DPAD_LEFT); break;
+				case 'R' :
+					IME.key_control(KeyEvent.KEYCODE_DPAD_RIGHT); break;
+				case 'U' :
+					IME.key_control(KeyEvent.KEYCODE_DPAD_UP); break;
+				case 'D' :
+					IME.key_control(KeyEvent.KEYCODE_DPAD_DOWN); break;
+				case 'E' :
+					IME.key_control(KeyEvent.KEYCODE_ENTER); break;
+				default :
+					// no effect
+					return -1;
+				}
+				
+				/*
+				long downTime = SystemClock.uptimeMillis();
+				long eventTime = SystemClock.uptimeMillis();
+				MotionEvent down_event = MotionEvent.obtain(downTime, eventTime,
+						MotionEvent.ACTION_DOWN, 100, 100, 0);
+				MotionEvent up_event = MotionEvent.obtain(downTime, eventTime,
+						MotionEvent.ACTION_UP, 100, 100, 0);
+				Instrumentation i = new Instrumentation();
+				i.sendPointerSync(down_event);
+				i.sendPointerSync(up_event);
+				*/
+			}
+			else {
+				//Log.i("MessagePCViewer","call commit_text");
+				IME.commit_text(str);
+			}
 		}
 		else { // IME 연결안됨
 			// Toast.makeText(this, "MPV키보드로 설정하세요", Toast.LENGTH_LONG).show();
