@@ -49,8 +49,13 @@ public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnBnClickedButtonKatalkStart();
 	CImage img;
-	CString strKatalkStart;
 	CString AnsiToUTF8RetCString(CString inputStr);
 	CRect imgViewerRect;
 	CStatic imgViewer;
+	afx_msg void OnBnClickedUp();
+	afx_msg void OnBnClickedLeft();
+	afx_msg void OnBnClickedDown();
+	afx_msg void OnBnClickedRight();
+	afx_msg void OnBnClickedEnter();
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 };

@@ -1,19 +1,28 @@
-﻿빌드 시작: 2012-04-21 오전 11:49:07
+﻿빌드 시작: 2012-04-30 오후 10:13:01
      1>2 노드의 "C:\Users\windows7\Android-USB\source code\KeyboardForAndroidMsg\KeyboardForAndroidMsg\KeyboardForAndroidMsg.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\KeyboardForAndroidMsg.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
          모든 출력이 최신 상태입니다.
-         모든 출력이 최신 상태입니다.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\KeyboardForAndroidMsg.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt KeyboardForAndroidMsgDlg.cpp
+         KeyboardForAndroidMsgDlg.cpp
        ResourceCompile:
          모든 출력이 최신 상태입니다.
        ManifestResourceCompile:
          모든 출력이 최신 상태입니다.
        Link:
-         모든 출력이 최신 상태입니다.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\windows7\Android-USB\source code\KeyboardForAndroidMsg\Debug\KeyboardForAndroidMsg.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\KeyboardForAndroidMsg.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\windows7\Android-USB\source code\KeyboardForAndroidMsg\Debug\KeyboardForAndroidMsg.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\windows7\Android-USB\source code\KeyboardForAndroidMsg\Debug\KeyboardForAndroidMsg.lib" /MACHINE:X86 Debug\KeyboardForAndroidMsg.res
+         Debug\KeyboardForAndroidMsg.exe.embed.manifest.res
+         Debug\DataSocket.obj
+         Debug\KeyboardForAndroidMsg.obj
+         Debug\KeyboardForAndroidMsgDlg.obj
+         Debug\stdafx.obj
        Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\KeyboardForAndroidMsg.exe.embed.manifest" /manifest Debug\KeyboardForAndroidMsg.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
          모든 출력이 최신 상태입니다.
+       LinkEmbedManifest:
          모든 출력이 최신 상태입니다.
+         KeyboardForAndroidMsg.vcxproj -> C:\Users\windows7\Android-USB\source code\KeyboardForAndroidMsg\Debug\KeyboardForAndroidMsg.exe
        FinalizeBuildStatus:
          "Debug\KeyboardForAndroidMsg.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\KeyboardForAndroidMsg.lastbuildstate"에 연결(touching)하고 있습니다.
@@ -21,4 +30,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:00.09
+경과 시간: 00:00:00.50

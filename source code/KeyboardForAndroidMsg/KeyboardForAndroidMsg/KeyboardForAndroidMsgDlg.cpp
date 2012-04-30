@@ -76,6 +76,12 @@ BEGIN_MESSAGE_MAP(CKeyboardForAndroidMsgDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_STOP, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonStop)
 	ON_BN_CLICKED(IDC_BUTTON_SEND, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonSend)
 	ON_BN_CLICKED(IDC_BUTTON_KATALK_START, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonKatalkStart)
+	ON_BN_CLICKED(IDC_UP, &CKeyboardForAndroidMsgDlg::OnBnClickedUp)
+	ON_BN_CLICKED(IDC_LEFT, &CKeyboardForAndroidMsgDlg::OnBnClickedLeft)
+	ON_BN_CLICKED(IDC_DOWN, &CKeyboardForAndroidMsgDlg::OnBnClickedDown)
+	ON_BN_CLICKED(IDC_RIGHT, &CKeyboardForAndroidMsgDlg::OnBnClickedRight)
+	ON_BN_CLICKED(IDC_ENTER, &CKeyboardForAndroidMsgDlg::OnBnClickedEnter)
+	ON_WM_KEYDOWN()
 END_MESSAGE_MAP()
 
 
@@ -111,7 +117,6 @@ BOOL CKeyboardForAndroidMsgDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-	strKatalkStart = "";
 	CRect tmpRect;
 	GetDlgItem(IDC_PICVIEW)->MoveWindow(10, 10, 300, 370);
 	GetDlgItem(IDC_PICVIEW)->GetClientRect(tmpRect);
@@ -281,6 +286,14 @@ BOOL CKeyboardForAndroidMsgDlg::PreTranslateMessage(MSG* pMsg)
 			OnBnClickedButtonSend();
 			return TRUE;
 		}
+		/*
+		else if(pMsg->wParam == VK_RETURN &&
+			GetFocus()->GetDlgCtrlID() == IDD_KEYBOARDFORANDROIDMSG_DIALOG)
+		{
+			OnBnClickedEnter();
+			return TRUE;
+		}
+		*/
 	}
 
 	return CDialogEx::PreTranslateMessage(pMsg);
@@ -331,21 +344,15 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonKatalkStart()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateData();
+	
+	CString strKatalkStart;
+	strKatalkStart.Format("%s", "\\\\kakao_on");
+	dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
 
-	if(strKatalkStart == "")
-	{
-		strKatalkStart.Format("%s", "\\\\kakao_on");
-		dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+	UpdateData(FALSE);
 
-		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-		UpdateData(FALSE);
-
-		AddMessage("카카오톡 실행");
-	}
-	else
-	{
-		AddMessage("카카오톡이 이미 실행되었습니다.");
-	}
+	AddMessage("카카오톡 실행");	
 }
 
 CString CKeyboardForAndroidMsgDlg::AnsiToUTF8RetCString(CString inputStr)
@@ -371,4 +378,93 @@ CString CKeyboardForAndroidMsgDlg::AnsiToUTF8RetCString(CString inputStr)
 
 	return strConvert;
 
+}
+
+void CKeyboardForAndroidMsgDlg::OnBnClickedUp()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	UpdateData();
+	
+	CString strUp;
+	strUp.Format("%s", "\\\\CONTROL_U");
+	dataSocket.Send(strUp, strUp.GetLength()+1);
+
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_UP)->SendMessage(WM_KILLFOCUS, NULL); 
+	UpdateData(FALSE);
+}
+
+
+void CKeyboardForAndroidMsgDlg::OnBnClickedLeft()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString strLeft;
+	strLeft.Format("%s", "\\\\CONTROL_L");
+	dataSocket.Send(strLeft, strLeft.GetLength()+1);
+
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL);
+	GetDlgItem(IDC_LEFT)->SendMessage(WM_KILLFOCUS, NULL); 
+	UpdateData(FALSE);
+}
+
+
+void CKeyboardForAndroidMsgDlg::OnBnClickedDown()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString strDown;
+	strDown.Format("%s", "\\\\CONTROL_D");
+	dataSocket.Send(strDown, strDown.GetLength()+1);
+
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_DOWN)->SendMessage(WM_KILLFOCUS, NULL); 
+	UpdateData(FALSE);
+}
+
+
+void CKeyboardForAndroidMsgDlg::OnBnClickedRight()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString strRight;
+	strRight.Format("%s", "\\\\CONTROL_R");
+	dataSocket.Send(strRight, strRight.GetLength()+1);
+
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_RIGHT)->SendMessage(WM_KILLFOCUS, NULL); 
+	UpdateData(FALSE);
+}
+
+
+void CKeyboardForAndroidMsgDlg::OnBnClickedEnter()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString strEnter;
+	strEnter.Format("%s", "\\\\CONTROL_E");
+	dataSocket.Send(strEnter, strEnter.GetLength()+1);
+
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_ENTER)->SendMessage(WM_KILLFOCUS, NULL); 
+	UpdateData(FALSE);
+}
+
+
+void CKeyboardForAndroidMsgDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	switch(nChar)
+	{
+		case VK_LEFT:
+			OnBnClickedLeft();
+			break;
+		case VK_RIGHT:
+			OnBnClickedRight();
+			break;
+		case VK_UP:
+			OnBnClickedUp();
+			break;
+		case VK_DOWN:
+			OnBnClickedDown();
+			break;
+	}
+
+	CDialogEx::OnKeyDown(nChar, nRepCnt, nFlags);
 }
