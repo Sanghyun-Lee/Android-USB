@@ -57,5 +57,5 @@ public:
 	afx_msg void OnBnClickedDown();
 	afx_msg void OnBnClickedRight();
 	afx_msg void OnBnClickedEnter();
-	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+//	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
 };
