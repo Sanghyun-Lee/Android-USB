@@ -47,7 +47,6 @@ public:
 	afx_msg void OnBnClickedButtonStop();
 	afx_msg void OnBnClickedButtonSend();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
-	afx_msg void OnBnClickedButtonKatalkStart();
 	CImage img;
 	CString AnsiToUTF8RetCString(CString inputStr);
 	CRect imgViewerRect;
@@ -57,5 +56,8 @@ public:
 	afx_msg void OnBnClickedDown();
 	afx_msg void OnBnClickedRight();
 	afx_msg void OnBnClickedEnter();
-//	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnCbnSelchangeOpenpack();
+	CComboBox selOpenPack;
+	afx_msg void OnBnClickedBack();
+	void errorCheck(int ret);
 };
