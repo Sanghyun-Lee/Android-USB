@@ -66,6 +66,7 @@ void CKeyboardForAndroidMsgDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_LIST, m_edListData);
 	DDX_Control(pDX, IDC_IPADDRESS, m_ipServerAddress);
 	DDX_Control(pDX, IDC_PICVIEW, imgViewer);
+	DDX_Control(pDX, IDC_OPENPACK, selOpenPack);
 }
 
 BEGIN_MESSAGE_MAP(CKeyboardForAndroidMsgDlg, CDialogEx)
@@ -75,13 +76,13 @@ BEGIN_MESSAGE_MAP(CKeyboardForAndroidMsgDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_CONNECT, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonConnect)
 	ON_BN_CLICKED(IDC_BUTTON_STOP, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonStop)
 	ON_BN_CLICKED(IDC_BUTTON_SEND, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonSend)
-	ON_BN_CLICKED(IDC_BUTTON_KATALK_START, &CKeyboardForAndroidMsgDlg::OnBnClickedButtonKatalkStart)
 	ON_BN_CLICKED(IDC_UP, &CKeyboardForAndroidMsgDlg::OnBnClickedUp)
 	ON_BN_CLICKED(IDC_LEFT, &CKeyboardForAndroidMsgDlg::OnBnClickedLeft)
 	ON_BN_CLICKED(IDC_DOWN, &CKeyboardForAndroidMsgDlg::OnBnClickedDown)
 	ON_BN_CLICKED(IDC_RIGHT, &CKeyboardForAndroidMsgDlg::OnBnClickedRight)
 	ON_BN_CLICKED(IDC_ENTER, &CKeyboardForAndroidMsgDlg::OnBnClickedEnter)
-//	ON_WM_KEYDOWN()
+	ON_CBN_SELCHANGE(IDC_OPENPACK, &CKeyboardForAndroidMsgDlg::OnCbnSelchangeOpenpack)
+	ON_BN_CLICKED(IDC_BACK, &CKeyboardForAndroidMsgDlg::OnBnClickedBack)
 END_MESSAGE_MAP()
 
 
@@ -184,8 +185,6 @@ HCURSOR CKeyboardForAndroidMsgDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
-
 void CKeyboardForAndroidMsgDlg::OnBnClickedButtonConnect()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -264,10 +263,12 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonSend()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateData();
 	CString strSend;
+	int ret;
 	strSend.Format("%s", m_strSendData);
 
-	dataSocket.Send(AnsiToUTF8RetCString(strSend), 
+	ret = dataSocket.Send(AnsiToUTF8RetCString(strSend), 
 		AnsiToUTF8RetCString(strSend).GetLength()+1);
+	/*errorCheck(ret);*/
 
 	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
 	m_strSendData = "";
@@ -280,10 +281,22 @@ BOOL CKeyboardForAndroidMsgDlg::PreTranslateMessage(MSG* pMsg)
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
 	if(pMsg->message == WM_KEYDOWN)
 	{
-		if(pMsg->wParam == VK_RETURN && 
-			GetFocus()->GetDlgCtrlID() == IDC_EDIT_SEND_DATA)
+		if(pMsg->wParam == VK_RETURN)
 		{
-			OnBnClickedButtonSend();
+			if(GetFocus()->GetDlgCtrlID() == IDC_EDIT_SEND_DATA)
+			{
+				OnBnClickedButtonSend();
+				return TRUE;
+			}
+			else
+			{
+				OnBnClickedEnter();
+				return TRUE;
+			}
+		}
+		else if(pMsg->wParam == VK_ESCAPE)
+		{
+			OnBnClickedBack();
 			return TRUE;
 		}
 
@@ -301,15 +314,6 @@ BOOL CKeyboardForAndroidMsgDlg::PreTranslateMessage(MSG* pMsg)
 				OnBnClickedDown();
 				break;
 		}
-
-		/*
-		else if(pMsg->wParam == VK_RETURN &&
-			GetFocus()->GetDlgCtrlID() == IDD_KEYBOARDFORANDROIDMSG_DIALOG)
-		{
-			OnBnClickedEnter();
-			return TRUE;
-		}
-		*/
 	}
 
 	return CDialogEx::PreTranslateMessage(pMsg);
@@ -356,21 +360,6 @@ LRESULT CKeyboardForAndroidMsgDlg::OnCloseSocket(WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-void CKeyboardForAndroidMsgDlg::OnBnClickedButtonKatalkStart()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	UpdateData();
-	
-	CString strKatalkStart;
-	strKatalkStart.Format("%s", "\\\\kakao_on");
-	dataSocket.Send(strKatalkStart, strKatalkStart.GetLength()+1);
-
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	UpdateData(FALSE);
-
-	AddMessage("카카오톡 실행");	
-}
-
 CString CKeyboardForAndroidMsgDlg::AnsiToUTF8RetCString(CString inputStr)
 {
 	WCHAR szUnicode[1024];
@@ -401,14 +390,15 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedUp()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateData();
 	
+	int ret;
 	CString strUp;
 	strUp.Format("%s", "\\\\CONTROL_U");
-	dataSocket.Send(strUp, strUp.GetLength()+1);
+	ret = dataSocket.Send(strUp, strUp.GetLength()+1);
+	/*errorCheck(ret);*/
 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_IPADDRESS)->SetFocus();
+	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
 	GetDlgItem(IDC_UP)->SendMessage(WM_KILLFOCUS, NULL); 
-	/*UpdateData(FALSE);*/
 }
 
 
@@ -419,10 +409,9 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedLeft()
 	strLeft.Format("%s", "\\\\CONTROL_L");
 	dataSocket.Send(strLeft, strLeft.GetLength()+1);
 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	GetDlgItem(IDC_LEFT)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_IPADDRESS)->SetFocus();
+	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
 	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL);
-	//UpdateData(FALSE);
 }
 
 
@@ -433,8 +422,8 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedDown()
 	strDown.Format("%s", "\\\\CONTROL_D");
 	dataSocket.Send(strDown, strDown.GetLength()+1);
 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_IPADDRESS)->SetFocus();
+	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
 	GetDlgItem(IDC_DOWN)->SendMessage(WM_KILLFOCUS, NULL); 
 }
 
@@ -446,8 +435,8 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedRight()
 	strRight.Format("%s", "\\\\CONTROL_R");
 	dataSocket.Send(strRight, strRight.GetLength()+1);
 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_IPADDRESS)->SetFocus();
+	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
 	GetDlgItem(IDC_RIGHT)->SendMessage(WM_KILLFOCUS, NULL); 
 }
 
@@ -459,32 +448,60 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedEnter()
 	strEnter.Format("%s", "\\\\CONTROL_E");
 	dataSocket.Send(strEnter, strEnter.GetLength()+1);
 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_IPADDRESS)->SetFocus();
+	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
 	GetDlgItem(IDC_ENTER)->SendMessage(WM_KILLFOCUS, NULL); 
-	//UpdateData(FALSE);
 }
 
-/*
-void CKeyboardForAndroidMsgDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+
+void CKeyboardForAndroidMsgDlg::OnBnClickedBack()
 {
-	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
-	switch(nChar)
-	{
-		case VK_LEFT:
-			OnBnClickedLeft();
-			break;
-		case VK_RIGHT:
-			OnBnClickedRight();
-			break;
-		case VK_UP:
-			OnBnClickedUp();
-			break;
-		case VK_DOWN:
-			OnBnClickedDown();
-			break;
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CString strBack;
+	strBack.Format("%s", "\\\\CONTROL_B");
+	dataSocket.Send(strBack, strBack.GetLength()+1);
+
+	GetDlgItem(IDC_IPADDRESS)->SetFocus();
+	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
+	GetDlgItem(IDC_BACK)->SendMessage(WM_KILLFOCUS, NULL); 
+}
+
+void CKeyboardForAndroidMsgDlg::OnCbnSelchangeOpenpack()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	int nIndex = selOpenPack.GetCurSel();
+	if(nIndex == -1){
+		return;
 	}
 
-	CDialogEx::OnKeyDown(nChar, nRepCnt, nFlags);
+	CString str, cmd;
+	selOpenPack.GetLBText(nIndex, str);
+
+	if(str == "카톡")
+	{
+		cmd.Format("%s", "\\\\OPENPACK_com.kakao.talk");
+		dataSocket.Send(cmd, cmd.GetLength()+1);
+
+		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+		UpdateData(FALSE);
+
+		AddMessage("카카오톡 실행");	
+	}
+	else if(str == "라인")
+	{
+		cmd.Format("%s", "\\\\OPENPACK_jp.naver.line.android");
+		dataSocket.Send(cmd, cmd.GetLength()+1);
+
+		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+		UpdateData(FALSE);
+
+		AddMessage("라인 실행");	
+	}
 }
-*/
+
+//void CKeyboardForAndroidMsgDlg::errorCheck(int ret)
+//{
+//	if(ret == WSAENOTCONN){
+//		AddMessage("연결이 끊겼습니다.");
+//	}
+//}
