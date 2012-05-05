@@ -52,7 +52,6 @@ CKeyboardForAndroidMsgDlg::CKeyboardForAndroidMsgDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CKeyboardForAndroidMsgDlg::IDD, pParent)
 	, m_strListData(_T(""))
 	, m_strSendData(_T(""))
-	, m_strPort(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -62,10 +61,8 @@ void CKeyboardForAndroidMsgDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT_LIST, m_strListData);
 	DDX_Text(pDX, IDC_EDIT_SEND_DATA, m_strSendData);
-	DDX_Text(pDX, IDC_EDIT_PORT, m_strPort);
 	DDX_Control(pDX, IDC_EDIT_LIST, m_edListData);
-	DDX_Control(pDX, IDC_IPADDRESS, m_ipServerAddress);
-	DDX_Control(pDX, IDC_PICVIEW, imgViewer);
+	DDX_Control(pDX, IDC_IPADDRESS, m_edIpServerAddress);
 	DDX_Control(pDX, IDC_OPENPACK, selOpenPack);
 }
 
@@ -195,23 +192,17 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonConnect()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateData();
-	int port;
 
-	// 포트주소를 입력했으면 입력된 포트로 연결
-	if(m_strPort != "")
+	if(dataSocket.m_hSocket != INVALID_SOCKET)
 	{
-		port = atoi((LPCSTR)m_strPort);
+		AddMessage("이미 서버에 접속 되어있습니다.");
+		return;
 	}
-	// 포트주소가 입력되지 않았으면 기본 포트 3600을 사용해서 연결
-	else
-	{
-		port = 3600;
-	}
-
+	
 	// IP주소를 입력했으면 입력된 IP주소로 연결
 	if(m_strServerAddress != "")
 	{
-		m_ipServerAddress.GetWindowText(m_strServerAddress);
+		m_edIpServerAddress.GetWindowText(m_strServerAddress);
 	}
 	// IP주소를 입력하지 않으면 기본 IP 192.168.0.11로 연결
 	else
@@ -220,18 +211,15 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonConnect()
 	}
 
 	// SOCKET m_hSocket는 CAsyncSocket 클래스에 있는 변수
-	if(dataSocket.m_hSocket != INVALID_SOCKET)
-	{
-		AddMessage("이미 서버에 접속 되어있습니다.");
-	}
 
 	if(!dataSocket.Create())
 	{
 		AddMessage("소켓 생성 실패");
+		return;
 	}
 
 	// IP와 포트로 연결에 실패하는 경우
-	if(!dataSocket.Connect(m_strServerAddress,port))
+	if(!dataSocket.Connect(m_strServerAddress, PORT))
 	{
 		dataSocket.Close();
 		AddMessage("서버 접속 실패");
@@ -239,9 +227,9 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonConnect()
 	// 연결 성공시 연결된 IP와 포트번호 출력
 	else
 	{
-		CString strPt;
-		strPt.Format("포트번호 %d", port);
-		AddMessage(strPt);
+		CString strPort;
+		strPort.Format("포트번호 %d", PORT);
+		AddMessage(strPort);
 		AddMessage(m_strServerAddress);
 
 		AddMessage("서버에 접속 됐습니다.");
@@ -272,6 +260,7 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonStop()
 	else
 	{
 		AddMessage("이미 종료되었습니다.");
+		return;
 	}
 }
 
@@ -286,9 +275,8 @@ void CKeyboardForAndroidMsgDlg::OnBnClickedButtonSend()
 	strSend.Format("%s", m_strSendData);
 
 	// Ansi를 UTF8로 변경하고 CString으로 리턴된 것을 전송
-	dataSocket.Send(AnsiToUTF8RetCString(strSend), 
-		AnsiToUTF8RetCString(strSend).GetLength()+1);
-
+	sendMsg(strSend);
+	
 	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
 	m_strSendData = "";
 	UpdateData(FALSE);
@@ -306,10 +294,22 @@ BOOL CKeyboardForAndroidMsgDlg::PreTranslateMessage(MSG* pMsg)
 		if(pMsg->wParam == VK_RETURN)
 		{
 			// 포커스가 메세지 입력창에 있으면
+			
+		}
+		// ESC가 눌리면
+		else if(pMsg->wParam == VK_ESCAPE)
+		{
+		
+		}
+
+		// 방향키가 눌리면 각각의 방향 명령 전송
+		switch(pMsg->wParam){
+		case VK_RETURN:
 			if(GetFocus()->GetDlgCtrlID() == IDC_EDIT_SEND_DATA)
 			{
 				// 메세지 전송 수행
 				OnBnClickedButtonSend();
+				// Enter키 입력시 원래 창이 종료되므로 이 현상을 막기위해 return TRUE를 해줘야됨
 				return TRUE;
 			}
 			else
@@ -318,29 +318,26 @@ BOOL CKeyboardForAndroidMsgDlg::PreTranslateMessage(MSG* pMsg)
 				OnBnClickedEnter();
 				return TRUE;
 			}
-		}
-		// ESC가 눌리면
-		else if(pMsg->wParam == VK_ESCAPE)
-		{
+		case VK_ESCAPE:
 			// 뒤로가기 명령 전송
 			OnBnClickedBack();
-			return TRUE;
-		}
-
-		// 방향키가 눌리면 각각의 방향 명령 전송
-		switch(pMsg->wParam){
-			case VK_LEFT:
-				OnBnClickedLeft();
-				break;
-			case VK_RIGHT:
-				OnBnClickedRight();
-				break;
-			case VK_UP:
-				OnBnClickedUp();
-				break;
-			case VK_DOWN:
-				OnBnClickedDown();
-				break;
+			// ESC키는 원래 종료를 하기때문에 이 현상을 막기위해 retrun TRUE를 해줘야됨
+			return TRUE; 
+		case VK_LEFT:
+			OnBnClickedLeft();
+			break;
+		case VK_RIGHT:
+			OnBnClickedRight();
+			break;
+		case VK_UP:
+			OnBnClickedUp();
+			break;
+		case VK_DOWN:
+			OnBnClickedDown();
+			break;
+		default:
+			// no effect
+			break;
 		}
 	}
 
@@ -352,12 +349,8 @@ void CKeyboardForAndroidMsgDlg::AddMessage(CString strMsg)
 {
 
 	UpdateData();
-	// 이전 메세지가 없을때
-	if(m_strListData == "")
-		m_strListData = strMsg;
-	// 그전에 메세지가 있을때
-	else
-		m_strListData = m_strListData + "\r\n" + strMsg;
+	
+	m_strListData += strMsg + "\r\n";
 
 	UpdateData(FALSE);
 
@@ -367,7 +360,7 @@ void CKeyboardForAndroidMsgDlg::AddMessage(CString strMsg)
 // 서버로부터 온 메세지를 받아서 에디드 컨트롤에 출력
 LRESULT CKeyboardForAndroidMsgDlg::OnReceiveData(WPARAM wParam, LPARAM lParam)
 {
-	char Rcvdata[1024];
+	char Rcvdata[MAXLINE];
 
 	CDataSocket* pDataSocket = (CDataSocket*)wParam;
 
@@ -397,13 +390,13 @@ LRESULT CKeyboardForAndroidMsgDlg::OnCloseSocket(WPARAM wParam, LPARAM lParam)
 // Ansi를 UTF8 형식으로 변환하여 CString으로 리턴
 CString CKeyboardForAndroidMsgDlg::AnsiToUTF8RetCString(CString inputStr)
 {
-	WCHAR szUnicode[1024];
-	char szUTF8char[1024];
+	WCHAR szUnicode[MAXLINE];
+	char szUTF8char[MAXLINE];
 
 	CString strConvert;
 	char* szSrc = (LPSTR)(LPCTSTR)inputStr;
 
-	char szRetValue[1024] = "";
+	char szRetValue[MAXLINE] = "";
 
 	int unicodeSize = MultiByteToWideChar(CP_ACP, 0,
 		szSrc, (int)strlen(szSrc), 
@@ -420,84 +413,90 @@ CString CKeyboardForAndroidMsgDlg::AnsiToUTF8RetCString(CString inputStr)
 
 }
 
-// ↑ 눌렀을때 처리
-void CKeyboardForAndroidMsgDlg::OnBnClickedUp()
+void CKeyboardForAndroidMsgDlg::sendMsg(CString strMsg)
 {
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	UpdateData();
-	
-	CString strUp;
-	strUp.Format("%s", "\\\\CONTROL_U");
-	dataSocket.Send(strUp, strUp.GetLength()+1);
+	int ret = 0;
+	ret = dataSocket.Send(AnsiToUTF8RetCString(strMsg), 
+		AnsiToUTF8RetCString(strMsg).GetLength()+1);
 
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
+}
+void CKeyboardForAndroidMsgDlg::inputDirectioinKey(int key)
+{
+	CString strCmd;
+	switch(key){
+	case INPUT_UP:
+		strCmd.Format("%s", "\\\\CONTROL_U");
+		break;
+	case INPUT_DOWN:
+		strCmd.Format("%s", "\\\\CONTROL_D");
+		break;
+	case INPUT_RIGHT:
+		strCmd.Format("%s", "\\\\CONTROL_R");
+		break;
+	case INPUT_LEFT:
+		strCmd.Format("%s", "\\\\CONTROL_L");
+		break;
+	case INPUT_ENTER:
+		strCmd.Format("%s", "\\\\CONTROL_E");
+		break;
+	case INPUT_BACK:
+		strCmd.Format("%s", "\\\\CONTROL_B");
+		break;
+	default:
+		// no-effect
+		break;
+	}	
+
+	sendMsg(strCmd);
+	
 	GetDlgItem(IDC_IPADDRESS)->SetFocus();
 	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
 	GetDlgItem(IDC_UP)->SendMessage(WM_KILLFOCUS, NULL); 
 }
-
-// ← 눌렀을때 처리
-void CKeyboardForAndroidMsgDlg::OnBnClickedLeft()
+// ↑ 눌렀을때 처리
+void CKeyboardForAndroidMsgDlg::OnBnClickedUp()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString strLeft;
-	strLeft.Format("%s", "\\\\CONTROL_L");
-	dataSocket.Send(strLeft, strLeft.GetLength()+1);
-
-	GetDlgItem(IDC_IPADDRESS)->SetFocus();
-	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
-	GetDlgItem(IDC_EDIT_SEND_DATA)->SendMessage(WM_KILLFOCUS, NULL);
+	inputDirectioinKey(INPUT_UP);
 }
 
 // ↓ 눌렀을때 처리
 void CKeyboardForAndroidMsgDlg::OnBnClickedDown()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString strDown;
-	strDown.Format("%s", "\\\\CONTROL_D");
-	dataSocket.Send(strDown, strDown.GetLength()+1);
+	inputDirectioinKey(INPUT_DOWN); 
+}
 
-	GetDlgItem(IDC_IPADDRESS)->SetFocus();
-	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
-	GetDlgItem(IDC_DOWN)->SendMessage(WM_KILLFOCUS, NULL); 
+// ← 눌렀을때 처리
+void CKeyboardForAndroidMsgDlg::OnBnClickedLeft()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	inputDirectioinKey(INPUT_LEFT);
 }
 
 // → 눌렀을때 처리
 void CKeyboardForAndroidMsgDlg::OnBnClickedRight()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString strRight;
-	strRight.Format("%s", "\\\\CONTROL_R");
-	dataSocket.Send(strRight, strRight.GetLength()+1);
-
-	GetDlgItem(IDC_IPADDRESS)->SetFocus();
-	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
-	GetDlgItem(IDC_RIGHT)->SendMessage(WM_KILLFOCUS, NULL); 
+	inputDirectioinKey(INPUT_RIGHT);
 }
 
 // 엔터키 명령을 전송할때 처리
 void CKeyboardForAndroidMsgDlg::OnBnClickedEnter()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString strEnter;
-	strEnter.Format("%s", "\\\\CONTROL_E");
-	dataSocket.Send(strEnter, strEnter.GetLength()+1);
-
-	GetDlgItem(IDC_IPADDRESS)->SetFocus();
-	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
-	GetDlgItem(IDC_ENTER)->SendMessage(WM_KILLFOCUS, NULL); 
+	inputDirectioinKey(INPUT_ENTER);
 }
 
 // ESC 명령을 전송할때 처리
 void CKeyboardForAndroidMsgDlg::OnBnClickedBack()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString strBack;
-	strBack.Format("%s", "\\\\CONTROL_B");
-	dataSocket.Send(strBack, strBack.GetLength()+1);
-
-	GetDlgItem(IDC_IPADDRESS)->SetFocus();
-	GetDlgItem(IDC_IPADDRESS)->SendMessage(WM_KILLFOCUS, NULL); 
-	GetDlgItem(IDC_BACK)->SendMessage(WM_KILLFOCUS, NULL); 
+	inputDirectioinKey(INPUT_BACK);
 }
 
 // 응용프로그램을 선택할때 처리하는 부분
@@ -517,10 +516,6 @@ void CKeyboardForAndroidMsgDlg::OnCbnSelchangeOpenpack()
 	{
 		// 카톡을 실행하라는 명령을 전송
 		cmd.Format("%s", "\\\\OPENPACK_com.kakao.talk");
-		dataSocket.Send(cmd, cmd.GetLength()+1);
-
-		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-		UpdateData(FALSE);
 
 		AddMessage("카카오톡 실행");	
 	}
@@ -529,11 +524,10 @@ void CKeyboardForAndroidMsgDlg::OnCbnSelchangeOpenpack()
 	{
 		// 라인을 실행하라는 명령을 전송
 		cmd.Format("%s", "\\\\OPENPACK_jp.naver.line.android");
-		dataSocket.Send(cmd, cmd.GetLength()+1);
-
-		GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
-		UpdateData(FALSE);
 
 		AddMessage("라인 실행");	
 	}
+	sendMsg(cmd);
+	GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+	UpdateData(FALSE);
 }
