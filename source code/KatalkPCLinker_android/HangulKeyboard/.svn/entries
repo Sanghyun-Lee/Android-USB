@@ -1,0 +1,88 @@
+8
+
+dir
+2
+https://hangulkeyboard.googlecode.com/svn/trunk/HangulKeyboard
+https://hangulkeyboard.googlecode.com/svn
+
+
+
+2009-05-21T13:09:38.215373Z
+2
+yangjeongsoo@gmail.com
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+33dc981a-4608-11de-aeda-3f4d37dfb5fa
+
+default.properties
+file
+3
+
+
+
+2009-05-07T19:29:11.058125Z
+1919824c8ab3429b16b34faf64bfd5ec
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+.classpath
+file
+3
+
+
+
+2009-05-07T19:29:11.058125Z
+8ec20b14df17ef83253beda6c391f516
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+assets
+dir
+
+.project
+file
+3
+
+
+
+2009-05-07T19:29:10.948750Z
+824c2b84794a48aa30cbaaefa5623fe2
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+AndroidManifest.xml
+file
+3
+
+
+
+2009-05-21T13:07:19.673625Z
+6f0d66a09cf83d91f35603d4fa3bf1b9
+2009-05-21T13:10:24.522554Z
+3
+yangjeongsoo@gmail.com
+
+src
+dir
+
+bin
+dir
+
+res
+dir
+
