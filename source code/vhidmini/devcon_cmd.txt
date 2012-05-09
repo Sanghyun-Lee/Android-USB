@@ -1,0 +1,15 @@
+/*
+<파워해커 라이센스>
+현재 공개하는 소스는 EULA (End User License Agreement) 라이센스와 거의 비슷한
+연구용으로만 사용하실 수 있으며 그 어떤 용도의 악용을 허용치 않습니다.
+
+배포처: 파워해커(powerhacker.net)
+제작자: AmesianX
+*/
+
+<설치명령>
+devcon install vhidmini.inf "{D49F883C-6486-400a-8C22-1A9EF48577E4}\HID_DEVICE"
+
+<제거명령:2개 모두 해야함>
+devcon /r remove hwids=hid HID\MYVIRTUALHIDDEVICE*
+devcon /r remove hwids=hid {D49F883C-6486-400a-8C22-1A9EF48577E4}\HID_DEVICE
