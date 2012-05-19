@@ -1,4 +1,4 @@
-cscope 15 $HOME/Android/external/usbipd               0000668144
+cscope 15 $HOME/Android/external/usbipd               0000648319
 	@autogen.sh
 
 1 #!/
@@ -1685,57 +1685,57 @@ cmd_unknown
 
 	@cmd/stub_server.c
 
-7 #ifde‡
-HAVE_CONFIG_H
-
-
-8 
+7 
 	~"../c⁄fig.h
 "
 
-11 
+9 
 	~<uni°d.h
 >
 
-12 
+10 
 	~<√tdb.h
 >
 
-13 
+11 
 	~<°rögs.h
 >
 
-14 
+12 
 	~<°dlib.h
 >
 
-15 
+13 
 	~<sys/ty≥s.h
 >
 
-16 
+14 
 	~<sys/°©.h
 >
 
-17 
+15 
 	~<¨∑/öë.h
 >
 
-18 
+16 
 	~<sys/sockë.h
 >
 
-19 
+17 
 	~<√töë/ö.h
 >
 
-21 #ifde‡
+19 #ifde‡
 HAVE_LIBWRAP
 
 
-22 
+20 
 	~<t˝d.h
 >
+
+23 
+	~"usbdevi˚_fs.h
+"
 
 25 
 	#_GNU_SOURCE
@@ -1767,275 +1767,275 @@ HAVE_LIBWRAP
 	~<sys/time.h
 >
 
-35 c⁄° 
+36 c⁄° 
 	gvîsi⁄
 [] = 
 PACKAGE_STRING
 
 
-41 
+42 
 	susbù_hódî_basic
  {
 
-42 
+43 
 	#USBIP_CMD_SUBMIT
  0x0001
 
 	)
 
-43 
+44 
 	#USBIP_CMD_UNLINK
  0x0002
 
 	)
 
-44 
+45 
 	#USBIP_RET_SUBMIT
  0x0003
 
 	)
 
-45 
+46 
 	#USBIP_RET_UNLINK
  0x0004
 
 	)
 
-46 
+47 
 	#USBIP_RESET_DEV
  0xFFFF
 
 	)
 
-47 
+48 
 	mcomm™d
 ;
 
-51 
+52 
 	m£qnum
 ;
 
-56 
+57 
 	mdevid
 ;
 
-58 
+59 
 	#USBIP_DIR_OUT
  0
 
 	)
 
-59 
+60 
 	#USBIP_DIR_IN
  1
 
 	)
 
-60 
+61 
 	mdúe˘i⁄
 ;
 
-61 
+62 
 	mï
 ;
 
-62 } 
+63 } 
 __©åibuã__
  ((
 ∑cked
 ));
 
-67 
+68 
 	susbù_hódî_cmd_submô
  {
 
-71 
+72 
 	må™s„r_Êags
 ;
 
-75 
+76 
 	må™s„r_buf„r_Àngth
 ;
 
-78 
+79 
 	m°¨t_‰ame
 ;
 
-81 
+82 
 	mnumbî_of_∑ckës
 ;
 
-85 
+86 
 	möãrvÆ
 ;
 
-88 
+89 
 	m£tup
 [8];
 
-89 }
+90 }
 __©åibuã__
  ((
 ∑cked
 ));
 
-94 
+95 
 	susbù_hódî_ªt_submô
  {
 
-95 
-	m°©us
-;
-
 96 
-	ma˘uÆ_Àngth
+	m°©us
 ;
 
 97 
-	m°¨t_‰ame
-;
-
-98 
-	mnumbî_of_∑ckës
-;
-
-99 
-	mîr‹_cou¡
-;
-
-100 }
-__©åibuã__
- ((
-∑cked
-));
-
-105 
-	susbù_hódî_cmd_u∆ök
- {
-
-106 
-	m£qnum
-;
-
-107 }
-__©åibuã__
- ((
-∑cked
-));
-
-113 
-	susbù_hódî_ªt_u∆ök
- {
-
-114 
-	m°©us
-;
-
-115 }
-__©åibuã__
- ((
-∑cked
-));
-
-119 
-	susbù_iso_∑ckë_des¸ùt‹
- {
-
-120 
-	moff£t
-;
-
-121 
-	mÀngth
-;
-
-122 
 	ma˘uÆ_Àngth
 ;
 
-123 
-	m°©us
+98 
+	m°¨t_‰ame
 ;
 
-124 }
+99 
+	mnumbî_of_∑ckës
+;
+
+100 
+	mîr‹_cou¡
+;
+
+101 }
 __©åibuã__
  ((
 ∑cked
 ));
 
-130 
+106 
+	susbù_hódî_cmd_u∆ök
+ {
+
+107 
+	m£qnum
+;
+
+108 }
+__©åibuã__
+ ((
+∑cked
+));
+
+114 
+	susbù_hódî_ªt_u∆ök
+ {
+
+115 
+	m°©us
+;
+
+116 }
+__©åibuã__
+ ((
+∑cked
+));
+
+120 
+	susbù_iso_∑ckë_des¸ùt‹
+ {
+
+121 
+	moff£t
+;
+
+122 
+	mÀngth
+;
+
+123 
+	ma˘uÆ_Àngth
+;
+
+124 
+	m°©us
+;
+
+125 }
+__©åibuã__
+ ((
+∑cked
+));
+
+131 
 	susbù_hódî
  {
 
-131 
+132 
 usbù_hódî_basic
  
 	mba£
 ;
 
-134 
+135 
 usbù_hódî_cmd_submô
  
 	mcmd_submô
 ;
 
-135 
+136 
 usbù_hódî_ªt_submô
  
 	mªt_submô
 ;
 
-136 
+137 
 usbù_hódî_cmd_u∆ök
  
 	mcmd_u∆ök
 ;
 
-137 
+138 
 usbù_hódî_ªt_u∆ök
  
 	mªt_u∆ök
 ;
 
-138 } 
+139 } 
 	mu
 ;
 
-139 }
+140 }
 __©åibuã__
  ((
 ∑cked
 ));
 
-141 
+142 
 	#USBDEVFS_MAX_LEN
  16384
 
 	)
 
-142 
+143 
 	#USB_MAX_ISO_PACKET_SIZE
  8192
 
 	)
 
-143 
+144 
 	#USBDEVFS_MAX_ISO_LEN
  32768
 
 	)
 
-145 
+146 
 	$show_time
 ()
 
-147 
+148 
 timevÆ
  
 tv
 ;
 
-148 
+149 
 	`gëtimeofday
 (&
 tv
@@ -2043,7 +2043,7 @@ tv
 NULL
 );
 
-149 
+150 
 	`dbg
 ("\n%lu.%lu: ",
 tv
@@ -2053,39 +2053,39 @@ tv_£c
 tv_u£c
 );
 
-150 
+151 
 	}
 }
 
-152 
+153 
 	$£nd_ª∂y_devli°
 (
 sockfd
 )
 
-154 
+155 
 ªt
 ;
 
-155 
+156 
 usbù_exp‹ãd_devi˚
  *
 edev
 ;
 
-156 
+157 
 ›_devli°_ª∂y
  
 ª∂y
 ;
 
-159 
+160 
 ª∂y
 .
 ndev
  = 0;
 
-162 
+163 
 	`dli°_f‹_óch_d©a
 (
 °ub_drivî
@@ -2097,13 +2097,13 @@ edev
 usbù_exp‹ãd_devi˚
 ) {
 
-163 
+164 
 ª∂y
 .
 ndev
  += 1;
 
-166 
+167 
 	`dbg
 ("%d devi˚†¨êexp‹ãd", 
 ª∂y
@@ -2111,7 +2111,7 @@ ndev
 ndev
 );
 
-168 
+169 
 ªt
  = 
 	`usbù_£nd_›_comm⁄
@@ -2123,25 +2123,25 @@ OP_REP_DEVLIST
 ST_OK
 );
 
-169 i‡(
+170 i‡(
 ªt
  < 0) {
 
-170 
+171 
 	`îr
 ("send op_common");
 
-171  
+172  
 ªt
 ;
 
-174 
+175 
 	`PACK_OP_DEVLIST_REPLY
 (1, &
 ª∂y
 );
 
-176 
+177 
 ªt
  = 
 	`usbù_£nd
@@ -2151,19 +2151,19 @@ sockfd
 ª∂y
 , (reply));
 
-177 i‡(
+178 i‡(
 ªt
  < 0) {
 
-178 
+179 
 	`îr
 ("send op_devlist_reply");
 
-179  
+180  
 ªt
 ;
 
-182 
+183 
 	`dli°_f‹_óch_d©a
 (
 °ub_drivî
@@ -2175,13 +2175,13 @@ edev
 usbù_exp‹ãd_devi˚
 ) {
 
-183 
+184 
 usb_devi˚
  
 pdu_udev
 ;
 
-185 
+186 
 	`dump_usb_devi˚
 (&
 edev
@@ -2189,7 +2189,7 @@ edev
 udev
 );
 
-186 
+187 
 	`mem˝y
 (&
 pdu_udev
@@ -2199,13 +2199,13 @@ edev
 udev
 , (pdu_udev));
 
-187 
+188 
 	`∑ck_usb_devi˚
 (1, &
 pdu_udev
 );
 
-189 
+190 
 ªt
  = 
 	`usbù_£nd
@@ -2215,19 +2215,19 @@ sockfd
 pdu_udev
 , (pdu_udev));
 
-190 i‡(
+191 i‡(
 ªt
  < 0) {
 
-191 
+192 
 	`îr
 ("sendÖdu_udev");
 
-192  
+193  
 ªt
 ;
 
-195 
+196 
 i
 =0; i < 
 edev
@@ -2237,13 +2237,13 @@ udev
 bNumI¡îÁ˚s
 ; i++) {
 
-196 
+197 
 usb_öãrÁ˚
  
 pdu_uöf
 ;
 
-198 
+199 
 	`dump_usb_öãrÁ˚
 (&
 edev
@@ -2253,7 +2253,7 @@ uöf
 i
 ]);
 
-199 
+200 
 	`mem˝y
 (&
 pdu_uöf
@@ -2265,13 +2265,13 @@ uöf
 i
 ], (pdu_uinf));
 
-200 
+201 
 	`∑ck_usb_öãrÁ˚
 (1, &
 pdu_uöf
 );
 
-202 
+203 
 ªt
  = 
 	`usbù_£nd
@@ -2281,45 +2281,45 @@ sockfd
 pdu_uöf
 , (pdu_uinf));
 
-203 i‡(
+204 i‡(
 ªt
  < 0) {
 
-204 
+205 
 	`îr
 ("sendÖdu_uinf");
 
-205  
+206  
 ªt
 ;
 
-211 
+212 
 	}
 }
 
-214 
+215 
 	$ªcv_ªque°_devli°
 (
 sockfd
 )
 
-216 
+217 
 ªt
 ;
 
-217 
+218 
 ›_devli°_ªque°
  
 ªq
 ;
 
-219 
+220 
 	`bzîo
 (&
 ªq
 , (req));
 
-221 
+222 
 ªt
  = 
 	`usbù_ªcv
@@ -2329,15 +2329,15 @@ sockfd
 ªq
 , (req));
 
-222 i‡(
+223 i‡(
 ªt
  < 0) {
 
-223 
+224 
 	`îr
 ("recv devlistÑequest");
 
-227 
+228 
 ªt
  = 
 	`£nd_ª∂y_devli°
@@ -2345,31 +2345,31 @@ sockfd
 sockfd
 );
 
-228 i‡(
+229 i‡(
 ªt
  < 0) {
 
-229 
+230 
 	`îr
 ("send devlistÑeply");
 
-234 
+235 
 	}
 }
 
-236 
+237 
 ªcv_ªque°_devli°
 (
 sockfd
 );
 
-237 
+238 
 ªcv_ªque°_imp‹t
 (
 sockfd
 );
 
-239 
+240 
 	$c‹ª˘_ídün_basic
 (
 usbù_hódî_basic
@@ -2379,27 +2379,27 @@ ba£
 £nd
 )
 
-241 i‡(
+242 i‡(
 £nd
 ) {
-
-242 
-ba£
-->
-comm™d
- = 
-	`ht⁄l
-(base->command);
 
 243 
 ba£
 ->
+comm™d
+ = 
+	`ht⁄l
+(base->command);
+
+244 
+ba£
+->
 £qnum
  = 
 	`ht⁄l
 (base->seqnum);
 
-244 
+245 
 ba£
 ->
 devid
@@ -2407,7 +2407,7 @@ devid
 	`ht⁄l
 (base->devid);
 
-245 
+246 
 ba£
 ->
 dúe˘i⁄
@@ -2415,7 +2415,7 @@ dúe˘i⁄
 	`ht⁄l
 (base->direction);
 
-246 
+247 
 ba£
 ->
 ï
@@ -2423,7 +2423,7 @@ ba£
 	`ht⁄l
 (base->ep);
 
-248 
+249 
 ba£
 ->
 comm™d
@@ -2431,7 +2431,7 @@ comm™d
 	`¡ohl
 (base->command);
 
-249 
+250 
 ba£
 ->
 £qnum
@@ -2439,7 +2439,7 @@ ba£
 	`¡ohl
 (base->seqnum);
 
-250 
+251 
 ba£
 ->
 devid
@@ -2447,7 +2447,7 @@ devid
 	`¡ohl
 (base->devid);
 
-251 
+252 
 ba£
 ->
 dúe˘i⁄
@@ -2455,7 +2455,7 @@ dúe˘i⁄
 	`¡ohl
 (base->direction);
 
-252 
+253 
 ba£
 ->
 ï
@@ -2463,43 +2463,43 @@ ba£
 	`¡ohl
 (base->ep);
 
-254 
+255 
 	}
 }
 
-256 
+257 
 	$˝u_to_be32s
 (*
 a
 )
 
-258 *
+259 *
 a
 =
 	`ht⁄l
 (()*a);
 
-259 
+260 
 	}
 }
 
-261 
+262 
 	$be32_to_˝us
 (*
 a
 )
 
-263 *
+264 *
 a
 =
 	`¡ohl
 (()*a);
 
-264 
+265 
 	}
 }
 
-266 
+267 
 	$c‹ª˘_ídün_cmd_submô
 (
 usbù_hódî_cmd_submô
@@ -2509,11 +2509,11 @@ pdu
 £nd
 )
 
-268 i‡(
+269 i‡(
 £nd
 ) {
 
-269 
+270 
 pdu
 ->
 å™s„r_Êags
@@ -2521,20 +2521,12 @@ pdu
 	`ht⁄l
 (pdu->transfer_flags);
 
-271 
-	`˝u_to_be32s
-(&
-pdu
-->
-å™s„r_buf„r_Àngth
-);
-
 272 
 	`˝u_to_be32s
 (&
 pdu
 ->
-°¨t_‰ame
+å™s„r_buf„r_Àngth
 );
 
 273 
@@ -2542,7 +2534,7 @@ pdu
 (&
 pdu
 ->
-numbî_of_∑ckës
+°¨t_‰ame
 );
 
 274 
@@ -2550,10 +2542,18 @@ numbî_of_∑ckës
 (&
 pdu
 ->
+numbî_of_∑ckës
+);
+
+275 
+	`˝u_to_be32s
+(&
+pdu
+->
 öãrvÆ
 );
 
-276 
+277 
 pdu
 ->
 å™s„r_Êags
@@ -2561,7 +2561,7 @@ pdu
 	`¡ohl
 (pdu->transfer_flags);
 
-278 
+279 
 	`be32_to_˝us
 (&
 pdu
@@ -2569,7 +2569,7 @@ pdu
 å™s„r_buf„r_Àngth
 );
 
-279 
+280 
 	`be32_to_˝us
 (&
 pdu
@@ -2577,7 +2577,7 @@ pdu
 °¨t_‰ame
 );
 
-280 
+281 
 	`be32_to_˝us
 (&
 pdu
@@ -2585,7 +2585,7 @@ pdu
 numbî_of_∑ckës
 );
 
-281 
+282 
 	`be32_to_˝us
 (&
 pdu
@@ -2593,11 +2593,11 @@ pdu
 öãrvÆ
 );
 
-283 
+284 
 	}
 }
 
-285 
+286 
 	$c‹ª˘_ídün_ªt_submô
 (
 usbù_hódî_ªt_submô
@@ -2607,24 +2607,16 @@ pdu
 £nd
 )
 
-287 i‡(
+288 i‡(
 £nd
 ) {
-
-288 
-	`˝u_to_be32s
-(&
-pdu
-->
-°©us
-);
 
 289 
 	`˝u_to_be32s
 (&
 pdu
 ->
-a˘uÆ_Àngth
+°©us
 );
 
 290 
@@ -2632,7 +2624,7 @@ a˘uÆ_Àngth
 (&
 pdu
 ->
-°¨t_‰ame
+a˘uÆ_Àngth
 );
 
 291 
@@ -2640,15 +2632,15 @@ pdu
 (&
 pdu
 ->
-îr‹_cou¡
+°¨t_‰ame
 );
 
-293 
-	`be32_to_˝us
+292 
+	`˝u_to_be32s
 (&
 pdu
 ->
-°©us
+îr‹_cou¡
 );
 
 294 
@@ -2656,7 +2648,7 @@ pdu
 (&
 pdu
 ->
-a˘uÆ_Àngth
+°©us
 );
 
 295 
@@ -2664,7 +2656,7 @@ a˘uÆ_Àngth
 (&
 pdu
 ->
-°¨t_‰ame
+a˘uÆ_Àngth
 );
 
 296 
@@ -2672,14 +2664,22 @@ pdu
 (&
 pdu
 ->
+°¨t_‰ame
+);
+
+297 
+	`be32_to_˝us
+(&
+pdu
+->
 îr‹_cou¡
 );
 
-298 
+299 
 	}
 }
 
-300 
+301 
 	$c‹ª˘_ídün_cmd_u∆ök
 (
 usbù_hódî_cmd_u∆ök
@@ -2689,11 +2689,11 @@ pdu
 £nd
 )
 
-302 i‡(
+303 i‡(
 £nd
 )
 
-303 
+304 
 pdu
 ->
 £qnum
@@ -2701,7 +2701,7 @@ pdu
 	`ht⁄l
 (pdu->seqnum);
 
-305 
+306 
 pdu
 ->
 £qnum
@@ -2709,11 +2709,11 @@ pdu
 	`¡ohl
 (pdu->seqnum);
 
-306 
+307 
 	}
 }
 
-308 
+309 
 	$c‹ª˘_ídün_ªt_u∆ök
 (
 usbù_hódî_ªt_u∆ök
@@ -2723,11 +2723,11 @@ pdu
 £nd
 )
 
-310 i‡(
+311 i‡(
 £nd
 )
 
-311 
+312 
 	`˝u_to_be32s
 (&
 pdu
@@ -2735,7 +2735,7 @@ pdu
 °©us
 );
 
-313 
+314 
 	`be32_to_˝us
 (&
 pdu
@@ -2743,11 +2743,11 @@ pdu
 °©us
 );
 
-314 
+315 
 	}
 }
 
-316 
+317 
 	$usbù_hódî_c‹ª˘_ídün
 (
 usbù_hódî
@@ -2757,15 +2757,15 @@ pdu
 £nd
 )
 
-318 
+319 
 cmd
  = 0;
 
-320 i‡(
+321 i‡(
 £nd
 )
 
-321 
+322 
 cmd
  = 
 pdu
@@ -2775,7 +2775,7 @@ ba£
 comm™d
 ;
 
-323 
+324 
 	`c‹ª˘_ídün_basic
 (&
 pdu
@@ -2785,11 +2785,11 @@ ba£
 £nd
 );
 
-325 i‡(!
+326 i‡(!
 £nd
 )
 
-326 
+327 
 cmd
  = 
 pdu
@@ -2799,19 +2799,19 @@ ba£
 comm™d
 ;
 
-328 
+329 
 cmd
 ) {
 
-329 
+330 
 USBIP_RESET_DEV
 :
 
-331 
+332 
 USBIP_CMD_SUBMIT
 :
 
-332 
+333 
 	`c‹ª˘_ídün_cmd_submô
 (&
 pdu
@@ -2823,11 +2823,11 @@ cmd_submô
 £nd
 );
 
-334 
+335 
 USBIP_RET_SUBMIT
 :
 
-335 
+336 
 	`c‹ª˘_ídün_ªt_submô
 (&
 pdu
@@ -2839,11 +2839,11 @@ u
 £nd
 );
 
-338 
+339 
 USBIP_CMD_UNLINK
 :
 
-339 
+340 
 	`c‹ª˘_ídün_cmd_u∆ök
 (&
 pdu
@@ -2855,11 +2855,11 @@ cmd_u∆ök
 £nd
 );
 
-341 
+342 
 USBIP_RET_UNLINK
 :
 
-342 
+343 
 	`c‹ª˘_ídün_ªt_u∆ök
 (&
 pdu
@@ -2871,17 +2871,17 @@ u
 £nd
 );
 
-347 
+348 
 	`îr
 ("unknow¿comm™d i¿pdu hódî: %d", 
 cmd
 );
 
-350 
+351 
 	}
 }
 
-352 
+353 
 ölöe
  
 	$is_vÆid_ï
@@ -2891,7 +2891,7 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-353 
+354 
 usbù_hódî
  *
 pdu
@@ -2901,39 +2901,39 @@ is_˘æ
 usbdevfs_ty≥
 )
 
-355 
+356 
 addr
 , 
 ö
 =0;
 
-356 
+357 
 usbù_ídpoöt
  *
 ï
 ;
 
-357 
+358 
 ty≥s
 [] = {
 
-358 
+359 
 USBDEVFS_URB_TYPE_CONTROL
 ,
 
-359 
+360 
 USBDEVFS_URB_TYPE_ISO
 ,
 
-360 
+361 
 USBDEVFS_URB_TYPE_BULK
 ,
 
-361 
+362 
 USBDEVFS_URB_TYPE_INTERRUPT
 
 
-363 if(
+364 if(
 pdu
 ->
 ba£
@@ -2943,11 +2943,11 @@ dúe˘i⁄
 USBIP_DIR_IN
 )
 
-364 
+365 
 ö
 =1;
 
-365 if(
+366 if(
 pdu
 ->
 ba£
@@ -2957,7 +2957,7 @@ dúe˘i⁄
 USBIP_DIR_OUT
 )
 
-367 
+368 
 addr
  = 
 pdu
@@ -2969,21 +2969,21 @@ ba£
 USB_ENDPOINT_NUMBER_MASK
 ;
 
-368 if(
+369 if(
 addr
  == 0){
 
-369 *
+370 *
 usbdevfs_ty≥
  = 
 USBDEVFS_URB_TYPE_CONTROL
 ;
 
-370 
+371 
 out
 ;
 
-372 
+373 
 ï
 =&
 edev
@@ -2995,13 +2995,13 @@ edev
 addr
 ];
 
-373 if(!
+374 if(!
 ï
 ->
 vÆid
 )
 
-375 *
+376 *
 usbdevfs_ty≥
  = 
 ty≥s
@@ -3011,29 +3011,29 @@ ty≥s
 ty≥
 ];
 
-376 
+377 
 out
 :
 
-377 if(*
+378 if(*
 usbdevfs_ty≥
  =
 USBDEVFS_URB_TYPE_CONTROL
 )
 
-378 *
+379 *
 is_˘æ
  = 1;
 
-380 *
+381 *
 is_˘æ
  = 0;
 
-382 
+383 
 	}
 }
 
-384 
+385 
 ölöe
  
 	$is_ö_ï
@@ -3041,17 +3041,17 @@ is_˘æ
 ï_num
 )
 
-386  
+387  
 ï_num
  & 
 USB_DIR_IN
 ;
 
-387 
+388 
 	}
 }
 
-389 
+390 
 usbù_ídpoöt
  * 
 	$gë_ï
@@ -3061,19 +3061,19 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-390 
+391 
 ï
 )
 
-392 
+393 
 addr
 ;
 
-393 
+394 
 ö
 ;
 
-394 
+395 
 addr
  = 
 ï
@@ -3081,7 +3081,7 @@ addr
 USB_ENDPOINT_NUMBER_MASK
 ;
 
-395 
+396 
 ö
  = 
 	`is_ö_ï
@@ -3089,7 +3089,7 @@ USB_ENDPOINT_NUMBER_MASK
 ï
 )?1:0;
 
-396  &
+397  &
 edev
 ->
 ïs
@@ -3099,11 +3099,11 @@ edev
 addr
 ];
 
-397 
+398 
 	}
 }
 
-399 
+400 
 	$dump_urb
 (
 usbdevfs_urb
@@ -3111,87 +3111,87 @@ usbdevfs_urb
 urb
 )
 
-401 
+402 
 	`dbg
 ("type:%d\n"
 
-413 
+414 
 urb
 ->
 ty≥
 ,
 
-414 
+415 
 urb
 ->
 ídpoöt
 ,
 
-415 
+416 
 urb
 ->
 °©us
 ,
 
-416 
+417 
 urb
 ->
 Êags
 ,
 
-417 
+418 
 urb
 ->
 buf„r
 ,
 
-418 
+419 
 urb
 ->
 buf„r_Àngth
 ,
 
-419 
+420 
 urb
 ->
 a˘uÆ_Àngth
 ,
 
-420 
+421 
 urb
 ->
 °¨t_‰ame
 ,
 
-421 
+422 
 urb
 ->
 numbî_of_∑ckës
 ,
 
-422 
+423 
 urb
 ->
 îr‹_cou¡
 ,
 
-423 
+424 
 urb
 ->
 sigƒ
 ,
 
-424 
+425 
 urb
 ->
 u£rc⁄ãxt
 );
 
-425 
+426 
 	}
 }
 
-427 
+428 
 	$usbù_dump_hódî
 (
 usbù_hódî
@@ -3199,13 +3199,13 @@ usbù_hódî
 pdu
 )
 
-429 
+430 
 timevÆ
  
 tv
 ;
 
-430 
+431 
 	`gëtimeofday
 (&
 tv
@@ -3213,7 +3213,7 @@ tv
 NULL
 );
 
-431 
+432 
 	`dbg
 ("%lu.%lu: ",
 tv
@@ -3223,24 +3223,16 @@ tv_£c
 tv_u£c
 );
 
-432 
+433 
 	`dbg
 ("BASE: cmd %u seq %u devid %u dir %uÉp %u\n",
-
-433 
-pdu
-->
-ba£
-.
-comm™d
-,
 
 434 
 pdu
 ->
 ba£
 .
-£qnum
+comm™d
 ,
 
 435 
@@ -3248,7 +3240,7 @@ pdu
 ->
 ba£
 .
-devid
+£qnum
 ,
 
 436 
@@ -3256,7 +3248,7 @@ pdu
 ->
 ba£
 .
-dúe˘i⁄
+devid
 ,
 
 437 
@@ -3264,10 +3256,18 @@ pdu
 ->
 ba£
 .
+dúe˘i⁄
+,
+
+438 
+pdu
+->
+ba£
+.
 ï
 );
 
-439 
+440 
 pdu
 ->
 ba£
@@ -3275,23 +3275,23 @@ ba£
 comm™d
 ) {
 
-440 
+441 
 USBIP_RESET_DEV
 :
 
-441 
+442 
 	`dbg
 ("CMD_RESET:\n");
 
-442 
+443 
 USBIP_CMD_SUBMIT
 :
 
-443 
+444 
 	`dbg
 ("CMD_SUBMIT: x_flags %u x_len %u sf %u #p %u iv %u\n",
 
-444 
+445 
 pdu
 ->
 u
@@ -3301,7 +3301,7 @@ cmd_submô
 å™s„r_Êags
 ,
 
-445 
+446 
 pdu
 ->
 u
@@ -3311,7 +3311,7 @@ cmd_submô
 å™s„r_buf„r_Àngth
 ,
 
-446 
+447 
 pdu
 ->
 u
@@ -3321,7 +3321,7 @@ cmd_submô
 °¨t_‰ame
 ,
 
-447 
+448 
 pdu
 ->
 u
@@ -3331,7 +3331,7 @@ cmd_submô
 numbî_of_∑ckës
 ,
 
-448 
+449 
 pdu
 ->
 u
@@ -3341,11 +3341,11 @@ cmd_submô
 öãrvÆ
 );
 
-450 
+451 
 USBIP_CMD_UNLINK
 :
 
-451 
+452 
 	`dbg
 ("CMD_UNLINK: seq %u\n", 
 pdu
@@ -3357,15 +3357,15 @@ cmd_u∆ök
 £qnum
 );
 
-453 
+454 
 USBIP_RET_SUBMIT
 :
 
-454 
+455 
 	`dbg
 ("RET_SUBMIT: st %dál %u sf %dÉc %d\n",
 
-455 
+456 
 pdu
 ->
 u
@@ -3375,7 +3375,7 @@ u
 °©us
 ,
 
-456 
+457 
 pdu
 ->
 u
@@ -3385,7 +3385,7 @@ u
 a˘uÆ_Àngth
 ,
 
-457 
+458 
 pdu
 ->
 u
@@ -3395,7 +3395,7 @@ u
 °¨t_‰ame
 ,
 
-458 
+459 
 pdu
 ->
 u
@@ -3405,11 +3405,11 @@ u
 îr‹_cou¡
 );
 
-460 
+461 
 USBIP_RET_UNLINK
 :
 
-461 
+462 
 	`dbg
 ("RET_UNLINK: sètu†%d\n", 
 pdu
@@ -3421,15 +3421,15 @@ u
 °©us
 );
 
-465 
+466 
 	`dbg
 ("UNKNOWN\n");
 
-467 
+468 
 	}
 }
 
-469 
+470 
 AsyncURB
  * 
 	$föd_aurb
@@ -3439,17 +3439,17 @@ dli°
 £qnum
 ,
 
-470 
+471 
 sub_£qnum
 )
 
-472 
+473 
 AsyncURB
  * 
 aurb
 ;
 
-473 
+474 
 	`dli°_f‹_óch_d©a
 (
 dli°
@@ -3459,31 +3459,31 @@ aurb
 AsyncURB
 ){
 
-474 if(
+475 if(
 aurb
 ->
 £qnum
 ==seqnum&&
 
-475 
+476 
 aurb
 ->
 sub_£qnum
 ==sub_seqnum){
 
-476  
+477  
 aurb
 ;
 
-479  
+480  
 NULL
 ;
 
-480 
+481 
 	}
 }
 
-482 
+483 
 	$dñëe_aurb
 (
 dli°
@@ -3491,17 +3491,17 @@ dli°
 £qnum
 ,
 
-483 
+484 
 sub_£qnum
 )
 
-485 
+486 
 AsyncURB
  *
 aurb
 ;
 
-486 
+487 
 	`dli°_f‹_óch_d©a
 (
 dli°
@@ -3511,29 +3511,29 @@ aurb
 AsyncURB
 ){
 
-487 if(
+488 if(
 aurb
 ->
 £qnum
 ==seqnum&&
 
-488 
+489 
 aurb
 ->
 sub_£qnum
 ==sub_seqnum){
 
-489 
+490 
 	`dli°_dñëe_bef‹e
 (
 dli°
 );
 
-494 
+495 
 	}
 }
 
-496 
+497 
 	$vÆid_ªque°
 (
 usbù_exp‹ãd_devi˚
@@ -3541,13 +3541,13 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-497 
+498 
 usbù_hódî
  *
 pdu
 )
 
-499 
+500 
 usb_devi˚
  *
 dev
@@ -3557,7 +3557,7 @@ edev
 udev
 ;
 
-501 if(
+502 if(
 pdu
 ->
 ba£
@@ -3571,11 +3571,11 @@ bu¢um
 devnum
 ))
 
-504 
+505 
 	}
 }
 
-506 
+507 
 	$£tup_ªt_submô_pdu
 (
 usbù_hódî
@@ -3587,7 +3587,7 @@ AsyncURB
 aurb
 )
 
-508 
+509 
 usbdevfs_urb
  *
 urb
@@ -3595,7 +3595,7 @@ urb
 aurb
 ->urb;
 
-510 
+511 
 Ωdu
 ->
 ba£
@@ -3605,7 +3605,7 @@ ba£
 aurb
 ->seqnum;
 
-511 
+512 
 Ωdu
 ->
 ba£
@@ -3615,7 +3615,7 @@ comm™d
 USBIP_RET_SUBMIT
 ;
 
-513 
+514 
 Ωdu
 ->
 u
@@ -3627,7 +3627,7 @@ u
 urb
 ->status;
 
-514 
+515 
 Ωdu
 ->
 u
@@ -3641,7 +3641,7 @@ aurb
 ªt_Àn
 ;
 
-515 
+516 
 Ωdu
 ->
 u
@@ -3653,7 +3653,7 @@ u
 urb
 ->start_frame;
 
-516 
+517 
 Ωdu
 ->
 u
@@ -3665,7 +3665,7 @@ u
 urb
 ->error_count;
 
-518 
+519 
 Ωdu
 ->
 u
@@ -3677,11 +3677,11 @@ numbî_of_∑ckës
 urb
 ->number_of_packets;
 
-519 
+520 
 	}
 }
 
-521 
+522 
 	$åy_submô_sub_urb
 (
 usbù_exp‹ãd_devi˚
@@ -3693,7 +3693,7 @@ AsyncURB
 aurb
 )
 
-523 
+524 
 À·_Àn
  = 
 aurb
@@ -3703,13 +3703,13 @@ d©a_Àn
 ªt_Àn
 ;
 
-524 
+525 
 this_Àn
 , 
 ªt
 ;
 
-525 
+526 
 this_Àn
  = (
 À·_Àn
@@ -3717,21 +3717,21 @@ this_Àn
 USBDEVFS_MAX_LEN
 )?
 
-526 
+527 
 USBDEVFS_MAX_LEN
 :
 À·_Àn
 ;
 
-527 if(
+528 if(
 this_Àn
 ==0)
 
-528 
+529 
 	`g_îr‹
 ("whyÅhis_len = 0");
 
-529 
+530 
 aurb
 ->
 urb
@@ -3743,7 +3743,7 @@ d©a
 ªt_Àn
 ;
 
-530 
+531 
 aurb
 ->
 urb
@@ -3753,7 +3753,7 @@ buf„r_Àngth
 this_Àn
 ;
 
-531 
+532 
 ªt
  = 
 	`io˘l
@@ -3769,21 +3769,21 @@ aurb
 urb
 );
 
-532 if(
+533 if(
 ªt
 <0){
 
-533 
+534 
 	`îr
 ("io˘»œ°Ñë %d %m\n", 
 ªt
 );
 
-537 
+538 
 	}
 }
 
-539 
+540 
 	$¥ï¨e_iso_d©a_iov
 (
 usbdevfs_urb
@@ -3797,11 +3797,11 @@ iov
 ioc
 )
 
-541 
+542 
 i
 ;
 
-542 
+543 
 Æl
 , 
 off£t
@@ -3809,35 +3809,35 @@ off£t
 ba£_off£t
 ;
 
-543 
+544 
 usbdevfs_iso_∑ckë_desc
  * 
 fs_iso_desc
 ;
 
-544 if(
+545 if(
 urb
 ->
 numbî_of_∑ckës
 >128)
 
-545 
+546 
 	`g_îr‹
 ("why so manyÖackets");
 
-546 
+547 
 Æl
 =0;
 
-547 
+548 
 off£t
 =0;
 
-548 
+549 
 ba£_off£t
  = 0;
 
-549 
+550 
 fs_iso_desc
  = &
 urb
@@ -3845,7 +3845,7 @@ urb
 iso_‰ame_desc
 [0];
 
-550 
+551 
 i
 =0; i<
 urb
@@ -3853,13 +3853,13 @@ urb
 numbî_of_∑ckës
 ; i++){
 
-551 if(
+552 if(
 fs_iso_desc
 ->
 a˘uÆ_Àngth
  <
 
-552 
+553 
 fs_iso_desc
 ->
 Àngth
@@ -3871,7 +3871,7 @@ urb
 numbî_of_∑ckës
 -1){
 
-553 
+554 
 iov
 [
 ioc
@@ -3885,7 +3885,7 @@ buf„r
 ba£_off£t
 ;
 
-554 
+555 
 iov
 [
 ioc
@@ -3899,11 +3899,11 @@ fs_iso_desc
 a˘uÆ_Àngth
 
 
-555 - 
+556 - 
 ba£_off£t
 ;
 
-556 if(
+557 if(
 iov
 [
 ioc
@@ -3911,11 +3911,11 @@ ioc
 iov_Àn
 )
 
-557 
+558 
 ioc
 ++;
 
-558 
+559 
 ba£_off£t
  = 
 off£t
@@ -3925,7 +3925,7 @@ fs_iso_desc
 Àngth
 ;
 
-560 
+561 
 off£t
  +
 fs_iso_desc
@@ -3933,7 +3933,7 @@ fs_iso_desc
 Àngth
 ;
 
-561 
+562 
 Æl
  +
 fs_iso_desc
@@ -3941,11 +3941,11 @@ fs_iso_desc
 a˘uÆ_Àngth
 ;
 
-562 
+563 
 fs_iso_desc
 ++;
 
-564 if(
+565 if(
 Æl
 !=
 urb
@@ -3953,7 +3953,7 @@ urb
 a˘uÆ_Àngth
 )
 
-565 
+566 
 	`g_îr‹
 ("whyÇŸÉquÆ %d %d", 
 Æl
@@ -3963,15 +3963,15 @@ urb
 a˘uÆ_Àngth
 );
 
-566  
+567  
 ioc
 ;
 
-567 
+568 
 	}
 }
 
-569 
+570 
 	$fix_urb_a_Àn
 (
 usbdevfs_urb
@@ -3979,15 +3979,15 @@ usbdevfs_urb
 urb
 )
 
-571 
+572 
 i
 ;
 
-572 
+573 
 Æl
 =0;
 
-573 
+574 
 i
 =0;i<
 urb
@@ -3995,7 +3995,7 @@ urb
 numbî_of_∑ckës
 ;i++){
 
-574 
+575 
 Æl
 +=
 urb
@@ -4007,7 +4007,7 @@ i
 a˘uÆ_Àngth
 ;
 
-576 if(
+577 if(
 Æl
 !=
 urb
@@ -4015,11 +4015,11 @@ urb
 a˘uÆ_Àngth
 ){
 
-577 
+578 
 	`dbg
 ("fixáctual_length %d->%d\n",
 
-578 
+579 
 urb
 ->
 a˘uÆ_Àngth
@@ -4027,7 +4027,7 @@ a˘uÆ_Àngth
 Æl
 );
 
-579 
+580 
 urb
 ->
 a˘uÆ_Àngth
@@ -4035,11 +4035,11 @@ a˘uÆ_Àngth
 Æl
 ;
 
-581 
+582 
 	}
 }
 
-583 
+584 
 	$°ub_£nd_ªt_submô
 (
 usbù_exp‹ãd_devi˚
@@ -4047,7 +4047,7 @@ usbù_exp‹ãd_devi˚
 edev
 )
 
-585 
+586 
 AsyncURB
  *
 aurb
@@ -4055,19 +4055,19 @@ aurb
 œ°_aurb
 ;
 
-586 
+587 
 usbù_hódî
  
 pdu_hódî
 ;
 
-587 
+588 
 usbdevfs_urb
  *
 urb
 ;
 
-588 
+589 
 ªt
 , 
 Àn
@@ -4075,13 +4075,13 @@ urb
 ï
 ;
 
-589 
+590 
 iovec
  
 iov
 [130];
 
-590 
+591 
 ioc
 , 
 off£t
@@ -4089,23 +4089,23 @@ off£t
 i
 ;
 
-591 
+592 
 is_˘æ
 ;
 
-592 
+593 
 usbù_iso_∑ckë_des¸ùt‹
  
 ù_iso_descs
 [128];
 
-593 
+594 
 usbù_ídpoöt
  * 
 big_ï
 ;
 
-595 
+596 
 ªt
  = 
 	`io˘l
@@ -4119,23 +4119,23 @@ USBDEVFS_REAPURBNDELAY
 urb
 );
 
-596 i‡(
+597 i‡(
 ªt
  < 0) {
 
-597 i‡(
+598 i‡(
 î∫o
  =
 EAGAIN
 )
 
-599 
+600 
 	`g_îr‹
 ("husb:Ñó∞urb faûedÉºnÿ%d %m\n", 
 î∫o
 );
 
-601 
+602 
 aurb
  = (
 AsyncURB
@@ -4145,13 +4145,13 @@ urb
 	`off£tof
 (AsyncURB, urb));
 
-602 if(
+603 if(
 aurb
 ->
 sub_£qnum
 ){
 
-603 i‡(
+604 i‡(
 urb
 ->
 ty≥
@@ -4159,11 +4159,11 @@ ty≥
 USBDEVFS_URB_TYPE_ISO
 ) {
 
-604 
+605 
 	`dbg
 ("splited bulk urbÑet");
 
-605 
+606 
 œ°_aurb
  = 
 	`föd_aurb
@@ -4173,23 +4173,23 @@ edev
 ¥o˚ssög_urbs
 ,
 
-606 
+607 
 aurb
 ->
 £qnum
 , 0);
 
-607 if(
+608 if(
 œ°_aurb
 ==
 NULL
 ){
 
-608 
+609 
 	`dbg
 ("perhaps unlinked urb");
 
-610 
+611 
 œ°_aurb
 ->
 ªt_Àn
@@ -4199,7 +4199,7 @@ urb
 a˘uÆ_Àngth
 ;
 
-612 
+613 
 	`dñëe_aurb
 (
 edev
@@ -4211,29 +4211,29 @@ aurb
 £qnum
 ,
 
-613 
+614 
 aurb
 ->
 sub_£qnum
 );
 
-617 
+618 
 	`dbg
 ("splited iso urbÑet %d %d",
 
-618 
+619 
 aurb
 ->
 £qnum
 ,
 
-619 
+620 
 aurb
 ->
 sub_£qnum
 );
 
-620 
+621 
 big_ï
  = 
 	`gë_ï
@@ -4245,17 +4245,17 @@ urb
 ídpoöt
 );
 
-621 if(!
+622 if(!
 big_ï
 ->
 now_urb
 )
 
-622 
+623 
 	`g_îr‹
 ("whyÇo urb waiting me");
 
-623 
+624 
 œ°_aurb
  = 
 big_ï
@@ -4263,7 +4263,7 @@ big_ï
 now_urb
 ;
 
-624 if(
+625 if(
 œ°_aurb
 ->
 £qnum
@@ -4271,11 +4271,11 @@ now_urb
 aurb
 ->seqnum){
 
-625 
+626 
 	`g_îr‹
 ("whyÇot waited me %d %d",
 
-626 
+627 
 œ°_aurb
 ->
 £qnum
@@ -4283,7 +4283,7 @@ aurb
 aurb
 ->seqnum);
 
-628 
+629 
 i
 =
 aurb
@@ -4295,7 +4295,7 @@ urb
 numbî_of_∑ckës
 ;
 
-629 if(
+630 if(
 i
 <0||i>
 œ°_aurb
@@ -4305,19 +4305,19 @@ urb
 numbî_of_∑ckës
 )
 
-630 
+631 
 	`g_îr‹
 ("whyÅhi†%d\n", 
 i
 );
 
-631 if(
+632 if(
 aurb
 ->
 sub_£qnum
  >
 
-632 
+633 
 œ°_aurb
 ->
 urb
@@ -4325,17 +4325,17 @@ urb
 numbî_of_∑ckës
 )
 
-633 
+634 
 	`g_îr‹
 ("why so big sub_seqnum %d\n",
 
-634 
+635 
 aurb
 ->
 sub_£qnum
 );
 
-635 
+636 
 	`mem˝y
 (&
 œ°_aurb
@@ -4347,25 +4347,25 @@ iso_‰ame_desc
 i
 ],
 
-636 &
+637 &
 urb
 ->
 iso_‰ame_desc
 [0],
 
-637 
+638 
 urb
 ->
 numbî_of_∑ckës
 
 
-638 * (
+639 * (
 urb
 ->
 iso_‰ame_desc
 [0]));
 
-639 
+640 
 œ°_aurb
 ->
 urb
@@ -4373,7 +4373,7 @@ urb
 a˘uÆ_Àngth
 +=urb->actual_length;
 
-640 
+641 
 œ°_aurb
 ->
 urb
@@ -4381,7 +4381,7 @@ urb
 îr‹_cou¡
 +=urb->error_count;
 
-641 
+642 
 œ°_aurb
 ->
 ªt_Àn
@@ -4391,13 +4391,13 @@ urb
 numbî_of_∑ckës
 ;
 
-642 if–
+643 if–
 œ°_aurb
 ->
 ªt_Àn
  <
 
-643 
+644 
 œ°_aurb
 ->
 urb
@@ -4405,33 +4405,33 @@ urb
 numbî_of_∑ckës
 ){
 
-644 
+645 
 	`dñëe_aurb
 (
 edev
 ->
 ¥o˚ssög_urbs
-,
-
-645 
-aurb
-->
-£qnum
 ,
 
 646 
 aurb
 ->
+£qnum
+,
+
+647 
+aurb
+->
 sub_£qnum
 );
 
-649 
+650 
 œ°_aurb
 ->
 ªt_Àn
 =0;
 
-650 
+651 
 	`dñëe_aurb
 (
 edev
@@ -4439,25 +4439,25 @@ edev
 ¥o˚ssög_urbs
 ,
 
-651 
+652 
 aurb
 ->
 £qnum
 ,
 
-652 
+653 
 aurb
 ->
 sub_£qnum
 );
 
-653 if(
+654 if(
 big_ï
 ->
 waôed_urbs
  &&
 
-654 
+655 
 big_ï
 ->
 waôed_urbs
@@ -4465,13 +4465,13 @@ waôed_urbs
 cou¡
 ){
 
-655 
+656 
 big_ï
 ->
 now_urb
  =
 
-656 
+657 
 	`dli°_shi·
 (
 big_ï
@@ -4479,7 +4479,7 @@ big_ï
 waôed_urbs
 );
 
-658 
+659 
 big_ï
 ->
 now_urb
@@ -4487,25 +4487,25 @@ now_urb
 NULL
 ;
 
-659 
+660 
 aurb
 =
 œ°_aurb
 ;
 
-660 
+661 
 urb
 =&
 œ°_aurb
 ->urb;
 
-661 
+662 
 	`fix_urb_a_Àn
 (
 urb
 );
 
-662 
+663 
 	`dli°_push
 (
 edev
@@ -4515,7 +4515,7 @@ edev
 aurb
 );
 
-663 
+664 
 urb
 ->
 buf„r
@@ -4525,7 +4525,7 @@ aurb
 d©a
 ;
 
-664 
+665 
 urb
 ->
 buf„r_Àngth
@@ -4535,7 +4535,7 @@ aurb
 d©a_Àn
 ;
 
-667 if(
+668 if(
 aurb
 ->
 urb
@@ -4545,7 +4545,7 @@ ty≥
 USBDEVFS_URB_TYPE_BULK
  &&
 
-668 
+669 
 	`is_ö_ï
 (
 aurb
@@ -4555,11 +4555,11 @@ urb
 ídpoöt
 )){
 
-670 
+671 
 	`dbg
 ("bulk in urbÑet");
 
-672 
+673 
 Àn
  = 
 aurb
@@ -4571,13 +4571,13 @@ urb
 a˘uÆ_Àngth
 ;
 
-673 if(
+674 if(
 urb
 ->
 °©us
 ==0
 
-674 &&
+675 &&
 urb
 ->
 a˘uÆ_Àngth
@@ -4585,7 +4585,7 @@ a˘uÆ_Àngth
 buf„r_Àngth
 
 
-675 &&
+676 &&
 Àn
  < 
 aurb
@@ -4593,7 +4593,7 @@ aurb
 d©a_Àn
 ){
 
-677 
+678 
 aurb
 ->
 ªt_Àn
@@ -4601,7 +4601,7 @@ aurb
 Àn
 ;
 
-678 
+679 
 ªt
  = 
 	`åy_submô_sub_urb
@@ -4611,11 +4611,11 @@ edev
 aurb
 );
 
-679 if(
+680 if(
 ªt
 <0){
 
-680 
+681 
 	`dñëe_aurb
 (
 edev
@@ -4623,13 +4623,13 @@ edev
 ¥o˚ssög_urbs
 ,
 
-681 
+682 
 aurb
 ->
 £qnum
 ,0);
 
-688 
+689 
 ï
  = 
 aurb
@@ -4641,7 +4641,7 @@ urb
 USB_ENDPOINT_NUMBER_MASK
 ;
 
-689 
+690 
 big_ï
  = &
 edev
@@ -4651,13 +4651,13 @@ edev
 ï
 ];
 
-690 if(
+691 if(
 big_ï
 ->
 waôed_urbs
  &&
 
-691 
+692 
 big_ï
 ->
 waôed_urbs
@@ -4665,13 +4665,13 @@ waôed_urbs
 cou¡
 ){
 
-692 
+693 
 big_ï
 ->
 now_urb
  =
 
-693 
+694 
 	`dli°_shi·
 (
 big_ï
@@ -4679,7 +4679,7 @@ big_ï
 waôed_urbs
 );
 
-695 
+696 
 big_ï
 ->
 now_urb
@@ -4687,13 +4687,13 @@ now_urb
 NULL
 ;
 
-696 if(
+697 if(
 big_ï
 ->
 now_urb
 ){
 
-697 
+698 
 ªt
  = 
 	`åy_submô_sub_urb
@@ -4701,17 +4701,17 @@ now_urb
 edev
 ,
 
-698 
+699 
 big_ï
 ->
 now_urb
 );
 
-699 if(
+700 if(
 ªt
 <0){
 
-700 
+701 
 	`dñëe_aurb
 (
 edev
@@ -4719,13 +4719,13 @@ edev
 ¥o˚ssög_urbs
 ,
 
-701 
+702 
 aurb
 ->
 £qnum
 ,0);
 
-704 
+705 
 	`dli°_push
 (
 edev
@@ -4733,13 +4733,13 @@ edev
 ¥o˚ssög_urbs
 ,
 
-705 
+706 
 big_ï
 ->
 now_urb
 );
 
-709 
+710 
 is_˘æ
  = (
 urb
@@ -4749,13 +4749,13 @@ ty≥
 USBDEVFS_URB_TYPE_CONTROL
 );
 
-710 
+711 
 	`mem£t
 (&
 pdu_hódî
 , 0, (pdu_header));
 
-712 
+713 
 aurb
 ->
 ªt_Àn
@@ -4765,7 +4765,7 @@ urb
 a˘uÆ_Àngth
 ;
 
-713 
+714 
 	`£tup_ªt_submô_pdu
 (&
 pdu_hódî
@@ -4773,13 +4773,13 @@ pdu_hódî
 aurb
 );
 
-714 if(
+715 if(
 urb
 ->
 °©us
 <0){
 
-715 
+716 
 	`dbg
 ("Áöàîr‹ %d\n", 
 urb
@@ -4787,25 +4787,25 @@ urb
 ídpoöt
 );
 
-721 
+722 
 	`usbù_dump_hódî
 (&
 pdu_hódî
 );
 
-722 
+723 
 	`usbù_hódî_c‹ª˘_ídün
 (&
 pdu_hódî
 , 1);
 
-723 
+724 
 	`dump_urb
 (
 urb
 );
 
-724 
+725 
 iov
 [0].
 iov_ba£
@@ -4813,7 +4813,7 @@ iov_ba£
 pdu_hódî
 ;
 
-725 
+726 
 iov
 [0].
 iov_Àn
@@ -4821,11 +4821,11 @@ iov_Àn
 pdu_hódî
 );
 
-726 
+727 
 ioc
 =1;
 
-727 if(
+728 if(
 	`is_ö_ï
 (
 urb
@@ -4837,7 +4837,7 @@ aurb
 ªt_Àn
 >0){
 
-728 if(
+729 if(
 urb
 ->
 ty≥
@@ -4845,7 +4845,7 @@ ty≥
 USBDEVFS_URB_TYPE_ISO
 ){
 
-729 
+730 
 iov
 [
 ioc
@@ -4859,7 +4859,7 @@ d©a
 is_˘æ
 ?8:0);
 
-730 
+731 
 iov
 [
 ioc
@@ -4871,11 +4871,11 @@ aurb
 ªt_Àn
 ;
 
-731 
+732 
 ioc
 ++;
 
-733 
+734 
 ioc
  = 
 	`¥ï¨e_iso_d©a_iov
@@ -4885,7 +4885,7 @@ urb
 iov
 , ioc);
 
-735 if(
+736 if(
 urb
 ->
 ty≥
@@ -4893,7 +4893,7 @@ ty≥
 USBDEVFS_URB_TYPE_ISO
 ){
 
-736 
+737 
 iov
 [
 ioc
@@ -4903,7 +4903,7 @@ iov_ba£
 ù_iso_descs
 [0];
 
-737 
+738 
 iov
 [
 ioc
@@ -4913,17 +4913,17 @@ iov_Àn
 ù_iso_descs
 [0])
 
-738 * 
+739 * 
 urb
 ->
 numbî_of_∑ckës
 ;
 
-739 
+740 
 off£t
 =0;
 
-740 
+741 
 i
 =0;i<
 urb
@@ -4931,7 +4931,7 @@ urb
 numbî_of_∑ckës
 ;i++){
 
-741 
+742 
 ù_iso_descs
 [
 i
@@ -4941,35 +4941,35 @@ off£t
 	`ht⁄l
 (offset);
 
-742 
+743 
 ù_iso_descs
 [
 i
 ].
 Àngth
  =
-
-743 
-	`ht⁄l
-(
-urb
-->
-iso_‰ame_desc
-[
-i
-].
-Àngth
-);
 
 744 
-ù_iso_descs
+	`ht⁄l
+(
+urb
+->
+iso_‰ame_desc
 [
 i
 ].
-°©us
- =
+Àngth
+);
 
 745 
+ù_iso_descs
+[
+i
+].
+°©us
+ =
+
+746 
 	`ht⁄l
 (
 urb
@@ -4981,7 +4981,7 @@ i
 °©us
 );
 
-746 
+747 
 ù_iso_descs
 [
 i
@@ -4989,7 +4989,7 @@ i
 a˘uÆ_Àngth
  =
 
-747 
+748 
 	`ht⁄l
 (
 urb
@@ -5001,7 +5001,7 @@ i
 a˘uÆ_Àngth
 );
 
-748 
+749 
 off£t
 +=
 urb
@@ -5013,11 +5013,11 @@ i
 Àngth
 ;
 
-750 
+751 
 ioc
 ++;
 
-752 
+753 
 ªt
 =
 	`usbù_£ndv
@@ -5031,15 +5031,15 @@ iov
 ioc
 );
 
-753 if(
+754 if(
 ªt
 <0)
 
-754 
+755 
 	`g_îr‹
 ("can't sendÖdu_header");
 
-755 
+756 
 	`dñëe_aurb
 (
 edev
@@ -5051,11 +5051,11 @@ aurb
 £qnum
 , 0);
 
-758 
+759 
 	}
 }
 
-760 
+761 
 	$°ub_£nd_ªt_u∆ök
 (
 fd
@@ -5065,23 +5065,23 @@ fd
 °©us
 )
 
-762 
+763 
 ªt
 ;
 
-763 
+764 
 usbù_hódî
  
 pdu_hódî
 ;
 
-764 
+765 
 	`mem£t
 (&
 pdu_hódî
 , 0, (pdu_header));
 
-765 
+766 
 pdu_hódî
 .
 ba£
@@ -5089,7 +5089,7 @@ ba£
 £qnum
  = seqnum;
 
-766 
+767 
 pdu_hódî
 .
 ba£
@@ -5099,7 +5099,7 @@ comm™d
 USBIP_RET_UNLINK
 ;
 
-767 
+768 
 pdu_hódî
 .
 u
@@ -5109,13 +5109,13 @@ u
 °©us
  = status;
 
-768 
+769 
 	`usbù_hódî_c‹ª˘_ídün
 (&
 pdu_hódî
 , 1);
 
-769 
+770 
 ªt
  = 
 	`usbù_£nd
@@ -5125,21 +5125,21 @@ fd
 pdu_hódî
 , (pdu_header));
 
-770 i‡(
+771 i‡(
 ªt
  !(
 pdu_hódî
 ))
 
-771 
+772 
 	`g_îr‹
 ("sendÑet");
 
-773 
+774 
 	}
 }
 
-775 
+776 
 ˇn˚l_urb
 (
 dli°
@@ -5151,7 +5151,7 @@ dli°
 fd
 );
 
-777 
+778 
 	$°ub_ªcv_cmd_u∆ök
 (
 usbù_exp‹ãd_devi˚
@@ -5159,21 +5159,21 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-778 
+779 
 usbù_hódî
  *
 pdu
 )
 
-780 
+781 
 ªt
 ;
 
-781 
+782 
 	`show_time
 ();
 
-782 
+783 
 ªt
 =
 	`ˇn˚l_urb
@@ -5183,7 +5183,7 @@ edev
 ¥o˚ssög_urbs
 ,
 
-783 
+784 
 pdu
 ->
 u
@@ -5193,13 +5193,13 @@ cmd_u∆ök
 £qnum
 ,
 
-784 
+785 
 edev
 ->
 usbfs_fd
 );
 
-785 
+786 
 	`°ub_£nd_ªt_u∆ök
 (
 edev
@@ -5215,7 +5215,7 @@ ba£
 ECONNRESET
 );
 
-787 
+788 
 	}
 }
 
@@ -10531,7 +10531,7 @@ cmd_hñp
 	~"usbù_√tw‹k.h
 "
 
-9 
+14 
 	$∑ck_uöt32_t
 (
 ∑ck
@@ -10541,17 +10541,17 @@ uöt32_t
 num
 )
 
-11 
+16 
 uöt32_t
  
 i
 ;
 
-13 i‡(
+18 i‡(
 ∑ck
 )
 
-14 
+19 
 i
  = 
 	`ht⁄l
@@ -10559,7 +10559,7 @@ i
 num
 );
 
-16 
+21 
 i
  = 
 	`¡ohl
@@ -10567,17 +10567,17 @@ i
 num
 );
 
-18 *
+23 *
 num
  = 
 i
 ;
 
-19 
+24 
 	}
 }
 
-21 
+26 
 	$∑ck_uöt16_t
 (
 ∑ck
@@ -10587,17 +10587,17 @@ uöt16_t
 num
 )
 
-23 
+28 
 uöt16_t
  
 i
 ;
 
-25 i‡(
+30 i‡(
 ∑ck
 )
 
-26 
+31 
 i
  = 
 	`ht⁄s
@@ -10605,7 +10605,7 @@ i
 num
 );
 
-28 
+33 
 i
  = 
 	`¡ohs
@@ -10613,17 +10613,17 @@ i
 num
 );
 
-30 *
+35 *
 num
  = 
 i
 ;
 
-31 
+36 
 	}
 }
 
-33 
+38 
 	$∑ck_usb_devi˚
 (
 ∑ck
@@ -10633,7 +10633,7 @@ usb_devi˚
 udev
 )
 
-35 
+40 
 	`∑ck_uöt32_t
 (
 ∑ck
@@ -10643,7 +10643,7 @@ udev
 bu¢um
 );
 
-36 
+41 
 	`∑ck_uöt32_t
 (
 ∑ck
@@ -10653,7 +10653,7 @@ udev
 devnum
 );
 
-37 
+42 
 	`∑ck_uöt32_t
 (
 ∑ck
@@ -10663,7 +10663,7 @@ udev
 •ìd
  );
 
-39 
+44 
 	`∑ck_uöt16_t
 (
 ∑ck
@@ -10673,7 +10673,7 @@ udev
 idVíd‹
  );
 
-40 
+45 
 	`∑ck_uöt16_t
 (
 ∑ck
@@ -10683,7 +10683,7 @@ udev
 idProdu˘
 );
 
-41 
+46 
 	`∑ck_uöt16_t
 (
 ∑ck
@@ -10693,11 +10693,11 @@ udev
 bcdDevi˚
 );
 
-42 
+47 
 	}
 }
 
-44 
+49 
 	$∑ck_usb_öãrÁ˚
 (
 ∑ck
@@ -10707,11 +10707,11 @@ usb_öãrÁ˚
 udev
 )
 
-47 
+52 
 	}
 }
 
-50 
+55 
 ssize_t
  
 	$usbù_xmô
@@ -10727,27 +10727,27 @@ bufÊí
 £ndög
 )
 
-52 
+57 
 ssize_t
  
 tŸÆ
  = 0;
 
-54 i‡(!
+59 i‡(!
 bufÊí
 )
 
-58 
+63 
 ssize_t
  
 nbyãs
 ;
 
-60 i‡(
+65 i‡(
 £ndög
 )
 
-61 
+66 
 nbyãs
  = 
 	`£nd
@@ -10759,7 +10759,7 @@ buff
 bufÊí
 , 0);
 
-63 
+68 
 nbyãs
  = 
 	`ªcv
@@ -10773,11 +10773,11 @@ bufÊí
 MSG_WAITALL
 );
 
-65 i‡(
+70 i‡(
 nbyãs
  <= 0)
 
-68 
+73 
 buff
  = (*Ë((
 öçå_t
@@ -10785,31 +10785,31 @@ buff
 nbyãs
 );
 
-69 
+74 
 bufÊí
  -
 nbyãs
 ;
 
-70 
+75 
 tŸÆ
  +
 nbyãs
 ;
 
-72 } 
+77 } 
 bufÊí
  > 0);
 
-75  
+80  
 tŸÆ
 ;
 
-76 
+81 
 	}
 }
 
-78 
+83 
 ssize_t
  
 	$usbù_ªcv
@@ -10823,7 +10823,7 @@ size_t
 bufÊí
 )
 
-80  
+85  
 	`usbù_xmô
 (
 sockfd
@@ -10833,11 +10833,11 @@ buff
 bufÊí
 , 0);
 
-81 
+86 
 	}
 }
 
-83 
+88 
 ssize_t
  
 	$usbù_xmôv
@@ -10853,7 +10853,7 @@ io_cou¡
 £ndög
 )
 
-85 
+90 
 i
 ,
 Àn
@@ -10861,13 +10861,13 @@ i
 ªt
 ;
 
-86 
+91 
 msghdr
  
 mhdr
 ;
 
-87 
+92 
 i
 =0,
 Àn
@@ -10875,7 +10875,7 @@ i
 io_cou¡
 ;i++)
 
-88 
+93 
 Àn
 +=
 iov
@@ -10885,13 +10885,13 @@ i
 iov_Àn
 ;
 
-89 
+94 
 	`mem£t
 (&
 mhdr
 , 0, (mhdr));
 
-90 
+95 
 mhdr
 .
 msg_iov
@@ -10899,7 +10899,7 @@ msg_iov
 iov
 ;
 
-91 
+96 
 mhdr
 .
 msg_iovÀn
@@ -10907,11 +10907,11 @@ msg_iovÀn
 io_cou¡
 ;
 
-92 if(
+97 if(
 £ndög
 )
 
-93 
+98 
 ªt
 =
 	`£ndmsg
@@ -10921,7 +10921,7 @@ sockfd
 mhdr
 , 0);
 
-95 
+100 
 ªt
 =
 	`ªcvmsg
@@ -10933,37 +10933,37 @@ mhdr
 MSG_WAITALL
 );
 
-96 if(
+101 if(
 ªt
 !=
 Àn
 ){
 
-97 if(
+102 if(
 £ndög
 )
 
-98 
+103 
 	`dbg
 ("why sídmsg d⁄'à£ndáŒ msg out? %d", 
 ªt
 );
 
-100 
+105 
 	`dbg
 ("whyÑecvmsg d⁄'àªcváŒ msg in? %d", 
 ªt
 );
 
-103  
+108  
 ªt
 ;
 
-104 
+109 
 	}
 }
 
-106 
+111 
 ssize_t
  
 	$usbù_£nd
@@ -10977,7 +10977,7 @@ size_t
 bufÊí
 )
 
-108  
+113  
 	`usbù_xmô
 (
 sockfd
@@ -10987,11 +10987,11 @@ buff
 bufÊí
 , 1);
 
-109 
+114 
 	}
 }
 
-111 
+116 
 	$usbù_£nd_›_comm⁄
 (
 sockfd
@@ -11003,21 +11003,21 @@ code
 °©us
 )
 
-113 
+118 
 ªt
 ;
 
-114 
+119 
 ›_comm⁄
  op_common;
 
-116 
+121 
 	`bzîo
 (&
 ›_comm⁄
 , (op_common));
 
-118 
+123 
 ›_comm⁄
 .
 vîsi⁄
@@ -11025,25 +11025,25 @@ vîsi⁄
 USBIP_VERSION
 ;
 
-119 
+124 
 ›_comm⁄
 .
 code
  = code;
 
-120 
+125 
 ›_comm⁄
 .
 °©us
  = status;
 
-122 
+127 
 	`PACK_OP_COMMON
 (1, &
 ›_comm⁄
 );
 
-124 
+129 
 ªt
  = 
 	`usbù_£nd
@@ -11053,19 +11053,19 @@ sockfd
 ›_comm⁄
 , (op_common));
 
-125 i‡(
+130 i‡(
 ªt
  < 0) {
 
-126 
+131 
 	`îr
 ("send op_common");
 
-131 
+136 
 	}
 }
 
-133 
+138 
 	$usbù_ªcv_›_comm⁄
 (
 sockfd
@@ -11075,21 +11075,21 @@ uöt16_t
 code
 )
 
-135 
+140 
 ªt
 ;
 
-136 
+141 
 ›_comm⁄
  op_common;
 
-138 
+143 
 	`bzîo
 (&
 ›_comm⁄
 , (op_common));
 
-140 
+145 
 ªt
  = 
 	`usbù_ªcv
@@ -11099,27 +11099,27 @@ sockfd
 ›_comm⁄
 , (op_common));
 
-141 i‡(
+146 i‡(
 ªt
  < 0) {
 
-142 
+147 
 	`îr
 ("ªcv op_comm⁄, %d", 
 ªt
 );
 
-143 
+148 
 îr
 ;
 
-146 
+151 
 	`PACK_OP_COMMON
 (0, &
 ›_comm⁄
 );
 
-148 i‡(
+153 i‡(
 ›_comm⁄
 .
 vîsi⁄
@@ -11127,7 +11127,7 @@ vîsi⁄
 USBIP_VERSION
 ) {
 
-149 
+154 
 	`îr
 ("vîsi⁄ mism©ch, %d %d", 
 ›_comm⁄
@@ -11137,25 +11137,25 @@ vîsi⁄
 USBIP_VERSION
 );
 
-150 
+155 
 îr
 ;
 
-153 *
+158 *
 code
 ) {
 
-154 
+159 
 OP_UNSPEC
 :
 
-157 i‡(
+162 i‡(
 ›_comm⁄
 .
 code
  != *code) {
 
-158 
+163 
 	`öfo
 ("u√x≥˘edÖdu %d f‹ %d", 
 ›_comm⁄
@@ -11163,11 +11163,11 @@ code
 code
 , *code);
 
-159 
+164 
 îr
 ;
 
-163 i‡(
+168 i‡(
 ›_comm⁄
 .
 °©us
@@ -11175,7 +11175,7 @@ code
 ST_OK
 ) {
 
-164 
+169 
 	`öfo
 ("ªque° faûedáà≥î, %d", 
 ›_comm⁄
@@ -11183,39 +11183,39 @@ ST_OK
 °©us
 );
 
-165 
+170 
 îr
 ;
 
-168 *
+173 *
 code
  = 
 ›_comm⁄
 .code;
 
-171 
+176 
 îr
 :
 
-173 
+178 
 	}
 }
 
-176 
+181 
 	$usbù_£t_ªu£addr
 (
 sockfd
 )
 
-178 c⁄° 
+183 c⁄° 
 vÆ
  = 1;
 
-179 
+184 
 ªt
 ;
 
-181 
+186 
 ªt
  = 
 	`£tsock›t
@@ -11229,37 +11229,37 @@ SO_REUSEADDR
 vÆ
 , (val));
 
-182 i‡(
+187 i‡(
 ªt
  < 0)
 
-183 
+188 
 	`îr
 ("setsockopt SO_REUSEADDR");
 
-185  
+190  
 ªt
 ;
 
-186 
+191 
 	}
 }
 
-188 
+193 
 	$usbù_£t_nodñay
 (
 sockfd
 )
 
-190 c⁄° 
+195 c⁄° 
 vÆ
  = 1;
 
-191 
+196 
 ªt
 ;
 
-193 
+198 
 ªt
  = 
 	`£tsock›t
@@ -11273,37 +11273,37 @@ TCP_NODELAY
 vÆ
 , (val));
 
-194 i‡(
+199 i‡(
 ªt
  < 0)
 
-195 
+200 
 	`îr
 ("setsockopt TCP_NODELAY");
 
-197  
+202  
 ªt
 ;
 
-198 
+203 
 	}
 }
 
-200 
+205 
 	$usbù_£t_kì∑live
 (
 sockfd
 )
 
-202 c⁄° 
+207 c⁄° 
 vÆ
  = 1;
 
-203 
+208 
 ªt
 ;
 
-205 
+210 
 ªt
  = 
 	`£tsock›t
@@ -11317,23 +11317,23 @@ SO_KEEPALIVE
 vÆ
 , (val));
 
-206 i‡(
+211 i‡(
 ªt
  < 0)
 
-207 
+212 
 	`îr
 ("setsockopt SO_KEEPALIVE");
 
-209  
+214  
 ªt
 ;
 
-210 
+215 
 	}
 }
 
-216 
+221 
 	$t˝_c⁄√˘
 (*
 ho°«me
@@ -11341,7 +11341,7 @@ ho°«me
 £rvi˚
 )
 
-218 
+223 
 addröfo
  
 höts
@@ -11351,21 +11351,21 @@ höts
 ªs0
 ;
 
-219 
+224 
 sockfd
 ;
 
-220 
+225 
 îr
 ;
 
-223 
+228 
 	`mem£t
 (&
 höts
 , 0, (hints));
 
-224 
+229 
 höts
 .
 ai_sockty≥
@@ -11373,7 +11373,7 @@ ai_sockty≥
 SOCK_STREAM
 ;
 
-227 
+232 
 îr
  = 
 	`gëaddröfo
@@ -11387,11 +11387,11 @@ höts
 ªs0
 );
 
-228 i‡(
+233 i‡(
 îr
 ) {
 
-229 
+234 
 	`îr
 ("%†%s: %s", 
 ho°«me
@@ -11403,7 +11403,7 @@ ho°«me
 îr
 ));
 
-234 
+239 
 ªs
  = 
 ªs0
@@ -11411,7 +11411,7 @@ ho°«me
 ai_√xt
 ) {
 
-235 
+240 
 hbuf
 [
 NI_MAXHOST
@@ -11421,7 +11421,7 @@ sbuf
 NI_MAXSERV
 ];
 
-237 
+242 
 îr
  = 
 	`gë«meöfo
@@ -11433,7 +11433,7 @@ ai_addr
 ai_addæí
 ,
 
-238 
+243 
 hbuf
 , (hbuf), 
 sbuf
@@ -11443,11 +11443,11 @@ NI_NUMERICHOST
 NI_NUMERICSERV
 );
 
-239 i‡(
+244 i‡(
 îr
 ) {
 
-240 
+245 
 	`îr
 ("%†%s: %s", 
 ho°«me
@@ -11459,7 +11459,7 @@ ho°«me
 îr
 ));
 
-244 
+249 
 	`dbg
 ("åyög %†p‹à%s\n", 
 hbuf
@@ -11467,7 +11467,7 @@ hbuf
 sbuf
 );
 
-246 
+251 
 sockfd
  = 
 	`sockë
@@ -11481,27 +11481,27 @@ ai_sockty≥
 ai_¥Ÿocﬁ
 );
 
-247 i‡(
+252 i‡(
 sockfd
  < 0) {
 
-248 
+253 
 	`îr
 ("socket");
 
-253 
+258 
 	`usbù_£t_nodñay
 (
 sockfd
 );
 
-255 
+260 
 	`usbù_£t_kì∑live
 (
 sockfd
 );
 
-257 
+262 
 îr
  = 
 	`c⁄√˘
@@ -11515,17 +11515,17 @@ ai_addr
 ai_addæí
 );
 
-258 i‡(
+263 i‡(
 îr
  < 0) {
 
-259 
+264 
 	`˛o£
 (
 sockfd
 );
 
-264 
+269 
 	`dbg
 ("c⁄√˘edÅÿ%s:%s", 
 hbuf
@@ -11533,17 +11533,17 @@ hbuf
 sbuf
 );
 
-265 
+270 
 	`‰ìaddröfo
 (
 ªs0
 );
 
-266  
+271  
 sockfd
 ;
 
-270 
+275 
 	`dbg
 ("%s:%s, %s", 
 ho°«me
@@ -11551,13 +11551,13 @@ ho°«me
 £rvi˚
 , "no destinationÅo connectÅo");
 
-271 
+276 
 	`‰ìaddröfo
 (
 ªs0
 );
 
-274 
+279 
 	}
 }
 
@@ -13298,52 +13298,52 @@ HAVE_CONFIG_H
 >
 
 12 
-	~<sysfs/libsysfs.h
->
+	~"libsysfs.h
+"
 
-13 
+14 
 	~<glib.h
 >
 
-14 
+15 
 	~<uni°d.h
 >
 
-15 
+16 
 	~<°dio.h
 >
 
-16 
+17 
 	~<sys/ty≥s.h
 >
 
-17 
+18 
 	~<sys/°©.h
 >
 
-18 
+19 
 	~<f˙é.h
 >
 
-19 
+20 
 	~<°dlib.h
 >
 
-20 
+21 
 	~<time.h
 >
 
-21 
+22 
 	~<î∫o.h
 >
 
-26 
+27 
 	#BUS_ID_SIZE
  20
 
 	)
 
-28 
+29 
 ªad_°rög
 (*
 ∑th
@@ -13353,13 +13353,13 @@ size_t
 Àn
 );
 
-29 
+30 
 ªad_öãgî
 (*
 ∑th
 );
 
-30 
+31 
 gëdevi˚«me
 (*
 busid
@@ -13371,7 +13371,7 @@ size_t
 Àn
 );
 
-31 
+32 
 gëdrivî
 (*
 busid
@@ -13387,19 +13387,19 @@ size_t
 Àn
 );
 
-32 
+33 
 ªad_bNumI¡îÁ˚s
 (*
 busid
 );
 
-33 
+34 
 ªad_bC⁄figuøti⁄VÆue
 (*
 busid
 );
 
-34 
+35 
 wrôe_öãgî
 (*
 ∑th
@@ -13407,7 +13407,7 @@ wrôe_öãgî
 vÆue
 );
 
-35 
+36 
 wrôe_bC⁄figuøti⁄VÆue
 (*
 busid
@@ -13415,13 +13415,13 @@ busid
 c⁄fig
 );
 
-36 
+37 
 ªad_bDevi˚Cœss
 (*
 busid
 );
 
-37 
+38 
 ªadlöe
 (
 sockfd
@@ -13431,7 +13431,7 @@ sockfd
 °æí
 );
 
-38 
+39 
 wrôñöe
 (
 sockfd
@@ -13459,43 +13459,43 @@ HAVE_CONFIG_H
 	~"usbù_√tw‹k.h
 "
 
-13 
+14 
 	~<˘y≥.h
 >
 
-14 
+15 
 	~<sys/ty≥s.h
 >
 
-15 
+16 
 	~<sys/°©.h
 >
 
-16 
+17 
 	~<f˙é.h
 >
 
-17 
-	~<glib.h
->
+19 
+	~"glib-2.0/glib.h
+"
 
-19 c⁄° 
+21 c⁄° 
 	gvîsi⁄
 [] = 
 PACKAGE_STRING
 
 
-24 
+26 
 	$gë_öãrÁ˚_numbî
 (*
 ∑th
 )
 
-26 *
+28 *
 c
 ;
 
-28 
+30 
 c
  = 
 	`°r°r
@@ -13509,81 +13509,81 @@ hc_devi˚
 bus_id
 );
 
-29 i‡(!
+31 i‡(!
 c
 )
 
-31 
+33 
 c
 ++;
 
-34 
+36 
 c
  = 
 	`°rchr
 (c, '/');
 
-35 i‡(!
+37 i‡(!
 c
 )
 
-37 
+39 
 c
 ++;
 
-40 
+42 
 c
  = 
 	`°rchr
 (c, '/');
 
-41 i‡(!
+43 i‡(!
 c
 )
 
-43 
+45 
 c
 ++;
 
-46 
+48 
 c
  = 
 	`°rchr
 (c, ':');
 
-47 i‡(!
+49 i‡(!
 c
 )
 
-49 
+51 
 c
 ++;
 
-52 
+54 
 c
  = 
 	`°rchr
 (c, '.');
 
-53 i‡(!
+55 i‡(!
 c
 )
 
-55 
+57 
 c
 ++;
 
-59  
+61  
 	`©oi
 (
 c
 );
 
-60 
+62 
 	}
 }
 
-63 
+65 
 sysfs_devi˚
  *
 	$›í_usb_öãrÁ˚
@@ -13595,19 +13595,19 @@ udev
 i
 )
 
-65 
+67 
 sysfs_devi˚
  *
 suöf
 ;
 
-66 
+68 
 busid
 [
 SYSFS_BUS_ID_SIZE
 ];
 
-68 
+70 
 	`¢¥ötf
 (
 busid
@@ -13615,7 +13615,7 @@ busid
 SYSFS_BUS_ID_SIZE
 , "%s:%d.%d",
 
-69 
+71 
 udev
 ->
 busid
@@ -13625,7 +13625,7 @@ bC⁄figuøti⁄VÆue
 i
 );
 
-71 
+73 
 suöf
  = 
 	`sysfs_›í_devi˚
@@ -13633,31 +13633,31 @@ suöf
 busid
 );
 
-72 i‡(!
+74 i‡(!
 suöf
 )
 
-73 
+75 
 	`îr
 ("sysfs_›í_devi˚ %s", 
 busid
 );
 
-75  
+77  
 suöf
 ;
 
-76 
+78 
 	}
 }
 
-79 
+81 
 	#MAX_BUFF
  100
 
 	)
 
-80 
+82 
 	$ªc‹d_c⁄√˘i⁄
 (*
 ho°
@@ -13669,33 +13669,33 @@ busid
 rhp‹t
 )
 
-82 
+84 
 fd
 ;
 
-83 
+85 
 ∑th
 [
 PATH_MAX
 +1];
 
-84 
+86 
 buff
 [
 MAX_BUFF
 +1];
 
-85 
+87 
 ªt
 ;
 
-87 
+89 
 	`mkdú
 (
 VHCI_STATE_PATH
 , 0700);
 
-89 
+91 
 	`¢¥ötf
 (
 ∑th
@@ -13707,7 +13707,7 @@ VHCI_STATE_PATH
 rhp‹t
 );
 
-91 
+93 
 fd
  = 
 	`›í
@@ -13723,11 +13723,11 @@ O_TRUNC
 S_IRWXU
 );
 
-92 i‡(
+94 i‡(
 fd
  < 0)
 
-95 
+97 
 	`¢¥ötf
 (
 buff
@@ -13735,7 +13735,7 @@ buff
 MAX_BUFF
 , "%s %s %s\n",
 
-96 
+98 
 ho°
 , 
 p‹t
@@ -13743,7 +13743,7 @@ p‹t
 busid
 );
 
-98 
+100 
 ªt
  = 
 	`wrôe
@@ -13755,7 +13755,7 @@ buff
 	`°æí
 (buff));
 
-99 i‡(
+101 i‡(
 ªt
  !(
 ssize_t
@@ -13765,23 +13765,23 @@ ssize_t
 buff
 )) {
 
-100 
+102 
 	`˛o£
 (
 fd
 );
 
-104 
+106 
 	`˛o£
 (
 fd
 );
 
-107 
+109 
 	}
 }
 
-109 
+111 
 	$ªad_ªc‹d
 (
 rhp‹t
@@ -13793,19 +13793,19 @@ p‹t
 busid
 )
 
-111 
+113 
 FILE
  *
 fûe
 ;
 
-112 
+114 
 ∑th
 [
 PATH_MAX
 +1];
 
-114 
+116 
 	`¢¥ötf
 (
 ∑th
@@ -13817,7 +13817,7 @@ VHCI_STATE_PATH
 rhp‹t
 );
 
-116 
+118 
 fûe
  = 
 	`f›í
@@ -13825,15 +13825,15 @@ fûe
 ∑th
 , "r");
 
-117 i‡(!
+119 i‡(!
 fûe
 ) {
 
-118 
+120 
 	`îr
 ("fopen");
 
-122 
+124 
 	`fsˇnf
 (
 fûe
@@ -13845,17 +13845,17 @@ p‹t
 busid
 );
 
-124 
+126 
 	`f˛o£
 (
 fûe
 );
 
-127 
+129 
 	}
 }
 
-130 
+132 
 	$usbù_vhci_imp‹ãd_devi˚_dump
 (
 usbù_imp‹ãd_devi˚
@@ -13863,33 +13863,33 @@ usbù_imp‹ãd_devi˚
 idev
 )
 
-132 
+134 
 ¥odu˘_«me
 [100];
 
-133 
+135 
 ho°
 [
 NI_MAXHOST
 ] = "unknown host";
 
-134 
+136 
 £rv
 [
 NI_MAXSERV
 ] = "unknownÖort";
 
-135 
+137 
 ªmŸe_busid
 [
 SYSFS_BUS_ID_SIZE
 ];
 
-136 
+138 
 ªt
 ;
 
-138 i‡(
+140 i‡(
 idev
 ->
 °©us
@@ -13899,7 +13899,7 @@ VDEV_ST_NULL
 VDEV_ST_NOTASSIGNED
 ) {
 
-139 
+141 
 	`öfo
 ("P‹à%02d: <%s>", 
 idev
@@ -13911,7 +13911,7 @@ p‹t
 °©us
 ));
 
-143 
+145 
 ªt
  = 
 	`ªad_ªc‹d
@@ -13927,15 +13927,15 @@ ho°
 ªmŸe_busid
 );
 
-144 i‡(
+146 i‡(
 ªt
 )
 
-145 
+147 
 	`îr
 ("red_record");
 
-147 
+149 
 	`öfo
 ("P‹à%02d: <%s>áà%s", 
 idev
@@ -13943,7 +13943,7 @@ idev
 p‹t
 ,
 
-148 
+150 
 	`usbù_°©us_°rög
 (
 idev
@@ -13957,13 +13957,13 @@ udev
 •ìd
 ));
 
-150 
+152 
 	`usbù_«mes_gë_¥odu˘
 (
 ¥odu˘_«me
 , (product_name),
 
-151 
+153 
 idev
 ->
 udev
@@ -13973,17 +13973,17 @@ idVíd‹
 idProdu˘
 );
 
-153 
+155 
 	`öfo
 (" %s", 
 ¥odu˘_«me
 );
 
-155 
+157 
 	`öfo
 ("%10s -> usbip://%s:%s/%s (remote devid %08x (bus/dev %03d/%03d))",
 
-156 
+158 
 idev
 ->
 udev
@@ -13997,13 +13997,13 @@ ho°
 ªmŸe_busid
 ,
 
-157 
+159 
 idev
 ->
 devid
 ,
 
-158 
+160 
 idev
 ->
 bu¢um
@@ -14011,7 +14011,7 @@ bu¢um
 devnum
 );
 
-160 
+162 
 i
 =0; i < 
 idev
@@ -14021,13 +14021,13 @@ udev
 bNumI¡îÁ˚s
 ; i++) {
 
-162 
+164 
 sysfs_devi˚
  *
 suöf
 ;
 
-164 
+166 
 suöf
  = 
 	`›í_usb_öãrÁ˚
@@ -14039,11 +14039,11 @@ udev
 i
 );
 
-165 i‡(!
+167 i‡(!
 suöf
 )
 
-168 
+170 
 	`öfo
 (" %6†u£d by %-17s", 
 suöf
@@ -14053,19 +14053,19 @@ bus_id
 drivî_«me
 );
 
-169 
+171 
 	`sysfs_˛o£_devi˚
 (
 suöf
 );
 
-172 
+174 
 ˛ass_devi˚
  *
 cdev
 ;
 
-174 
+176 
 	`dli°_f‹_óch_d©a
 (
 idev
@@ -14077,7 +14077,7 @@ cdev
 ˛ass_devi˚
 ) {
 
-175 
+177 
 i‚um
  = 
 	`gë_öãrÁ˚_numbî
@@ -14087,13 +14087,13 @@ cdev
 dev∑th
 );
 
-176 i‡(
+178 i‡(
 i‚um
  =
 i
 ) {
 
-177 
+179 
 	`öfo
 (" %s", 
 cdev
@@ -14101,27 +14101,27 @@ cdev
 ˛•©h
 );
 
-181 
+183 
 	}
 }
 
-186 
+188 
 	$quîy_exp‹ãd_devi˚s
 (
 sockfd
 )
 
-188 
+190 
 ªt
 ;
 
-189 
+191 
 ›_devli°_ª∂y
  
 ªp
 ;
 
-190 
+192 
 uöt16_t
  
 code
@@ -14129,13 +14129,13 @@ code
 OP_REP_DEVLIST
 ;
 
-192 
+194 
 	`bzîo
 (&
 ªp
 , (rep));
 
-194 
+196 
 ªt
  = 
 	`usbù_£nd_›_comm⁄
@@ -14145,15 +14145,15 @@ sockfd
 OP_REQ_DEVLIST
 , 0);
 
-195 i‡(
+197 i‡(
 ªt
  < 0) {
 
-196 
+198 
 	`îr
 ("send op_common");
 
-200 
+202 
 ªt
  = 
 	`usbù_ªcv_›_comm⁄
@@ -14163,15 +14163,15 @@ sockfd
 code
 );
 
-201 i‡(
+203 i‡(
 ªt
  < 0) {
 
-202 
+204 
 	`îr
 ("recv op_common");
 
-206 
+208 
 ªt
  = 
 	`usbù_ªcv
@@ -14181,21 +14181,21 @@ sockfd
 ªp
 , (rep));
 
-207 i‡(
+209 i‡(
 ªt
  < 0) {
 
-208 
+210 
 	`îr
 ("recv op_devlist");
 
-212 
+214 
 	`PACK_OP_DEVLIST_REPLY
 (0, &
 ªp
 );
 
-213 
+215 
 	`dbg
 ("exp‹èbÀ %d devi˚s", 
 ªp
@@ -14203,7 +14203,7 @@ sockfd
 ndev
 );
 
-215 
+217 
 i
 =0; i < 
 ªp
@@ -14211,27 +14211,27 @@ i
 ndev
 ; i++) {
 
-216 
+218 
 ¥odu˘_«me
 [100];
 
-217 
+219 
 ˛ass_«me
 [100];
 
-218 
+220 
 usb_devi˚
  
 udev
 ;
 
-220 
+222 
 	`bzîo
 (&
 udev
 , (udev));
 
-222 
+224 
 ªt
  = 
 	`usbù_ªcv
@@ -14241,29 +14241,29 @@ sockfd
 udev
 , (udev));
 
-223 i‡(
+225 i‡(
 ªt
  < 0) {
 
-224 
+226 
 	`îr
 ("ªcv usb_devi˚[%d]", 
 i
 );
 
-227 
+229 
 	`∑ck_usb_devi˚
 (0, &
 udev
 );
 
-229 
+231 
 	`usbù_«mes_gë_¥odu˘
 (
 ¥odu˘_«me
 , (product_name),
 
-230 
+232 
 udev
 .
 idVíd‹
@@ -14271,7 +14271,7 @@ idVíd‹
 idProdu˘
 );
 
-231 
+233 
 	`usbù_«mes_gë_˛ass
 (
 ˛ass_«me
@@ -14281,7 +14281,7 @@ udev
 bDevi˚Cœss
 ,
 
-232 
+234 
 udev
 .
 bDevi˚SubCœss
@@ -14289,7 +14289,7 @@ bDevi˚SubCœss
 bDevi˚PrŸocﬁ
 );
 
-234 
+236 
 	`öfo
 ("%8s: %s", 
 udev
@@ -14299,7 +14299,7 @@ busid
 ¥odu˘_«me
 );
 
-235 
+237 
 	`öfo
 ("%8s: %s", " ", 
 udev
@@ -14307,13 +14307,13 @@ udev
 ∑th
 );
 
-236 
+238 
 	`öfo
 ("%8s: %s", " ", 
 ˛ass_«me
 );
 
-238 
+240 
 j
 =0; j < 
 udev
@@ -14321,13 +14321,13 @@ udev
 bNumI¡îÁ˚s
 ; j++) {
 
-239 
+241 
 usb_öãrÁ˚
  
 uöf
 ;
 
-241 
+243 
 ªt
  = 
 	`usbù_ªcv
@@ -14337,23 +14337,23 @@ sockfd
 uöf
 , (uinf));
 
-242 i‡(
+244 i‡(
 ªt
  < 0) {
 
-243 
+245 
 	`îr
 ("ªcv usb_öãrÁ˚[%d]", 
 j
 );
 
-247 
+249 
 	`∑ck_usb_öãrÁ˚
 (0, &
 uöf
 );
 
-248 
+250 
 	`usbù_«mes_gë_˛ass
 (
 ˛ass_«me
@@ -14363,7 +14363,7 @@ uöf
 bI¡îÁ˚Cœss
 ,
 
-249 
+251 
 uöf
 .
 bI¡îÁ˚SubCœss
@@ -14371,7 +14371,7 @@ bI¡îÁ˚SubCœss
 bI¡îÁ˚PrŸocﬁ
 );
 
-251 
+253 
 	`öfo
 ("%8s: %2d - %s", " ", 
 j
@@ -14379,21 +14379,21 @@ j
 ˛ass_«me
 );
 
-254 
+256 
 	`öfo
 (" ");
 
-257  
+259  
 ªp
 .
 ndev
 ;
 
-258 
+260 
 	}
 }
 
-260 
+262 
 	$imp‹t_devi˚
 (
 sockfd
@@ -14403,47 +14403,47 @@ usb_devi˚
 udev
 )
 
-262 
+264 
 ªt
 ;
 
-263 
+265 
 p‹t
 ;
 
-265 
+267 
 ªt
  = 
 	`usbù_vhci_drivî_›í
 ();
 
-266 i‡(
+268 i‡(
 ªt
  < 0) {
 
-267 
+269 
 	`îr
 ("open vhci_driver");
 
-271 
+273 
 p‹t
  = 
 	`usbù_vhci_gë_‰ì_p‹t
 ();
 
-272 i‡(
+274 i‡(
 p‹t
  < 0) {
 
-273 
+275 
 	`îr
 ("no freeÖort");
 
-274 
+276 
 	`usbù_vhci_drivî_˛o£
 ();
 
-278 
+280 
 ªt
  = 
 	`usbù_vhci_©èch_devi˚
@@ -14457,7 +14457,7 @@ udev
 bu¢um
 ,
 
-279 
+281 
 udev
 ->
 devnum
@@ -14465,31 +14465,31 @@ devnum
 •ìd
 );
 
-280 i‡(
+282 i‡(
 ªt
  < 0) {
 
-281 
+283 
 	`îr
 ("import device");
 
-282 
+284 
 	`usbù_vhci_drivî_˛o£
 ();
 
-286 
+288 
 	`usbù_vhci_drivî_˛o£
 ();
 
-288  
+290  
 p‹t
 ;
 
-289 
+291 
 	}
 }
 
-292 
+294 
 	$quîy_imp‹t_devi˚
 (
 sockfd
@@ -14497,23 +14497,23 @@ sockfd
 busid
 )
 
-294 
+296 
 ªt
 ;
 
-295 
+297 
 ›_imp‹t_ªque°
  
 ªque°
 ;
 
-296 
+298 
 ›_imp‹t_ª∂y
  
 ª∂y
 ;
 
-297 
+299 
 uöt16_t
  
 code
@@ -14521,19 +14521,19 @@ code
 OP_REP_IMPORT
 ;
 
-299 
+301 
 	`bzîo
 (&
 ªque°
 , (request));
 
-300 
+302 
 	`bzîo
 (&
 ª∂y
 , (reply));
 
-304 
+306 
 ªt
  = 
 	`usbù_£nd_›_comm⁄
@@ -14543,15 +14543,15 @@ sockfd
 OP_REQ_IMPORT
 , 0);
 
-305 i‡(
+307 i‡(
 ªt
  < 0) {
 
-306 
+308 
 	`îr
 ("send op_common");
 
-310 
+312 
 	`mem˝y
 (&
 ªque°
@@ -14561,13 +14561,13 @@ busid
 SYSFS_BUS_ID_SIZE
 );
 
-312 
+314 
 	`PACK_OP_IMPORT_REQUEST
 (0, &
 ªque°
 );
 
-314 
+316 
 ªt
  = 
 	`usbù_£nd
@@ -14577,15 +14577,15 @@ sockfd
 ªque°
 , (request));
 
-315 i‡(
+317 i‡(
 ªt
  < 0) {
 
-316 
+318 
 	`îr
 ("send op_import_request");
 
-322 
+324 
 ªt
  = 
 	`usbù_ªcv_›_comm⁄
@@ -14595,15 +14595,15 @@ sockfd
 code
 );
 
-323 i‡(
+325 i‡(
 ªt
  < 0) {
 
-324 
+326 
 	`îr
 ("recv op_common");
 
-328 
+330 
 ªt
  = 
 	`usbù_ªcv
@@ -14613,21 +14613,21 @@ sockfd
 ª∂y
 , (reply));
 
-329 i‡(
+331 i‡(
 ªt
  < 0) {
 
-330 
+332 
 	`îr
 ("recv op_import_reply");
 
-334 
+336 
 	`PACK_OP_IMPORT_REPLY
 (0, &
 ª∂y
 );
 
-338 i‡(
+340 i‡(
 	`°∫cmp
 (
 ª∂y
@@ -14639,7 +14639,7 @@ busid
 SYSFS_BUS_ID_SIZE
 )) {
 
-339 
+341 
 	`îr
 ("ªcv dif„ª¡ busid %s", 
 ª∂y
@@ -14649,7 +14649,7 @@ udev
 busid
 );
 
-345  
+347  
 	`imp‹t_devi˚
 (
 sockfd
@@ -14659,11 +14659,11 @@ sockfd
 udev
 );
 
-346 
+348 
 	}
 }
 
-348 
+350 
 	$©èch_devi˚
 (*
 ho°
@@ -14671,19 +14671,19 @@ ho°
 busid
 )
 
-350 
+352 
 sockfd
 ;
 
-351 
+353 
 ªt
 ;
 
-352 
+354 
 rhp‹t
 ;
 
-354 
+356 
 sockfd
  = 
 	`t˝_c⁄√˘
@@ -14693,15 +14693,15 @@ ho°
 USBIP_PORT_STRING
 );
 
-355 i‡(
+357 i‡(
 sockfd
  < 0) {
 
-356 
+358 
 	`îr
 ("tcp connect");
 
-360 
+362 
 rhp‹t
  = 
 	`quîy_imp‹t_devi˚
@@ -14711,21 +14711,21 @@ sockfd
 busid
 );
 
-361 i‡(
+363 i‡(
 rhp‹t
  < 0) {
 
-362 
+364 
 	`îr
 ("query");
 
-366 
+368 
 	`˛o£
 (
 sockfd
 );
 
-368 
+370 
 ªt
  = 
 	`ªc‹d_c⁄√˘i⁄
@@ -14735,41 +14735,41 @@ ho°
 USBIP_PORT_STRING
 ,
 
-369 
+371 
 busid
 , 
 rhp‹t
 );
 
-370 i‡(
+372 i‡(
 ªt
  < 0)
 
-371 
+373 
 	`îr
 ("record connection");
 
-374 
+376 
 	}
 }
 
-376 
+378 
 	$dëach_p‹t
 (*
 p‹t
 )
 
-378 
+380 
 ªt
 ;
 
-379 
+381 
 uöt8_t
  
 p‹äum
 ;
 
-381 
+383 
 i
 =0; i < 
 	`°æí
@@ -14777,7 +14777,7 @@ i
 p‹t
 ); i++)
 
-382 i‡(!
+384 i‡(!
 	`isdigô
 (
 p‹t
@@ -14785,13 +14785,13 @@ p‹t
 i
 ])) {
 
-383 
+385 
 	`îr
 ("övÆidÖ‹à%s", 
 p‹t
 );
 
-389 
+391 
 p‹äum
  = 
 	`©oi
@@ -14799,49 +14799,49 @@ p‹äum
 p‹t
 );
 
-391 
+393 
 ªt
  = 
 	`usbù_vhci_drivî_›í
 ();
 
-392 i‡(
+394 i‡(
 ªt
  < 0) {
 
-393 
+395 
 	`îr
 ("open vhci_driver");
 
-397 
+399 
 	`usbù_vhci_dëach_devi˚
 (
 p‹äum
 );
 
-399 
+401 
 	`usbù_vhci_drivî_˛o£
 ();
 
-400 
+402 
 	}
 }
 
-402 
+404 
 	$show_exp‹ãd_devi˚s
 (*
 ho°
 )
 
-404 
+406 
 ªt
 ;
 
-405 
+407 
 sockfd
 ;
 
-407 
+409 
 sockfd
  = 
 	`t˝_c⁄√˘
@@ -14851,23 +14851,23 @@ ho°
 USBIP_PORT_STRING
 );
 
-408 i‡(
+410 i‡(
 sockfd
  < 0) {
 
-409 
+411 
 	`öfo
 ("- %†Áûed", 
 ho°
 );
 
-413 
+415 
 	`öfo
 ("- %s", 
 ho°
 );
 
-415 
+417 
 ªt
  = 
 	`quîy_exp‹ãd_devi˚s
@@ -14875,25 +14875,25 @@ ho°
 sockfd
 );
 
-416 i‡(
+418 i‡(
 ªt
  < 0) {
 
-417 
+419 
 	`îr
 ("query");
 
-420 
+422 
 	`˛o£
 (
 sockfd
 );
 
-421 
+423 
 	}
 }
 
-423 
+425 
 	$©èch_exp‹ãd_devi˚s
 (*
 ho°
@@ -14901,17 +14901,17 @@ ho°
 sockfd
 )
 
-425 
+427 
 ªt
 ;
 
-426 
+428 
 ›_devli°_ª∂y
  
 ªp
 ;
 
-427 
+429 
 uöt16_t
  
 code
@@ -14919,13 +14919,13 @@ code
 OP_REP_DEVLIST
 ;
 
-429 
+431 
 	`bzîo
 (&
 ªp
 , (rep));
 
-431 
+433 
 ªt
  = 
 	`usbù_£nd_›_comm⁄
@@ -14935,15 +14935,15 @@ sockfd
 OP_REQ_DEVLIST
 , 0);
 
-432 if(
+434 if(
 ªt
  < 0) {
 
-433 
+435 
 	`îr
 ("send op_common");
 
-437 
+439 
 ªt
  = 
 	`usbù_ªcv_›_comm⁄
@@ -14953,15 +14953,15 @@ sockfd
 code
 );
 
-438 if(
+440 if(
 ªt
  < 0) {
 
-439 
+441 
 	`îr
 ("recv op_common");
 
-443 
+445 
 ªt
  = 
 	`usbù_ªcv
@@ -14971,21 +14971,21 @@ sockfd
 ªp
 , (rep));
 
-444 if(
+446 if(
 ªt
  < 0) {
 
-445 
+447 
 	`îr
 ("recv op_devlist");
 
-449 
+451 
 	`PACK_OP_DEVLIST_REPLY
 (0, &
 ªp
 );
 
-450 
+452 
 	`dbg
 ("exp‹èbÀ %d devi˚s", 
 ªp
@@ -14993,7 +14993,7 @@ sockfd
 ndev
 );
 
-452 
+454 
 i
 =0; i < 
 ªp
@@ -15001,27 +15001,27 @@ i
 ndev
 ; i++) {
 
-453 
+455 
 ¥odu˘_«me
 [100];
 
-454 
+456 
 ˛ass_«me
 [100];
 
-455 
+457 
 usb_devi˚
  
 udev
 ;
 
-457 
+459 
 	`bzîo
 (&
 udev
 , (udev));
 
-459 
+461 
 ªt
  = 
 	`usbù_ªcv
@@ -15031,29 +15031,29 @@ sockfd
 udev
 , (udev));
 
-460 if(
+462 if(
 ªt
  < 0) {
 
-461 
+463 
 	`îr
 ("ªcv usb_devi˚[%d]", 
 i
 );
 
-464 
+466 
 	`∑ck_usb_devi˚
 (0, &
 udev
 );
 
-466 
+468 
 	`usbù_«mes_gë_¥odu˘
 (
 ¥odu˘_«me
 , (product_name),
 
-467 
+469 
 udev
 .
 idVíd‹
@@ -15061,7 +15061,7 @@ idVíd‹
 idProdu˘
 );
 
-468 
+470 
 	`usbù_«mes_gë_˛ass
 (
 ˛ass_«me
@@ -15071,7 +15071,7 @@ udev
 bDevi˚Cœss
 ,
 
-469 
+471 
 udev
 .
 bDevi˚SubCœss
@@ -15079,7 +15079,7 @@ bDevi˚SubCœss
 bDevi˚PrŸocﬁ
 );
 
-471 
+473 
 	`dbg
 ("Aâachög usbÖ‹à%†‰om ho° %†⁄ usbù, wôh devi˚id: %s", 
 udev
@@ -15091,7 +15091,7 @@ ho°
 ¥odu˘_«me
 );
 
-472 
+474 
 	`©èch_devi˚
 (
 ho°
@@ -15101,31 +15101,31 @@ udev
 busid
 );
 
-475  
+477  
 ªp
 .
 ndev
 ;
 
-476 
+478 
 	}
 }
 
-478 
+480 
 	$©èch_devi˚s_Æl
 (*
 ho°
 )
 
-480 
+482 
 ªt
 ;
 
-481 
+483 
 sockfd
 ;
 
-483 
+485 
 sockfd
  = 
 	`t˝_c⁄√˘
@@ -15135,23 +15135,23 @@ ho°
 USBIP_PORT_STRING
 );
 
-484 if(
+486 if(
 sockfd
  < 0) {
 
-485 
+487 
 	`öfo
 ("- %†Áûed", 
 ho°
 );
 
-489 
+491 
 	`öfo
 ("- %s", 
 ho°
 );
 
-491 
+493 
 ªt
  = 
 	`©èch_exp‹ãd_devi˚s
@@ -15161,25 +15161,25 @@ ho°
 sockfd
 );
 
-492 if(
+494 if(
 ªt
  < 0) {
 
-493 
+495 
 	`îr
 ("query");
 
-496 
+498 
 	`˛o£
 (
 sockfd
 );
 
-497 
+499 
 	}
 }
 
-500 c⁄° 
+502 c⁄° 
 	ghñp_mesßge
 [] = "\
 : usbip [options] \n\
@@ -15207,45 +15207,45 @@ sockfd
 -h, --help \n\
 Åhis help. \n";
 
-526 
+528 
 	$show_hñp
 ()
 
-528 
+530 
 	`¥ötf
 ("%s", 
 hñp_mesßge
 );
 
-529 
+531 
 	}
 }
 
-531 
+533 
 	$show_p‹t_°©us
 ()
 
-533 
+535 
 ªt
 ;
 
-534 
+536 
 usbù_imp‹ãd_devi˚
  *
 idev
 ;
 
-536 
+538 
 ªt
  = 
 	`usbù_vhci_drivî_›í
 ();
 
-537 i‡(
+539 i‡(
 ªt
  < 0)
 
-541 
+543 
 i
  = 0; i < 
 vhci_drivî
@@ -15253,7 +15253,7 @@ vhci_drivî
 ≈‹ts
 ; i++) {
 
-542 
+544 
 idev
  = &
 vhci_drivî
@@ -15261,95 +15261,95 @@ vhci_drivî
 i
 ];
 
-544 
+546 
 	`usbù_vhci_imp‹ãd_devi˚_dump
 (
 idev
 );
 
-547 
+549 
 	`usbù_vhci_drivî_˛o£
 ();
 
-548 
+550 
 	}
 }
 
-550 
+552 
 	#_GNU_SOURCE
 
 
 	)
 
-551 
+553 
 	~<gë›t.h
 >
 
-552 c⁄° 
+554 c⁄° 
 ›ti⁄
  
 	gl⁄g›ts
 [] = {
 
-553 {"©èch", 
+555 {"©èch", 
 no_¨gumít
 , 
 NULL
 , 'a'},
 
-554 {"©èchÆl", 
+556 {"©èchÆl", 
 no_¨gumít
 , 
 NULL
 , 'x'},
 
-555 {"dëach", 
+557 {"dëach", 
 no_¨gumít
 , 
 NULL
 , 'd'},
 
-556 {"p‹t", 
+558 {"p‹t", 
 no_¨gumít
 , 
 NULL
 , 'p'},
 
-557 {"li°", 
+559 {"li°", 
 no_¨gumít
 , 
 NULL
 , 'l'},
 
-558 {"vîsi⁄", 
+560 {"vîsi⁄", 
 no_¨gumít
 , 
 NULL
 , 'v'},
 
-559 {"hñp", 
+561 {"hñp", 
 no_¨gumít
 , 
 NULL
 , 'h'},
 
-560 {"debug", 
+562 {"debug", 
 no_¨gumít
 , 
 NULL
 , 'D'},
 
-561 {"sy¶og", 
+563 {"sy¶og", 
 no_¨gumít
 , 
 NULL
 , 'S'},
 
-562 {
+564 {
 NULL
 , 0, NULL, 0}
 
-565 
+567 
 	$maö
 (
 ¨gc
@@ -15357,55 +15357,55 @@ NULL
 ¨gv
 [])
 
-567 
+569 
 ªt
 ;
 
-570 
+572 
 cmd_©èch
  = 1,
 
-571 
+573 
 cmd_©èchÆl
 ,
 
-572 
+574 
 cmd_dëach
 ,
 
-573 
+575 
 cmd_p‹t
 ,
 
-574 
+576 
 cmd_li°
 ,
 
-575 
+577 
 cmd_hñp
 ,
 
-576 
+578 
 cmd_vîsi⁄
 
 
-577 } 
+579 } 
 cmd
  = 0;
 
-579 
+581 
 usbù_u£_°dîr
  = 1;
 
-581 i‡(
+583 i‡(
 	`gëeuid
 () != 0)
 
-582 
+584 
 	`g_w¨nög
 ("runningÇon-root?");
 
-584 
+586 
 ªt
  = 
 	`usbù_«mes_öô
@@ -15413,23 +15413,23 @@ usbù_u£_°dîr
 USBIDS_FILE
 );
 
-585 i‡(
+587 i‡(
 ªt
 )
 
-586 
+588 
 	`îr
 ("open usb.ids");
 
-589 
+591 
 c
 ;
 
-590 
+592 
 ödex
  = 0;
 
-592 
+594 
 c
  = 
 	`gë›t_l⁄g
@@ -15443,143 +15443,143 @@ l⁄g›ts
 ödex
 );
 
-594 i‡(
+596 i‡(
 c
  == -1)
 
-597 
+599 
 c
 ) {
 
-599 i‡(!
+601 i‡(!
 cmd
 )
 
-600 
+602 
 cmd
  = 
 cmd_©èch
 ;
 
-602 
+604 
 cmd
  = 
 cmd_hñp
 ;
 
-605 i‡(!
+607 i‡(!
 cmd
 )
 
-606 
+608 
 cmd
  = 
 cmd_dëach
 ;
 
-608 
+610 
 cmd
  = 
 cmd_hñp
 ;
 
-611 i‡(!
+613 i‡(!
 cmd
 )
 
-612 
+614 
 cmd
  = 
 cmd_p‹t
 ;
 
-613 
+615 
 cmd
  = 
 cmd_hñp
 ;
 
-616 i‡(!
+618 i‡(!
 cmd
 )
 
-617 
+619 
 cmd
  = 
 cmd_li°
 ;
 
-619 
+621 
 cmd
  = 
 cmd_hñp
 ;
 
-622 i‡(!
+624 i‡(!
 cmd
 )
 
-623 
+625 
 cmd
  = 
 cmd_vîsi⁄
 ;
 
-625 
+627 
 cmd
  = 
 cmd_hñp
 ;
 
-628 if(!
+630 if(!
 cmd
 )
 
-629 
+631 
 cmd
  = 
 cmd_©èchÆl
 ;
 
-631 
+633 
 cmd
  = 
 cmd_hñp
 ;
 
-634 
+636 
 cmd
  = 
 cmd_hñp
 ;
 
-637 
+639 
 usbù_u£_debug
  = 1;
 
-640 
+642 
 usbù_u£_sy¶og
  = 1;
 
-646 
+648 
 	`îr
 ("getopt");
 
-651 
+653 
 cmd
 ) {
 
-652 
+654 
 cmd_©èch
 :
 
-653 i‡(
+655 i‡(
 ›töd
  =
 ¨gc
  - 2)
 
-654 
+656 
 	`©èch_devi˚
 (
 ¨gv
@@ -15587,21 +15587,21 @@ cmd_©èch
 ›töd
 ],árgv[optind+1]);
 
-656 
+658 
 	`show_hñp
 ();
 
-658 
+660 
 cmd_dëach
 :
 
-659 
+661 
 ›töd
  < 
 ¨gc
 )
 
-660 
+662 
 	`dëach_p‹t
 (
 ¨gv
@@ -15609,25 +15609,25 @@ cmd_dëach
 ›töd
 ++]);
 
-662 
+664 
 cmd_p‹t
 :
 
-663 
+665 
 	`show_p‹t_°©us
 ();
 
-665 
+667 
 cmd_li°
 :
 
-666 
+668 
 ›töd
  < 
 ¨gc
 )
 
-667 
+669 
 	`show_exp‹ãd_devi˚s
 (
 ¨gv
@@ -15635,17 +15635,17 @@ cmd_li°
 ›töd
 ++]);
 
-669 
+671 
 cmd_©èchÆl
 :
 
-670 
+672 
 ›töd
  < 
 ¨gc
 )
 
-671 
+673 
 	`©èch_devi˚s_Æl
 (
 ¨gv
@@ -15653,33 +15653,33 @@ cmd_©èchÆl
 ›töd
 ++]);
 
-673 
+675 
 cmd_vîsi⁄
 :
 
-674 
+676 
 	`¥ötf
 ("%s\n", 
 vîsi⁄
 );
 
-676 
+678 
 cmd_hñp
 :
 
-677 
+679 
 	`show_hñp
 ();
 
-680 
+682 
 	`show_hñp
 ();
 
-684 
+686 
 	`usbù_«mes_‰ì
 ();
 
-687 
+689 
 	}
 }
 
@@ -19661,51 +19661,51 @@ n
 
 	@lib/stub_driver.c
 
-5 
+1 
 	~<sys/ty≥s.h
 >
 
-6 
+2 
 	~<sys/°©.h
 >
 
-7 
+3 
 	~<f˙é.h
 >
 
-8 
+4 
 	~<sys/io˘l.h
 >
 
-9 
+5 
 	~"usbù.h
 "
 
-11 
+7 
 usbù_°ub_drivî
  *
 	g°ub_drivî
 ;
 
-13 
+9 
 	$usbù_exp‹ãd_devi˚_dñëe
 (*
 dev
 )
 
-15 
+11 
 usbù_exp‹ãd_devi˚
  *
 edev
  =
 
-16 (
+12 (
 usbù_exp‹ãd_devi˚
  *Ë
 dev
 ;
 
-17 
+13 
 	`‰ì
 (
 edev
@@ -19713,7 +19713,7 @@ edev
 ïs
 [0]);
 
-18 
+14 
 	`‰ì
 (
 edev
@@ -19721,7 +19721,7 @@ edev
 ïs
 [1]);
 
-19 
+15 
 	`‰ì
 (
 edev
@@ -19729,7 +19729,7 @@ edev
 desc
 );
 
-20 
+16 
 	`sysfs_˛o£_devi˚
 (
 edev
@@ -19737,17 +19737,17 @@ edev
 sudev
 );
 
-21 
+17 
 	`‰ì
 (
 dev
 );
 
-22 
+18 
 	}
 }
 
-24 * 
+20 * 
 	$£ek_to_√xt_desc
 (*
 buf
@@ -19759,33 +19759,33 @@ size
 off£t
 ,
 
-25 
+21 
 ty≥
 )
 
-27 
+23 
 o
 =*
 off£t
 ;
 
-28 
+24 
 usb_des¸ùt‹_hódî
  * 
 desc
 ;
 
-29 if(
+25 if(
 o
 >=
 size
 )
 
-30  
+26  
 NULL
 ;
 
-32 if(
+28 if(
 o
  + (*
 desc
@@ -19793,11 +19793,11 @@ desc
 size
 )
 
-33  
+29  
 NULL
 ;
 
-34 
+30 
 desc
  = 
 buf
@@ -19805,7 +19805,7 @@ buf
 o
 ;
 
-35 if(
+32 if(
 desc
 ->
 bLígth
@@ -19815,11 +19815,11 @@ o
 size
 )
 
-36  
+33  
 NULL
 ;
 
-37 
+34 
 o
 +=
 desc
@@ -19827,7 +19827,7 @@ desc
 bLígth
 ;
 
-38 if(
+35 if(
 desc
 ->
 bDes¸ùt‹Ty≥
@@ -19835,21 +19835,21 @@ bDes¸ùt‹Ty≥
 ty≥
 ){
 
-39 *
+36 *
 off£t
  = 
 o
 ;
 
-40  
+37  
 desc
 ;
 
-43 
+40 
 	}
 }
 
-45 
+42 
 	$add_ï_öfo
 (
 usbù_exp‹ãd_devi˚
@@ -19857,7 +19857,7 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-46 
+43 
 usb_ídpoöt_des¸ùt‹
  *
 ï
@@ -19867,23 +19867,23 @@ usb_ídpoöt_des¸ùt‹
 Æãr
 )
 
-48 
+45 
 ö
 , 
 addr
 ;
 
-49 
+46 
 usbù_ídpoöt
  * 
 uï
 ;
 
-50 
+47 
 mu…
 ;
 
-51 if(
+50 if(
 ï
 ->
 bEndpoötAddªss
@@ -19891,15 +19891,15 @@ bEndpoötAddªss
 USB_ENDPOINT_DIR_MASK
 )
 
-52 
+51 
 ö
 =1;
 
-54 
+53 
 ö
 =0;
 
-55 
+54 
 addr
 =
 ï
@@ -19909,15 +19909,15 @@ bEndpoötAddªss
 USB_ENDPOINT_NUMBER_MASK
 ;
 
-56 if(
+55 if(
 addr
 ==0){
 
-57 
+56 
 	`îr
 ("err,ÉpáddrÉqual zero?");
 
-60 
+59 
 uï
 =&
 edev
@@ -19929,17 +19929,17 @@ edev
 addr
 ];
 
-61 if(
+60 if(
 uï
 ->
 vÆid
 ){
 
-62 
+61 
 	`îr
 ("duplicateÉndpoints");
 
-65 
+64 
 uï
 ->
 ty≥
@@ -19951,25 +19951,25 @@ bmAâribuãs
 USB_ENDPOINT_XFERTYPE_MASK
 ;
 
-66 
+65 
 uï
 ->
 vÆid
  = 1;
 
-67 
+66 
 uï
 ->
 ötf
  = intf;
 
-68 
+67 
 uï
 ->
 Æãr
  =álter;
 
-69 
+68 
 uï
 ->
 max_∑ckë_size
@@ -19979,7 +19979,7 @@ max_∑ckë_size
 wMaxPackëSize
 ;
 
-70 if(
+69 if(
 uï
 ->
 ty≥
@@ -19987,7 +19987,7 @@ ty≥
 USB_ENDPOINT_XFER_ISOC
  &&
 
-71 
+70 
 edev
 ->
 udev
@@ -19997,7 +19997,7 @@ udev
 USB_SPEED_HIGH
 ){
 
-72 
+71 
 mu…
  = 1 + ((
 uï
@@ -20005,13 +20005,13 @@ uï
 max_∑ckë_size
  >> 11) & 0x03);
 
-73 
+72 
 uï
 ->
 max_∑ckë_size
  &= 0x7ff;
 
-74 
+73 
 uï
 ->
 max_∑ckë_size
@@ -20019,11 +20019,11 @@ max_∑ckë_size
 mu…
 ;
 
-77 
+76 
 	}
 }
 
-79 
+78 
 	$∑r£_öãrÁ˚
 (
 usbù_exp‹ãd_devi˚
@@ -20031,13 +20031,13 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-80 
+79 
 usb_c⁄fig_des¸ùt‹
  *
 c⁄fig
 ,
 
-81 *
+80 *
 off£t
 , 
 öt_num
@@ -20045,23 +20045,23 @@ off£t
 Æãr
 )
 
-83 
+82 
 usb_öãrÁ˚_des¸ùt‹
  * 
 ötf
 ;
 
-84 
+83 
 usb_ídpoöt_des¸ùt‹
  * 
 ï
 ;
 
-85 
+84 
 i
 ;
 
-87 
+86 
 ötf
  = 
 	`£ek_to_√xt_desc
@@ -20071,33 +20071,33 @@ c⁄fig
 wTŸÆLígth
 ,
 
-88 
+87 
 off£t
 , 
 USB_DT_INTERFACE
 );
 
-89 if(
+88 if(
 NULL
 ==
 ötf
 ){
 
-90 
+89 
 	`îr
 ("can't get intf");
 
-93 if(
+92 if(
 ötf
 ->
 bLígth
 !=(*intf)){
 
-94 
+93 
 	`îr
 ("intf sizeÉrror");
 
-97 if(
+96 if(
 ötf
 ->
 bI¡îÁ˚Numbî
@@ -20105,7 +20105,7 @@ bI¡îÁ˚Numbî
 öt_num
 )
 
-99 if(
+98 if(
 ötf
 ->
 bA…î«ãSëtög
@@ -20113,7 +20113,7 @@ bA…î«ãSëtög
 Æãr
 )
 
-101 if(
+100 if(
 ötf
 ->
 bI¡îÁ˚Numbî
@@ -20121,7 +20121,7 @@ bI¡îÁ˚Numbî
 öt_num
 ){
 
-102 
+101 
 	`îr
 ("ˇn'àfound i¡ %dá…î %d\n",
 öt_num
@@ -20129,7 +20129,7 @@ bI¡îÁ˚Numbî
 Æãr
 );
 
-105 if(
+104 if(
 ötf
 ->
 bA…î«ãSëtög
@@ -20137,7 +20137,7 @@ bA…î«ãSëtög
 Æãr
 ){
 
-106 
+105 
 	`îr
 ("ˇn'àfound i¡ %dá…î %d\n",
 öt_num
@@ -20145,7 +20145,7 @@ bA…î«ãSëtög
 Æãr
 );
 
-111 
+110 
 i
 =0;i<
 ötf
@@ -20153,7 +20153,7 @@ i
 bNumEndpoöts
 ;i++){
 
-112 
+111 
 ï
  = 
 	`£ek_to_√xt_desc
@@ -20163,23 +20163,23 @@ c⁄fig
 wTŸÆLígth
 ,
 
-113 
+112 
 off£t
 , 
 USB_DT_ENDPOINT
 );
 
-114 if(
+113 if(
 NULL
 ==
 ï
 ){
 
-115 
+114 
 	`îr
 ("can't getÉp");
 
-118 if(
+117 if(
 ï
 ->
 bLígth
@@ -20187,7 +20187,7 @@ bLígth
 USB_DT_ENDPOINT_SIZE
 &&
 
-119 
+118 
 ï
 ->
 bLígth
@@ -20195,11 +20195,11 @@ bLígth
 USB_DT_ENDPOINT_AUDIO_SIZE
 ){
 
-120 
+119 
 	`îr
 ("ep sizeÉrror");
 
-123 
+122 
 	`add_ï_öfo
 (
 edev
@@ -20211,11 +20211,11 @@ edev
 Æãr
 );
 
-126 
+125 
 	}
 }
 
-128 
+127 
 	$∑r£_c⁄fig
 (
 usbù_exp‹ãd_devi˚
@@ -20223,23 +20223,23 @@ usbù_exp‹ãd_devi˚
 edev
 ,
 
-129 
+128 
 usb_c⁄fig_des¸ùt‹
  * 
 c⁄fig
 )
 
-131 
+130 
 i
 , 
 ªt
 ;
 
-132 
+131 
 off£t
 =0;
 
-133 
+132 
 i
 =0; i< 
 c⁄fig
@@ -20247,7 +20247,7 @@ c⁄fig
 bNumI¡îÁ˚s
 ; i++){
 
-134 
+133 
 ªt
 =
 	`∑r£_öãrÁ˚
@@ -20257,21 +20257,21 @@ edev
 c⁄fig
 ,
 
-135 &
+134 &
 off£t
 , 
 i
 , 0);
 
-136 if(
+135 if(
 ªt
 <0)
 
-140 
+139 
 	}
 }
 
-142 
+141 
 	$usb_∑r£_desc
 (
 usbù_exp‹ãd_devi˚
@@ -20281,39 +20281,39 @@ edev
 c⁄fig_v
 )
 
-145 
+144 
 	#MAX_DESC_SIZE
  65536
 
 	)
 
-146 * 
+145 * 
 buf
 ;
 
-147 
+146 
 ªt
 , 
 i
 ;
 
-148 
+147 
 off£t
 =0;
 
-149 
+148 
 usb_devi˚_des¸ùt‹
  * 
 dev
 ;
 
-150 
+149 
 usb_c⁄fig_des¸ùt‹
  * 
 c⁄fig
 ;
 
-151 
+150 
 buf
  = 
 	`mÆloc
@@ -20321,19 +20321,19 @@ buf
 MAX_DESC_SIZE
 );
 
-152 if(
+151 if(
 NULL
 ==
 buf
 ){
 
-153 
+152 
 	`îr
 ("ˇn'àmÆlo¯%d byã†%m\n", 
 MAX_DESC_SIZE
 );
 
-156 
+155 
 ªt
 =
 	`ªad
@@ -20347,37 +20347,37 @@ buf
 MAX_DESC_SIZE
 );
 
-157 if(
+156 if(
 ªt
 <0){
 
-158 
+157 
 	`îr
 ("can'tÑead desc %m");
 
-159 
+158 
 	`‰ì
 (
 buf
 );
 
-162 if(
+161 if(
 ªt
 ==(
 MAX_DESC_SIZE
 )){
 
-163 
+162 
 	`îr
 ("too big desc");
 
-164 
+163 
 	`‰ì
 (
 buf
 );
 
-167 
+166 
 edev
 ->
 desc
@@ -20389,7 +20389,7 @@ buf
 ªt
 );
 
-168 if(
+167 if(
 NULL
  =
 edev
@@ -20397,17 +20397,17 @@ edev
 desc
 ){
 
-169 
+168 
 	`îr
 ("can'tÑealloc");
 
-170 
+169 
 	`‰ì
 (
 buf
 );
 
-173 
+172 
 edev
 ->
 desc_Àn
@@ -20415,7 +20415,7 @@ desc_Àn
 ªt
 ;
 
-174 
+173 
 buf
  = 
 edev
@@ -20423,7 +20423,7 @@ edev
 desc
 ;
 
-175 
+174 
 dev
  = (
 usb_devi˚_des¸ùt‹
@@ -20431,17 +20431,17 @@ usb_devi˚_des¸ùt‹
 buf
 ;
 
-176 if(
+175 if(
 ªt
 <(*
 dev
 )){
 
-177 
+176 
 	`îr
 ("too short desc");
 
-180 if(
+179 if(
 c⁄fig_v
  < 1 || c⁄fig_v > 
 dev
@@ -22011,11 +22011,23 @@ HAVE_CONFIG_H
 	~"vhci_drivî.h
 "
 
-15 #ifde‡
+16 
+	~"libsysfs.h
+"
+
+17 
+	~"ch9.h
+"
+
+18 
+	~"dli°.h
+"
+
+20 #ifde‡
 DMALLOC
 
 
-16 
+21 
 	~<dmÆloc.h
 >
 
@@ -23263,127 +23275,123 @@ _USBIP_COMMON_H
 
 	)
 
-8 
+9 
+	~"libsysfs.h
+"
+
+13 
 	~<uni°d.h
 >
 
-9 
+14 
 	~<°döt.h
 >
 
-10 
+15 
 	~<sy¶og.h
 >
 
-11 
+16 
 	~<î∫o.h
 >
 
-12 
+17 
 	~<°dio.h
 >
 
-13 
+18 
 	~<°rög.h
 >
 
-14 
+19 
 	~<°dlib.h
 >
 
-15 
+20 
 	~<°rögs.h
 >
 
-17 
-	~<sysfs/libsysfs.h
->
-
-18 
+24 
 	~<√tdb.h
 >
 
-19 
+25 
 	~<sys/sockë.h
 >
 
-20 
+26 
 	~<sys/io˘l.h
 >
 
-21 
+27 
 	~<löux/usbdevi˚_fs.h
 >
 
-22 
-	~<löux/usb/ch9.h
->
-
-24 #i‚de‡
+30 #i‚de‡
 USBIDS_FILE
 
 
-25 
+31 
 	#USBIDS_FILE
  "/u§/sh¨e/hwd©a/usb.ids"
 
 	)
 
-28 #i‚de‡
+34 #i‚de‡
 VHCI_STATE_PATH
 
 
-29 
+35 
 	#VHCI_STATE_PATH
  "/v¨/run/vhci_hcd"
 
 	)
 
-33 
+39 
 	eusbù_devi˚_°©us
 {
 
-35 
+41 
 	mSDEV_ST_AVAILABLE
  = 0x01,
 
-37 
+43 
 	mSDEV_ST_USED
 ,
 
-39 
+45 
 	mSDEV_ST_ERROR
 ,
 
-42 
+48 
 	mVDEV_ST_NULL
 ,
 
-44 
+50 
 	mVDEV_ST_NOTASSIGNED
 ,
 
-45 
+51 
 	mVDEV_ST_USED
 ,
 
-46 
+52 
 	mVDEV_ST_ERROR
 
 
-49 
+55 
 usbù_u£_sy¶og
 ;
 
-50 
+56 
 usbù_u£_°dîr
 ;
 
-51 
+57 
 usbù_u£_debug
  ;
 
-53 
+59 
 	#îr
 (
 fmt
@@ -23391,11 +23399,11 @@ fmt
 ¨gs
 ...) do { \
 
-54 i‡(
+60 i‡(
 usbù_u£_sy¶og
 ) { \
 
-55 
+61 
 	`sy¶og
 (
 LOG_ERR
@@ -23403,7 +23411,7 @@ LOG_ERR
 fmt
  "\n", \
 
-56 
+62 
 __FILE__
 , 
 __LINE__
@@ -23413,11 +23421,11 @@ __FUNCTION__
 ¨gs
 ); \
 
-58 i‡(
+64 i‡(
 usbù_u£_°dîr
 ) { \
 
-59 
+65 
 	`Ârötf
 (
 °dîr
@@ -23425,7 +23433,7 @@ usbù_u£_°dîr
 fmt
  "\n", \
 
-60 
+66 
 __FILE__
 , 
 __LINE__
@@ -23435,11 +23443,11 @@ __FUNCTION__
 ¨gs
 ); \
 
-62 } 0)
+68 } 0)
 
 	)
 
-64 
+70 
 	#nŸi˚
 (
 fmt
@@ -23447,11 +23455,11 @@ fmt
 ¨gs
 ...) do { \
 
-65 i‡(
+71 i‡(
 usbù_u£_sy¶og
 ) { \
 
-66 
+72 
 	`sy¶og
 (
 LOG_DEBUG
@@ -23461,11 +23469,11 @@ fmt
 ¨gs
 ); \
 
-68 i‡(
+74 i‡(
 usbù_u£_°dîr
 ) { \
 
-69 
+75 
 	`Ârötf
 (
 °dîr
@@ -23475,11 +23483,11 @@ fmt
 ¨gs
 ); \
 
-71 } 0)
+77 } 0)
 
 	)
 
-73 
+79 
 	#öfo
 (
 fmt
@@ -23487,11 +23495,11 @@ fmt
 ¨gs
 ...) do { \
 
-74 i‡(
+80 i‡(
 usbù_u£_sy¶og
 ) { \
 
-75 
+81 
 	`sy¶og
 (
 LOG_DEBUG
@@ -23501,11 +23509,11 @@ fmt
 ¨gs
 ); \
 
-77 i‡(
+83 i‡(
 usbù_u£_°dîr
 ) { \
 
-78 
+84 
 	`Ârötf
 (
 °dîr
@@ -23515,11 +23523,11 @@ fmt
 ¨gs
 ); \
 
-80 } 0)
+86 } 0)
 
 	)
 
-82 
+88 
 	#dbg
 (
 fmt
@@ -23527,15 +23535,15 @@ fmt
 ¨gs
 ...) do { \
 
-83 i‡(
+89 i‡(
 usbù_u£_debug
 ) { \
 
-84 i‡(
+90 i‡(
 usbù_u£_sy¶og
 ) { \
 
-85 
+91 
 	`sy¶og
 (
 LOG_DEBUG
@@ -23543,7 +23551,7 @@ LOG_DEBUG
 fmt
 , \
 
-86 
+92 
 __FILE__
 , 
 __LINE__
@@ -23553,11 +23561,11 @@ __FUNCTION__
 ¨gs
 ); \
 
-88 i‡(
+94 i‡(
 usbù_u£_°dîr
 ) { \
 
-89 
+95 
 	`Ârötf
 (
 °dîr
@@ -23565,7 +23573,7 @@ usbù_u£_°dîr
 fmt
  "\n", \
 
-90 
+96 
 __FILE__
 , 
 __LINE__
@@ -23575,11 +23583,11 @@ __FUNCTION__
 ¨gs
 ); \
 
-93 } 0)
+99 } 0)
 
 	)
 
-96 
+102 
 	#BUG
 (Ëdÿ{ 
 	`îr
@@ -23589,135 +23597,135 @@ __FUNCTION__
 
 	)
 
-99 
+105 
 	susb_öãrÁ˚
  {
 
-100 
+106 
 uöt8_t
  
 	mbI¡îÁ˚Cœss
 ;
 
-101 
+107 
 uöt8_t
  
 	mbI¡îÁ˚SubCœss
 ;
 
-102 
+108 
 uöt8_t
  
 	mbI¡îÁ˚PrŸocﬁ
 ;
 
-103 
+109 
 uöt8_t
  
 	m∑ddög
 ;
 
-104 } 
+110 } 
 __©åibuã__
 ((
 ∑cked
 ));
 
-106 
+112 
 	susb_devi˚
  {
 
-107 
+113 
 	m∑th
 [
 SYSFS_PATH_MAX
 ];
 
-108 
+114 
 	mbusid
 [
 SYSFS_BUS_ID_SIZE
 ];
 
-110 
+116 
 uöt32_t
  
 	mbu¢um
 ;
 
-111 
+117 
 uöt32_t
  
 	mdevnum
 ;
 
-112 
+118 
 uöt32_t
  
 	m•ìd
 ;
 
-114 
+120 
 uöt16_t
  
 	midVíd‹
 ;
 
-115 
+121 
 uöt16_t
  
 	midProdu˘
 ;
 
-116 
+122 
 uöt16_t
  
 	mbcdDevi˚
 ;
 
-118 
+124 
 uöt8_t
  
 	mbDevi˚Cœss
 ;
 
-119 
+125 
 uöt8_t
  
 	mbDevi˚SubCœss
 ;
 
-120 
+126 
 uöt8_t
  
 	mbDevi˚PrŸocﬁ
 ;
 
-121 
+127 
 uöt8_t
  
 	mbC⁄figuøti⁄VÆue
 ;
 
-122 
+128 
 uöt8_t
  
 	mbNumC⁄figuøti⁄s
 ;
 
-123 
+129 
 uöt8_t
  
 	mbNumI¡îÁ˚s
 ;
 
-124 } 
+130 } 
 __©åibuã__
 ((
 ∑cked
 ));
 
-126 
+132 
 	#to_°rög
 (
 s
@@ -23725,7 +23733,7 @@ s
 
 	)
 
-128 
+134 
 	#UNUSED
 (
 s
@@ -23733,19 +23741,19 @@ s
 	)
 s
 
-130 
+136 
 dump_usb_öãrÁ˚
 (
 usb_öãrÁ˚
  *);
 
-131 
+137 
 dump_usb_devi˚
 (
 usb_devi˚
  *);
 
-132 
+138 
 ªad_usb_devi˚
 (
 sysfs_devi˚
@@ -23757,7 +23765,7 @@ usb_devi˚
 udev
 );
 
-133 
+139 
 ªad_©å_vÆue
 (
 sysfs_devi˚
@@ -23769,7 +23777,7 @@ dev
 f‹m©
 );
 
-134 
+140 
 ªad_usb_öãrÁ˚
 (
 usb_devi˚
@@ -23783,13 +23791,13 @@ usb_öãrÁ˚
 uöf
 );
 
-136 c⁄° *
+142 c⁄° *
 usbù_•ìd_°rög
 (
 num
 );
 
-137 c⁄° *
+143 c⁄° *
 usbù_°©us_°rög
 (
 öt32_t
@@ -23797,15 +23805,15 @@ usbù_°©us_°rög
 °©us
 );
 
-139 
+145 
 usbù_«mes_öô
 (*);
 
-140 
+146 
 usbù_«mes_‰ì
 ();
 
-141 
+147 
 usbù_«mes_gë_¥odu˘
 (*
 buff
@@ -23821,7 +23829,7 @@ víd‹
 ¥odu˘
 );
 
-142 
+148 
 usbù_«mes_gë_˛ass
 (*
 buff
@@ -29751,2609 +29759,283 @@ __˝lu•lus
 __√ed_gë›t
 
 
-	@/usr/include/linux/usb/ch9.h
+	@/usr/include/glib-2.0/glib.h
 
-33 #i‚de‡
-__LINUX_USB_CH9_H
+27 #i‚de‡
+__G_LIB_H__
 
 
-34 
-	#__LINUX_USB_CH9_H
+28 
+	#__G_LIB_H__
 
 
 	)
 
-36 
-	~<löux/ty≥s.h
+30 
+	#__GLIB_H_INSIDE__
+
+
+	)
+
+32 
+	~<glib/gÆloˇ.h
 >
 
-48 
-	#USB_DIR_OUT
- 0
+33 
+	~<glib/g¨øy.h
+>
+
+34 
+	~<glib/gasyncqueue.h
+>
+
+35 
+	~<glib/g©omic.h
+>
+
+36 
+	~<glib/gbackåa˚.h
+>
+
+37 
+	~<glib/gba£64.h
+>
+
+38 
+	~<glib/gbôlock.h
+>
+
+39 
+	~<glib/gbookm¨kfûe.h
+>
+
+40 
+	~<glib/gˇche.h
+>
+
+41 
+	~<glib/gchecksum.h
+>
+
+42 
+	~<glib/gcom∂ëi⁄.h
+>
+
+43 
+	~<glib/gc⁄vît.h
+>
+
+44 
+	~<glib/gd©a£t.h
+>
+
+45 
+	~<glib/gd©e.h
+>
+
+46 
+	~<glib/gd©ëime.h
+>
+
+47 
+	~<glib/gdú.h
+>
+
+48 
+	~<glib/gîr‹.h
+>
+
+49 
+	~<glib/gfûeutûs.h
+>
+
+50 
+	~<glib/ghash.h
+>
+
+51 
+	~<glib/ghmac.h
+>
+
+52 
+	~<glib/ghook.h
+>
+
+53 
+	~<glib/gho°utûs.h
+>
+
+54 
+	~<glib/gioch™√l.h
+>
+
+55 
+	~<glib/gkeyfûe.h
+>
+
+56 
+	~<glib/gli°.h
+>
+
+57 
+	~<glib/gma¸os.h
+>
+
+58 
+	~<glib/gmaö.h
+>
+
+59 
+	~<glib/gm≠≥dfûe.h
+>
+
+60 
+	~<glib/gm¨kup.h
+>
+
+61 
+	~<glib/gmem.h
+>
+
+62 
+	~<glib/gmesßges.h
+>
+
+63 
+	~<glib/gnode.h
+>
+
+64 
+	~<glib/g›ti⁄.h
+>
+
+65 
+	~<glib/g∑âîn.h
+>
+
+66 
+	~<glib/gpﬁl.h
+>
+
+67 
+	~<glib/g¥imes.h
+>
+
+68 
+	~<glib/gqs‹t.h
+>
+
+69 
+	~<glib/gqu¨k.h
+>
 
-	)
+70 
+	~<glib/gqueue.h
+>
 
-49 
-	#USB_DIR_IN
- 0x80
+71 
+	~<glib/gønd.h
+>
 
-	)
+72 
+	~<glib/gªl.h
+>
 
-54 
-	#USB_TYPE_MASK
- (0x03 << 5)
+73 
+	~<glib/gªgex.h
+>
 
-	)
+74 
+	~<glib/gsˇ¬î.h
+>
 
-55 
-	#USB_TYPE_STANDARD
- (0x00 << 5)
+75 
+	~<glib/g£quí˚.h
+>
 
-	)
+76 
+	~<glib/gshñl.h
+>
 
-56 
-	#USB_TYPE_CLASS
- (0x01 << 5)
+77 
+	~<glib/g¶i˚.h
+>
 
-	)
+78 
+	~<glib/g¶i°.h
+>
 
-57 
-	#USB_TYPE_VENDOR
- (0x02 << 5)
+79 
+	~<glib/g•awn.h
+>
 
-	)
+80 
+	~<glib/g°rfuncs.h
+>
 
-58 
-	#USB_TYPE_RESERVED
- (0x03 << 5)
+81 
+	~<glib/g°rög.h
+>
 
-	)
+82 
+	~<glib/gã°utûs.h
+>
 
-63 
-	#USB_RECIP_MASK
- 0x1f
+83 
+	~<glib/gthªad.h
+>
 
-	)
+84 
+	~<glib/gthªadpoﬁ.h
+>
 
-64 
-	#USB_RECIP_DEVICE
- 0x00
+85 
+	~<glib/gtimî.h
+>
 
-	)
+86 
+	~<glib/gtimez⁄e.h
+>
 
-65 
-	#USB_RECIP_INTERFACE
- 0x01
+87 
+	~<glib/gåì.h
+>
 
-	)
+88 
+	~<glib/gty≥s.h
+>
 
-66 
-	#USB_RECIP_ENDPOINT
- 0x02
+89 
+	~<glib/gunicode.h
+>
 
-	)
+90 
+	~<glib/gurifuncs.h
+>
 
-67 
-	#USB_RECIP_OTHER
- 0x03
+91 
+	~<glib/gutûs.h
+>
 
-	)
+92 
+	~<glib/gv¨ü¡ty≥.h
+>
 
-69 
-	#USB_RECIP_PORT
- 0x04
+93 
+	~<glib/gv¨ü¡.h
+>
 
-	)
+94 #ifde‡
+G_PLATFORM_WIN32
 
-70 
-	#USB_RECIP_RPIPE
- 0x05
 
-	)
+95 
+	~<glib/gwö32.h
+>
 
-79 
-	#USB_REQ_GET_STATUS
- 0x00
+98 #unde‡
+__GLIB_H_INSIDE__
 
-	)
-
-80 
-	#USB_REQ_CLEAR_FEATURE
- 0x01
-
-	)
-
-81 
-	#USB_REQ_SET_FEATURE
- 0x03
-
-	)
-
-82 
-	#USB_REQ_SET_ADDRESS
- 0x05
-
-	)
-
-83 
-	#USB_REQ_GET_DESCRIPTOR
- 0x06
-
-	)
-
-84 
-	#USB_REQ_SET_DESCRIPTOR
- 0x07
-
-	)
-
-85 
-	#USB_REQ_GET_CONFIGURATION
- 0x08
-
-	)
-
-86 
-	#USB_REQ_SET_CONFIGURATION
- 0x09
-
-	)
-
-87 
-	#USB_REQ_GET_INTERFACE
- 0x0A
-
-	)
-
-88 
-	#USB_REQ_SET_INTERFACE
- 0x0B
-
-	)
-
-89 
-	#USB_REQ_SYNCH_FRAME
- 0x0C
-
-	)
-
-91 
-	#USB_REQ_SET_ENCRYPTION
- 0x0D
-
-	)
-
-92 
-	#USB_REQ_GET_ENCRYPTION
- 0x0E
-
-	)
-
-93 
-	#USB_REQ_RPIPE_ABORT
- 0x0E
-
-	)
-
-94 
-	#USB_REQ_SET_HANDSHAKE
- 0x0F
-
-	)
-
-95 
-	#USB_REQ_RPIPE_RESET
- 0x0F
-
-	)
-
-96 
-	#USB_REQ_GET_HANDSHAKE
- 0x10
-
-	)
-
-97 
-	#USB_REQ_SET_CONNECTION
- 0x11
-
-	)
-
-98 
-	#USB_REQ_SET_SECURITY_DATA
- 0x12
-
-	)
-
-99 
-	#USB_REQ_GET_SECURITY_DATA
- 0x13
-
-	)
-
-100 
-	#USB_REQ_SET_WUSB_DATA
- 0x14
-
-	)
-
-101 
-	#USB_REQ_LOOPBACK_DATA_WRITE
- 0x15
-
-	)
-
-102 
-	#USB_REQ_LOOPBACK_DATA_READ
- 0x16
-
-	)
-
-103 
-	#USB_REQ_SET_INTERFACE_DS
- 0x17
-
-	)
-
-116 
-	#USB_DEVICE_SELF_POWERED
- 0
-
-	)
-
-117 
-	#USB_DEVICE_REMOTE_WAKEUP
- 1
-
-	)
-
-118 
-	#USB_DEVICE_TEST_MODE
- 2
-
-	)
-
-119 
-	#USB_DEVICE_BATTERY
- 2
-
-	)
-
-120 
-	#USB_DEVICE_B_HNP_ENABLE
- 3
-
-	)
-
-121 
-	#USB_DEVICE_WUSB_DEVICE
- 3
-
-	)
-
-122 
-	#USB_DEVICE_A_HNP_SUPPORT
- 4
-
-	)
-
-123 
-	#USB_DEVICE_A_ALT_HNP_SUPPORT
- 5
-
-	)
-
-124 
-	#USB_DEVICE_DEBUG_MODE
- 6
-
-	)
-
-130 
-	#TEST_J
- 1
-
-	)
-
-131 
-	#TEST_K
- 2
-
-	)
-
-132 
-	#TEST_SE0_NAK
- 3
-
-	)
-
-133 
-	#TEST_PACKET
- 4
-
-	)
-
-134 
-	#TEST_FORCE_EN
- 5
-
-	)
-
-140 
-	#USB_DEVICE_U1_ENABLE
- 48
-
-	)
-
-141 
-	#USB_DEVICE_U2_ENABLE
- 49
-
-	)
-
-142 
-	#USB_DEVICE_LTM_ENABLE
- 50
-
-	)
-
-143 
-	#USB_INTRF_FUNC_SUSPEND
- 0
-
-	)
-
-145 
-	#USB_INTR_FUNC_SUSPEND_OPT_MASK
- 0xFF00
-
-	)
-
-147 
-	#USB_ENDPOINT_HALT
- 0
-
-	)
-
-150 
-	#USB_DEV_STAT_U1_ENABLED
- 2
-
-	)
-
-151 
-	#USB_DEV_STAT_U2_ENABLED
- 3
-
-	)
-
-152 
-	#USB_DEV_STAT_LTM_ENABLED
- 4
-
-	)
-
-171 
-	susb_˘æªque°
- {
-
-172 
-__u8
- 
-	mbReque°Ty≥
-;
-
-173 
-__u8
- 
-	mbReque°
-;
-
-174 
-__À16
- 
-	mwVÆue
-;
-
-175 
-__À16
- 
-	mwIndex
-;
-
-176 
-__À16
- 
-	mwLígth
-;
-
-177 } 
-__©åibuã__
- ((
-∑cked
-));
-
-197 
-	#USB_DT_DEVICE
- 0x01
-
-	)
-
-198 
-	#USB_DT_CONFIG
- 0x02
-
-	)
-
-199 
-	#USB_DT_STRING
- 0x03
-
-	)
-
-200 
-	#USB_DT_INTERFACE
- 0x04
-
-	)
-
-201 
-	#USB_DT_ENDPOINT
- 0x05
-
-	)
-
-202 
-	#USB_DT_DEVICE_QUALIFIER
- 0x06
-
-	)
-
-203 
-	#USB_DT_OTHER_SPEED_CONFIG
- 0x07
-
-	)
-
-204 
-	#USB_DT_INTERFACE_POWER
- 0x08
-
-	)
-
-206 
-	#USB_DT_OTG
- 0x09
-
-	)
-
-207 
-	#USB_DT_DEBUG
- 0x0a
-
-	)
-
-208 
-	#USB_DT_INTERFACE_ASSOCIATION
- 0x0b
-
-	)
-
-210 
-	#USB_DT_SECURITY
- 0x0c
-
-	)
-
-211 
-	#USB_DT_KEY
- 0x0d
-
-	)
-
-212 
-	#USB_DT_ENCRYPTION_TYPE
- 0x0e
-
-	)
-
-213 
-	#USB_DT_BOS
- 0x0f
-
-	)
-
-214 
-	#USB_DT_DEVICE_CAPABILITY
- 0x10
-
-	)
-
-215 
-	#USB_DT_WIRELESS_ENDPOINT_COMP
- 0x11
-
-	)
-
-216 
-	#USB_DT_WIRE_ADAPTER
- 0x21
-
-	)
-
-217 
-	#USB_DT_RPIPE
- 0x22
-
-	)
-
-218 
-	#USB_DT_CS_RADIO_CONTROL
- 0x23
-
-	)
-
-220 
-	#USB_DT_PIPE_USAGE
- 0x24
-
-	)
-
-222 
-	#USB_DT_SS_ENDPOINT_COMP
- 0x30
-
-	)
-
-228 
-	#USB_DT_CS_DEVICE
- (
-USB_TYPE_CLASS
- | 
-USB_DT_DEVICE
-)
-
-	)
-
-229 
-	#USB_DT_CS_CONFIG
- (
-USB_TYPE_CLASS
- | 
-USB_DT_CONFIG
-)
-
-	)
-
-230 
-	#USB_DT_CS_STRING
- (
-USB_TYPE_CLASS
- | 
-USB_DT_STRING
-)
-
-	)
-
-231 
-	#USB_DT_CS_INTERFACE
- (
-USB_TYPE_CLASS
- | 
-USB_DT_INTERFACE
-)
-
-	)
-
-232 
-	#USB_DT_CS_ENDPOINT
- (
-USB_TYPE_CLASS
- | 
-USB_DT_ENDPOINT
-)
-
-	)
-
-235 
-	susb_des¸ùt‹_hódî
- {
-
-236 
-__u8
- 
-	mbLígth
-;
-
-237 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-238 } 
-__©åibuã__
- ((
-∑cked
-));
-
-244 
-	susb_devi˚_des¸ùt‹
- {
-
-245 
-__u8
- 
-	mbLígth
-;
-
-246 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-248 
-__À16
- 
-	mbcdUSB
-;
-
-249 
-__u8
- 
-	mbDevi˚Cœss
-;
-
-250 
-__u8
- 
-	mbDevi˚SubCœss
-;
-
-251 
-__u8
- 
-	mbDevi˚PrŸocﬁ
-;
-
-252 
-__u8
- 
-	mbMaxPackëSize0
-;
-
-253 
-__À16
- 
-	midVíd‹
-;
-
-254 
-__À16
- 
-	midProdu˘
-;
-
-255 
-__À16
- 
-	mbcdDevi˚
-;
-
-256 
-__u8
- 
-	miM™uÁ˘uªr
-;
-
-257 
-__u8
- 
-	miProdu˘
-;
-
-258 
-__u8
- 
-	miSîülNumbî
-;
-
-259 
-__u8
- 
-	mbNumC⁄figuøti⁄s
-;
-
-260 } 
-__©åibuã__
- ((
-∑cked
-));
-
-262 
-	#USB_DT_DEVICE_SIZE
- 18
-
-	)
-
-270 
-	#USB_CLASS_PER_INTERFACE
- 0
-
-	)
-
-271 
-	#USB_CLASS_AUDIO
- 1
-
-	)
-
-272 
-	#USB_CLASS_COMM
- 2
-
-	)
-
-273 
-	#USB_CLASS_HID
- 3
-
-	)
-
-274 
-	#USB_CLASS_PHYSICAL
- 5
-
-	)
-
-275 
-	#USB_CLASS_STILL_IMAGE
- 6
-
-	)
-
-276 
-	#USB_CLASS_PRINTER
- 7
-
-	)
-
-277 
-	#USB_CLASS_MASS_STORAGE
- 8
-
-	)
-
-278 
-	#USB_CLASS_HUB
- 9
-
-	)
-
-279 
-	#USB_CLASS_CDC_DATA
- 0x0a
-
-	)
-
-280 
-	#USB_CLASS_CSCID
- 0x0b
-
-	)
-
-281 
-	#USB_CLASS_CONTENT_SEC
- 0x0d
-
-	)
-
-282 
-	#USB_CLASS_VIDEO
- 0x0e
-
-	)
-
-283 
-	#USB_CLASS_WIRELESS_CONTROLLER
- 0xe0
-
-	)
-
-284 
-	#USB_CLASS_MISC
- 0xef
-
-	)
-
-285 
-	#USB_CLASS_APP_SPEC
- 0x„
-
-	)
-
-286 
-	#USB_CLASS_VENDOR_SPEC
- 0xff
-
-	)
-
-288 
-	#USB_SUBCLASS_VENDOR_SPEC
- 0xff
-
-	)
-
-300 
-	susb_c⁄fig_des¸ùt‹
- {
-
-301 
-__u8
- 
-	mbLígth
-;
-
-302 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-304 
-__À16
- 
-	mwTŸÆLígth
-;
-
-305 
-__u8
- 
-	mbNumI¡îÁ˚s
-;
-
-306 
-__u8
- 
-	mbC⁄figuøti⁄VÆue
-;
-
-307 
-__u8
- 
-	miC⁄figuøti⁄
-;
-
-308 
-__u8
- 
-	mbmAâribuãs
-;
-
-309 
-__u8
- 
-	mbMaxPowî
-;
-
-310 } 
-__©åibuã__
- ((
-∑cked
-));
-
-312 
-	#USB_DT_CONFIG_SIZE
- 9
-
-	)
-
-315 
-	#USB_CONFIG_ATT_ONE
- (1 << 7Ë
-
-	)
-
-316 
-	#USB_CONFIG_ATT_SELFPOWER
- (1 << 6Ë
-
-	)
-
-317 
-	#USB_CONFIG_ATT_WAKEUP
- (1 << 5Ë
-
-	)
-
-318 
-	#USB_CONFIG_ATT_BATTERY
- (1 << 4Ë
-
-	)
-
-323 
-	susb_°rög_des¸ùt‹
- {
-
-324 
-__u8
- 
-	mbLígth
-;
-
-325 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-327 
-__À16
- 
-	mwD©a
-[1];
-
-328 } 
-__©åibuã__
- ((
-∑cked
-));
-
-337 
-	susb_öãrÁ˚_des¸ùt‹
- {
-
-338 
-__u8
- 
-	mbLígth
-;
-
-339 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-341 
-__u8
- 
-	mbI¡îÁ˚Numbî
-;
-
-342 
-__u8
- 
-	mbA…î«ãSëtög
-;
-
-343 
-__u8
- 
-	mbNumEndpoöts
-;
-
-344 
-__u8
- 
-	mbI¡îÁ˚Cœss
-;
-
-345 
-__u8
- 
-	mbI¡îÁ˚SubCœss
-;
-
-346 
-__u8
- 
-	mbI¡îÁ˚PrŸocﬁ
-;
-
-347 
-__u8
- 
-	miI¡îÁ˚
-;
-
-348 } 
-__©åibuã__
- ((
-∑cked
-));
-
-350 
-	#USB_DT_INTERFACE_SIZE
- 9
-
-	)
-
-355 
-	susb_ídpoöt_des¸ùt‹
- {
-
-356 
-__u8
- 
-	mbLígth
-;
-
-357 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-359 
-__u8
- 
-	mbEndpoötAddªss
-;
-
-360 
-__u8
- 
-	mbmAâribuãs
-;
-
-361 
-__À16
- 
-	mwMaxPackëSize
-;
-
-362 
-__u8
- 
-	mbI¡îvÆ
-;
-
-366 
-__u8
- 
-	mbRe‰esh
-;
-
-367 
-__u8
- 
-	mbSynchAddªss
-;
-
-368 } 
-__©åibuã__
- ((
-∑cked
-));
-
-370 
-	#USB_DT_ENDPOINT_SIZE
- 7
-
-	)
-
-371 
-	#USB_DT_ENDPOINT_AUDIO_SIZE
- 9
-
-	)
-
-377 
-	#USB_ENDPOINT_NUMBER_MASK
- 0x0‡
-
-	)
-
-378 
-	#USB_ENDPOINT_DIR_MASK
- 0x80
-
-	)
-
-380 
-	#USB_ENDPOINT_SYNCTYPE
- 0x0c
-
-	)
-
-381 
-	#USB_ENDPOINT_SYNC_NONE
- (0 << 2)
-
-	)
-
-382 
-	#USB_ENDPOINT_SYNC_ASYNC
- (1 << 2)
-
-	)
-
-383 
-	#USB_ENDPOINT_SYNC_ADAPTIVE
- (2 << 2)
-
-	)
-
-384 
-	#USB_ENDPOINT_SYNC_SYNC
- (3 << 2)
-
-	)
-
-386 
-	#USB_ENDPOINT_XFERTYPE_MASK
- 0x03
-
-	)
-
-387 
-	#USB_ENDPOINT_XFER_CONTROL
- 0
-
-	)
-
-388 
-	#USB_ENDPOINT_XFER_ISOC
- 1
-
-	)
-
-389 
-	#USB_ENDPOINT_XFER_BULK
- 2
-
-	)
-
-390 
-	#USB_ENDPOINT_XFER_INT
- 3
-
-	)
-
-391 
-	#USB_ENDPOINT_MAX_ADJUSTABLE
- 0x80
-
-	)
-
-401 
-__ölöe__
- 
-	$usb_ídpoöt_num
-(c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-403  
-ïd
-->
-bEndpoötAddªss
- & 
-USB_ENDPOINT_NUMBER_MASK
-;
-
-404 
-	}
-}
-
-413 
-__ölöe__
- 
-	$usb_ídpoöt_ty≥
-(c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-415  
-ïd
-->
-bmAâribuãs
- & 
-USB_ENDPOINT_XFERTYPE_MASK
-;
-
-416 
-	}
-}
-
-424 
-__ölöe__
- 
-	$usb_ídpoöt_dú_ö
-(c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-426  ((
-ïd
-->
-bEndpoötAddªss
- & 
-USB_ENDPOINT_DIR_MASK
-Ë=
-USB_DIR_IN
-);
-
-427 
-	}
-}
-
-435 
-__ölöe__
- 
-	$usb_ídpoöt_dú_out
-(
-
-436 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-438  ((
-ïd
-->
-bEndpoötAddªss
- & 
-USB_ENDPOINT_DIR_MASK
-Ë=
-USB_DIR_OUT
-);
-
-439 
-	}
-}
-
-447 
-__ölöe__
- 
-	$usb_ídpoöt_x„r_bulk
-(
-
-448 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-450  ((
-ïd
-->
-bmAâribuãs
- & 
-USB_ENDPOINT_XFERTYPE_MASK
-) ==
-
-451 
-USB_ENDPOINT_XFER_BULK
-);
-
-452 
-	}
-}
-
-460 
-__ölöe__
- 
-	$usb_ídpoöt_x„r_c⁄åﬁ
-(
-
-461 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-463  ((
-ïd
-->
-bmAâribuãs
- & 
-USB_ENDPOINT_XFERTYPE_MASK
-) ==
-
-464 
-USB_ENDPOINT_XFER_CONTROL
-);
-
-465 
-	}
-}
-
-474 
-__ölöe__
- 
-	$usb_ídpoöt_x„r_öt
-(
-
-475 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-477  ((
-ïd
-->
-bmAâribuãs
- & 
-USB_ENDPOINT_XFERTYPE_MASK
-) ==
-
-478 
-USB_ENDPOINT_XFER_INT
-);
-
-479 
-	}
-}
-
-488 
-__ölöe__
- 
-	$usb_ídpoöt_x„r_isoc
-(
-
-489 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-491  ((
-ïd
-->
-bmAâribuãs
- & 
-USB_ENDPOINT_XFERTYPE_MASK
-) ==
-
-492 
-USB_ENDPOINT_XFER_ISOC
-);
-
-493 
-	}
-}
-
-502 
-__ölöe__
- 
-	$usb_ídpoöt_is_bulk_ö
-(
-
-503 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-505  
-	`usb_ídpoöt_x„r_bulk
-(
-ïd
-Ë&& 
-	`usb_ídpoöt_dú_ö
-(epd);
-
-506 
-	}
-}
-
-515 
-__ölöe__
- 
-	$usb_ídpoöt_is_bulk_out
-(
-
-516 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-518  
-	`usb_ídpoöt_x„r_bulk
-(
-ïd
-Ë&& 
-	`usb_ídpoöt_dú_out
-(epd);
-
-519 
-	}
-}
-
-528 
-__ölöe__
- 
-	$usb_ídpoöt_is_öt_ö
-(
-
-529 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-531  
-	`usb_ídpoöt_x„r_öt
-(
-ïd
-Ë&& 
-	`usb_ídpoöt_dú_ö
-(epd);
-
-532 
-	}
-}
-
-541 
-__ölöe__
- 
-	$usb_ídpoöt_is_öt_out
-(
-
-542 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-544  
-	`usb_ídpoöt_x„r_öt
-(
-ïd
-Ë&& 
-	`usb_ídpoöt_dú_out
-(epd);
-
-545 
-	}
-}
-
-554 
-__ölöe__
- 
-	$usb_ídpoöt_is_isoc_ö
-(
-
-555 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-557  
-	`usb_ídpoöt_x„r_isoc
-(
-ïd
-Ë&& 
-	`usb_ídpoöt_dú_ö
-(epd);
-
-558 
-	}
-}
-
-567 
-__ölöe__
- 
-	$usb_ídpoöt_is_isoc_out
-(
-
-568 c⁄° 
-usb_ídpoöt_des¸ùt‹
- *
-ïd
-)
-
-570  
-	`usb_ídpoöt_x„r_isoc
-(
-ïd
-Ë&& 
-	`usb_ídpoöt_dú_out
-(epd);
-
-571 
-	}
-}
-
-576 
-	susb_ss_ï_comp_des¸ùt‹
- {
-
-577 
-__u8
- 
-	mbLígth
-;
-
-578 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-580 
-__u8
- 
-	mbMaxBur°
-;
-
-581 
-__u8
- 
-	mbmAâribuãs
-;
-
-582 
-__À16
- 
-	mwByãsPîI¡îvÆ
-;
-
-583 } 
-__©åibuã__
- ((
-∑cked
-));
-
-585 
-	#USB_DT_SS_EP_COMP_SIZE
- 6
-
-	)
-
-588 
-__ölöe__
- 
-
-589 
-	$usb_ss_max_°ªams
-(c⁄° 
-usb_ss_ï_comp_des¸ùt‹
- *
-comp
-)
-
-591 
-max_°ªams
-;
-
-593 i‡(!
-comp
-)
-
-596 
-max_°ªams
- = 
-comp
-->
-bmAâribuãs
- & 0x1f;
-
-598 i‡(!
-max_°ªams
-)
-
-601 
-max_°ªams
- = 1 << max_streams;
-
-603  
-max_°ªams
-;
-
-604 
-	}
-}
-
-607 
-	#USB_SS_MULT
-(
-p
-Ë(1 + (’Ë& 0x3))
-
-	)
-
-612 
-	susb_quÆifõr_des¸ùt‹
- {
-
-613 
-__u8
- 
-	mbLígth
-;
-
-614 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-616 
-__À16
- 
-	mbcdUSB
-;
-
-617 
-__u8
- 
-	mbDevi˚Cœss
-;
-
-618 
-__u8
- 
-	mbDevi˚SubCœss
-;
-
-619 
-__u8
- 
-	mbDevi˚PrŸocﬁ
-;
-
-620 
-__u8
- 
-	mbMaxPackëSize0
-;
-
-621 
-__u8
- 
-	mbNumC⁄figuøti⁄s
-;
-
-622 
-__u8
- 
-	mbRESERVED
-;
-
-623 } 
-__©åibuã__
- ((
-∑cked
-));
-
-629 
-	susb_Ÿg_des¸ùt‹
- {
-
-630 
-__u8
- 
-	mbLígth
-;
-
-631 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-633 
-__u8
- 
-	mbmAâribuãs
-;
-
-634 } 
-__©åibuã__
- ((
-∑cked
-));
-
-637 
-	#USB_OTG_SRP
- (1 << 0)
-
-	)
-
-638 
-	#USB_OTG_HNP
- (1 << 1Ë
-
-	)
-
-643 
-	susb_debug_des¸ùt‹
- {
-
-644 
-__u8
- 
-	mbLígth
-;
-
-645 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-648 
-__u8
- 
-	mbDebugInEndpoöt
-;
-
-649 
-__u8
- 
-	mbDebugOutEndpoöt
-;
-
-650 } 
-__©åibuã__
-((
-∑cked
-));
-
-655 
-	susb_öãrÁ˚_assoc_des¸ùt‹
- {
-
-656 
-__u8
- 
-	mbLígth
-;
-
-657 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-659 
-__u8
- 
-	mbFú°I¡îÁ˚
-;
-
-660 
-__u8
- 
-	mbI¡îÁ˚Cou¡
-;
-
-661 
-__u8
- 
-	mbFun˘i⁄Cœss
-;
-
-662 
-__u8
- 
-	mbFun˘i⁄SubCœss
-;
-
-663 
-__u8
- 
-	mbFun˘i⁄PrŸocﬁ
-;
-
-664 
-__u8
- 
-	miFun˘i⁄
-;
-
-665 } 
-__©åibuã__
- ((
-∑cked
-));
-
-673 
-	susb_£curôy_des¸ùt‹
- {
-
-674 
-__u8
- 
-	mbLígth
-;
-
-675 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-677 
-__À16
- 
-	mwTŸÆLígth
-;
-
-678 
-__u8
- 
-	mbNumEn¸y±i⁄Ty≥s
-;
-
-679 } 
-__©åibuã__
-((
-∑cked
-));
-
-686 
-	susb_key_des¸ùt‹
- {
-
-687 
-__u8
- 
-	mbLígth
-;
-
-688 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-690 
-__u8
- 
-	mtTKID
-[3];
-
-691 
-__u8
- 
-	mbRe£rved
-;
-
-692 
-__u8
- 
-	mbKeyD©a
-[0];
-
-693 } 
-__©åibuã__
-((
-∑cked
-));
-
-698 
-	susb_í¸y±i⁄_des¸ùt‹
- {
-
-699 
-__u8
- 
-	mbLígth
-;
-
-700 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-702 
-__u8
- 
-	mbEn¸y±i⁄Ty≥
-;
-
-703 
-	#USB_ENC_TYPE_UNSECURE
- 0
-
-	)
-
-704 
-	#USB_ENC_TYPE_WIRED
- 1
-
-	)
-
-705 
-	#USB_ENC_TYPE_CCM_1
- 2
-
-	)
-
-706 
-	#USB_ENC_TYPE_RSA_1
- 3
-
-	)
-
-707 
-__u8
- 
-	mbEn¸y±i⁄VÆue
-;
-
-708 
-__u8
- 
-	mbAuthKeyIndex
-;
-
-709 } 
-__©åibuã__
-((
-∑cked
-));
-
-715 
-	susb_bos_des¸ùt‹
- {
-
-716 
-__u8
- 
-	mbLígth
-;
-
-717 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-719 
-__À16
- 
-	mwTŸÆLígth
-;
-
-720 
-__u8
- 
-	mbNumDevi˚C≠s
-;
-
-721 } 
-__©åibuã__
-((
-∑cked
-));
-
-723 
-	#USB_DT_BOS_SIZE
- 5
-
-	)
-
-727 
-	susb_dev_ˇp_hódî
- {
-
-728 
-__u8
- 
-	mbLígth
-;
-
-729 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-730 
-__u8
- 
-	mbDevC≠abûôyTy≥
-;
-
-731 } 
-__©åibuã__
-((
-∑cked
-));
-
-733 
-	#USB_CAP_TYPE_WIRELESS_USB
- 1
-
-	)
-
-735 
-	susb_wúñess_ˇp_des¸ùt‹
- {
-
-736 
-__u8
- 
-	mbLígth
-;
-
-737 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-738 
-__u8
- 
-	mbDevC≠abûôyTy≥
-;
-
-740 
-__u8
- 
-	mbmAâribuãs
-;
-
-741 
-	#USB_WIRELESS_P2P_DRD
- (1 << 1)
-
-	)
-
-742 
-	#USB_WIRELESS_BEACON_MASK
- (3 << 2)
-
-	)
-
-743 
-	#USB_WIRELESS_BEACON_SELF
- (1 << 2)
-
-	)
-
-744 
-	#USB_WIRELESS_BEACON_DIRECTED
- (2 << 2)
-
-	)
-
-745 
-	#USB_WIRELESS_BEACON_NONE
- (3 << 2)
-
-	)
-
-746 
-__À16
- 
-	mwPHYR©es
-;
-
-747 
-	#USB_WIRELESS_PHY_53
- (1 << 0Ë
-
-	)
-
-748 
-	#USB_WIRELESS_PHY_80
- (1 << 1)
-
-	)
-
-749 
-	#USB_WIRELESS_PHY_107
- (1 << 2Ë
-
-	)
-
-750 
-	#USB_WIRELESS_PHY_160
- (1 << 3)
-
-	)
-
-751 
-	#USB_WIRELESS_PHY_200
- (1 << 4Ë
-
-	)
-
-752 
-	#USB_WIRELESS_PHY_320
- (1 << 5)
-
-	)
-
-753 
-	#USB_WIRELESS_PHY_400
- (1 << 6)
-
-	)
-
-754 
-	#USB_WIRELESS_PHY_480
- (1 << 7)
-
-	)
-
-755 
-__u8
- 
-	mbmTFITXPowîInfo
-;
-
-756 
-__u8
- 
-	mbmFFITXPowîInfo
-;
-
-757 
-__À16
- 
-	mbmB™dGroup
-;
-
-758 
-__u8
- 
-	mbRe£rved
-;
-
-759 } 
-__©åibuã__
-((
-∑cked
-));
-
-762 
-	#USB_CAP_TYPE_EXT
- 2
-
-	)
-
-764 
-	susb_ext_ˇp_des¸ùt‹
- {
-
-765 
-__u8
- 
-	mbLígth
-;
-
-766 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-767 
-__u8
- 
-	mbDevC≠abûôyTy≥
-;
-
-768 
-__À32
- 
-	mbmAâribuãs
-;
-
-769 
-	#USB_LPM_SUPPORT
- (1 << 1Ë
-
-	)
-
-770 } 
-__©åibuã__
-((
-∑cked
-));
-
-772 
-	#USB_DT_USB_EXT_CAP_SIZE
- 7
-
-	)
-
-778 
-	#USB_SS_CAP_TYPE
- 3
-
-	)
-
-779 
-	susb_ss_ˇp_des¸ùt‹
- {
-
-780 
-__u8
- 
-	mbLígth
-;
-
-781 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-782 
-__u8
- 
-	mbDevC≠abûôyTy≥
-;
-
-783 
-__u8
- 
-	mbmAâribuãs
-;
-
-784 
-	#USB_LTM_SUPPORT
- (1 << 1Ë
-
-	)
-
-785 
-__À16
- 
-	mwS≥edSuµ‹ãd
-;
-
-786 
-	#USB_LOW_SPEED_OPERATION
- (1Ë
-
-	)
-
-787 
-	#USB_FULL_SPEED_OPERATION
- (1 << 1Ë
-
-	)
-
-788 
-	#USB_HIGH_SPEED_OPERATION
- (1 << 2Ë
-
-	)
-
-789 
-	#USB_5GBPS_OPERATION
- (1 << 3Ë
-
-	)
-
-790 
-__u8
- 
-	mbFun˘i⁄ÆôySuµ‹t
-;
-
-791 
-__u8
- 
-	mbU1devExôL©
-;
-
-792 
-__À16
- 
-	mbU2DevExôL©
-;
-
-793 } 
-__©åibuã__
-((
-∑cked
-));
-
-795 
-	#USB_DT_USB_SS_CAP_SIZE
- 10
-
-	)
-
-801 
-	#CONTAINER_ID_TYPE
- 4
-
-	)
-
-802 
-	susb_ss_c⁄èöî_id_des¸ùt‹
- {
-
-803 
-__u8
- 
-	mbLígth
-;
-
-804 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-805 
-__u8
- 
-	mbDevC≠abûôyTy≥
-;
-
-806 
-__u8
- 
-	mbRe£rved
-;
-
-807 
-__u8
- 
-	mC⁄èöîID
-[16];
-
-808 } 
-__©åibuã__
-((
-∑cked
-));
-
-810 
-	#USB_DT_USB_SS_CONTN_ID_SIZE
- 20
-
-	)
-
-816 
-	susb_wúñess_ï_comp_des¸ùt‹
- {
-
-817 
-__u8
- 
-	mbLígth
-;
-
-818 
-__u8
- 
-	mbDes¸ùt‹Ty≥
-;
-
-820 
-__u8
- 
-	mbMaxBur°
-;
-
-821 
-__u8
- 
-	mbMaxSequí˚
-;
-
-822 
-__À16
- 
-	mwMaxSåómDñay
-;
-
-823 
-__À16
- 
-	mwOvîTheAúPackëSize
-;
-
-824 
-__u8
- 
-	mbOvîTheAúI¡îvÆ
-;
-
-825 
-__u8
- 
-	mbmCompAâribuãs
-;
-
-826 
-	#USB_ENDPOINT_SWITCH_MASK
- 0x03
-
-	)
-
-827 
-	#USB_ENDPOINT_SWITCH_NO
- 0
-
-	)
-
-828 
-	#USB_ENDPOINT_SWITCH_SWITCH
- 1
-
-	)
-
-829 
-	#USB_ENDPOINT_SWITCH_SCALE
- 2
-
-	)
-
-830 } 
-__©åibuã__
-((
-∑cked
-));
-
-838 
-	susb_h™dshake
- {
-
-839 
-__u8
- 
-	mbMesßgeNumbî
-;
-
-840 
-__u8
- 
-	mbSètus
-;
-
-841 
-__u8
- 
-	mtTKID
-[3];
-
-842 
-__u8
- 
-	mbRe£rved
-;
-
-843 
-__u8
- 
-	mCDID
-[16];
-
-844 
-__u8
- 
-	mn⁄˚
-[16];
-
-845 
-__u8
- 
-	mMIC
-[8];
-
-846 } 
-__©åibuã__
-((
-∑cked
-));
-
-854 
-	susb_c⁄√˘i⁄_c⁄ãxt
- {
-
-855 
-__u8
- 
-	mCHID
-[16];
-
-856 
-__u8
- 
-	mCDID
-[16];
-
-857 
-__u8
- 
-	mCK
-[16];
-
-858 } 
-__©åibuã__
-((
-∑cked
-));
-
-864 
-	eusb_devi˚_•ìd
- {
-
-865 
-	mUSB_SPEED_UNKNOWN
- = 0,
-
-866 
-	mUSB_SPEED_LOW
-, 
-	mUSB_SPEED_FULL
-,
-
-867 
-	mUSB_SPEED_HIGH
-,
-
-868 
-	mUSB_SPEED_WIRELESS
-,
-
-869 
-	mUSB_SPEED_SUPER
-,
-
-872 
-	eusb_devi˚_°©e
- {
-
-876 
-	mUSB_STATE_NOTATTACHED
- = 0,
-
-879 
-	mUSB_STATE_ATTACHED
-,
-
-880 
-	mUSB_STATE_POWERED
-,
-
-881 
-	mUSB_STATE_RECONNECTING
-,
-
-882 
-	mUSB_STATE_UNAUTHENTICATED
-,
-
-883 
-	mUSB_STATE_DEFAULT
-,
-
-884 
-	mUSB_STATE_ADDRESS
-,
-
-885 
-	mUSB_STATE_CONFIGURED
-,
-
-887 
-	mUSB_STATE_SUSPENDED
-
-
-905 
-	#USB_SELF_POWER_VBUS_MAX_DRAW
- 100
-
-	)
 
 	@/usr/include/linux/usbdevice_fs.h
 
@@ -55045,1022 +52727,6 @@ sun_∑th
 
 45 
 	g__END_DECLS
-
-
-	@/usr/include/sysfs/libsysfs.h
-
-23 #i‚de‡
-_LIBSYSFS_H_
-
-
-24 
-	#_LIBSYSFS_H_
-
-
-	)
-
-26 
-	~<sys/ty≥s.h
->
-
-27 
-	~<°rög.h
->
-
-28 
-	~"dli°.h
-"
-
-30 
-	#SYSFS_FSTYPE_NAME
- "sysfs"
-
-	)
-
-31 
-	#SYSFS_PROC_MNTS
- "/¥oc/mou¡s"
-
-	)
-
-32 
-	#SYSFS_BUS_NAME
- "bus"
-
-	)
-
-33 
-	#SYSFS_CLASS_NAME
- "˛ass"
-
-	)
-
-34 
-	#SYSFS_BLOCK_NAME
- "block"
-
-	)
-
-35 
-	#SYSFS_DEVICES_NAME
- "devi˚s"
-
-	)
-
-36 
-	#SYSFS_DRIVERS_NAME
- "drivîs"
-
-	)
-
-37 
-	#SYSFS_MODULE_NAME
- "moduÀ"
-
-	)
-
-38 
-	#SYSFS_NAME_ATTRIBUTE
- "«me"
-
-	)
-
-39 
-	#SYSFS_MOD_PARM_NAME
- "∑ømëîs"
-
-	)
-
-40 
-	#SYSFS_MOD_SECT_NAME
- "£˘i⁄s"
-
-	)
-
-41 
-	#SYSFS_UNKNOWN
- "unknown"
-
-	)
-
-42 
-	#SYSFS_PATH_ENV
- "SYSFS_PATH"
-
-	)
-
-44 
-	#SYSFS_PATH_MAX
- 256
-
-	)
-
-45 
-	#SYSFS_NAME_LEN
- 64
-
-	)
-
-46 
-	#SYSFS_BUS_ID_SIZE
- 32
-
-	)
-
-49 
-	#SYSFS_MNT_PATH
- "/sys"
-
-	)
-
-51 
-	esysfs_©åibuã_mëhod
- {
-
-52 
-	mSYSFS_METHOD_SHOW
- = 0x01,
-
-53 
-	mSYSFS_METHOD_STORE
- = 0x02,
-
-63 
-	ssysfs_©åibuã
- {
-
-64 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-65 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-66 *
-	mvÆue
-;
-
-67 
-	mÀn
-;
-
-68 
-sysfs_©åibuã_mëhod
- 
-	mmëhod
-;
-
-71 
-	ssysfs_drivî
- {
-
-72 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-73 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-74 
-dli°
- *
-	m©åli°
-;
-
-75 
-	mbus
-[
-SYSFS_NAME_LEN
-];
-
-78 
-sysfs_moduÀ
- *
-	mmoduÀ
-;
-
-79 
-dli°
- *
-	mdevi˚s
-;
-
-82 
-	ssysfs_devi˚
- {
-
-83 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-84 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-85 
-dli°
- *
-	m©åli°
-;
-
-86 
-	mbus_id
-[
-SYSFS_NAME_LEN
-];
-
-87 
-	mbus
-[
-SYSFS_NAME_LEN
-];
-
-88 
-	mdrivî_«me
-[
-SYSFS_NAME_LEN
-];
-
-89 
-	msubsy°em
-[
-SYSFS_NAME_LEN
-];
-
-92 
-sysfs_devi˚
- *
-	m∑ª¡
-;
-
-94 
-dli°
- *
-	mchûdªn
-;
-
-97 
-	ssysfs_bus
- {
-
-98 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-99 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-100 
-dli°
- *
-	m©åli°
-;
-
-103 
-dli°
- *
-	mdrivîs
-;
-
-104 
-dli°
- *
-	mdevi˚s
-;
-
-107 
-	ssysfs_˛ass_devi˚
- {
-
-108 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-109 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-110 
-dli°
- *
-	m©åli°
-;
-
-111 
-	m˛as¢ame
-[
-SYSFS_NAME_LEN
-];
-
-114 
-sysfs_˛ass_devi˚
- *
-	m∑ª¡
-;
-
-115 
-sysfs_devi˚
- *
-	msysdevi˚
-;
-
-118 
-	ssysfs_˛ass
- {
-
-119 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-120 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-121 
-dli°
- *
-	m©åli°
-;
-
-124 
-dli°
- *
-	mdevi˚s
-;
-
-127 
-	ssysfs_moduÀ
- {
-
-128 
-	m«me
-[
-SYSFS_NAME_LEN
-];
-
-129 
-	m∑th
-[
-SYSFS_PATH_MAX
-];
-
-130 
-dli°
- *
-	m©åli°
-;
-
-131 
-dli°
- *
-	m∑rmli°
-;
-
-132 
-dli°
- *
-	m£˘i⁄s
-;
-
-135 #ifde‡
-__˝lu•lus
-
-
-142 
-sysfs_gë_m¡_∑th
-(*
-m¡_∑th
-, 
-size_t
- 
-Àn
-);
-
-143 
-sysfs_ªmove_åaûög_¶ash
-(*
-∑th
-);
-
-144 
-sysfs_gë_«me_‰om_∑th
-(c⁄° *
-∑th
-, *
-«me
-, 
-size_t
- 
-Àn
-);
-
-145 
-sysfs_∑th_is_dú
-(c⁄° *
-∑th
-);
-
-146 
-sysfs_∑th_is_lök
-(c⁄° *
-∑th
-);
-
-147 
-sysfs_∑th_is_fûe
-(c⁄° *
-∑th
-);
-
-148 
-sysfs_gë_lök
-(c⁄° *
-∑th
-, *
-èrgë
-, 
-size_t
- 
-Àn
-);
-
-149 
-dli°
- *
-sysfs_›í_dúe˘‹y_li°
-(c⁄° *
-∑th
-);
-
-150 
-dli°
- *
-sysfs_›í_lök_li°
-(c⁄° *
-∑th
-);
-
-151 
-sysfs_˛o£_li°
-(
-dli°
- *
-li°
-);
-
-154 
-sysfs_˛o£_©åibuã
-(
-sysfs_©åibuã
- *
-syßâr
-);
-
-155 
-sysfs_©åibuã
- *
-sysfs_›í_©åibuã
-(c⁄° *
-∑th
-);
-
-156 
-sysfs_ªad_©åibuã
-(
-sysfs_©åibuã
- *
-syßâr
-);
-
-157 
-sysfs_wrôe_©åibuã
-(
-sysfs_©åibuã
- *
-syßâr
-,
-
-158 c⁄° *
-√w_vÆue
-, 
-size_t
- 
-Àn
-);
-
-159 
-sysfs_devi˚
- *
-sysfs_ªad_dú_subdús
-(c⁄° *
-∑th
-);
-
-161 
-sysfs_˛o£_drivî
-(
-sysfs_drivî
- *
-drivî
-);
-
-162 
-sysfs_drivî
- *
-sysfs_›í_drivî
-
-
-163 (c⁄° *
-bus_«me
-, c⁄° *
-drv_«me
-);
-
-164 
-sysfs_drivî
- *
-sysfs_›í_drivî_∑th
-(c⁄° *
-∑th
-);
-
-165 
-sysfs_©åibuã
- *
-sysfs_gë_drivî_©å
-
-
-166 (
-sysfs_drivî
- *
-drv
-, c⁄° *
-«me
-);
-
-167 
-dli°
- *
-sysfs_gë_drivî_©åibuãs
-(
-sysfs_drivî
- *
-drv
-);
-
-168 
-dli°
- *
-sysfs_gë_drivî_devi˚s
-(
-sysfs_drivî
- *
-drv
-);
-
-169 
-sysfs_moduÀ
- *
-sysfs_gë_drivî_moduÀ
-(
-sysfs_drivî
- *
-drv
-);
-
-172 
-sysfs_˛o£_devi˚_åì
-(
-sysfs_devi˚
- *
-devi˚
-);
-
-173 
-sysfs_devi˚
- *
-sysfs_›í_devi˚_åì
-(c⁄° *
-∑th
-);
-
-174 
-sysfs_˛o£_devi˚
-(
-sysfs_devi˚
- *
-dev
-);
-
-175 
-sysfs_devi˚
- *
-sysfs_›í_devi˚
-
-
-176 (c⁄° *
-bus
-, c⁄° *
-bus_id
-);
-
-177 
-sysfs_devi˚
- *
-sysfs_gë_devi˚_∑ª¡
-(sysfs_devi˚ *
-dev
-);
-
-178 
-sysfs_devi˚
- *
-sysfs_›í_devi˚_∑th
-(c⁄° *
-∑th
-);
-
-179 
-sysfs_gë_devi˚_bus
-(
-sysfs_devi˚
- *
-dev
-);
-
-180 
-sysfs_©åibuã
- *
-sysfs_gë_devi˚_©å
-
-
-181 (
-sysfs_devi˚
- *
-dev
-, c⁄° *
-«me
-);
-
-182 
-dli°
- *
-sysfs_gë_devi˚_©åibuãs
-
-
-183 (
-sysfs_devi˚
- *
-dev
-);
-
-186 
-sysfs_˛o£_˛ass_devi˚
-(
-sysfs_˛ass_devi˚
- *
-dev
-);
-
-187 
-sysfs_˛ass_devi˚
- *
-sysfs_›í_˛ass_devi˚_∑th
-
-
-188 (c⁄° *
-∑th
-);
-
-189 
-sysfs_˛ass_devi˚
- *
-sysfs_›í_˛ass_devi˚
-
-
-190 (c⁄° *
-˛as¢ame
-, c⁄° *
-«me
-);
-
-191 
-sysfs_˛ass_devi˚
- *
-sysfs_gë_˛assdev_∑ª¡
-
-
-192 (
-sysfs_˛ass_devi˚
- *
-˛sdev
-);
-
-193 
-sysfs_©åibuã
- *
-sysfs_gë_˛assdev_©å
-
-
-194 (
-sysfs_˛ass_devi˚
- *
-˛sdev
-, c⁄° *
-«me
-);
-
-195 
-dli°
- *
-sysfs_gë_˛assdev_©åibuãs
-
-
-196 (
-sysfs_˛ass_devi˚
- *
-˛sdev
-);
-
-197 
-sysfs_devi˚
- *
-sysfs_gë_˛assdev_devi˚
-
-
-198 (
-sysfs_˛ass_devi˚
- *
-˛sdev
-);
-
-199 
-sysfs_˛o£_˛ass
-(
-sysfs_˛ass
- *
-˛s
-);
-
-200 
-sysfs_˛ass
- *
-sysfs_›í_˛ass
-(c⁄° *
-«me
-);
-
-201 
-sysfs_˛ass_devi˚
- *
-sysfs_gë_˛ass_devi˚
-
-
-202 (
-sysfs_˛ass
- *
-˛s
-, c⁄° *
-«me
-);
-
-203 
-dli°
- *
-sysfs_gë_˛ass_devi˚s
-(
-sysfs_˛ass
- *
-˛s
-);
-
-206 
-sysfs_˛o£_bus
-(
-sysfs_bus
- *
-bus
-);
-
-207 
-sysfs_bus
- *
-sysfs_›í_bus
-(c⁄° *
-«me
-);
-
-208 
-dli°
- *
-sysfs_gë_bus_devi˚s
-(
-sysfs_bus
- *
-bus
-);
-
-209 
-dli°
- *
-sysfs_gë_bus_drivîs
-(
-sysfs_bus
- *
-bus
-);
-
-210 
-sysfs_devi˚
- *
-sysfs_gë_bus_devi˚
-
-
-211 (
-sysfs_bus
- *
-bus
-, c⁄° *
-id
-);
-
-212 
-sysfs_drivî
- *
-sysfs_gë_bus_drivî
-
-
-213 (
-sysfs_bus
- *
-bus
-, c⁄° *
-drv«me
-);
-
-216 
-sysfs_˛o£_moduÀ
-(
-sysfs_moduÀ
- *
-moduÀ
-);
-
-217 
-sysfs_moduÀ
- *
-sysfs_›í_moduÀ_∑th
-(c⁄° *
-∑th
-);
-
-218 
-sysfs_moduÀ
- *
-sysfs_›í_moduÀ
-(c⁄° *
-«me
-);
-
-219 
-dli°
- *
-sysfs_gë_moduÀ_∑rms
-(
-sysfs_moduÀ
- *
-moduÀ
-);
-
-220 
-dli°
- *
-sysfs_gë_moduÀ_£˘i⁄s
-(
-sysfs_moduÀ
- *
-moduÀ
-);
-
-221 
-dli°
- *
-sysfs_gë_moduÀ_©åibuãs
-(
-sysfs_moduÀ
- *
-moduÀ
-);
-
-222 
-sysfs_©åibuã
- *
-sysfs_gë_moduÀ_©å
-
-
-223 (
-sysfs_moduÀ
- *
-moduÀ
-, c⁄° *
-«me
-);
-
-224 
-sysfs_©åibuã
- *
-sysfs_gë_moduÀ_∑rm
-
-
-225 (
-sysfs_moduÀ
- *
-moduÀ
-, c⁄° *
-∑rm
-);
-
-226 
-sysfs_©åibuã
- *
-sysfs_gë_moduÀ_£˘i⁄
-
-
-227 (
-sysfs_moduÀ
- *
-moduÀ
-, c⁄° *
-£˘i⁄
-);
-
-239 
-ölöe
- 
-s‹t_li°
-(*
-√w_ñem
-, *
-ﬁd_ñem
-)
-
-241  ((
-°∫cmp
-(((
-sysfs_©åibuã
- *)
-√w_ñem
-)->
-«me
-,
-
-242 ((
-sysfs_©åibuã
- *)
-ﬁd_ñem
-)->
-«me
-,
-
-243 
-°æí
-(((
-sysfs_©åibuã
- *)
-√w_ñem
-)->
-«me
-))) < 0 ? 1 : 0);
-
-247 #ifde‡
-__˝lu•lus
 
 
 	@/usr/include/syslog.h
@@ -119572,8 +116238,8 @@ __END_DECLS
 .
 1
 /usr/include
-155
-3999
+154
+3969
 autogen.sh
 cleanup.sh
 cmd/bind-driver.c
@@ -119599,7 +116265,7 @@ lib/vhci_driver.h
 /usr/include/errno.h
 /usr/include/fcntl.h
 /usr/include/getopt.h
-/usr/include/linux/usb/ch9.h
+/usr/include/glib-2.0/glib.h
 /usr/include/linux/usbdevice_fs.h
 /usr/include/netdb.h
 /usr/include/netinet/in.h
@@ -119617,7 +116283,6 @@ lib/vhci_driver.h
 /usr/include/sys/time.h
 /usr/include/sys/types.h
 /usr/include/sys/un.h
-/usr/include/sysfs/libsysfs.h
 /usr/include/syslog.h
 /usr/include/tcpd.h
 /usr/include/time.h

@@ -5,7 +5,16 @@
  */
 
 #include "usbip_network.h"
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
 
+//
+#include <sys/socket.h>
+//uint16_t USBIP_VERSION =1.7;
+//uint16_t IPPROTO_TCP =1.7;
+//
 void pack_uint32_t(int pack, uint32_t *num)
 {
 	uint32_t i;
