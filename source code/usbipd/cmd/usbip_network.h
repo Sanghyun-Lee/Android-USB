@@ -5,7 +5,8 @@
 #ifndef _USBIP_NETWORK_H
 #define _USBIP_NETWORK_H
 
-#include "usbip.h"
+#include "../config.h"
+#include "../lib/usbip.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/tcp.h>
