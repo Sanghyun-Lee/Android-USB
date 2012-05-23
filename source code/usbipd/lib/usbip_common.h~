@@ -1,9 +1,14 @@
 /*
- * Copyright (C) 2005-2007 Takahiro Hirofuchi
+* Copyright (C) 2005-2007 Takahiro Hirofuchi
  */
 
 #ifndef _USBIP_COMMON_H
 #define _USBIP_COMMON_H
+
+//
+#include "libsysfs.h"
+//
+
 
 #include <unistd.h>
 #include <stdint.h>
@@ -14,11 +19,13 @@
 #include <stdlib.h>
 #include <strings.h>
 
+
+//#include <sysfs/libsysfs.h>
 #include <netdb.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <linux/usbdevice_fs.h>
-#include <linux/usb/ch9.h>
+//#include <linux/usb/ch9.h> 없어서 usbip.h에 include
 
 #ifndef USBIDS_FILE
 #define USBIDS_FILE "/usr/share/hwdata/usb.ids"

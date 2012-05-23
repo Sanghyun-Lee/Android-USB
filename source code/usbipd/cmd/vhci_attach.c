@@ -10,11 +10,13 @@
 
 #include "usbip.h"
 #include "usbip_network.h"
+
 #include <ctype.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <glib.h>
+//#include <glib.h>
+#include "glib-2.0/glib.h"
 
 static const char version[] = PACKAGE_STRING
 	" ($Id$)";
