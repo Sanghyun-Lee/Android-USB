@@ -11,7 +11,6 @@ LOCAL_SRC_FILES := names.c \
 	usbip_common.h \
 	vhci_driver.c \
 	vhci_driver.h
-
 LOCAL_CFLAGS := -Wall -W -Wstrict-prototypes -std=gnu99
 LOCAL_C_INCLUDES := external/usbipd/lib/
 LOCAL_MODULE_TAGS := eng

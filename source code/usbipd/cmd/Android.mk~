@@ -24,15 +24,16 @@ LOCAL_SHARED_LIBRARIES := libc
 LOCAL_STATIC_LIBRARIES := libusbipd \
 		libglib_static \
 		libsysfsd
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
 #
 #usbip_bind_driver
 #
 include $(CLEAR_VARS)
-LOCAL_SHARED_LIBRARIES := usbipd_bind_driver
+LOCAL_STATIC_LIBRARIES := usbipd_bind_driver \
+	libglib_static \
+	libusbipd
 LOCAL_MODULE_TAGS := eng
 LOCAL_MODULE := usbip_bind_driver
 include $(BUILD_EXECUTABLE)
 $(warning ######   cmd end   ######)
-

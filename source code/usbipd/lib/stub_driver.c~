@@ -1,5 +1,3 @@
- */
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -30,6 +28,7 @@ static void * seek_to_next_desc(void *buf, size_t size, unsigned int * offset,
 		if(o + sizeof(*desc) > size)
 			return NULL;
 		desc = buf + o;
+
 		if(desc->bLength + o > size)
 			return NULL;
 		o+=desc->bLength;
@@ -47,7 +46,7 @@ static int add_ep_info(struct usbip_exported_device *edev,
 	struct usbip_endpoint * uep;
 	int mult;
 
- /* Copyright (C) 2005-2007 Takahiro Hirofuchi
+
 	if(ep->bEndpointAddress&USB_ENDPOINT_DIR_MASK)
 		in=1;
 	else
@@ -178,6 +177,7 @@ static int usb_parse_desc(struct usbip_exported_device *edev, int config_v)
 		return -1;
 	}
 	if(config_v < 1 || config_v > dev->bNumConfigurations){
+
 		err("no such config");
 		return -1;
 	}

@@ -11,10 +11,13 @@
 #include <netinet/in.h>
 
 //
-#include <sys/socket.h>
 //uint16_t USBIP_VERSION =1.7;
 //uint16_t IPPROTO_TCP =1.7;
 //
+
+#include <malloc.h>
+#include <memory.h>
+
 void pack_uint32_t(int pack, uint32_t *num)
 {
 	uint32_t i;
@@ -103,12 +106,16 @@ ssize_t usbip_xmitv(int sockfd, struct iovec *iov, int io_count, int sending)
 	else
 		ret=recvmsg(sockfd, &mhdr, MSG_WAITALL);
 	if(ret!=len){
+		// DEV_TEST
+		info("WARNING : usbip_xmitv - ret:%d, len:%d, io_count:%d", ret, len, io_count);
 		if(sending)
 			dbg("why sendmsg don't send all msg out? %d", ret);
 		else
 			dbg("why recvmsg don't recv all msg in? %d", ret);
 		return -1;
+		//return ret;
 	}
+	// info("##usbip_xmitv - ret:%d, len:%d", ret, len);
 	return ret;
 }
 
@@ -279,5 +286,121 @@ int tcp_connect(char *hostname, char *service)
 	dbg("%s:%s, %s", hostname, service, "no destination to connect to");
 	freeaddrinfo(res0);
 
+	return -1;
+}
+
+#define SIZE sizeof(struct sockaddr_in)
+
+int server_listen_accept()
+{
+    struct sockaddr_in server;
+	int sockfd_connect;
+	int sockfd_listen;
+    
+	if((sockfd_listen = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+	{
+		printf("fail to call socket()\n");
+		exit(1);
+	}
+    
+	server.sin_family = AF_INET;
+	server.sin_addr.s_addr = htonl(INADDR_ANY);
+	server.sin_port = htons(3700);
+    
+	if(bind(sockfd_listen, (struct sockaddr *)&server, SIZE) == -1)
+	{
+		printf("fail to call bind()\n");
+		exit(1);
+	}
+	if(listen(sockfd_listen, 5) == -1)
+	{
+		printf("fail to call listen()\n");
+		exit(1);
+	}
+	printf("sockfd_listen : %d\n", sockfd_listen);
+    if((sockfd_connect = accept(sockfd_listen, NULL, NULL)) ==-1)
+    {
+		printf("fail to call accept()\n");
+		exit(1);
+	}
+	return sockfd_connect;
+}
+
+int send_dev(int sockfd, char* cmd, int cmd_size) {
+	int ret, i;
+	char cmd_tmp;
+	for(i=0; i<cmd_size; i++) {
+		cmd_tmp = cmd[i];
+	  	ret = send(sockfd, &cmd_tmp, 1, 0);
+	   	if(ret<=0) {
+			info("send_dev() send error (%c) : %d/%d", cmd_tmp, i, cmd_size);
+			return -1;
+		}
+		info("send : (%c)", cmd_tmp);
+	}
+	return i; 
+}
+
+#define SIZE_USBDEVFS sizeof(struct usbdevfs_urb)
+#define SIZE_ISOPACKETDESC sizeof(struct usbdevfs_iso_packet_desc)
+#define SIZE_ASYNCURB sizeof(AsyncURB)
+
+int recv_dev(int sockfd, struct usbdevfs_urb **urb) {
+	int ret, total;
+	static int seqnum = 0;
+	AsyncURB *aurb;
+	if(*urb!=NULL) {
+		return -1;
+	}
+	aurb = (AsyncURB*)malloc(SIZE_ASYNCURB);
+	if(aurb==NULL) {
+		info("malloc() error");
+		goto fail;
+	}
+	*urb = &(aurb->urb);
+	ret = recv(sockfd, *urb, SIZE_USBDEVFS, 0);
+	if(ret<=0) {
+		info("recv_dev : recv(urb) error : sockfd(%d)", sockfd);
+		goto fail;
+	}
+	//info("recv(urb) : %d", ret);
+	total = ret;
+	(*urb)->buffer = (unsigned char*)malloc((*urb)->buffer_length);
+	//urb->iso_frame_desc = (struct usbdevfs_iso_packet_desc*)malloc(SIZE_ISOPACKETDESC);
+	if((*urb)->buffer==NULL) {
+		info("malloc() error");
+		goto fail;
+	}
+	ret = recv(sockfd, (*urb)->buffer, (*urb)->buffer_length, 0);
+	if(ret<=0) {
+		info("recv_dev : recv((*urb)->buffer) error (%d)", sockfd);
+		goto fail;
+	}
+	//info("recv((*urb)->buffer) : %d", ret);
+	total += ret;
+	ret = recv(sockfd, (*urb)->iso_frame_desc, SIZE_ISOPACKETDESC, 0);
+	if(ret<=0) {
+		info("recv_dev : recv((*urb)->iso_frame_desc[0]) error (%d)", sockfd);
+		goto fail;
+	}
+	//info("recv((*urb)->iso_frame_desc[0]) : %d", ret);
+	total += ret;
+	// info("recv total : %d", total);
+
+	aurb->seqnum = ++seqnum;
+	aurb->sub_seqnum = 0;
+	aurb->data_len = (*urb)->buffer_length;
+	aurb->data = (char*)malloc(aurb->data_len);
+	if(aurb->data==NULL) {
+		info("malloc() error");
+		goto fail;
+	}
+	memcpy(aurb->data, (*urb)->buffer, aurb->data_len);
+	return total;
+
+fail:
+	if(*urb)
+		free((*urb)->buffer);
+	free(*urb);
 	return -1;
 }

@@ -1,15 +1,16 @@
 #
-#usbipd_bind_driver
+#libusbip
 #
 $(warning ######  cmd Start  ######)
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := usbipd_bind_driver
-LOCAL_SRC_FILES := bind-driver.c \
-	utils.c \
-	utils.h \
+LOCAL_MODULE := libusbip
+LOCAL_SRC_FILES := stub_server.c \
+	usbip_network.c \
 	usbip_network.h \
-	usbip_network.c
+	dlist.h \
+	dlist.c \
+	libsysfs.h
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../lib \
 	$(LOCAL_PATH)/../glib \
 	$(LOCAL_PATH)/../sysfslib \
@@ -22,17 +23,16 @@ LOCAL_MODULE_TAGS := eng
 LOCAL_PRELINK_MODULE:=false
 LOCAL_SHARED_LIBRARIES := libc
 LOCAL_STATIC_LIBRARIES := libusbipd \
-		libglib_static \
-		libsysfsd
+			libglib_static \
+			libsysfsd
 include $(BUILD_SHARED_LIBRARY)
 
-#
-#usbip_bind_driver
-#
+#usbipd
 include $(CLEAR_VARS)
-LOCAL_SHARED_LIBRARIES := usbipd_bind_driver
+LOCAL_SHARED_LIBRARIES := libusbip
 LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE := usbip_bind_driver
+LOCAL_MODULE := usbipd
 include $(BUILD_EXECUTABLE)
+
 $(warning ######   cmd end   ######)
 

@@ -6,7 +6,7 @@ LOCAL_SRC_FILES := names.c \
 	names.h \
 	stub_driver.c \
 	stub_driver.h \
-	usbip.h \x
+	usbip.h \
 	usbip_common.c \
 	usbip_common.h \
 	vhci_driver.c \

@@ -37,9 +37,6 @@ struct usbip_exported_device {
 	int32_t status;
 	int usbfs_fd;
 	int client_fd;
-//add
-	int tmp_sockfd;
-//
 	int usbfs_gio_id;
 	int client_gio_id;
 	struct usbip_endpoint * eps[2];
