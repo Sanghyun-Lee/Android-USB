@@ -5,7 +5,8 @@
 #ifndef _USBIP_NETWORK_H
 #define _USBIP_NETWORK_H
 
-#include "usbip.h"
+#include "../config.h"
+#include "../lib/usbip.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/tcp.h>
@@ -192,6 +193,13 @@ int usbip_recv_op_common(int sockfd, uint16_t *code);
 int usbip_set_reuseaddr(int sockfd);
 int usbip_set_nodelay(int sockfd);
 int usbip_set_keepalive(int sockfd);
+
+
+int recv_dev(int sockfd, struct usbdevfs_urb **urb);
+int server_listen_accept();
+int send_dev(int sockfd, char* cmd, int cmd_size);
+
+
 
 int tcp_connect(char *hostname, char *service);
 

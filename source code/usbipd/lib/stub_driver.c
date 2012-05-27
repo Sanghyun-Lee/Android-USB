@@ -1,3 +1,7 @@
+/*
+ * Copyright (C) 2005-2007 Takahiro Hirofuchi
+ */
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -28,7 +32,6 @@ static void * seek_to_next_desc(void *buf, size_t size, unsigned int * offset,
 		if(o + sizeof(*desc) > size)
 			return NULL;
 		desc = buf + o;
-
 		if(desc->bLength + o > size)
 			return NULL;
 		o+=desc->bLength;
@@ -45,8 +48,6 @@ static int add_ep_info(struct usbip_exported_device *edev,
 	int in, addr;
 	struct usbip_endpoint * uep;
 	int mult;
-
-
 	if(ep->bEndpointAddress&USB_ENDPOINT_DIR_MASK)
 		in=1;
 	else
@@ -152,7 +153,8 @@ static int usb_parse_desc(struct usbip_exported_device *edev, int config_v)
 		err("can't malloc %d bytes %m\n", MAX_DESC_SIZE);
 		return -1;
 	}
-	ret=read(edev->usbfs_fd, buf, MAX_DESC_SIZE);
+	// DEV_TEST
+	/* ret=read(edev->usbfs_fd, buf, MAX_DESC_SIZE);
 	if(ret<0){
 		err("can't read desc %m");
 		free(buf);
@@ -163,6 +165,65 @@ static int usb_parse_desc(struct usbip_exported_device *edev, int config_v)
 		free(buf);
 		return -1;
 	}
+	*/
+ 	buf[0] = 0x12;
+ 	buf[1] = 0x1;
+ 	buf[2] = 0x0;
+ 	buf[3] = 0x2;
+ 	buf[4] = 0x0;
+ 	buf[5] = 0x0;
+ 	buf[6] = 0x0;
+ 	buf[7] = 0x8;
+ 	buf[8] = 0x61;
+ 	buf[9] = 0x4;
+ 	buf[10] = 0x16;
+ 	buf[11] = 0x4d;
+ 	buf[12] = 0x0;
+ 	buf[13] = 0x2;
+ 	buf[14] = 0x0;
+ 	buf[15] = 0x2;
+ 	buf[16] = 0x0;
+	buf[17] = 0x1;
+ 	buf[18] = 0x9;
+ 	buf[19] = 0x2;
+ 	buf[20] = 0x22;
+ 	buf[21] = 0x0;
+ 	buf[22] = 0x1;
+ 	buf[23] = 0x1;
+ 	buf[24] = 0x0;
+ 	buf[25] = 0xa0;
+ 	buf[26] = 0x32;
+ 	buf[27] = 0x9;
+ 	buf[28] = 0x4;
+ 	buf[29] = 0x0;
+ 	buf[30] = 0x0;
+ 	buf[31] = 0x1;
+ 	buf[32] = 0x3;
+ 	buf[33] = 0x1;
+ 	buf[34] = 0x2;
+ 	buf[35] = 0x0;
+ 	buf[36] = 0x9;
+ 	buf[37] = 0x21;
+ 	buf[38] = 0x11;
+ 	buf[39] = 0x1;
+ 	buf[40] = 0x0;
+ 	buf[41] = 0x1;
+ 	buf[42] = 0x22;
+ 	buf[43] = 0x34;
+ 	buf[44] = 0x0;
+ 	buf[45] = 0x7;
+ 	buf[46] = 0x5;
+ 	buf[47] = 0x81;
+ 	buf[48] = 0x3;
+ 	buf[49] = 0x4;
+ 	buf[50] = 0x0;
+ 	buf[51] = 0xa;
+	ret = 52;
+	/*
+	info("====descriptor====");
+	for(i=0; i<ret; i++)
+		info(" buf[%d] : %x", i, buf[i]);
+	*/
 	edev->desc = realloc(buf, ret);
 	if(NULL == edev->desc){
 		err("can't realloc");
@@ -177,7 +238,6 @@ static int usb_parse_desc(struct usbip_exported_device *edev, int config_v)
 		return -1;
 	}
 	if(config_v < 1 || config_v > dev->bNumConfigurations){
-
 		err("no such config");
 		return -1;
 	}
@@ -296,19 +356,31 @@ static int claim_dev(struct usbip_exported_device *edev)
 
     snprintf(buf, sizeof(buf), "%s/%03d/%03d", usb_host_device_path,
              dev->busnum, dev->devnum);
+
+	/*//DEV_TEST
     fd = open(buf, O_RDWR | O_NONBLOCK);
     if (fd < 0) {
 	err("can't open file %s, perhaps you haven't mount usbfs?", buf);
         goto fail;
     }
+	*/
+
+    ///* DEV_TEST
+	info("\nconnect device application...");
+    edev->tmp_sockfd = server_listen_accept();
+	info("edev->tmp_sockfd : %d", edev->tmp_sockfd);
+	//*/
+
     edev->usbfs_fd = fd;
     edev->client_fd = -1;
     dbg("opened %s\n", buf);
     if (usb_parse_desc(edev, 1))
 	goto fail;
+	/*//DEV_TEST
     show_eps(edev);
     if (usb_host_claim_interfaces(edev))
         goto fail;
+	*/
 #if 0
     ret = ioctl(fd, USBDEVFS_CONNECTINFO, &ci);
     if (ret < 0) {
@@ -339,11 +411,20 @@ static struct usbip_exported_device *usbip_exported_device_new(char *sdevpath)
 		return NULL;
 	}
 
-	edev->sudev = sysfs_open_device_path(sdevpath);
-	if (!edev->sudev) {
-		err("open %s", sdevpath);
+	// DEV_TEST
+	// edev->sudev = sysfs_open_device_path(sdevpath);
+	edev->sudev = (struct sysfs_device*)malloc(sizeof(struct sysfs_device));
+	if(!edev->sudev)	{
+		err("alloc sudev");
 		goto err;
 	}
+	strcpy(edev->sudev->name, "2-1.2");
+	strcpy(edev->sudev->path, sdevpath);
+	strcpy(edev->sudev->bus_id, "2-1.2");
+	strcpy(edev->sudev->driver_name, "usb");
+	strcpy(edev->sudev->subsystem, "usb");
+
+	info("edev->sudev success");
 
 	for(i=0;i<2;i++){
 		edev->eps[i]=calloc(sizeof(*edev->eps[i]),
@@ -353,8 +434,23 @@ static struct usbip_exported_device *usbip_exported_device_new(char *sdevpath)
 			goto err;
 		}
 	}
-
-	read_usb_device(edev->sudev, &edev->udev);
+	
+	//DEV_TEST
+	//read_usb_device(edev->sudev, &edev->udev);
+	strcpy(edev->udev.path, edev->sudev->path);
+	strcpy(edev->udev.busid, edev->sudev->bus_id);
+	edev->udev.busnum = 0x00000002;
+	edev->udev.devnum = 0x00000006;
+	edev->udev.speed = 0x00000001;
+	edev->udev.idVendor = 0x0461;
+	edev->udev.idProduct = 0x4d16;
+	edev->udev.bcdDevice = 0x0200;
+	edev->udev.bDeviceClass = 0x00;
+	edev->udev.bDeviceSubClass = 0x00;
+	edev->udev.bDeviceProtocol = 0x00;
+	edev->udev.bConfigurationValue = 0x01;
+	edev->udev.bNumConfigurations = 0x01;
+	edev->udev.bNumInterfaces = 0x01;
 
 	edev->status = SDEV_ST_AVAILABLE;
 
@@ -366,9 +462,47 @@ static struct usbip_exported_device *usbip_exported_device_new(char *sdevpath)
 		goto err;
 	}
 
+	// DEV_TEST
+	/*
 	for (int i=0; i < edev->udev.bNumInterfaces; i++)
 		read_usb_interface(&edev->udev, i, &edev->uinf[i]);
+	*/
+	edev->uinf[0].bInterfaceClass = 0x03;
+	edev->uinf[0].bInterfaceSubClass = 0x01;
+	edev->uinf[0].bInterfaceProtocol = 0x02;
+	edev->uinf[0].padding = 0x00;
 
+/*
+	info("#####exported_device_new");
+	info("edev->sudev->name : %s", edev->sudev->name);
+	info("edev->sudev->path : %s", edev->sudev->path);
+	info("edev->sudev->bus_id : %s", edev->sudev->bus_id);
+	info("edev->sudev->bus : %s", edev->sudev->bus);
+	info("edev->sudev->driver_name : %s", edev->sudev->driver_name);
+	info("edev->sudev->subsystem : %s", edev->sudev->subsystem);
+	info("edev->sudev->attrlist : %p", edev->sudev->attrlist);
+	info("edev->sudev->parent : %p", edev->sudev->parent);
+	info("edev->sudev->children : %s", edev->sudev->children);
+	info("edev->udev.path : %s", edev->udev.path);
+	info("edev->udev.busid : %s", edev->udev.busid);
+	info("edev->udev.busnum : %08x", edev->udev.busnum);
+	info("edev->udev.devnum : %08x", edev->udev.devnum);
+	info("edev->udev.speed : %08x", edev->udev.speed);
+	info("edev->udev.idVendor : %04x", edev->udev.idVendor);
+	info("edev->udev.idProduct : %04x", edev->udev.idProduct);
+	info("edev->udev.bcdDevice : %04x", edev->udev.bcdDevice);
+	info("edev->udev.bDeviceClass : %02x", edev->udev.bDeviceClass);
+	info("edev->udev.bDeviceSubClass : %02x", edev->udev.bDeviceSubClass);
+	info("edev->udev.bDeviceProtocol : %02x", edev->udev.bDeviceProtocol);
+	info("edev->udev.bConfigurationValue : %02x", edev->udev.bConfigurationValue);
+	info("edev->udev.bNumConfigurations : %02x", edev->udev.bNumConfigurations);
+	info("edev->udev.bNumInterfaces : %02x", edev->udev.bNumInterfaces);
+	for (int i=0; i < edev->udev.bNumInterfaces; i++) {
+		info("edev->uinf[%d].bInterfaceClass : %02x", i, edev->uinf[i].bInterfaceClass);
+		info("edev->uinf[%d].bInterfaceSubClass : %02x", i, edev->uinf[i].bInterfaceSubClass);
+		info("edev->uinf[%d].bInterfaceProtocol : %02x", i, edev->uinf[i].bInterfaceProtocol);
+		info("edev->uinf[%d].padding : %02x", i, edev->uinf[i].padding);
+*/
 	if(claim_dev(edev)){
 		err("claim device");
 		goto err;
@@ -380,7 +514,8 @@ err:
 	if (edev && edev->processing_urbs)
 		dlist_destroy(edev->processing_urbs);
 	if (edev && edev->sudev)
-		sysfs_close_device(edev->sudev);
+		free(edev->sudev);
+		//sysfs_close_device(edev->sudev);
 	if (edev && edev->eps[0])
 		free(edev->eps[0]);
 	if (edev && edev->eps[1])
@@ -410,12 +545,14 @@ struct usbip_exported_device * export_device(char *busid)
 	struct sysfs_device	*sudev;  /* sysfs_device of usb_device */
 	struct usbip_exported_device *edev;
 
-	sudev=sysfs_open_device("usb", busid);
+	/* sudev=sysfs_open_device("usb", busid);
 	if(!sudev){
 		err("can't export devce busid %s", busid);
 		return NULL;
 	}
-	edev = usbip_exported_device_new(sudev->path);
+	*/
+	info("##export_device : busid = %s", busid);
+	edev = usbip_exported_device_new(busid);
 	if (!edev) {
 		err("usbip_exported_device new");
 		return NULL;
@@ -423,6 +560,7 @@ struct usbip_exported_device * export_device(char *busid)
 	dbg("export dev edev: %p, usbfs fd: %d\n", edev, edev->usbfs_fd);
 	dlist_unshift(stub_driver->edev_list, (void *) edev);
 	stub_driver->ndevs++;
+	info("%d devices exported", stub_driver->ndevs);
 	dbg("%d devices exported\n", stub_driver->ndevs);
 	return edev;
 }
@@ -485,6 +623,5 @@ struct usbip_exported_device *usbip_stub_get_device(int num)
 		else
 			count++ ;
 	}
-
 	return NULL;
 }
