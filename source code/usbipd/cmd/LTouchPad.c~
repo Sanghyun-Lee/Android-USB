@@ -67,6 +67,11 @@ int send_urb(struct usbdevfs_urb *surb, unsigned char *buffer)
 		return -1;
 	}
 	total += ret;
+	printf(" < send >\n");
+	printf("  buffer[0] : %02x\n", buffer[0]);
+	printf("  buffer[1] : %02x\n", buffer[1]);
+	printf("  buffer[2] : %02x\n", buffer[2]);
+	printf("  buffer[3] : %02x\n", buffer[3]);
 	ret = send(sockfd, buffer, surb->buffer_length, 0);
 	if(ret<=0) {
 		fprintf(stderr, "send(urb.buffer) error\n");
@@ -552,7 +557,10 @@ int move(int up, int down, int left, int right, int speed)
 		return -1;
 	}
 	// MOVE_RESET
+
+	// TEST	
 	return send_control(5, speed);
+	//return ret;
 }
 
 int btn_left(int down, int up)
@@ -606,7 +614,7 @@ int main(int argc, char* argv[])
 		//fflush(stdin);
 		c = getchar();
 		if(c=='\n'){
-			printf("0792047 nanniggu");
+			printf("0792047 nanniggu\n");
 			continue;
 		}
 		printf("input:%c\n",c);

@@ -1,20 +1,12 @@
-kernel/common/include/linux/usbdevice_fs.h
-
-
-----------------------------------------------------
 #
-#libusbip
+#usbipd
 #
-$(warning ######  cmd Start  ######)
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := libusbip
+LOCAL_MODULE := usbipd
 LOCAL_SRC_FILES := stub_server.c \
 	usbip_network.c \
-	usbip_network.h \
-	dlist.h \
-	dlist.c \
-	libsysfs.h
+	usbip_network.h
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../lib \
 	$(LOCAL_PATH)/../glib \
 	$(LOCAL_PATH)/../sysfslib \
@@ -24,31 +16,20 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../lib \
 	$(call include-path-for, sysfslib)/sysfslib
 LOCAL_CFLAGS := -Wall -W -Wstrict-prototypes -std=gnu99
 LOCAL_MODULE_TAGS := eng
-LOCAL_PRELINK_MODULE:=false
+LOCAL_PRELINK_MODULE := false
 LOCAL_SHARED_LIBRARIES := libc
 LOCAL_STATIC_LIBRARIES := libusbipd \
 			libglib_static \
 			libsysfsd
-include $(BUILD_SHARED_LIBRARY)
-
-#usbipd
-include $(CLEAR_VARS)
-LOCAL_SHARED_LIBRARIES := libusbip
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE := usbipd
 include $(BUILD_EXECUTABLE)
-
 $(warning ######   cmd end   ######)
 
-----------------------------------------------------------------
-
 #
-#usbipd_bind_driver
+#usbip_bind_driver
 #
 $(warning ######  cmd Start  ######)
-LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := usbipd_bind_driver
+LOCAL_MODULE := usbip_bind_driver
 LOCAL_SRC_FILES := bind-driver.c \
 	utils.c \
 	utils.h \
@@ -68,28 +49,5 @@ LOCAL_SHARED_LIBRARIES := libc
 LOCAL_STATIC_LIBRARIES := libusbipd \
 		libglib_static \
 		libsysfsd
-include $(BUILD_STATIC_LIBRARY)
-
-#
-#usbip_bind_driver
-#
-include $(CLEAR_VARS)
-LOCAL_STATIC_LIBRARIES := usbipd_bind_driver \
-	libglib_static \
-	libusbipd
-LOCAL_MODULE_TAGS := eng
-LOCAL_MODULE := usbip_bind_driver
 include $(BUILD_EXECUTABLE)
 $(warning ######   cmd end   ######)
-
-----------------------------------------------------------
-
-adb root
-adb push a.out /system/xbin/
-adb push a.so /system/lib/
-adb shell chmod 777 /system/xbin/a.out
-adb shell a.out
-
-
-
-

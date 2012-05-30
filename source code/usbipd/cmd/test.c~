@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 int main(int argc, char* argv[]) {
 	int speed;
 	char c, c2;
