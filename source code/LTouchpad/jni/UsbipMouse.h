@@ -32,14 +32,6 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_process_1cmd
 
 /*
  * Class:     app_android_ltouchpad_UsbipMouse
- * Method:    recv_ack
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_recv_1ack
-  (JNIEnv *, jobject);
-
-/*
- * Class:     app_android_ltouchpad_UsbipMouse
  * Method:    move
  * Signature: (II)I
  */
