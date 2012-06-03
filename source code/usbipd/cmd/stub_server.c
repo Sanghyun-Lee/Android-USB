@@ -489,7 +489,9 @@ int delete_aurb(struct dlist * dlist, unsigned int seqnum,
 	dlist_for_each_data(dlist, aurb, AsyncURB){
 		if(aurb->seqnum==seqnum&&
 				aurb->sub_seqnum==sub_seqnum){
+			info("delete_aurb seqnum : %d", seqnum);
 			dlist_delete_before(dlist);
+			info("dlist_delete_before()");
 			return 0;
 		}
 	}
@@ -606,13 +608,25 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		}
 */
 ///*
+<<<<<<< HEAD
+=======
+		info("##recv_dev()");
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		ret = recv_dev(edev->tmp_sockfd, &urb);
 		if(ret<0) {
 			return 0;
 		}
 //*/
+<<<<<<< HEAD
 		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
 /*
+=======
+		for(n=0;n<urb->buffer_length;n++)
+			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
+		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
+
+		info("========================");
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		info("aurb->seqnum:%u", aurb->seqnum);
 		info("aurb->sub_seqnum:%u", aurb->sub_seqnum);
 		info("aurb->data_len:%u", aurb->data_len);
@@ -620,11 +634,18 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		for(n=0; n<aurb->data_len; n++)
 			info(" aurb->data[%d]:0x%02x", n, aurb->data[n]);
 		printf("\n");
+<<<<<<< HEAD
 */
 /*
 		info("========================");
 		for(n=0;n<urb->buffer_length;n++)
 			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
+=======
+
+		for(n=0;n<urb->buffer_length;n++)
+			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
+///*
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		//info("buffer_length:%d", urb->buffer_length); 
 		//info("actual_length:%d", urb->actual_length);
 		//info("start_frame:%d", urb->start_frame);
@@ -640,7 +661,11 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		//info("sizeof(iso_frame_desc) : %d", sizeof(*(urb->iso_frame_desc)));
 		//info("sizeof(urb) : %d", sizeof(*urb));
 		//}
+<<<<<<< HEAD
 */
+=======
+//*/
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 
 		if(aurb->sub_seqnum){
 			info("##aurb->sub_seqnum");
@@ -709,6 +734,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 				urb->buffer_length = aurb->data_len;
 			}
 		}
+
 		if(aurb->urb.type == USBDEVFS_URB_TYPE_BULK &&
 			is_in_ep(aurb->urb.endpoint)){
 			info("##urb->type == BULK");
@@ -751,6 +777,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 				}
 			}
 		}
+
 		is_ctrl = (urb->type==USBDEVFS_URB_TYPE_CONTROL);
 		memset(&pdu_header, 0, sizeof(pdu_header));
 
@@ -769,6 +796,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		iov[0].iov_base = &pdu_header;
 		iov[0].iov_len = sizeof(pdu_header);
 		ioc=1;
+		info("##iov setting end");
 		if(is_in_ep(urb->endpoint)&&aurb->ret_len>0){
 			if(urb->type!=USBDEVFS_URB_TYPE_ISO){
 				iov[ioc].iov_base = aurb->data+(is_ctrl?8:0);
@@ -795,10 +823,13 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 			}
 			ioc++;
 		}
+		info("##usbip_sendv");
 		ret=usbip_sendv(edev->client_fd, iov, ioc);
 		if(ret<0)
 			g_error("can't send pdu_header");
+		info("##usbip_sendv ret : %d, aurb->seqnum : %d", ret, aurb->seqnum);
 		delete_aurb(edev->processing_urbs, aurb->seqnum, 0);
+		info("##delete_aurb");
 	} while(1);
 	return 0;
 }
@@ -908,9 +939,17 @@ int submit_single_urb(int fd, AsyncURB *aurb, struct dlist * processing_urbs)
 		}
 		info("cmd_num:%s",cmd_num);
 		send_dev(fd, cmd_num, strlen(cmd_num));
+<<<<<<< HEAD
 	}
 //*/
 	dlist_push(processing_urbs, (void *)aurb);
+=======
+		if(sn<5)
+			dlist_push(processing_urbs, (void *)aurb);
+	}
+//*/
+	
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 	sn++;
 	return 0;
 too_big:
