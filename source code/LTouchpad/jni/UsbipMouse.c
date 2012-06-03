@@ -27,7 +27,7 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_connect_1usbip
 	}
 	memset(&sockin, 0, sizeof(sockin));
 	sockin.sin_family = AF_INET;
-	sockin.sin_addr.s_addr = inet_addr("192.168.0.20");
+	sockin.sin_addr.s_addr = inet_addr("127.0.0.1");
 	sockin.sin_port = htons(PORT);
 
 	con = connect(sockfd,(struct sockaddr*)&sockin, sizeof(sockin));
