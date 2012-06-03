@@ -17,7 +17,6 @@ import android.widget.TextView;
 public class LTouchpadActivity extends Activity {
 	
 	private static UsbipMouse usbipMouse;
-	private static RecvThread recvThread;
 	
 	private static Button btnConnect;
 	private static TextView textConnect;
@@ -66,7 +65,6 @@ public class LTouchpadActivity extends Activity {
         Drawable_RbtnClicked = getResources().getDrawable(R.drawable.right_clicked);
         
         usbipMouse = new UsbipMouse();
-        recvThread = new RecvThread(usbipMouse);
         connectUsbip();
     }
     
@@ -113,7 +111,6 @@ public class LTouchpadActivity extends Activity {
 					 }
 					 else {
 						 msg.obj = HANDLE_MSG_SUCCESSCONNECT;
-						 recvThread.start();
 					 }
 					 handler.sendMessage(msg);
 				 }

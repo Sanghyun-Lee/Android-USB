@@ -68,18 +68,7 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_process_1cmd
 
 JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_recv_1ack
 (JNIEnv *env, jobject obj) {
-	char cmd[MAX_RECV];
-	int cmd_num;
-
-	if(recv_seqnum(sockfd, cmd, MAX_RECV)==-1){
-		fprintf(stderr, "recv_seqnum() fail\n");
-		return -1;
-	}
-	if(sscanf(cmd, "%d", &cmd_num) != 1) {
-		fprintf(stderr, "cmd_num error\n");
-		return -2;
-	}
-	return cmd_num;
+	return 0;
 }
 
 JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_move
@@ -561,6 +550,8 @@ int set_buffer_btn(int left, int right, int scroll, int down)
 int send_control() 
 {
 	unsigned int tmp_length = 0x00000000;
+	char cmd[MAX_RECV];
+	int cmd_num;
 
 	tmp_length = buffer[3];
 	tmp_length = tmp_length << 8;
@@ -584,5 +575,13 @@ int send_control()
 	if(send_urb(&urb, buffer) <0)
 		return -1;
 
-	return seqnum;
+	if(recv_seqnum(sockfd, cmd, MAX_RECV)==-1){
+		fprintf(stderr, "recv_seqnum() fail\n");
+		return -1;
+	}
+	if(sscanf(cmd, "%d", &cmd_num) != 1) {
+		fprintf(stderr, "cmd_num error\n");
+		return -2;
+	}
+	return cmd_num;
 }

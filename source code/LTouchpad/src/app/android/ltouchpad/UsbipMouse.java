@@ -1,17 +1,14 @@
 package app.android.ltouchpad;
 
 import android.os.Message;
-import android.util.Log;
 
 public class UsbipMouse {
 	private boolean connection;
 	private boolean moveflag;
-	private int recvSeqnum;
-	private int sendSeqnum;
 	
 	public UsbipMouse() {
 		System.loadLibrary("usb-mouse");
-		moveflag =false;
+		moveflag = false;
 	}
 	
 	public boolean isConnect() {
@@ -31,38 +28,21 @@ public class UsbipMouse {
 	
 	public boolean moveTouch(int x, int y) {
 		int ret;
-		//if(!moveflag) {
-		Log.d("LTouchPad", "sendSeqnum:"+sendSeqnum+"/recvSeqnum:"+recvSeqnum);
-		if(sendSeqnum <= recvSeqnum+1) {
-			//moveflag = true;
-			sendSeqnum = move(x, y);
-			//if(ret==0) {
-			if(sendSeqnum < 0) {
-				Log.w("LTouchPad", "moveTouch Err : "+sendSeqnum);
+		if(!moveflag) {
+			moveflag = true;
+			ret = move(x,y);
+			if(ret<0) {
 				closeConnection();
-				// moveflag = true;
+				moveflag = false;
 				return false;
 			}
 			else {
+				moveflag = false;
 				return true;
 			}
 		}
 		else
 			return false;
-	}
-	
-	public boolean recvAck() {
-		recvSeqnum = recv_ack();
-		if(recvSeqnum<0) {
-			closeConnection();
-			return false;
-		}
-		else
-			return true;
-	}
-	
-	public int getSeqnum() {
-		return recvSeqnum;
 	}
 	
 	private void closeConnection() {
@@ -73,10 +53,7 @@ public class UsbipMouse {
 	}
 	
 	public boolean processCmd() {
-		recvSeqnum = process_cmd();
-		sendSeqnum = recvSeqnum;
-		Log.d("LTouchPad", "sendSeqnum:"+sendSeqnum+"/recvSeqnum:"+recvSeqnum);
-		if(sendSeqnum<0)
+		if(process_cmd()<0)
 			return false;
 		else
 			return true;
@@ -89,9 +66,7 @@ public class UsbipMouse {
 		else
 			u=1;
 		
-		sendSeqnum = btn_left(d, u);
-		Log.d("LTouchPad", "sendSeqnum:"+sendSeqnum+"/recvSeqnum:"+recvSeqnum);
-		if(sendSeqnum<0)
+		if(btn_left(d, u)<0)
 			return false;
 		else
 			return true;
@@ -104,8 +79,7 @@ public class UsbipMouse {
 		else
 			u=1;
 		
-		sendSeqnum = btn_right(d, u);
-		if(sendSeqnum<0)
+		if(btn_right(d, u)<0)
 			return false;
 		else
 			return true;
@@ -118,8 +92,7 @@ public class UsbipMouse {
 		else
 			u=1;
 		
-		sendSeqnum = btn_scroll(d, u);
-		if(sendSeqnum<0)
+		if(btn_scroll(d, u)<0)
 			return false;
 		else
 			return true;
@@ -132,8 +105,7 @@ public class UsbipMouse {
 		else
 			u=1;
 		
-		sendSeqnum = move_scroll(u, d);
-		if(sendSeqnum<0)
+		if(move_scroll(u, d)<0)
 			return false;
 		else
 			return true;
@@ -141,7 +113,6 @@ public class UsbipMouse {
 	
 	private native int connect_usbip();
 	private native int process_cmd();
-	private native int recv_ack();
 	
 	private native int move(int x, int y);
 	private native int btn_left(int down, int up);
@@ -149,5 +120,3 @@ public class UsbipMouse {
 	private native int btn_scroll(int down, int up);
 	private native int move_scroll(int up, int down);
 }
-
-
