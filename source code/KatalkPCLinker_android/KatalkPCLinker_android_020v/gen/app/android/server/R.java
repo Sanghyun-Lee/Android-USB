@@ -49,13 +49,12 @@ public final class R {
         public static final int main=0x7f030001;
     }
     public static final class string {
-        public static final int app_name=0x7f070001;
-        public static final int hello=0x7f070000;
-        public static final int ime_name=0x7f070002;
-        public static final int label_go_key=0x7f070004;
-        public static final int label_next_key=0x7f070005;
-        public static final int label_send_key=0x7f070006;
-        public static final int word_separators=0x7f070003;
+        public static final int app_name=0x7f070000;
+        public static final int ime_name=0x7f070001;
+        public static final int label_go_key=0x7f070003;
+        public static final int label_next_key=0x7f070004;
+        public static final int label_send_key=0x7f070005;
+        public static final int word_separators=0x7f070002;
     }
     public static final class xml {
         public static final int hangul=0x7f040000;
