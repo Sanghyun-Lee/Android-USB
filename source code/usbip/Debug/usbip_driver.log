@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿빌드 시작: 2012-06-05 오후 10:53:35
      1>3 노드의 "C:\Documents and Settings\Administrator\바탕 화면\usbip\usbip_driver.vcxproj" 프로젝트(build 대상)입니다.
+=======
+﻿빌드 시작: 2012-06-05 오후 3:27:54
+     1>3 노드의 "C:\Users\windows7\Android-USB\source code\usbip\usbip_driver.vcxproj" 프로젝트(build 대상)입니다.
+>>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
      1>Build:
          cmd /K b.bat
          장치가 준비되지 않았습니다.
@@ -65,4 +70,8 @@
 
 빌드했습니다.
 
+<<<<<<< HEAD
 경과 시간: 00:00:04.28
+=======
+경과 시간: 00:00:03.49
+>>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
