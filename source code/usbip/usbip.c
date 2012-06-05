@@ -6,6 +6,7 @@
 #include "time.h"
 #include <sys/types.h> 
 #include <WinSock.h>
+#include <string.h>
 #define _GNU_SOURCE
 
 #define PORT 3700
@@ -47,10 +48,13 @@ enum {
 unsigned int parse_opt(int argc, char *argv[])
 {
 	int cmd = 0;
+	int i = 0;
+
 
 	for (;;) {
 		int c;
 		int index = 0;
+
 		c = getopt_long(argc, argv, "adplvhDSx", longopts, &index);
 
 		if (c == -1)
@@ -519,19 +523,19 @@ int connect_server()
 	}
 }
 
-int recv_msg(int sockfd, char *msg, int size)
+void recv_msg(int sockfd, char *msg, int size)
 {
 	int ret = 0;
 
 	memset(msg, 0, size);
 	ret = recv(sockfd, msg, size, 0);
-
+	
 	if(ret <= 0){
 		//error 전송 
 		//send_msg();
 	}
 	
-	return ret;
+	//return *msg;
 }
 
 int send_msg(int sockfd, char *msg, int size)
@@ -543,13 +547,16 @@ int send_msg(int sockfd, char *msg, int size)
 }
 
 
-int main()
-//int main(int argc, char *argv[])
+
+int main(int argc, char *argv[])
 {
+
 	int cmd;
-	char msg[MAXLINE] = "연결성공";
-	int argc;
-	char *argv[MAXLINE] = {"usbip", "-l", "127.0.0.1"};
+	char msg[]="성공";	
+	char option[5];
+	char address[MAXLINE];
+	char finish[MAXLINE] = "not";
+	
 	info("%s\n",version);
 
 	if(init_winsock()){
@@ -560,17 +567,23 @@ int main()
 	connect_server();
 	send_msg(client_socket, msg, MAXLINE);
 	printf("%s\n", msg);
+	
+	memset(&option, 0, MAXLINE);
+	memset(&address, 0, MAXLINE);
 
-	argc = 3;
-	/*
-	memset(argv[0], 0, MAXLINE);
-	recv_msg(client_socket, argv[0], MAXLINE);
-	printf("%s\n", argv[0]);
+	recv_msg(client_socket, option, 5);
+	recv_msg(client_socket, address, MAXLINE);
 
-	memset(argv[1], 0, MAXLINE);
-	recv_msg(client_socket, argv[1], MAXLINE);
-	printf("%s\n", argv[1]);
-	*/
+	argv[0] = "usbip";
+	argv[1] = option;
+	argv[2] = address;
+
+	if(!strcmp(option,"-a")){
+		argc = 4;
+		argv[3] = "2-1.2";
+	}else{
+		argc = 3;
+	}
 	
 	cmd = parse_opt(argc, argv);
 	
@@ -605,7 +618,10 @@ int main()
 		default:
 			show_help(argv[0]);
 	}
+	recv_msg(client_socket, finish, 10);
+	while(/*!strcmp(finish,"finish")*/1)
+	{
 
-	Sleep(10000);
+	}
 	return 0;
 }

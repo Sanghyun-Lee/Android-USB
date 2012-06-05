@@ -72,6 +72,9 @@ BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
 	ON_MESSAGE(UM_CLOSE_MESSAGE, &Cusbip_uiDlg::OnCloseSocket)
 	ON_BN_CLICKED(IDC_LIST, &Cusbip_uiDlg::OnBnClickedList)
 	ON_BN_CLICKED(IDC_CONNECT, &Cusbip_uiDlg::OnBnClickedConnect)
+	ON_BN_CLICKED(IDC_DISCONNECT, &Cusbip_uiDlg::OnBnClickedDisconnect)
+	ON_EN_CHANGE(IDC_EDIT3, &Cusbip_uiDlg::OnEnChangeEdit3)
+	ON_BN_CLICKED(IDC_CLOSE, &Cusbip_uiDlg::OnBnClickedClose)
 END_MESSAGE_MAP()
 
 
@@ -136,10 +139,9 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	{
 		AddMessage("서버가 실행 되었습니다.");
 	}
+	//ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
+	ShellExecute(NULL, _T("open") ,_T("cmd.exe"),_T("/K Run.bat") ,NULL, SW_SHOW);
 
-	ShellExecute(NULL, _T("Open"), 
-		_T("C:/Users/windows7/Android-USB/source code/usbip/Debug/usbip.exe"),
-		NULL, NULL, SW_SHOW);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -255,6 +257,8 @@ void Cusbip_uiDlg::OnBnClickedList()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	int ret = 0;
 	CString strMsg;
+	char buf[8000];
+	CString listData;
 	CString strAddress;
 	m_edIpServerAddress.GetWindowText(strAddress);
 	strMsg.Format("-l");
@@ -265,18 +269,96 @@ void Cusbip_uiDlg::OnBnClickedList()
 		return;
 	}
 	AddMessage("전송 : "+strMsg);
+
 	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
 	if(ret < 1){
 		AddMessage("메세지 전송 실패");
 		return;
 	}
 	AddMessage("전송 : "+strAddress);
+
 	
-	
+	while(dataSocket.Receive(buf, 8000)>0){
+		listData += buf;
+		memset(buf, 0, sizeof(buf));
+	}
+
+	m_edListData.SetWindowText(listData);
 }
 
 
 void Cusbip_uiDlg::OnBnClickedConnect()
 {
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	//ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
+
+	int ret = 0;
+	CString strMsg;
+	char buf[1024];
+	CString listData;
+	CString strAddress;
+	m_edIpServerAddress.GetWindowText(strAddress);
+	strMsg.Format("-a");
+	
+	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패1");
+		return;
+	}
+	AddMessage("전송 : "+strMsg);
+	
+	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패2");
+		return;
+	}
+
+	AddMessage("전송 : "+strAddress);
+
+	
+	
+	while(dataSocket.Receive(buf, 8000)>0){
+		listData += buf;
+		memset(buf, 0, sizeof(buf));
+	}
+
+	m_edListData.SetWindowText(listData);
+}
+
+
+void Cusbip_uiDlg::OnBnClickedDisconnect()
+{
+	int ret = 0;
+	CString strMsg;
+	strMsg = "finish";
+
+	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
+}
+
+
+void Cusbip_uiDlg::OnEnChangeEdit3()
+{
+	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
+	// CDialogEx::OnInitDialog() 함수를 재지정 
+	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
+	// 이 알림 메시지를 보내지 않습니다.
+
+	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void Cusbip_uiDlg::OnBnClickedClose()
+{
+	int ret = 0;
+	CString strMsg;
+	strMsg = "finish";
+
+	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
 }
