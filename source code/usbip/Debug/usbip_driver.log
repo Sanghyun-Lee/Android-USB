@@ -1,4 +1,4 @@
-﻿빌드 시작: 2012-06-04 오후 10:10:46
+﻿빌드 시작: 2012-06-05 오후 3:27:54
      1>3 노드의 "C:\Users\windows7\Android-USB\source code\usbip\usbip_driver.vcxproj" 프로젝트(build 대상)입니다.
      1>Build:
          cmd /K b.bat
@@ -67,4 +67,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:03.39
+경과 시간: 00:00:03.49

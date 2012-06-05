@@ -61,6 +61,7 @@ void Cusbip_uiDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_IPADDRESS, m_edIpServerAddress);
 	DDX_Text(pDX, IDC_EDIT3, m_strListData);
 	DDX_Control(pDX, IDC_EDIT3, m_edListData);
+	DDX_Control(pDX, IDC_BUSID, selBusid);
 }
 
 BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
@@ -72,6 +73,7 @@ BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
 	ON_MESSAGE(UM_CLOSE_MESSAGE, &Cusbip_uiDlg::OnCloseSocket)
 	ON_BN_CLICKED(IDC_LIST, &Cusbip_uiDlg::OnBnClickedList)
 	ON_BN_CLICKED(IDC_CONNECT, &Cusbip_uiDlg::OnBnClickedConnect)
+	ON_CBN_SELCHANGE(IDC_BUSID, &Cusbip_uiDlg::OnCbnSelchangeBusid)
 END_MESSAGE_MAP()
 
 
@@ -257,7 +259,7 @@ void Cusbip_uiDlg::OnBnClickedList()
 	CString strMsg;
 	CString strAddress;
 	m_edIpServerAddress.GetWindowText(strAddress);
-	strMsg.Format("-l");
+	strMsg.Format("l");
 	
 	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
 	if(ret < 1){
@@ -279,4 +281,51 @@ void Cusbip_uiDlg::OnBnClickedList()
 void Cusbip_uiDlg::OnBnClickedConnect()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	int ret = 0;
+	CString strMsg;
+	CString strAddress;
+	m_edIpServerAddress.GetWindowText(strAddress);
+	strMsg.Format("a");
+	
+	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
+	AddMessage("전송 : "+strMsg);
+	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
+	AddMessage("전송 : "+strAddress);
+	
+}
+
+
+void Cusbip_uiDlg::OnCbnSelchangeBusid()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	int nIndex = selBusid.GetCurSel();
+	if(nIndex == -1){
+		return;
+	}
+
+	CString busid;
+	selBusid.GetLBText(nIndex, busid);
+
+	sendMsg(busid);
+	//GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+	UpdateData(FALSE);
+}
+
+void Cusbip_uiDlg::sendMsg(CString strMsg)
+{
+	int ret = 0;
+	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
+
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
 }

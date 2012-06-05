@@ -449,6 +449,8 @@ static int query_exported_devices(SOCKET sockfd)
 				udev.bDeviceSubClass, udev.bDeviceProtocol);
 
 		info("%8s: %s", udev.busid, product_name);
+		send_msg(client_socket, udev.busid, MAXLINE);
+		send_msg(client_socket, product_name, MAXLINE);
 		info("%8s: %s", " ", udev.path);
 		info("%8s: %s", " ", class_name);
 
@@ -547,22 +549,41 @@ int main()
 //int main(int argc, char *argv[])
 {
 	int cmd;
-	char msg[MAXLINE] = "연결성공";
+	char *msg = "연결성공";
 	int argc;
-	char *argv[MAXLINE] = {"usbip", "-l", "127.0.0.1"};
+	char cmd_msg;
+	char *argv[MAXLINE];
 	info("%s\n",version);
 
 	if(init_winsock()){
 		err("can't init winsock");
 		return 0;
 	}
-
+	memset(&cmd_msg, 0, 1);
 	connect_server();
 	send_msg(client_socket, msg, MAXLINE);
 	printf("%s\n", msg);
-
-	argc = 3;
-	/*
+	
+	recv_msg(client_socket, &cmd_msg, MAXLINE);
+	
+	if(cmd_msg == 'l') {
+		argc = 3;
+		argv[0] = "usbip";
+		argv[1] = "-l";
+		recv_msg(client_socket, argv[2], MAXLINE);
+	} else if(cmd_msg == 'a') {
+		argc = 4;
+		argv[0] = "usbip";
+		argv[1] = "-a";
+		recv_msg(client_socket, argv[2], MAXLINE);
+		recv_msg(client_socket, argv[3], MAXLINE);
+	} else {
+		msg = "잘못된 입력";
+		send_msg(client_socket, msg, MAXLINE);
+	}
+	
+	printf("%c\n", cmd_msg);
+	
 	memset(argv[0], 0, MAXLINE);
 	recv_msg(client_socket, argv[0], MAXLINE);
 	printf("%s\n", argv[0]);
@@ -570,7 +591,7 @@ int main()
 	memset(argv[1], 0, MAXLINE);
 	recv_msg(client_socket, argv[1], MAXLINE);
 	printf("%s\n", argv[1]);
-	*/
+	
 	
 	cmd = parse_opt(argc, argv);
 	
@@ -605,7 +626,7 @@ int main()
 		default:
 			show_help(argv[0]);
 	}
-
+	
 	Sleep(10000);
 	return 0;
 }
