@@ -608,17 +608,25 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		}
 */
 ///*
+<<<<<<< HEAD
+=======
 		info("##recv_dev()");
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		ret = recv_dev(edev->tmp_sockfd, &urb);
 		if(ret<0) {
 			return 0;
 		}
 //*/
+<<<<<<< HEAD
+		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
+/*
+=======
 		for(n=0;n<urb->buffer_length;n++)
 			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
 		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
 
 		info("========================");
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		info("aurb->seqnum:%u", aurb->seqnum);
 		info("aurb->sub_seqnum:%u", aurb->sub_seqnum);
 		info("aurb->data_len:%u", aurb->data_len);
@@ -626,10 +634,18 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		for(n=0; n<aurb->data_len; n++)
 			info(" aurb->data[%d]:0x%02x", n, aurb->data[n]);
 		printf("\n");
+<<<<<<< HEAD
+*/
+/*
+		info("========================");
+		for(n=0;n<urb->buffer_length;n++)
+			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
+=======
 
 		for(n=0;n<urb->buffer_length;n++)
 			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
 ///*
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		//info("buffer_length:%d", urb->buffer_length); 
 		//info("actual_length:%d", urb->actual_length);
 		//info("start_frame:%d", urb->start_frame);
@@ -645,7 +661,11 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		//info("sizeof(iso_frame_desc) : %d", sizeof(*(urb->iso_frame_desc)));
 		//info("sizeof(urb) : %d", sizeof(*urb));
 		//}
+<<<<<<< HEAD
+*/
+=======
 //*/
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 
 		if(aurb->sub_seqnum){
 			info("##aurb->sub_seqnum");
@@ -919,11 +939,17 @@ int submit_single_urb(int fd, AsyncURB *aurb, struct dlist * processing_urbs)
 		}
 		info("cmd_num:%s",cmd_num);
 		send_dev(fd, cmd_num, strlen(cmd_num));
+<<<<<<< HEAD
+	}
+//*/
+	dlist_push(processing_urbs, (void *)aurb);
+=======
 		if(sn<5)
 			dlist_push(processing_urbs, (void *)aurb);
 	}
 //*/
 	
+>>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 	sn++;
 	return 0;
 too_big:
