@@ -69,7 +69,7 @@ extern int usbip_use_debug ;
 */
 #define err(fmt, args...)	do { \
 	printf("usbip err: %13s:%4d (%-12s) " fmt "\n", \
-			__FILE__, __LINE__, __FUNCTION__,  ##args); \
+			__FILE__, __LINE__, __FUNCTION__,  ##args);
 } while (0)
 
 #define notice(fmt, args...)	do { \

@@ -4,9 +4,7 @@
  * Copyright (C) 2005-2007 Takahiro Hirofuchi
  */
 
-#ifdef HAVE_CONFIG_H
 #include "../config.h"
-#endif
 
 #include <unistd.h>
 #include <netdb.h>
@@ -22,6 +20,8 @@
 #include <tcpd.h>
 #endif
 
+#include "usbdevice_fs.h"
+
 #define _GNU_SOURCE
 #include <getopt.h>
 #include <signal.h>
@@ -32,8 +32,11 @@
 #include <glib.h>
 #include <sys/time.h>
 
+
 static const char version[] = PACKAGE_STRING
 	" ($Id$)";
+
+/*
 
 /*
  * A basic header followed by other additional headers.
@@ -609,7 +612,9 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		}
 //*/
 		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
+
 /*
+		info("========================");
 		info("aurb->seqnum:%u", aurb->seqnum);
 		info("aurb->sub_seqnum:%u", aurb->sub_seqnum);
 		info("aurb->data_len:%u", aurb->data_len);
@@ -617,9 +622,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		for(n=0; n<aurb->data_len; n++)
 			info(" aurb->data[%d]:0x%02x", n, aurb->data[n]);
 		printf("\n");
-*/
-/*
-		info("========================");
+
 		for(n=0;n<urb->buffer_length;n++)
 			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
 		//info("buffer_length:%d", urb->buffer_length); 
@@ -706,6 +709,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 				urb->buffer_length = aurb->data_len;
 			}
 		}
+
 		if(aurb->urb.type == USBDEVFS_URB_TYPE_BULK &&
 			is_in_ep(aurb->urb.endpoint)){
 			info("##urb->type == BULK");
@@ -748,6 +752,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 				}
 			}
 		}
+
 		is_ctrl = (urb->type==USBDEVFS_URB_TYPE_CONTROL);
 		memset(&pdu_header, 0, sizeof(pdu_header));
 
@@ -766,6 +771,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		iov[0].iov_base = &pdu_header;
 		iov[0].iov_len = sizeof(pdu_header);
 		ioc=1;
+		info("##iov setting end");
 		if(is_in_ep(urb->endpoint)&&aurb->ret_len>0){
 			if(urb->type!=USBDEVFS_URB_TYPE_ISO){
 				iov[ioc].iov_base = aurb->data+(is_ctrl?8:0);
@@ -792,10 +798,13 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 			}
 			ioc++;
 		}
+		info("##usbip_sendv");
 		ret=usbip_sendv(edev->client_fd, iov, ioc);
 		if(ret<0)
 			g_error("can't send pdu_header");
+		info("##usbip_sendv ret : %d, aurb->seqnum : %d", ret, aurb->seqnum);
 		delete_aurb(edev->processing_urbs, aurb->seqnum, 0);
+		info("##delete_aurb");
 	} while(1);
 	return 0;
 }
@@ -868,7 +877,7 @@ int submit_single_urb(int fd, AsyncURB *aurb, struct dlist * processing_urbs)
 {
 	static int sn = 0;
 	int n;
-	char cmd_num[10];
+	char cmd_num[20];
 	int ret;
 	switch(aurb->urb.type){
 		case USBDEVFS_URB_TYPE_CONTROL:
@@ -897,18 +906,18 @@ int submit_single_urb(int fd, AsyncURB *aurb, struct dlist * processing_urbs)
 */
 
 ///* DEV_TEST
-	//info("##call send_dev %d", sn);
-	if(sn < 7) {
-		if(sprintf(cmd_num, "%d", sn+1) != 1) {
-			info("cmd_num value error : %d", cmd_num);
+	//if(aurb->seqnum <= 7) {
+		if(sprintf(cmd_num, "%d", aurb->seqnum) != 1) {
+			info("aurb->seqnum value error : %d", aurb->seqnum);
 			return -1;
 		}
 		info("cmd_num:%s",cmd_num);
-		send_dev(fd, cmd_num, strlen(cmd_num));
-	}
+		send_dev(fd, cmd_num, strlen(cmd_num)+1);
+		if(aurb->seqnum <= 5)
+			dlist_push(processing_urbs, (void *)aurb);
+	//}
 //*/
-	dlist_push(processing_urbs, (void *)aurb);
-	sn++;
+	
 	return 0;
 too_big:
 	err("too big data_len for single urb, len: %d, type:%d\n",
@@ -1629,6 +1638,7 @@ static int recv_request_export(int sockfd)
 		if (!strncmp(req.udev.busid, edev->udev.busid, SYSFS_BUS_ID_SIZE)) {
 			dbg("found requested device %s", req.udev.busid);
 			found = 1;
+			info("found requested device %s", req.udev.busid);
 			break;
 		}
 	}
@@ -1639,6 +1649,8 @@ static int recv_request_export(int sockfd)
 
 		edev = export_device(req.udev.busid);
 		if(!edev){
+			info("export_device error");
+			printf("export_device error");
 			ret = -1;
 			break;
 		}
@@ -1819,13 +1831,16 @@ static int listen_all_addrinfo(struct addrinfo *ai_head, int lsock[])
 		int ret;
 
 		lsock[n] = socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol);
-		if (lsock[n] < 0)
+		if (lsock[n] < 0){
+			printf("if (lsock[n] < 0)\n");
 			continue;
+		}
 
 		usbip_set_reuseaddr(lsock[n]);
 		usbip_set_nodelay(lsock[n]);
 
 		if (lsock[n] >= FD_SETSIZE) {
+			printf("if (lsock[n] >= FD_SETSIZE)\n");
 			close(lsock[n]);
 			lsock[n] = -1;
 			continue;
@@ -1911,6 +1926,7 @@ static int my_accept(int lsock)
 #endif
 
 	info("connected from %s:%s", host, port);
+printf("connected from %s:%s", host, port);
 
 	return csock;
 }
@@ -2050,13 +2066,14 @@ static const struct option longopts[] = {
 int main(int argc, char *argv[])
 {
 	gboolean daemonize = FALSE;
-
+	
 	enum {
 		cmd_standalone_mode = 1,
 		cmd_help,
 		cmd_version
 	} cmd = cmd_standalone_mode;
-
+	printf("printf test usbipd start\n");
+	info("info test usbipd start\n");
 
 	usbip_use_stderr = 1;
 	usbip_use_syslog = 0;

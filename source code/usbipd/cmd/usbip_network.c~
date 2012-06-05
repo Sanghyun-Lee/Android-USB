@@ -350,9 +350,10 @@ int recv_dev(int sockfd, struct usbdevfs_urb **urb) {
 	static int seqnum = 0;
 	AsyncURB *aurb;
 	if(*urb!=NULL) {
+		info("recv_dev : *urb!=NULL");
 		return -1;
 	}
-	aurb = (AsyncURB*)malloc(SIZE_ASYNCURB);
+	aurb = (AsyncURB*)malloc(SIZE_ASYNCURB+12);
 	if(aurb==NULL) {
 		info("malloc() error");
 		goto fail;
@@ -366,16 +367,24 @@ int recv_dev(int sockfd, struct usbdevfs_urb **urb) {
 	//info("recv(urb) : %d", ret);
 	total = ret;
 	(*urb)->buffer = (unsigned char*)malloc((*urb)->buffer_length);
-	//urb->iso_frame_desc = (struct usbdevfs_iso_packet_desc*)malloc(SIZE_ISOPACKETDESC);
-	if((*urb)->buffer==NULL) {
+	//(*urb)->iso_frame_desc = (struct usbdevfs_iso_packet_desc*)malloc(SIZE_ISOPACKETDESC);
+	if((*urb)->buffer==NULL) { // || (*urb)->iso_frame_desc==NULL
 		info("malloc() error");
 		goto fail;
 	}
+	memset((*urb)->buffer, 0, (*urb)->buffer_length);
 	ret = recv(sockfd, (*urb)->buffer, (*urb)->buffer_length, 0);
 	if(ret<=0) {
 		info("recv_dev : recv((*urb)->buffer) error (%d)", sockfd);
 		goto fail;
 	}
+	info("      buffer = %p", (*urb)->buffer );
+	info("  frame_desc = %p", (*urb)->iso_frame_desc );
+	info(" < recv >");
+	info("  buffer[0] : %02x", *(((unsigned char*)(*urb)->buffer)+0));
+	info("  buffer[1] : %02x", *(((unsigned char*)(*urb)->buffer)+1));
+	info("  buffer[2] : %02x", *(((unsigned char*)(*urb)->buffer)+2));
+	info("  buffer[3] : %02x", *(((unsigned char*)(*urb)->buffer)+3));
 	//info("recv((*urb)->buffer) : %d", ret);
 	total += ret;
 	ret = recv(sockfd, (*urb)->iso_frame_desc, SIZE_ISOPACKETDESC, 0);
@@ -395,12 +404,24 @@ int recv_dev(int sockfd, struct usbdevfs_urb **urb) {
 		info("malloc() error");
 		goto fail;
 	}
+	info(" < recv >");
+	info("  buffer[0] : %02x", *(((unsigned char*)(*urb)->buffer)+0));
+	info("  buffer[1] : %02x", *(((unsigned char*)(*urb)->buffer)+1));
+	info("  buffer[2] : %02x", *(((unsigned char*)(*urb)->buffer)+2));
+	info("  buffer[3] : %02x", *(((unsigned char*)(*urb)->buffer)+3));
+	memset(aurb->data, 0, aurb->data_len);
 	memcpy(aurb->data, (*urb)->buffer, aurb->data_len);
+	info("aurb->data[0] : %02x", aurb->data[0]);
+	info("aurb->data[1] : %02x", aurb->data[1]);
+	info("aurb->data[2] : %02x", aurb->data[2]);
+	info("aurb->data[3] : %02x", aurb->data[3]);
 	return total;
 
 fail:
-	if(*urb)
+	if(*urb) {
 		free((*urb)->buffer);
+		//free((*urb)->iso_frame_desc);
+	}
 	free(*urb);
 	return -1;
 }

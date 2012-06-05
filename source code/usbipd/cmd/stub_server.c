@@ -145,6 +145,8 @@ struct usbip_header {
 #define USB_MAX_ISO_PACKET_SIZE 8192
 #define USBDEVFS_MAX_ISO_LEN 32768
 
+int sock_USBIPAPP;
+
 void show_time(void)
 {
 	struct timeval tv;
@@ -489,9 +491,7 @@ int delete_aurb(struct dlist * dlist, unsigned int seqnum,
 	dlist_for_each_data(dlist, aurb, AsyncURB){
 		if(aurb->seqnum==seqnum&&
 				aurb->sub_seqnum==sub_seqnum){
-			info("delete_aurb seqnum : %d", seqnum);
 			dlist_delete_before(dlist);
-			info("dlist_delete_before()");
 			return 0;
 		}
 	}
@@ -608,25 +608,15 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		}
 */
 ///*
-<<<<<<< HEAD
-=======
-		info("##recv_dev()");
->>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		ret = recv_dev(edev->tmp_sockfd, &urb);
 		if(ret<0) {
 			return 0;
 		}
 //*/
-<<<<<<< HEAD
-		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
-/*
-=======
-		for(n=0;n<urb->buffer_length;n++)
-			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
 		aurb =  (AsyncURB *) ((char *)urb - offsetof(AsyncURB, urb));
 
+/*
 		info("========================");
->>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		info("aurb->seqnum:%u", aurb->seqnum);
 		info("aurb->sub_seqnum:%u", aurb->sub_seqnum);
 		info("aurb->data_len:%u", aurb->data_len);
@@ -634,18 +624,9 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		for(n=0; n<aurb->data_len; n++)
 			info(" aurb->data[%d]:0x%02x", n, aurb->data[n]);
 		printf("\n");
-<<<<<<< HEAD
-*/
-/*
-		info("========================");
-		for(n=0;n<urb->buffer_length;n++)
-			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
-=======
 
 		for(n=0;n<urb->buffer_length;n++)
 			info("  buffer[%d]:0x%02x", n, *(((unsigned char*)urb->buffer)+n));
-///*
->>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 		//info("buffer_length:%d", urb->buffer_length); 
 		//info("actual_length:%d", urb->actual_length);
 		//info("start_frame:%d", urb->start_frame);
@@ -661,11 +642,7 @@ static int stub_send_ret_submit(struct usbip_exported_device *edev)
 		//info("sizeof(iso_frame_desc) : %d", sizeof(*(urb->iso_frame_desc)));
 		//info("sizeof(urb) : %d", sizeof(*urb));
 		//}
-<<<<<<< HEAD
 */
-=======
-//*/
->>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
 
 		if(aurb->sub_seqnum){
 			info("##aurb->sub_seqnum");
@@ -902,7 +879,7 @@ int submit_single_urb(int fd, AsyncURB *aurb, struct dlist * processing_urbs)
 {
 	static int sn = 0;
 	int n;
-	char cmd_num[10];
+	char cmd_num[20];
 	int ret;
 	switch(aurb->urb.type){
 		case USBDEVFS_URB_TYPE_CONTROL:
@@ -931,26 +908,18 @@ int submit_single_urb(int fd, AsyncURB *aurb, struct dlist * processing_urbs)
 */
 
 ///* DEV_TEST
-	//info("##call send_dev %d", sn);
-	if(sn < 7) {
-		if(sprintf(cmd_num, "%d", sn+1) != 1) {
-			info("cmd_num value error : %d", cmd_num);
+	//if(aurb->seqnum <= 7) {
+		if(sprintf(cmd_num, "%d", aurb->seqnum) != 1) {
+			info("aurb->seqnum value error : %d", aurb->seqnum);
 			return -1;
 		}
 		info("cmd_num:%s",cmd_num);
-		send_dev(fd, cmd_num, strlen(cmd_num));
-<<<<<<< HEAD
-	}
-//*/
-	dlist_push(processing_urbs, (void *)aurb);
-=======
-		if(sn<5)
+		send_dev(fd, cmd_num, strlen(cmd_num)+1);
+		if(aurb->seqnum <= 5)
 			dlist_push(processing_urbs, (void *)aurb);
-	}
+	//}
 //*/
 	
->>>>>>> 32b9b5b78a981ff968bee1945204b998b840a24f
-	sn++;
 	return 0;
 too_big:
 	err("too big data_len for single urb, len: %d, type:%d\n",
@@ -1683,6 +1652,7 @@ static int recv_request_export(int sockfd)
 		edev = export_device(req.udev.busid);
 		if(!edev){
 			info("export_device error");
+			printf("export_device error");
 			ret = -1;
 			break;
 		}
@@ -1858,18 +1828,22 @@ static int listen_all_addrinfo(struct addrinfo *ai_head, int lsock[])
 {
 	struct addrinfo *ai;
 	int n = 0;		/* number of sockets */
-
+	
+	printf("start\n");
 	for (ai = ai_head; ai && n < MAXSOCK; ai = ai->ai_next) {
 		int ret;
 
 		lsock[n] = socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol);
-		if (lsock[n] < 0)
+		if (lsock[n] < 0){
+			printf("socket\n");
 			continue;
+		}
 
 		usbip_set_reuseaddr(lsock[n]);
 		usbip_set_nodelay(lsock[n]);
 
 		if (lsock[n] >= FD_SETSIZE) {
+			printf("if (lsock[n] >= FD_SETSIZE)\n");
 			close(lsock[n]);
 			lsock[n] = -1;
 			continue;
@@ -1877,6 +1851,7 @@ static int listen_all_addrinfo(struct addrinfo *ai_head, int lsock[])
 
 		ret = bind(lsock[n], ai->ai_addr, ai->ai_addrlen);
 		if (ret < 0) {
+			printf("bind\n");
 			close(lsock[n]);
 			lsock[n] = -1;
 			continue;
@@ -1884,6 +1859,7 @@ static int listen_all_addrinfo(struct addrinfo *ai_head, int lsock[])
 
 		ret = listen(lsock[n], SOMAXCONN);
 		if (ret < 0) {
+			printf("listen\n");
 			close(lsock[n]);
 			lsock[n] = -1;
 			continue;
@@ -1894,7 +1870,7 @@ static int listen_all_addrinfo(struct addrinfo *ai_head, int lsock[])
 		/* next if succeed */
 		n++;
 	}
-
+	printf("end\n");
 	if (n == 0) {
 		err("no socket to listen to");
 		return -1;
@@ -1955,6 +1931,7 @@ static int my_accept(int lsock)
 #endif
 
 	info("connected from %s:%s", host, port);
+printf("connected from %s:%s", host, port);
 
 	return csock;
 }
@@ -2050,6 +2027,7 @@ static void do_standalone_mode(gboolean daemonize)
 	}
 
 	info("usbipd start (%s)", version);
+	send_to_usbipApp(sock_USBIPAPP, "usbipd start");
 
 	main_loop = g_main_loop_new(FALSE, FALSE);
 	g_main_loop_run(main_loop);
@@ -2094,19 +2072,26 @@ static const struct option longopts[] = {
 int main(int argc, char *argv[])
 {
 	gboolean daemonize = FALSE;
-
+	
 	enum {
 		cmd_standalone_mode = 1,
 		cmd_help,
 		cmd_version
 	} cmd = cmd_standalone_mode;
 
+	sock_USBIPAPP = connect_to_usbipApp();
+	if(sock_USBIPAPP<0) {
+		printf("USBIPAPP connect error");
+		return -1;
+	}
+	send_to_usbipApp(sock_USBIPAPP, "printf test usbipd start\n");
+	send_to_usbipApp(sock_USBIPAPP, "info test usbipd start\n");
 
 	usbip_use_stderr = 1;
 	usbip_use_syslog = 0;
 
 	if (geteuid() != 0)
-		g_warning("running non-root?");
+		send_to_usbipApp(sock_USBIPAPP, "running non-root?");
 
 	for (;;) {
 		int c;
