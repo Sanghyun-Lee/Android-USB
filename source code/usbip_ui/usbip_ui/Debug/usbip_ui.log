@@ -1,14 +1,11 @@
-﻿빌드 시작: 2012-06-03 오후 9:44:07
+﻿빌드 시작: 2012-06-04 오후 9:33:39
      1>2 노드의 "C:\Users\windows7\Android-USB\source code\usbip_ui\usbip_ui\usbip_ui.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\usbip_ui.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
          모든 출력이 최신 상태입니다.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\usbip_ui.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt usbip_ui.cpp usbip_uiDlg.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\usbip_ui.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt usbip_uiDlg.cpp
          usbip_uiDlg.cpp
-         코드를 생성하고 있습니다...
-         건너뛰고 있습니다... (관련된 변경 내용 없음)
-         usbip_ui.cpp
        ResourceCompile:
          모든 출력이 최신 상태입니다.
        ManifestResourceCompile:
@@ -21,9 +18,17 @@
          Debug\stdafx.obj
          Debug\usbip_ui.obj
          Debug\usbip_uiDlg.obj
-     1>LINK : fatal error LNK1168: C:\Users\windows7\Android-USB\source code\usbip_ui\Debug\usbip_ui.exe을(를) 쓰기용으로 열 수 없습니다.
-     1>"C:\Users\windows7\Android-USB\source code\usbip_ui\usbip_ui\usbip_ui.vcxproj" 프로젝트를 빌드했습니다(build 대상). - 실패
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\usbip_ui.exe.embed.manifest" /manifest Debug\usbip_ui.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         모든 출력이 최신 상태입니다.
+       LinkEmbedManifest:
+         모든 출력이 최신 상태입니다.
+         usbip_ui.vcxproj -> C:\Users\windows7\Android-USB\source code\usbip_ui\Debug\usbip_ui.exe
+       FinalizeBuildStatus:
+         "Debug\usbip_ui.unsuccessfulbuild" 파일을 삭제하고 있습니다.
+         "Debug\usbip_ui.lastbuildstate"에 연결(touching)하고 있습니다.
+     1>"C:\Users\windows7\Android-USB\source code\usbip_ui\usbip_ui\usbip_ui.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
-빌드하지 못했습니다.
+빌드했습니다.
 
-경과 시간: 00:00:00.37
+경과 시간: 00:00:00.68

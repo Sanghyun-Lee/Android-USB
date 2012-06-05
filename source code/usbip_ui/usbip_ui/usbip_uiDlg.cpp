@@ -67,6 +67,11 @@ BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_MESSAGE(UM_ACCEPT_MESSAGE, &Cusbip_uiDlg::OnAcceptClient)
+	ON_MESSAGE(UM_RECEIVE_MESSAGE, &Cusbip_uiDlg::OnReceiveData)
+	ON_MESSAGE(UM_CLOSE_MESSAGE, &Cusbip_uiDlg::OnCloseSocket)
+	ON_BN_CLICKED(IDC_LIST, &Cusbip_uiDlg::OnBnClickedList)
+	ON_BN_CLICKED(IDC_CONNECT, &Cusbip_uiDlg::OnBnClickedConnect)
 END_MESSAGE_MAP()
 
 
@@ -111,7 +116,6 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	::CreateProcess(NULL, "C:/WinDDK/7600.16385.1/src/usb/usbip/Debug/usbip.exe",
 		NULL, NULL, FALSE, 0, NULL, NULL, &StartupInfo, &ProcessInfo);
 */
-
 	if(listenSocket.m_hSocket != INVALID_SOCKET)
 	{
 		AddMessage("이미 대기 상태입니다.");
@@ -134,7 +138,7 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	}
 
 	ShellExecute(NULL, _T("Open"), 
-		_T("C:/WinDDK/7600.16385.1/src/usb/usbip/Debug/usbip.exe"),
+		_T("C:/Users/windows7/Android-USB/source code/usbip/Debug/usbip.exe"),
 		NULL, NULL, SW_SHOW);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
@@ -206,7 +210,7 @@ LRESULT Cusbip_uiDlg::OnReceiveData(WPARAM wParam, LPARAM lParam)
 
 	CString strMsg = Rcvdata;
 
-//	AddMessage(strMsg);
+	AddMessage(strMsg);
 
 	return 0;
 }
@@ -243,4 +247,36 @@ BOOL Cusbip_uiDlg::PreTranslateMessage(MSG* pMsg)
 	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
 
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+void Cusbip_uiDlg::OnBnClickedList()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	int ret = 0;
+	CString strMsg;
+	CString strAddress;
+	m_edIpServerAddress.GetWindowText(strAddress);
+	strMsg.Format("-l");
+	
+	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
+	AddMessage("전송 : "+strMsg);
+	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
+	if(ret < 1){
+		AddMessage("메세지 전송 실패");
+		return;
+	}
+	AddMessage("전송 : "+strAddress);
+	
+	
+}
+
+
+void Cusbip_uiDlg::OnBnClickedConnect()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

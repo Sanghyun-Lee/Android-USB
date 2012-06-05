@@ -18,10 +18,8 @@ int usbip_use_debug=0;
 int usbip_use_syslog=0;
 int usbip_use_stderr=1;
 
-struct sockaddr_in sv_addr;
-struct sockaddr_in cl_addr;
-int sockfd_connect;
-int sockfd_listen;
+int client_socket;
+struct sockaddr_in server_addr;
 
 static const struct option longopts[] = {
 	{"attach",	no_argument,	NULL, 'a'},
@@ -503,9 +501,6 @@ static void attach_devices_all(char *host)
 
 int connect_server()
 {
-	int client_socket;
-	struct sockaddr_in server_addr;
-
 	client_socket = socket( PF_INET, SOCK_STREAM, 0);
 
 	if(client_socket == -1) {
@@ -527,9 +522,9 @@ int connect_server()
 int recv_msg(int sockfd, char *msg, int size)
 {
 	int ret = 0;
-	char tmp_msg;
 
-	ret = recv(sockfd, &tmp_msg, MAXLINE, 0);
+	memset(msg, 0, size);
+	ret = recv(sockfd, msg, size, 0);
 
 	if(ret <= 0){
 		//error 전송 
@@ -543,37 +538,18 @@ int send_msg(int sockfd, char *msg, int size)
 {
 	int ret = 0;
 
-	ret = send(sockfd, msg, MAXLINE, 0); 
+	ret = send(sockfd, msg, size, 0);
 	return ret;
 }
-/*
-int connect_usbip()
-{
-	struct sockaddr_in sockin;
-	int con = -1;
 
-	if( (sockfd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP)) == -1) {
-		fprintf(stderr, "socket() fail\n");
-		return -1;
-	}
-//	bzero((char*)&sockin,sizeof(sockin));
-	sockin.sin_family = AF_INET;
-	sockin.sin_addr.s_addr = inet_addr("127.0.0.1");
-	sockin.sin_port = htons(PORT);
-
-	con = connect(sockfd,(struct sockaddr*)&sockin, SIZE);
-	if(con==-1) {
-		fprintf(stderr, "connect() fail\n");
-		return -1;
-	}
-	return 0;
-}
-*/
 
 int main()
 //int main(int argc, char *argv[])
 {
 	int cmd;
+	char msg[MAXLINE] = "연결성공";
+	int argc;
+	char *argv[MAXLINE] = {"usbip", "-l", "127.0.0.1"};
 	info("%s\n",version);
 
 	if(init_winsock()){
@@ -581,10 +557,23 @@ int main()
 		return 0;
 	}
 
-	Sleep(10000);
-	printf("dfdfd\n");
-	//cmd = parse_opt(argc, argv);
-/*
+	connect_server();
+	send_msg(client_socket, msg, MAXLINE);
+	printf("%s\n", msg);
+
+	argc = 3;
+	/*
+	memset(argv[0], 0, MAXLINE);
+	recv_msg(client_socket, argv[0], MAXLINE);
+	printf("%s\n", argv[0]);
+
+	memset(argv[1], 0, MAXLINE);
+	recv_msg(client_socket, argv[1], MAXLINE);
+	printf("%s\n", argv[1]);
+	*/
+	
+	cmd = parse_opt(argc, argv);
+	
 	switch(cmd) {
 		case CMD_ATTACH:
 			if (optind == argc - 2)
@@ -616,6 +605,7 @@ int main()
 		default:
 			show_help(argv[0]);
 	}
-	*/
+
+	Sleep(10000);
 	return 0;
 }

@@ -36,14 +36,17 @@ protected:
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
-	afx_msg LRESULT OnCloseSocket(WPARAM wParam, LPARAM lParam);
-	afx_msg LRESULT OnReceiveData(WPARAM wParam, LPARAM lParam);
-	afx_msg LRESULT OnAcceptClient(WPARAM wParam, LPARAM lParam);
-	void AddMessage(CString strMsg);
+
 	DECLARE_MESSAGE_MAP()
 public:
 	CIPAddressCtrl m_edIpServerAddress;
 	CString m_strListData;
 	CEdit m_edListData;
+	void AddMessage(CString strMsg);
+	afx_msg LRESULT OnCloseSocket(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnReceiveData(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnAcceptClient(WPARAM wParam, LPARAM lParam);
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	afx_msg void OnBnClickedList();
+	afx_msg void OnBnClickedConnect();
 };
