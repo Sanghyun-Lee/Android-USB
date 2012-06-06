@@ -48,10 +48,7 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_process_1cmd
 			fprintf(stderr, "recv_seqnum() fail\n");
 			return -1;
 		}
-		if(sscanf(cmd, "%d", &cmd_num) != 1) {
-			fprintf(stderr, "cmd_num error\n");
-			return -2;
-		}
+		sscanf(cmd, "%d", &cmd_num);
 		if(cmd_num<=CMD_MAX_RECV) {
 			if(send_cmd(cmd_num)==-1)
 				return -3;
@@ -579,9 +576,6 @@ int send_control()
 		fprintf(stderr, "recv_seqnum() fail\n");
 		return -1;
 	}
-	if(sscanf(cmd, "%d", &cmd_num) != 1) {
-		fprintf(stderr, "cmd_num error\n");
-		return -2;
-	}
+	sscanf(cmd, "%d", &cmd_num);
 	return cmd_num;
 }
