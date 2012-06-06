@@ -55,7 +55,7 @@ enum usbip_device_status{
 extern int usbip_use_syslog;
 extern int usbip_use_stderr;
 extern int usbip_use_debug ;
-
+/*
 #define err(fmt, args...)	do { \
 	if (usbip_use_syslog) { \
 		syslog(LOG_ERR, "usbip err: %13s:%4d (%-12s) " fmt "\n", \
@@ -65,6 +65,11 @@ extern int usbip_use_debug ;
 		fprintf(stderr, "usbip err: %13s:%4d (%-12s) " fmt "\n", \
 			__FILE__, __LINE__, __FUNCTION__,  ##args); \
 	} \
+} while (0)
+*/
+#define err(fmt, args...)	do { \
+	printf("usbip err: %13s:%4d (%-12s) " fmt "\n", \
+			__FILE__, __LINE__, __FUNCTION__,  ##args); \
 } while (0)
 
 #define notice(fmt, args...)	do { \

@@ -49,6 +49,9 @@ public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnBnClickedList();
 	afx_msg void OnBnClickedConnect();
+	afx_msg void OnBnClickedDisconnect();
+	afx_msg void OnEnChangeEdit3();
+	afx_msg void OnBnClickedClose();
 	CComboBox selBusid;
 	afx_msg void OnCbnSelchangeBusid();
 	void Cusbip_uiDlg::sendMsg(CString strMsg);

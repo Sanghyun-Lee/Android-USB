@@ -445,7 +445,8 @@ int main(int argc, char **argv)
 		cmd_unexport,
 		cmd_help,
 	} cmd = cmd_unknown;
-
+	printf("test printf bind_driver start\n");
+	info("test info bind_driver start\n");
 	if (geteuid() != 0)
 		g_warning("running non-root?");
 
