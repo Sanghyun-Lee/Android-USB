@@ -552,100 +552,63 @@ int send_msg(int sockfd, char *msg, int size)
 
 int main(int argc, char *argv[])
 {
-
 	int cmd;
-<<<<<<< HEAD
 	char *msg = "연결성공";
-	int argc;
-	int i;
-	char cmd_msg;
-	char *argv[MAXLINE];
-=======
-	char msg[]="성공";	
+	char cmd_msg[MAXLINE];
 	char option[MAXLINE];
 	char address[MAXLINE];
-	char finish[MAXLINE];
+	char busid[MAXLINE];
 	
-	/*argv[0] = "usbip";
-	argv[1] ="127.0.0.1";
-	argv[2] ="-l";*/
-	
->>>>>>> e772236281cebe1f9a43b815498397cfd0afede3
 	info("%s\n",version);
 	
 	if(init_winsock()){
 		err("can't init winsock");
 		return 0;
 	}
-<<<<<<< HEAD
-	memset(&cmd_msg, 0, 1);
-	for(i = 0; i < 4; i++){
-		memset(argv[i], 0, MAXLINE);
-	}
-=======
-	
->>>>>>> e772236281cebe1f9a43b815498397cfd0afede3
-	connect_server();
-	printf("asdfasdf:%s\n", msg);
-	send_msg(client_socket, msg, MAXLINE);
-	printf("%s\n", msg);
-<<<<<<< HEAD
-	
-	recv_msg(client_socket, &cmd_msg, MAXLINE);
-	printf("%c\n", cmd_msg);
-	if(cmd_msg == 'l') {
-		argc = 3;
-		strcpy(argv[0], "usbip");
-		strcpy(argv[1], "-l");
-		recv_msg(client_socket, argv[2], MAXLINE);
-	} else if(cmd_msg == 'a') {
-		argc = 4;
-		strcpy(argv[0], "usbip");
-		strcpy(argv[1], "-a");
-		recv_msg(client_socket, argv[2], MAXLINE);
-		recv_msg(client_socket, argv[3], MAXLINE);
-	} else {
-		strcpy(msg, "잘못된 입력");
-		send_msg(client_socket, msg, MAXLINE);
-	}
-	
-	printf("%c\n", cmd_msg);
-	
-	memset(argv[0], 0, MAXLINE);
-	recv_msg(client_socket, argv[0], MAXLINE);
-	printf("%s\n", argv[0]);
-=======
->>>>>>> e772236281cebe1f9a43b815498397cfd0afede3
 
+	connect_server();
+	send_msg(client_socket, msg, MAXLINE);
+	
 	while(1){
-		/*connect_server();
-		send_msg(client_socket, msg, MAXLINE);*/
+		memset(cmd_msg, 0, MAXLINE);
+		printf("명령을 입력하세요.\n");
+		recv_msg(client_socket, cmd_msg, MAXLINE);
+		printf("%s\n", cmd_msg);
 
 		memset(&option, 0, MAXLINE);
 		memset(&address, 0, MAXLINE);
+		memset(&busid, 0, MAXLINE);
 
-		printf("1\n");
-		recv_msg(client_socket, option, MAXLINE);
-		printf("2\n");
-		recv_msg(client_socket, address, MAXLINE);
-		printf("3\n");
-
-		argv[0] = "usbip";
-		argv[1] = option;
-		argv[2] = address;
-		printf("4\n");
-
-		if(!strcmp(option,"-a")){
-			argc = 4;
-			argv[3] = "2-1.2";
-		}else{
+		if(!strcmp(cmd_msg, "l")) {
 			argc = 3;
+			argv[0] = "usbip";
+			recv_msg(client_socket, address, MAXLINE);
+			argv[1] = "-l";
+			argv[2] = address;
+
+			printf("%s\n", argv[1]);
+			printf("%s\n", argv[2]);
+		} else if(!strcmp(cmd_msg, "a")) {
+			argc = 4;
+			argv[0] = "usbip";
+			recv_msg(client_socket, address, MAXLINE);
+			recv_msg(client_socket, busid, MAXLINE);
+			argv[1] = "-a";
+			argv[2] = address;
+			argv[3] = busid;
+
+			printf("%s\n", argv[1]);
+			printf("%s\n", argv[2]);
+			printf("%s\n", argv[3]);
+		} else if(!strcmp(cmd_msg, "q")){
+			break;
+		} else {
+			strcpy(msg, "잘못된 입력");
+			send_msg(client_socket, msg, MAXLINE);
 		}
-		argc=3;
-		Sleep(1000);
+
 		cmd = parse_opt(argc, argv);
-		printf("cmd:%d\n", cmd);
-		Sleep(1000);
+
 		switch(cmd) {
 			case CMD_ATTACH:
 				if (optind == argc - 2)
@@ -661,8 +624,6 @@ int main(int argc, char *argv[])
 				show_port_status();
 				break;
 			case CMD_LIST:
-				printf("asdfa\n");
-				Sleep(1000);
 				while (optind < argc)
 					show_exported_devices(argv[optind++]);
 				break;
@@ -679,9 +640,6 @@ int main(int argc, char *argv[])
 			default:
 				show_help(argv[0]);
 		}
-		
-		Sleep(1000);
-		printf("5\n");
 	}
 	return 0;
 }

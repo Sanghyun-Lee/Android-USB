@@ -1,37 +1,27 @@
-<<<<<<< HEAD
-﻿빌드 시작: 2012-06-05 오후 9:48:55
+﻿빌드 시작: 2012-06-06 오후 4:12:23
      1>2 노드의 "C:\Users\windows7\Android-USB\source code\usbip\usbip.vcxproj" 프로젝트(build 대상)입니다.
-=======
-﻿빌드 시작: 2012-06-06 오후 1:21:39
-     1>2 노드의 "C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\usbip.vcxproj" 프로젝트(build 대상)입니다.
->>>>>>> e772236281cebe1f9a43b815498397cfd0afede3
      1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\usbip.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
-         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt usbip.c
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt usbip.c
          usbip.c
-<<<<<<< HEAD
-     1>c:\users\windows7\android-usb\source code\usbip\usbip.c(452): warning C4013: 'send_msg'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-     1>c:\users\windows7\android-usb\source code\usbip\usbip.c(522): warning C4715: 'connect_server' : 모든 제어 경로에서 값을 반환하지는 않습니다.
-=======
-     1>c:\documents and settings\administrator\바탕 화면\수정중\usbip\usbip.c(526): warning C4715: 'connect_server' : 모든 제어 경로에서 값을 반환하지는 않습니다.
->>>>>>> e772236281cebe1f9a43b815498397cfd0afede3
+     1>c:\users\windows7\android-usb\source code\usbip\usbip.c(526): warning C4715: 'connect_server' : 모든 제어 경로에서 값을 반환하지는 않습니다.
        Link:
-         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\Debug\usbip.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\usbip.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\Debug\usbip.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\Debug\usbip.lib" /MACHINE:X86 Debug\getopt.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\windows7\Android-USB\source code\usbip\Debug\usbip.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\usbip.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\windows7\Android-USB\source code\usbip\Debug\usbip.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\windows7\Android-USB\source code\usbip\Debug\usbip.lib" /MACHINE:X86 Debug\getopt.obj
          Debug\getopt_long.obj
          Debug\usbip.obj
          Debug\usbip_common.obj
          Debug\usbip_network.obj
          Debug\usbip_vbus_ui.obj
-         LINK : C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\Debug\usbip.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
-         usbip.vcxproj -> C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\Debug\usbip.exe
+         LINK : C:\Users\windows7\Android-USB\source code\usbip\Debug\usbip.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+         usbip.vcxproj -> C:\Users\windows7\Android-USB\source code\usbip\Debug\usbip.exe
        Manifest:
-         C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\Debug\usbip.exe;#1" /manifest Debug\usbip.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\windows7\Android-USB\source code\usbip\Debug\usbip.exe;#1" /manifest Debug\usbip.exe.intermediate.manifest
        FinalizeBuildStatus:
          "Debug\usbip.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\usbip.lastbuildstate"에 연결(touching)하고 있습니다.
-     1>"C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\usbip.vcxproj" 프로젝트를 빌드했습니다(build 대상).
+     1>"C:\Users\windows7\Android-USB\source code\usbip\usbip.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:01.62
+경과 시간: 00:00:01.17

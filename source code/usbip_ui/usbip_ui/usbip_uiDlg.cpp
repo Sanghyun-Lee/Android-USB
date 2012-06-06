@@ -143,7 +143,7 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	{
 		AddMessage("서버가 실행 되었습니다.");
 	}
-	ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/수정중/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
+	ShellExecute(NULL, _T("open") ,_T("C:/Users/windows7/Android-USB/source code/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
 	//ShellExecute(NULL, _T("open") ,_T("cmd.exe"),_T("/K Run.bat") ,NULL, SW_SHOW);
 
 
@@ -261,25 +261,14 @@ void Cusbip_uiDlg::OnBnClickedList()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	int ret = 0;
 	CString strMsg;
-	char buf[1024];
 	CString listData;
 	CString strAddress;
 	m_edIpServerAddress.GetWindowText(strAddress);
-	strMsg.Format("-l");
+	strMsg.Format("l");
 	
-	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패");
-		return;
-	}
-	AddMessage("전송 : "+strMsg);
-
-	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패");
-		return;
-	}
-	AddMessage("전송 : "+strAddress);
+	sendMsg(strMsg);
+	strAddress.Format("127.0.0.1");
+	sendMsg(strAddress);
 
 	/*
 	while(dataSocket.Receive(buf, 8000)>0){
@@ -293,32 +282,17 @@ void Cusbip_uiDlg::OnBnClickedList()
 
 void Cusbip_uiDlg::OnBnClickedConnect()
 {
-
-	//ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
-
-	int ret = 0;
 	CString strMsg;
-	char buf[1024];
 	CString listData;
 	CString strAddress;
+	CString strBusid;
 	m_edIpServerAddress.GetWindowText(strAddress);
-	strMsg.Format("-a");
-	
-	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패1");
-		return;
-	}
-	AddMessage("전송 : "+strMsg);
-	
-	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패2");
-		return;
-	}
+	strMsg.Format("a");
+	strBusid.Format("2-1.2");
 
-	AddMessage("전송 : "+strAddress);
-
+	sendMsg(strMsg);
+	sendMsg(strAddress);
+	sendMsg(strBusid);
 
 	m_edListData.SetWindowText(listData);
 }
@@ -326,16 +300,9 @@ void Cusbip_uiDlg::OnBnClickedConnect()
 
 void Cusbip_uiDlg::OnBnClickedDisconnect()
 {
-	int ret = 0;
 	CString strMsg;
-	strMsg = "finish";
-
-	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패");
-		return;
-	}
-
+	strMsg.Format("d");
+	sendMsg(strMsg);
 }
 
 
@@ -351,36 +318,13 @@ void Cusbip_uiDlg::OnEnChangeEdit3()
 
 
 void Cusbip_uiDlg::OnBnClickedClose()
-{
-	int ret = 0;
+{	
 	CString strMsg;
-	strMsg = "finish";
+	strMsg.Format("q");
+	sendMsg(strMsg);
 
-	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패");
-		return;
-	}
-
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	/*int ret = 0;
-	CString strMsg;
-	CString strAddress;
-	m_edIpServerAddress.GetWindowText(strAddress);
-	strMsg.Format("a");
-	
-	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패");
-		return;
-	}
-	AddMessage("전송 : "+strMsg);
-	ret = dataSocket.Send(strAddress, strAddress.GetLength()+1);
-	if(ret < 1){
-		AddMessage("메세지 전송 실패");
-		return;
-	}
-	AddMessage("전송 : "+strAddress);*/
+	dataSocket.Close();
+	DestroyWindow();
 }
 
 
