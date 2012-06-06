@@ -18,7 +18,7 @@ class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
-
+	
 // 대화 상자 데이터입니다.
 	enum { IDD = IDD_ABOUTBOX };
 
@@ -51,7 +51,7 @@ END_MESSAGE_MAP()
 Cusbip_uiDlg::Cusbip_uiDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(Cusbip_uiDlg::IDD, pParent)
 	, m_strListData(_T(""))
-{
+{	
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
@@ -62,6 +62,7 @@ void Cusbip_uiDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT3, m_strListData);
 	DDX_Control(pDX, IDC_EDIT3, m_edListData);
 	DDX_Control(pDX, IDC_BUSID, selBusid);
+
 }
 
 BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
@@ -74,10 +75,9 @@ BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_LIST, &Cusbip_uiDlg::OnBnClickedList)
 	ON_BN_CLICKED(IDC_CONNECT, &Cusbip_uiDlg::OnBnClickedConnect)
 	ON_BN_CLICKED(IDC_DISCONNECT, &Cusbip_uiDlg::OnBnClickedDisconnect)
-	ON_EN_CHANGE(IDC_EDIT3, &Cusbip_uiDlg::OnEnChangeEdit3)
 	ON_BN_CLICKED(IDC_CLOSE, &Cusbip_uiDlg::OnBnClickedClose)
 	ON_CBN_SELCHANGE(IDC_BUSID, &Cusbip_uiDlg::OnCbnSelchangeBusid)
-
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -122,6 +122,9 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	::CreateProcess(NULL, "C:/WinDDK/7600.16385.1/src/usb/usbip/Debug/usbip.exe",
 		NULL, NULL, FALSE, 0, NULL, NULL, &StartupInfo, &ProcessInfo);
 */
+	GetDlgItem(IDC_CONNECT)->EnableWindow(FALSE);
+	GetDlgItem(IDC_DISCONNECT)->EnableWindow(FALSE);
+
 	if(listenSocket.m_hSocket != INVALID_SOCKET)
 	{
 		AddMessage("이미 대기 상태입니다.");
@@ -143,7 +146,7 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	{
 		AddMessage("서버가 실행 되었습니다.");
 	}
-	ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/수정중/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
+	ShellExecute(NULL, _T("open") ,_T("C:/Users/IG/Desktop/수정중/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
 	//ShellExecute(NULL, _T("open") ,_T("cmd.exe"),_T("/K Run.bat") ,NULL, SW_SHOW);
 
 
@@ -209,13 +212,27 @@ LRESULT Cusbip_uiDlg::OnAcceptClient(WPARAM wParam, LPARAM lParam)
 LRESULT Cusbip_uiDlg::OnReceiveData(WPARAM wParam, LPARAM lParam)
 {
 	char Rcvdata[MAXLINE];
-
+	CString id;
+	CString name;
 	CDataSocket* pDataSocket = (CDataSocket*)wParam;
+	
 
 	pDataSocket->Receive(Rcvdata, sizeof(Rcvdata));
 
 	CString strMsg = Rcvdata;
+	
+	if(!strMsg.Compare("목록보기선택")){
+		pDataSocket->Receive(Rcvdata, sizeof(Rcvdata));
+		id = Rcvdata;
+		pDataSocket->Receive(Rcvdata, sizeof(Rcvdata));
+		name = Rcvdata;
 
+		id = id +"("+ name+")";
+		selBusid.AddString(id);
+
+		GetDlgItem(IDC_CONNECT)->EnableWindow(TRUE);
+		GetDlgItem(IDC_DISCONNECT)->EnableWindow(FALSE);
+	}
 	AddMessage(strMsg);
 
 	return 0;
@@ -225,14 +242,6 @@ LRESULT Cusbip_uiDlg::OnReceiveData(WPARAM wParam, LPARAM lParam)
 LRESULT Cusbip_uiDlg::OnCloseSocket(WPARAM wParam, LPARAM lParam)
 {
 	dataSocket.Close();
-	/*
-	AddMessage("서버가 연결을 종료 했습니다.");
-	// 접속끊기 버튼 비활성화, 서버접속 버튼 활성화, 보내기 버튼 비활성화
-	GetDlgItem(IDC_BUTTON_STOP)->EnableWindow(FALSE);
-	GetDlgItem(IDC_BUTTON_CONNECT)->EnableWindow(TRUE);
-	GetDlgItem(IDC_BUTTON_SEND)->EnableWindow(FALSE);
-	*/
-
 	return 0;
 }
 
@@ -291,6 +300,14 @@ void Cusbip_uiDlg::OnBnClickedConnect()
 
 	sendMsg(strAddress);
 	AddMessage("전송 : "+strAddress);
+
+	sendMsg(selectId);
+	AddMessage("전송 : "+selectId);
+
+	GetDlgItem(IDC_CONNECT)->EnableWindow(FALSE);
+	GetDlgItem(IDC_DISCONNECT)->EnableWindow(TRUE);
+	GetDlgItem(IDC_LIST)->EnableWindow(FALSE);
+
 }
 
 
@@ -298,27 +315,17 @@ void Cusbip_uiDlg::OnBnClickedDisconnect()
 {
 	int ret = 0;
 	CString strMsg;
-	strMsg = "q";
+	strMsg = "-d";
 
 	sendMsg(strMsg);
 
+	GetDlgItem(IDC_CONNECT)->EnableWindow(TRUE);
+	GetDlgItem(IDC_DISCONNECT)->EnableWindow(FALSE);
+	GetDlgItem(IDC_LIST)->EnableWindow(TRUE);
 }
-
-
-void Cusbip_uiDlg::OnEnChangeEdit3()
-{
-	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
-	// CDialogEx::OnInitDialog() 함수를 재지정 
-	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
-	// 이 알림 메시지를 보내지 않습니다.
-
-	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
 
 void Cusbip_uiDlg::OnBnClickedClose()
 {
-	int ret = 0;
 	CString strMsg;
 	strMsg = "q";
 
@@ -330,7 +337,9 @@ void Cusbip_uiDlg::OnBnClickedClose()
 
 void Cusbip_uiDlg::OnCbnSelchangeBusid()
 {
-
+	int index =0;
+	CString pa = "(";
+	CString id= NULL;
 	int nIndex = selBusid.GetCurSel();
 	if(nIndex == -1){
 		return;
@@ -339,8 +348,12 @@ void Cusbip_uiDlg::OnCbnSelchangeBusid()
 	CString busid;
 	selBusid.GetLBText(nIndex, busid);
 
-	sendMsg(busid);
-	//GetDlgItem(IDC_EDIT_SEND_DATA)->SetFocus();
+	while(pa.Compare((CString)busid.GetAt(index))){
+		id = id + busid.GetAt(index);
+		index++;
+	}
+	AddMessage(id);
+	selectId = id;
 	UpdateData(FALSE);
 }
 
@@ -353,4 +366,15 @@ void Cusbip_uiDlg::sendMsg(CString strMsg)
 		AddMessage("메세지 전송 실패");
 		return;
 	}
+}
+
+void Cusbip_uiDlg::OnClose()
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	CString strMsg;
+	strMsg = "q";
+
+	sendMsg(strMsg);
+	dataSocket.Close();
+	CDialogEx::OnClose();
 }

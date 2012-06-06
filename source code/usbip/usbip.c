@@ -415,6 +415,7 @@ static int query_exported_devices(SOCKET sockfd)
 	char product_name[100];
 	char class_name[100];
 	struct usb_device udev;
+	char msg[]="목록보기선택";	
 
 	memset(&rep, 0, sizeof(rep));
 
@@ -455,6 +456,9 @@ static int query_exported_devices(SOCKET sockfd)
 				udev.bDeviceSubClass, udev.bDeviceProtocol);
 
 		info("%8s: %s", udev.busid, product_name);
+		send_msg(client_socket, msg, MAXLINE);
+		send_msg(client_socket, udev.busid, MAXLINE);
+		send_msg(client_socket, product_name, MAXLINE);
 		info("%8s: %s", " ", udev.path);
 		info("%8s: %s", " ", class_name);
 
@@ -548,120 +552,15 @@ int send_msg(int sockfd, char *msg, int size)
 	return ret;
 }
 
-//int usbip(int argc, char *argv[])
-//{
-//	int i;
-//	int cmd=0;
-//	char option[MAXLINE];
-//	char address[MAXLINE];
-//
-//	
-//	argv[0] = "usbip";
-//	
-//	memset(&option, 0, MAXLINE);
-//	memset(&address, 0, MAXLINE);
-//	memset(&cmd , 0, sizeof(int));
-//
-//	recv_msg(client_socket, option, MAXLINE);
-//	if(!strcmp(option,"q")){
-//		return 0;
-//	}
-//
-//
-//	recv_msg(client_socket, address, MAXLINE);
-//
-//
-//	argv[2] = address;
-//	
-//	printf("%s\n", option);
-//
-//	if(!strcmp(option,"a")){
-//		argc = 4;
-//		argv[1] = "-a";
-//		argv[3] = "2-1.2";
-//		cmd = CMD_ATTACH;
-//	}else{
-//		argv[1] = "-l";
-//		argc = 3;
-//		cmd = CMD_LIST;
-//	}
-//		
-//	for(i = 0; i<argc ; i++){
-//		printf("%s\n", argv[i]);
-//	}
-//	
-//	//cmd = parse_opt(argc, argv);
-//	printf("cmd:%d\n", cmd);
-//
-//	switch(cmd) {
-//		case CMD_ATTACH:
-//			if (optind == argc - 2)
-//				attach_device(argv[optind], argv[optind+1]);
-//			else
-//				show_help(argv[0]);
-//			break;
-//		case CMD_DETACH:
-//			while (optind < argc)
-//				detach_port(argv[optind++]);
-//			break;
-//		case CMD_PORT:
-//			show_port_status();
-//			break;
-//		case CMD_LIST:
-//			while (optind < argc)
-//				show_exported_devices(argv[optind++]);
-//			break;
-//		case CMD_ATTACHALL:
-//			while(optind < argc)
-//				attach_devices_all(argv[optind++]);
-//			break;
-//		case CMD_VERSION:
-//			printf("%s\n", version);
-//			break;
-//		case CMD_HELP:
-//			show_help(argv[0]);
-//			break;
-//		default:
-//			show_help(argv[0]);
-//	}
-//	
-//return 1;
-//
-//}
 
 int main(int argc, char *argv[])
 {
-
-
-	/*int sign = 1;
-	
-	char msg[]="성공";	
-	info("%s\n",version);
-	
-	if(init_winsock()){
-		err("can't init winsock");
-		return 0;
-	}
-	
-	connect_server();
-	printf("asdfasdf:%s\n", msg);
-	send_msg(client_socket, msg, MAXLINE);
-	printf("%s\n", msg);
-
-
-
-	while(sign){
-		sign = usbip(argc, argv);
-	}*/
-
 	int i;
 	int cmd;
 	char msg[]="성공";	
 	char option[MAXLINE];
 	char address[MAXLINE];
-	char finish[MAXLINE];
-	
-	
+	char id[MAXLINE];	
 	
 	info("%s\n",version);
 	
@@ -677,7 +576,6 @@ int main(int argc, char *argv[])
 
 	argv[0] = "usbip";
 	
-
 	while(1){
 		argv[2] = NULL;
 		argv[3] = NULL;
@@ -698,13 +596,18 @@ int main(int argc, char *argv[])
 
 		printf("%s\n", option);
 
-
 		if(!strcmp(option,"-a")){
+			
 			argc = 4;
-			//argv[1] = "-a";
-			argv[3] = "2-1.2";
+			recv_msg(client_socket, id, MAXLINE);
+			argv[3] = id;
+
+		}else if(!strcmp(option,"-l")){
+			argc = 3;
+		}else if(!strcmp(option,"-d")){
+			argc = 3;
+			itoa(PORT,argv[2], 10);
 		}else{
-			//argv[1] = "-l";
 			argc = 3;
 		}
 		
@@ -724,8 +627,9 @@ int main(int argc, char *argv[])
 					show_help(argv[0]);
 				break;
 			case CMD_DETACH:
-				while (optind < argc)
-					detach_port(argv[optind++]);
+				//while (optind < argc)
+					//detach_port(argv[optind++]);
+				detach_port("3700");
 				break;
 			case CMD_PORT:
 				show_port_status();

@@ -53,6 +53,11 @@ public:
 	afx_msg void OnEnChangeEdit3();
 	afx_msg void OnBnClickedClose();
 	CComboBox selBusid;
+	CString selectId;
 	afx_msg void OnCbnSelchangeBusid();
 	void Cusbip_uiDlg::sendMsg(CString strMsg);
+
+//	virtual BOOL DestroyWindow();
+//	virtual void OnOK();
+	afx_msg void OnClose();
 };

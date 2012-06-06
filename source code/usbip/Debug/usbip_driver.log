@@ -1,68 +1,70 @@
-﻿빌드 시작: 2012-06-06 오후 4:56:53
-     1>3 노드의 "C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\usbip_driver.vcxproj" 프로젝트(build 대상)입니다.
+﻿빌드 시작: 2012-06-06 오후 9:12:22
+     1>3 노드의 "C:\Users\IG\Desktop\수정중\usbip\usbip_driver.vcxproj" 프로젝트(build 대상)입니다.
      1>Build:
          cmd /K b.bat
          장치가 준비되지 않았습니다.
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>rem batch file to build complete drivers: output will be put in output directory 
+         C:\Users\IG\Desktop\수정중\usbip>rem batch file to build complete drivers: output will be put in output directory 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>rem build 32-bit version in XP environment 
+         C:\Users\IG\Desktop\수정중\usbip>rem build 32-bit version in XP environment 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>rem build 64-bit version in Windows Server 2003 environment 
+         C:\Users\IG\Desktop\수정중\usbip>rem build 64-bit version in Windows Server 2003 environment 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>set OCD=C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip 
+         C:\Users\IG\Desktop\수정중\usbip>set OCD=C:\Users\IG\Desktop\수정중\usbip 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>set TYPE=fre 
+         C:\Users\IG\Desktop\수정중\usbip>set TYPE=fre 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>IF "" == "" (
+         C:\Users\IG\Desktop\수정중\usbip>IF "" == "" (
          set BASEDIR=D:\WinDDK\7600.16385.1  
           CALL D:\WinDDK\7600.16385.1\bin\setenv.bat D:\WinDDK\7600.16385.1 fre     WLH  
-          cd /d C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip 
+          cd /d C:\Users\IG\Desktop\수정중\usbip 
          ) 
+         
+         C:\Users\IG\Desktop\수정중\usbip>cmd /C "set DDKBUILDENV=&& D:\WinDDK\7600.16385.1\bin\setenv.bat D:\WinDDK\7600.16385.1 fre     WLH && cd /d C:\Users\IG\Desktop\수정중\usbip && build" 
+         장치가 준비되지 않았습니다.
+         
+         장치가 준비되지 않았습니다.
+         C:\Users\IG\Desktop\수정중\usbip>cmd /C "set DDKBUILDENV=&& D:\WinDDK\7600.16385.1\bin\setenv.bat D:\WinDDK\7600.16385.1 fre x64 WLH && cd /d C:\Users\IG\Desktop\수정중\usbip && build" 
          하위 디렉터리 또는 파일 output이(가) 이미 있습니다.
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>cmd /C "set DDKBUILDENV=&& D:\WinDDK\7600.16385.1\bin\setenv.bat D:\WinDDK\7600.16385.1 fre     WLH && cd /d C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip && build" 
+         C:\Users\IG\Desktop\수정중\usbip>rem copy files to output folder 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>cmd /C "set DDKBUILDENV=&& D:\WinDDK\7600.16385.1\bin\setenv.bat D:\WinDDK\7600.16385.1 fre x64 WLH && cd /d C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip && build" 
+         C:\Users\IG\Desktop\수정중\usbip>rem del /Q output 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>rem copy files to output folder 
+         C:\Users\IG\Desktop\수정중\usbip>mkdir output 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>rem del /Q output 
-         
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>mkdir output 
-         
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>copy USBIPEnum.inf output 
+         C:\Users\IG\Desktop\수정중\usbip>copy USBIPEnum.inf output 
                  1개 파일이 복사되었습니다.
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>copy objfre_wlh_x86\i386\USBIPEnum.sys output\USBIPEnum_x86.sys 
+         C:\Users\IG\Desktop\수정중\usbip>copy objfre_wlh_x86\i386\USBIPEnum.sys output\USBIPEnum_x86.sys 
          지정된 경로를 찾을 수 없습니다.
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>copy objfre_wlh_amd64\amd64\USBIPEnum.sys output\USBIPEnum_x64.sys 
+         C:\Users\IG\Desktop\수정중\usbip>copy objfre_wlh_amd64\amd64\USBIPEnum.sys output\USBIPEnum_x64.sys 
          지정된 경로를 찾을 수 없습니다.
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>rem sign files and create catalog file 
+         C:\Users\IG\Desktop\수정중\usbip>rem sign files and create catalog file 
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>signtool sign /f USBIP_TestCert.pfx /t http://timestamp.verisign.com/scripts/timestamp.dll output\USBIPEnum_x86.sys 
+         C:\Users\IG\Desktop\수정중\usbip>signtool sign /f USBIP_TestCert.pfx /t http://timestamp.verisign.com/scripts/timestamp.dll output\USBIPEnum_x86.sys 
          Done Adding Additional Store
          Successfully signed and timestamped: output\USBIPEnum_x86.sys
          
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>signtool sign /f USBIP_TestCert.pfx /t http://timestamp.verisign.com/scripts/timestamp.dll output\USBIPEnum_x64.sys 
+         C:\Users\IG\Desktop\수정중\usbip>signtool sign /f USBIP_TestCert.pfx /t http://timestamp.verisign.com/scripts/timestamp.dll output\USBIPEnum_x64.sys 
          Done Adding Additional Store
          Successfully signed and timestamped: output\USBIPEnum_x64.sys
          
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>inf2cat /driver:output /os:XP_x86,XP_x64,Server2003_X86,Server2003_X64,Vista_X86,Vista_X64,Server2008_X86,Server2008_X64,7_X86,7_X64,Server2008R2_X64 
+         C:\Users\IG\Desktop\수정중\usbip>inf2cat /driver:output /os:XP_x86,XP_x64,Server2003_X86,Server2003_X64,Vista_X86,Vista_X64,Server2008_X86,Server2008_X64,7_X86,7_X64,Server2008R2_X64 
+         
+         C:\Users\IG\Desktop\수정중\usbip>signtool sign /f USBIP_TestCert.pfx /t http://timestamp.verisign.com/scripts/timestamp.dll output\USBIPEnum.cat 
          'inf2cat'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
          배치 파일이 아닙니다.
-         
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>signtool sign /f USBIP_TestCert.pfx /t http://timestamp.verisign.com/scripts/timestamp.dll output\USBIPEnum.cat 
          Done Adding Additional Store
          Successfully signed and timestamped: output\usbipenum.cat
          
-         C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip>
-     1>"C:\Documents and Settings\Administrator\바탕 화면\수정중\usbip\usbip_driver.vcxproj" 프로젝트를 빌드했습니다(build 대상).
+         C:\Users\IG\Desktop\수정중\usbip>
+     1>"C:\Users\IG\Desktop\수정중\usbip\usbip_driver.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:04.34
+경과 시간: 00:00:05.74
