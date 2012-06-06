@@ -51,6 +51,7 @@ unsigned int parse_opt(int argc, char *argv[])
 	int i = 0;
 
 
+
 	for (;;) {
 		int c;
 		int index = 0;
@@ -107,6 +108,7 @@ unsigned int parse_opt(int argc, char *argv[])
 				usbip_use_syslog = 1;
 				break;
 			case '?':
+				cmd = CMD_HELP;
 				break;
 			default:
 				err("getopt");
@@ -453,8 +455,6 @@ static int query_exported_devices(SOCKET sockfd)
 				udev.bDeviceSubClass, udev.bDeviceProtocol);
 
 		info("%8s: %s", udev.busid, product_name);
-		send_msg(client_socket, udev.busid, MAXLINE);
-		send_msg(client_socket, product_name, MAXLINE);
 		info("%8s: %s", " ", udev.path);
 		info("%8s: %s", " ", class_name);
 
@@ -537,7 +537,7 @@ void recv_msg(int sockfd, char *msg, int size)
 		//send_msg();
 	}
 	
-	//return *msg;
+	
 }
 
 int send_msg(int sockfd, char *msg, int size)
@@ -554,119 +554,92 @@ int main(int argc, char *argv[])
 {
 
 	int cmd;
-<<<<<<< HEAD
 	char msg[]="성공";	
-	char option[5];
+	char option[MAXLINE];
 	char address[MAXLINE];
-	char finish[MAXLINE] = "not";
+	char finish[MAXLINE];
 	
-=======
-	char *msg = "연결성공";
-	int argc;
-	char cmd_msg;
-	char *argv[MAXLINE];
->>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
+	/*argv[0] = "usbip";
+	argv[1] ="127.0.0.1";
+	argv[2] ="-l";*/
+	
 	info("%s\n",version);
-
+	
 	if(init_winsock()){
 		err("can't init winsock");
 		return 0;
 	}
-	memset(&cmd_msg, 0, 1);
+	
 	connect_server();
+	printf("asdfasdf:%s\n", msg);
 	send_msg(client_socket, msg, MAXLINE);
 	printf("%s\n", msg);
-	
-<<<<<<< HEAD
-	memset(&option, 0, MAXLINE);
-	memset(&address, 0, MAXLINE);
 
-	recv_msg(client_socket, option, 5);
-	recv_msg(client_socket, address, MAXLINE);
+	while(1){
+		/*connect_server();
+		send_msg(client_socket, msg, MAXLINE);*/
 
-	argv[0] = "usbip";
-	argv[1] = option;
-	argv[2] = address;
+		memset(&option, 0, MAXLINE);
+		memset(&address, 0, MAXLINE);
 
-	if(!strcmp(option,"-a")){
-		argc = 4;
-		argv[3] = "2-1.2";
-	}else{
-		argc = 3;
-	}
-=======
-	recv_msg(client_socket, &cmd_msg, MAXLINE);
-	
-	if(cmd_msg == 'l') {
-		argc = 3;
+		printf("1\n");
+		recv_msg(client_socket, option, MAXLINE);
+		printf("2\n");
+		recv_msg(client_socket, address, MAXLINE);
+		printf("3\n");
+
 		argv[0] = "usbip";
-		argv[1] = "-l";
-		recv_msg(client_socket, argv[2], MAXLINE);
-	} else if(cmd_msg == 'a') {
-		argc = 4;
-		argv[0] = "usbip";
-		argv[1] = "-a";
-		recv_msg(client_socket, argv[2], MAXLINE);
-		recv_msg(client_socket, argv[3], MAXLINE);
-	} else {
-		msg = "잘못된 입력";
-		send_msg(client_socket, msg, MAXLINE);
-	}
-	
-	printf("%c\n", cmd_msg);
-	
-	memset(argv[0], 0, MAXLINE);
-	recv_msg(client_socket, argv[0], MAXLINE);
-	printf("%s\n", argv[0]);
+		argv[1] = option;
+		argv[2] = address;
+		printf("4\n");
 
-	memset(argv[1], 0, MAXLINE);
-	recv_msg(client_socket, argv[1], MAXLINE);
-	printf("%s\n", argv[1]);
-	
->>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
-	
-	cmd = parse_opt(argc, argv);
-	
-	switch(cmd) {
-		case CMD_ATTACH:
-			if (optind == argc - 2)
-				attach_device(argv[optind], argv[optind+1]);
-			else
+		if(!strcmp(option,"-a")){
+			argc = 4;
+			argv[3] = "2-1.2";
+		}else{
+			argc = 3;
+		}
+		argc=3;
+		Sleep(1000);
+		cmd = parse_opt(argc, argv);
+		printf("cmd:%d\n", cmd);
+		Sleep(1000);
+		switch(cmd) {
+			case CMD_ATTACH:
+				if (optind == argc - 2)
+					attach_device(argv[optind], argv[optind+1]);
+				else
+					show_help(argv[0]);
+				break;
+			case CMD_DETACH:
+				while (optind < argc)
+					detach_port(argv[optind++]);
+				break;
+			case CMD_PORT:
+				show_port_status();
+				break;
+			case CMD_LIST:
+				printf("asdfa\n");
+				Sleep(1000);
+				while (optind < argc)
+					show_exported_devices(argv[optind++]);
+				break;
+			case CMD_ATTACHALL:
+				while(optind < argc)
+					attach_devices_all(argv[optind++]);
+				break;
+			case CMD_VERSION:
+				printf("%s\n", version);
+				break;
+			case CMD_HELP:
 				show_help(argv[0]);
-			break;
-		case CMD_DETACH:
-			while (optind < argc)
-				detach_port(argv[optind++]);
-			break;
-		case CMD_PORT:
-			show_port_status();
-			break;
-		case CMD_LIST:
-			while (optind < argc)
-				show_exported_devices(argv[optind++]);
-			break;
-		case CMD_ATTACHALL:
-			while(optind < argc)
-				attach_devices_all(argv[optind++]);
-			break;
-		case CMD_VERSION:
-			printf("%s\n", version);
-			break;
-		case CMD_HELP:
-			show_help(argv[0]);
-			break;
-		default:
-			show_help(argv[0]);
+				break;
+			default:
+				show_help(argv[0]);
+		}
+		
+		Sleep(1000);
+		printf("5\n");
 	}
-<<<<<<< HEAD
-	recv_msg(client_socket, finish, 10);
-	while(/*!strcmp(finish,"finish")*/1)
-	{
-
-	}
-=======
-	
-	Sleep(10000);
->>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
 	return 0;
 }

@@ -73,13 +73,11 @@ BEGIN_MESSAGE_MAP(Cusbip_uiDlg, CDialogEx)
 	ON_MESSAGE(UM_CLOSE_MESSAGE, &Cusbip_uiDlg::OnCloseSocket)
 	ON_BN_CLICKED(IDC_LIST, &Cusbip_uiDlg::OnBnClickedList)
 	ON_BN_CLICKED(IDC_CONNECT, &Cusbip_uiDlg::OnBnClickedConnect)
-<<<<<<< HEAD
 	ON_BN_CLICKED(IDC_DISCONNECT, &Cusbip_uiDlg::OnBnClickedDisconnect)
 	ON_EN_CHANGE(IDC_EDIT3, &Cusbip_uiDlg::OnEnChangeEdit3)
 	ON_BN_CLICKED(IDC_CLOSE, &Cusbip_uiDlg::OnBnClickedClose)
-=======
 	ON_CBN_SELCHANGE(IDC_BUSID, &Cusbip_uiDlg::OnCbnSelchangeBusid)
->>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
+
 END_MESSAGE_MAP()
 
 
@@ -138,14 +136,15 @@ BOOL Cusbip_uiDlg::OnInitDialog()
 	{
 		AddMessage("대기 실패");
 
+
 		listenSocket.Close();
 	}
 	else
 	{
 		AddMessage("서버가 실행 되었습니다.");
 	}
-	//ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
-	ShellExecute(NULL, _T("open") ,_T("cmd.exe"),_T("/K Run.bat") ,NULL, SW_SHOW);
+	ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/수정중/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
+	//ShellExecute(NULL, _T("open") ,_T("cmd.exe"),_T("/K Run.bat") ,NULL, SW_SHOW);
 
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
@@ -262,11 +261,11 @@ void Cusbip_uiDlg::OnBnClickedList()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	int ret = 0;
 	CString strMsg;
-	char buf[8000];
+	char buf[1024];
 	CString listData;
 	CString strAddress;
 	m_edIpServerAddress.GetWindowText(strAddress);
-	strMsg.Format("l");
+	strMsg.Format("-l");
 	
 	ret = dataSocket.Send(strMsg, strMsg.GetLength()+1);
 	if(ret < 1){
@@ -282,11 +281,11 @@ void Cusbip_uiDlg::OnBnClickedList()
 	}
 	AddMessage("전송 : "+strAddress);
 
-	
+	/*
 	while(dataSocket.Receive(buf, 8000)>0){
 		listData += buf;
 		memset(buf, 0, sizeof(buf));
-	}
+	}*/
 
 	m_edListData.SetWindowText(listData);
 }
@@ -294,7 +293,7 @@ void Cusbip_uiDlg::OnBnClickedList()
 
 void Cusbip_uiDlg::OnBnClickedConnect()
 {
-<<<<<<< HEAD
+
 	//ShellExecute(NULL, _T("open") ,_T("C:/Documents and Settings/Administrator/바탕 화면/usbip/Debug/usbip.exe"),NULL ,NULL, SW_SHOW);
 
 	int ret = 0;
@@ -320,12 +319,6 @@ void Cusbip_uiDlg::OnBnClickedConnect()
 
 	AddMessage("전송 : "+strAddress);
 
-	
-	
-	while(dataSocket.Receive(buf, 8000)>0){
-		listData += buf;
-		memset(buf, 0, sizeof(buf));
-	}
 
 	m_edListData.SetWindowText(listData);
 }
@@ -342,6 +335,7 @@ void Cusbip_uiDlg::OnBnClickedDisconnect()
 		AddMessage("메세지 전송 실패");
 		return;
 	}
+
 }
 
 
@@ -367,9 +361,9 @@ void Cusbip_uiDlg::OnBnClickedClose()
 		AddMessage("메세지 전송 실패");
 		return;
 	}
-=======
+
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	int ret = 0;
+	/*int ret = 0;
 	CString strMsg;
 	CString strAddress;
 	m_edIpServerAddress.GetWindowText(strAddress);
@@ -386,9 +380,7 @@ void Cusbip_uiDlg::OnBnClickedClose()
 		AddMessage("메세지 전송 실패");
 		return;
 	}
-	AddMessage("전송 : "+strAddress);
-	
->>>>>>> 85414d9bbbf2165ee73f96dde613a13c86c0d59b
+	AddMessage("전송 : "+strAddress);*/
 }
 
 
