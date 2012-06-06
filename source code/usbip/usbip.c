@@ -551,6 +551,7 @@ int main()
 	int cmd;
 	char *msg = "연결성공";
 	int argc;
+	int i;
 	char cmd_msg;
 	char *argv[MAXLINE];
 	info("%s\n",version);
@@ -560,25 +561,28 @@ int main()
 		return 0;
 	}
 	memset(&cmd_msg, 0, 1);
+	for(i = 0; i < 4; i++){
+		memset(argv[i], 0, MAXLINE);
+	}
 	connect_server();
 	send_msg(client_socket, msg, MAXLINE);
 	printf("%s\n", msg);
 	
 	recv_msg(client_socket, &cmd_msg, MAXLINE);
-	
+	printf("%c\n", cmd_msg);
 	if(cmd_msg == 'l') {
 		argc = 3;
-		argv[0] = "usbip";
-		argv[1] = "-l";
+		strcpy(argv[0], "usbip");
+		strcpy(argv[1], "-l");
 		recv_msg(client_socket, argv[2], MAXLINE);
 	} else if(cmd_msg == 'a') {
 		argc = 4;
-		argv[0] = "usbip";
-		argv[1] = "-a";
+		strcpy(argv[0], "usbip");
+		strcpy(argv[1], "-a");
 		recv_msg(client_socket, argv[2], MAXLINE);
 		recv_msg(client_socket, argv[3], MAXLINE);
 	} else {
-		msg = "잘못된 입력";
+		strcpy(msg, "잘못된 입력");
 		send_msg(client_socket, msg, MAXLINE);
 	}
 	
