@@ -10,20 +10,21 @@
         android:layout_height="wrap_content"
         android:layout_weight="0" >
 
-        <Button
-            android:id="@+id/btn_connect"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:onClick="onButton"
-            android:textSize="12dp"
-            android:text="연결" />
-
         <TextView
             android:id="@+id/text_connect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="연결중"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/btn_connect"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:onClick="onButton"
+            android:text="연결"
+            android:textSize="12dp"
+            android:visibility="invisible"/>e
 
         <ProgressBar
             android:id="@+id/progressBar_connect"

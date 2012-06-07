@@ -20,7 +20,7 @@ public final class R {
         public static final int scroll=0x7f020006;
     }
     public static final class id {
-        public static final int btn_connect=0x7f050001;
+        public static final int btn_connect=0x7f050002;
         public static final int frame_lbtn=0x7f050008;
         public static final int frame_rbtn=0x7f050009;
         public static final int frame_scroll=0x7f050006;
@@ -29,7 +29,7 @@ public final class R {
         public static final int linearLayout2=0x7f050004;
         public static final int linearLayout3=0x7f050000;
         public static final int progressBar_connect=0x7f050003;
-        public static final int text_connect=0x7f050002;
+        public static final int text_connect=0x7f050001;
     }
     public static final class layout {
         public static final int main=0x7f030000;

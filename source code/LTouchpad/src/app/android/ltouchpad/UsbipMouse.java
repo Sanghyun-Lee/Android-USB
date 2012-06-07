@@ -5,14 +5,19 @@ import android.os.Message;
 public class UsbipMouse {
 	private boolean connection;
 	private boolean moveflag;
+	private boolean clientConnection;
 	
 	public UsbipMouse() {
 		System.loadLibrary("usb-mouse");
 		moveflag = false;
 	}
 	
-	public boolean isConnect() {
+	public boolean isUsbipConnect() {
 		return connection;
+	}
+
+	public boolean isClientConnect() {
+		return clientConnection;
 	}
 	
 	public boolean connect() {
@@ -53,10 +58,14 @@ public class UsbipMouse {
 	}
 	
 	public boolean processCmd() {
-		if(process_cmd()<0)
+		if(process_cmd()<0) {
+			clientConnection = false;
 			return false;
-		else
+		}
+		else {
+			clientConnection =true;
 			return true;
+		}
 	}
 	
 	public boolean btnLeft(boolean down) {

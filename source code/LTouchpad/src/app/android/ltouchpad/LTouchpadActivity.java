@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -68,18 +69,26 @@ public class LTouchpadActivity extends Activity {
         connectUsbip();
     }
     
-    public static final String HANDLE_MSG_CONNECTING = "연결중";
+    public static final String HANDLE_MSG_CONNECTING = "USBIP 연결중";
     public static final String HANDLE_MSG_WAITINGPC = "PC연결 대기중";
     public static final String HANDLE_MSG_FAILEDCONNECTPC = "PC연결 실패";
-    public static final String HANDLE_MSG_FAILEDCONNECT = "연결실패";
-    public static final String HANDLE_MSG_SUCCESSCONNECT = "연결완료";
+    public static final String HANDLE_MSG_FAILEDCONNECT = "USBIP 연결실패";
+    public static final String HANDLE_MSG_SUCCESSCONNECT = "USBIP 연결완료";
     public static final String HANDLE_MSG_DISCONNECT = "연결끊김";
     
     public static Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			String s = (String)msg.obj;
 			if(s.equals(HANDLE_MSG_CONNECTING)) {
+				btnConnect.setVisibility(Button.INVISIBLE);
 				pbarConnect.setVisibility(ProgressBar.VISIBLE);
+			}
+			else if(s.equals(HANDLE_MSG_WAITINGPC)) {
+				pbarConnect.setVisibility(ProgressBar.VISIBLE);
+			}
+			else if(s.equals(HANDLE_MSG_FAILEDCONNECT)) {
+				btnConnect.setVisibility(Button.VISIBLE);
+				pbarConnect.setVisibility(ProgressBar.INVISIBLE);
 			}
 			else {
 				pbarConnect.setVisibility(ProgressBar.INVISIBLE);
@@ -89,7 +98,7 @@ public class LTouchpadActivity extends Activity {
 	};
     
     public static void connectUsbip() {
-    	if(usbipMouse.isConnect())
+    	if(usbipMouse.isUsbipConnect())
     		return;
     	Message msg = new Message();
     	msg.obj = HANDLE_MSG_CONNECTING;
@@ -206,7 +215,7 @@ public class LTouchpadActivity extends Activity {
     }
     
     public static Point Move(Point movePoint) {
-    	if(!usbipMouse.isConnect()) {
+    	if(!usbipMouse.isClientConnect()) {
     		Log.w("LTouchPad", "Not connected");
     		movePoint.set(0, 0);
     		return movePoint;
@@ -275,5 +284,14 @@ public class LTouchpadActivity extends Activity {
     	point.x += sumX;
 		point.y += sumY;
     	return point;
+    }
+    
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	switch (keyCode) {
+        	case KeyEvent.KEYCODE_BACK:
+        		moveTaskToBack(true);
+        		return true;
+    	}
+    	return super.onKeyDown(keyCode, event);
     }
 }
