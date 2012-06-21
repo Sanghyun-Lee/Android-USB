@@ -1,6 +1,7 @@
 package app.android.ltouchpad;
 
 import android.os.Message;
+import android.util.Log;
 
 public class UsbipMouse {
 	private boolean connection;
@@ -21,7 +22,7 @@ public class UsbipMouse {
 	}
 	
 	public boolean connect() {
-		if(connect_usbip()<0) {
+		if(connect_usbip()<0) {                                                                                                              
 			connection = false;
 			return false;
 		}
@@ -120,8 +121,29 @@ public class UsbipMouse {
 			return true;
 	}
 	
+	public boolean isSendable() {
+		if(is_sendable()==1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean recvAck() {
+		int ret;
+		ret=recv_ack();
+		Log.d("LTouchPad", "recvAck : " + ret);
+		if(ret<0) {
+			return false;
+		}
+		else
+			return true;
+	}
+	
 	private native int connect_usbip();
 	private native int process_cmd();
+	
+	private native int is_sendable();
+	private native int recv_ack();
 	
 	private native int move(int x, int y);
 	private native int btn_left(int down, int up);

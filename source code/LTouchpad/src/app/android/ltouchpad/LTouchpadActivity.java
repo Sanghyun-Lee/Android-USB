@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class LTouchpadActivity extends Activity {
 	
 	private static UsbipMouse usbipMouse;
+	private static RecvThread recvThread;
 	
 	private static Button btnConnect;
 	private static TextView textConnect;
@@ -66,6 +67,7 @@ public class LTouchpadActivity extends Activity {
         Drawable_RbtnClicked = getResources().getDrawable(R.drawable.right_clicked);
         
         usbipMouse = new UsbipMouse();
+        recvThread = new RecvThread(usbipMouse);
         connectUsbip();
     }
     
@@ -120,6 +122,7 @@ public class LTouchpadActivity extends Activity {
 					 }
 					 else {
 						 msg.obj = HANDLE_MSG_SUCCESSCONNECT;
+						 recvThread.start();
 					 }
 					 handler.sendMessage(msg);
 				 }
@@ -200,6 +203,10 @@ public class LTouchpadActivity extends Activity {
     
     public static boolean ScrollDown() {
     	Log.i("LTouchPad", "ScrollDown()");
+    	if(!usbipMouse.isSendable()) {
+    		Log.w("LTouchPad", "can't send state");
+    		return false;
+    	}
     	if(usbipMouse.moveScroll(true))
     		return true;
     	else
@@ -208,6 +215,10 @@ public class LTouchpadActivity extends Activity {
     
     public static boolean ScrollUp() {
     	Log.i("LTouchPad", "ScrollUp()");
+    	if(!usbipMouse.isSendable()) {
+    		Log.w("LTouchPad", "can't send state");
+    		return false;
+    	}
     	if(usbipMouse.moveScroll(false))
     		return true;
     	else
@@ -220,8 +231,12 @@ public class LTouchpadActivity extends Activity {
     		movePoint.set(0, 0);
     		return movePoint;
     	}
+    	if(!usbipMouse.isSendable()) {
+    		Log.w("LTouchPad", "can't send state");
+    		return movePoint;
+    	}
     	
-    	movePoint.setHalf();
+    	//movePoint.setHalf();
     	movePoint.cutMaxAbsnum(30);
     	if(movePoint.getBigSize()<1)
     		return movePoint;

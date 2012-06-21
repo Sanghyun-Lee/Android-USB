@@ -18,12 +18,15 @@ public class TouchListenerScroll implements OnTouchListener {
 			return true;
 		case MotionEvent.ACTION_MOVE :
 			float y2 = event.getY();
-			if(y2-y1>5)
+			if(y2-y1>5) {
 				LTouchpadActivity.ScrollDown();
-			else
+				isTouchMove = true;
+			}
+			else if(y2-y1<-5) {
 				LTouchpadActivity.ScrollUp();
+				isTouchMove = true;
+			}
 			y1 = y2;
-			isTouchMove = true;
 			return true;
 		case MotionEvent.ACTION_UP :
 			if(!isTouchMove) {

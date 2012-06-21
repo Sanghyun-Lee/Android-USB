@@ -7,8 +7,8 @@
 #include <memory.h>
 #include <malloc.h>
 #include <stdlib.h>
-/* Header for class app_android_ltouchpad_UsbipMouse */
 
+/* Header for class app_android_ltouchpad_UsbipMouse */
 #ifndef _Included_app_android_ltouchpad_UsbipMouse
 #define _Included_app_android_ltouchpad_UsbipMouse
 #ifdef __cplusplus
@@ -28,6 +28,22 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_connect_1usbip
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_process_1cmd
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     app_android_ltouchpad_UsbipMouse
+ * Method:    is_sendable
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_is_1sendable
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     app_android_ltouchpad_UsbipMouse
+ * Method:    recv_ack
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_recv_1ack
   (JNIEnv *, jobject);
 
 /*
@@ -69,6 +85,7 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_btn_1scroll
  */
 JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_move_1scroll
   (JNIEnv *, jobject, jint, jint);
+
 
 int send_control();
 

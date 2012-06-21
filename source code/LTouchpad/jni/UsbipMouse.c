@@ -13,6 +13,7 @@ int sockfd = -1;
 unsigned char buffer[4];
 struct usbdevfs_urb urb;
 unsigned int seqnum = 0;
+unsigned int re_seqnum = 0;
 
 int BTN_LEFT=0, BTN_RIGHT=0, BTN_SCROLL=0;
 
@@ -59,13 +60,29 @@ JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_process_1cmd
 	} while(cmd_num<CMD_MAX);
 
 	set_urb_control();
+	re_seqnum = cmd_num;
 	seqnum = cmd_num;
 	return cmd_num;
 }
 
+JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_is_1sendable
+  (JNIEnv *evn, jobject obj) {
+	  if(seqnum <= re_seqnum+1)
+		  return 1;
+	  else
+		  return 0;
+}
+
 JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_recv_1ack
 (JNIEnv *env, jobject obj) {
-	return 0;
+	char cmd[MAX_RECV];
+
+	if(recv_seqnum(sockfd, cmd, MAX_RECV)==-1){
+		fprintf(stderr, "recv_seqnum() fail\n");
+		return -1;
+	}
+	sscanf(cmd, "%d", &re_seqnum);
+	return re_seqnum;
 }
 
 JNIEXPORT jint JNICALL Java_app_android_ltouchpad_UsbipMouse_move
@@ -547,8 +564,6 @@ int set_buffer_btn(int left, int right, int scroll, int down)
 int send_control() 
 {
 	unsigned int tmp_length = 0x00000000;
-	char cmd[MAX_RECV];
-	int cmd_num;
 
 	tmp_length = buffer[3];
 	tmp_length = tmp_length << 8;
@@ -572,10 +587,5 @@ int send_control()
 	if(send_urb(&urb, buffer) <0)
 		return -1;
 
-	if(recv_seqnum(sockfd, cmd, MAX_RECV)==-1){
-		fprintf(stderr, "recv_seqnum() fail\n");
-		return -1;
-	}
-	sscanf(cmd, "%d", &cmd_num);
-	return cmd_num;
+	return 0;
 }
